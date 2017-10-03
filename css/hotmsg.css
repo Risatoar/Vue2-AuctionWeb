@@ -1,0 +1,56 @@
+.hotmsg{
+	margin-top: 2px;
+	width: 100%;
+	height: 800px;
+	background-color: #F8F8FF;
+}
+.hotmsg_body{
+	width: 63.5%;
+	height: 680px;
+	position: relative; 
+	top: 60px; 
+	bottom: 60px; 
+	left: 20%;
+	right: 0;
+	border-radius: 16px;
+	
+}
+
+.Auction_notice,.Project_investment{
+	width: 49%;
+	height: 100%;
+	background: white;
+	border-radius: 16px;
+}
+.Auction_notice{
+	float: left;
+}
+.Project_investment{
+	float: right;
+}
+.an_p,.pi_p{
+	margin-top: 30px;
+	margin-left: 40px;
+	float: left;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: white;
+	border-radius: 16px;
+	background-color: #76EE00;
+}
+.more{
+	margin-top: 30px;
+	margin-right: 40px;
+	float: right;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: white;
+	border-radius: 16px;
+	color: #458B74;
+}
