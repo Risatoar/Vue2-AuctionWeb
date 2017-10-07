@@ -17,7 +17,7 @@ myFocus.pattern.extend({//*********************kdui******************
 			setTimeout(function(){
 				$txtList.eq(i).css({display:'block',left:settings.width}).slide({left:0},300);
 				$picList.eq(i).css({display:'block',left:settings.width}).slide({left:0},function(){param.isRunning=false});
-				if(i!==l) $picList.eq(l).slide({left:-settings.width},700);
+				if(i!==l) $picList.eq(l).slide({left:-settings.width},3000);
 				$dotList[l].className='';
 				$dotList[i].className='current';
 			},600);
