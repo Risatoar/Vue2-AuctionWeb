@@ -1,0 +1,235 @@
+.message{
+	margin-top: 4px;
+	width: 100%;
+	height: 800px;
+	background-color: #F8F8FF;
+}
+
+.message .mes_tit{
+	height: 50px;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+}
+
+.message .mes_tit .titimg{
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	background-size: 100%;
+}
+
+.message .mes_tit a,em{
+	font-size: 18px;
+	color: black;
+	line-height: 50px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.message .mes_body{
+	margin: 0 auto; 
+	width: 1200px;
+	height: 680px;
+}
+
+.message .mes_body .mes_bodyone,.mes_bodytwo{
+   height: 100%;
+   width: 598px;
+   background-color: #ffffff;
+   border-radius: 16px;
+}
+
+.message .mes_body .mes_bodyone{
+	float: left;
+}
+
+.message .mes_body .mes_bodytwo{
+	float: right;
+}
+
+.message .mes_body .mes_bodyone #pm .pm_nav{
+	width: 598px;
+	height: 50px;
+	border-radius: 16px 16px 0 0;
+}
+
+.message .mes_body .mes_bodyone #pm .pm_nav .pm_tit{
+	margin-left: 40px;
+	float: left;
+	width: 80px;
+	margin: 20px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: white;
+	border-radius: 16px;
+	background-color: #76EE00;
+}
+
+.message .mes_body .mes_bodyone #pm .pm_nav .pmmore{
+	margin-left: 40px;
+	margin: 20px;
+	float: right;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: white;
+	border-radius: 16px;
+	color: #458B74;
+}
+
+.message .mes_body .mes_bodyone #pm .hotpm{
+    width: 598px;
+    height: 300px;
+}
+
+.message .mes_body .mes_bodyone #pm .hotpm .hotpm_nav{
+	width: 598px;
+	height: 40px;
+	
+}
+
+.message .mes_body .mes_bodyone #pm .hotpm .hotpm_nav .hotpm_tit{
+	text-align: center;
+	font-size: 14px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #CDC9C9;
+}
+
+.message .mes_body .mes_bodyone #pm .hotpm .hotpmbody td img{
+    border-radius: 4px;
+}
+
+
+
+.message .mes_body .mes_bodyone #pm .hotpm .hotpmbody{
+}
+
+
+
+.message .mes_body .mes_bodyone #pm .otherpm{
+    width: 598px;
+    height: 300px;
+}
+
+.message .mes_body .mes_bodyone #pm .otherpm .otherpm_nav{
+	width: 598px;
+	height: 40px;
+	
+}
+
+.message .mes_body .mes_bodyone #pm .otherpm .otherpm_nav .otherpm_tit{
+	text-align: center;
+	font-size: 14px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #CDC9C9;
+}
+
+.message .mes_body .mes_bodyone #pm .otherpm .otherpm_body .tableleft{
+	border-right: 1px solid #CDC9C9; 
+}
+
+.message .mes_body .mes_bodyone #pm .otherpm .otherpm_body td{
+	text-align: center;
+	width: 299px;
+	height: 15px;
+	color: #CDC9C9;
+}
+
+.message .mes_body .mes_bodytwo #zs .zs_nav{
+	width: 598px;
+	height: 50px;
+	border-radius: 16px 16px 0 0;
+}
+
+.message .mes_body .mes_bodytwo #zs .zs_nav .zs_tit{
+	margin-left: 40px;
+	float: left;
+	width: 80px;
+	margin: 20px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: white;
+	border-radius: 16px;
+	background-color: #76EE00;
+}
+
+.message .mes_body .mes_bodytwo #zs .zs_nav .zsmore{
+	margin-left: 40px;
+	margin: 20px;
+	float: right;
+	width: 80px;
+	height: 24px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	color: white;
+	border-radius: 16px;
+	color: #458B74;
+}
+
+.message .mes_body .mes_bodytwo #zs .hotzs{
+    width: 598px;
+    height: 300px;
+}
+
+.message .mes_body .mes_bodytwo #zs .hotzs .hotzs_nav{
+	width: 598px;
+	height: 40px;
+	
+}
+
+.message .mes_body .mes_bodytwo #zs .hotzs .hotzs_nav .hotzs_tit{
+	text-align: center;
+	font-size: 14px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #CDC9C9;
+}
+
+.message .mes_body .mes_bodytwo #zs .hotzs .hotzsbody td img{
+    border-radius: 4px;
+}
+
+.message .mes_body .mes_bodytwo #zs .hotzs .hotzsbody{
+}
+
+
+
+.message .mes_body .mes_bodytwo #zs .otherzs{
+    width: 598px;
+    height: 300px;
+}
+
+.message .mes_body .mes_bodytwo #zs .otherzs .otherzs_nav{
+	width: 598px;
+	height: 40px;
+	
+}
+
+.message .mes_body .mes_bodytwo #zs .otherzs .otherzs_nav .otherzs_tit{
+	text-align: center;
+	font-size: 14px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #CDC9C9;
+}
+
+.message .mes_body .mes_bodytwo #zs .otherzs .otherzs_body .tableleft{
+	border-right: 1px solid #CDC9C9; 
+}
+
+.message .mes_body .mes_bodytwo #zs .otherzs .otherzs_body td{
+	text-align: center;
+	width: 299px;
+	height: 15px;
+	color: #CDC9C9;
+}

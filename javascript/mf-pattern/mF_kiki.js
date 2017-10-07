@@ -24,13 +24,13 @@ myFocus.pattern.extend({//*********************kiki******************
 			if(!first) $picList.eq(next).stop().css({left:0,top:0,zIndex:2});
 			$picList.eq(prev).slide(p_s2,300,'linear',function(){
 				$txtList[prev].style.display='none',this.style.zIndex=1;
-				$(this).slide(p_e,800,function(){
+				$(this).slide(p_e,2000,function(){
 					this.style.zIndex='';
 				});
 			});
 			$picList.eq(next).slide(p_s1,300,'linear',function(){
 				$txtList[next].style.display='block',this.style.zIndex=3;
-				$(this).slide(p_e,800);
+				$(this).slide(p_e,1000);
 			});
 			first=false;
 		});

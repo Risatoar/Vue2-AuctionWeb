@@ -1,64 +1,59 @@
-#head{
-		    background-color: #222222;
-		    height: 50px;
-		    width: 100%;
-		    margin: 0 auto;
-		    
-		    -webkit-box-shadow:2px 2px 5px #333333;
-		    
-		            box-shadow:2px 2px 5px #333333; 
-		}
-		.logo{
-			text-decoration: none;
-		    position: absolute; left: 16.667%;
-		    padding-left: 18px;
-		    font-weight: bolder;
-		    font-size: 18px;
-		    width: 320px;
-		    height: 50px;
-		    line-height: 50px;
-		    color: white;
-		    font-family: Arial;
-		    background-color: #222222;
-		    border-radius: 4px;
-		}
+.nav{
+	background-color: #222222;
+	height: 50px;
+	width: 100%;
+	-webkit-box-shadow:2px 2px 5px #333333;
+	        box-shadow:2px 2px 5px #333333; 
+}
 
-		.Navigation{
-		    
-		    height: 50px;
-		    margin: 0 10% 0 40%;
-		    background-color:#222222;
-		}
-		#navi{
-		            border-radius: 5px;
-		            list-style: none;
-		            height: 50px;
-		            margin-top: 0;
-		            background-color: #222222;
-		            
-		        }
-		#navi li{
-		            
-		            float: left;
-		        }
-		#navi a{
-		            text-decoration: none;
-		            display: block;
-		            height: 50px;
-		            line-height: 50px;
-		            width: 120px;
-		            margin-bottom: 1px;
-		            text-align: center;
-		            font-size: 18px;
-		            font-weight: bold;
-		            color: white;
-		            background-color: #080808;
-		        }
-		        .on,#navi a:hover{
-		            background-color: #222222;
-		            color: white;
-		            height: 50px;
-		            line-height: 50px;
-		            cursor: pointer;
-		            text-align: center;
-		        }
+.nav .nav_title{
+	font-weight: bolder;
+	float: left;
+	color: #ffffff;
+	font-size: 150%;
+	line-height: 50px;
+	padding:0 200px;
+	position: relative;
+}
+
+.nav .nav_list{
+	margin: 0 auto;
+	border:0; 
+	border-radius: 5px;
+	height: 50px;
+	background-color: #222222;
+}
+
+.nav .nav_list li{
+    float: left;
+}
+
+.nav .nav_list a{
+	color: #ffffff;
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	width: 120px;
+	text-align: center;
+	font-size: 150%;
+	font-weight: bold;
+	background-color: #080808;
+}
+
+.nav .nav_list .on{
+    background-color: #222222;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.nav .nav_list #navi .on,#navi a:hover{
+	background-color: #222222;
+	color: white;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+	text-align: center;
+}
