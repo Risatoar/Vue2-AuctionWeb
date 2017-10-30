@@ -51,11 +51,28 @@ export default {
 	-webkit-box-shadow:2px 2px 5px #333333;
 	        box-shadow:2px 2px 5px #333333; 
 }
+.NavigationBar .logo{
+	font-size: 24px;
+	color: #fff;
+	float: left;
+	line-height: 50px;
+	padding: 0 150px 0 150px; 
+	text-decoration: none;
+}
 .NavigationBar ul{
 	text-decoration-line: none;
 	list-style-type: none;
 }
 .NavigationBar li{
+	font-size: 2000%;
+	color: #fff;
 	float: left;
+	line-height: 50px;
+	width: 8%;
+	background-color: #080808;
+}
+.NavigationBar li:hover{
+	background-color: #222222;
+	cursor: pointer;
 }
 </style>
