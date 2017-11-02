@@ -1,6 +1,6 @@
-# auctionwebsite
+# auctionweb
 
-> vue2.0 重构并且制作拍卖信息网站
+> vue2.0 重构拍卖信息网页
 
 ## Build Setup
 

@@ -13,15 +13,19 @@ export default {
 </script>
 
 <style scoped>
-	#loaderImage{
-		width: 64px; 
-		height: 64px; 
-		position: absolute; 
-		top: 0; 
-		bottom: 0; 
-		left: 0; 
-		right: 0; 
-		margin:auto; 
-		background: url(../assets/loading.gif) no-repeat;
-	}
+	#loaderImage
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 64px;
+    height: 64px;
+    margin: auto;
+
+    background: url(../assets/loading.gif) no-repeat;
+}
+
 </style>
