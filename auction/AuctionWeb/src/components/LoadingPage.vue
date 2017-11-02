@@ -1,19 +1,19 @@
-<template>
-  <div class="componentA">
-  	<div class="loading" >
-  		<div id="loaderImage"></div>
-  	</div>
-  </div>
-</template>
-
+<template> 
+  <div class="componentA"> 
+    <div class="loading" > 
+      <div id="loaderImage"></div> 
+    </div> 
+  </div> 
+</template> 
+ 
 <script>
-export default {
-  name: 'componentA'
-}
-</script>
-
-<style scoped>
-	#loaderImage
+export default { 
+  name: 'componentA' 
+} 
+</script> 
+ 
+<style scoped> 
+   #loaderImage
 {
     position: absolute;
     top: 0;
