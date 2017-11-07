@@ -1,5 +1,5 @@
 <template> 
-  <div class="componentA"> 
+  <div class="loading"> 
     <div class="loading" > 
       <div id="loaderImage"></div> 
     </div> 
@@ -8,7 +8,7 @@
  
 <script>
 export default { 
-  name: 'componentA' 
+  name: 'loading' 
 } 
 </script> 
  
