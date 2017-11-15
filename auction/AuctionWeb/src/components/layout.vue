@@ -18,13 +18,15 @@
 			</div>
 		</div>
 		<div class="content">
+		  <keep-alive>
+			<router-view></router-view>
+		  </keep-alive>
 		</div>
 		<div class="foot">
 			<p>
 				Proudly By XuXiang Copyright © 2017. All rights reserved.
 			</p>
 		</div>
-	
 		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
 			公司名称：{{ company }} <br>
 			公司电话：110
@@ -86,6 +88,10 @@
     vertical-align: baseline;
 
     border: 0;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
 }
 
 a
