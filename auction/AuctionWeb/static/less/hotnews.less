@@ -1,0 +1,70 @@
+@time: #ffffff;
+@title-color: #FF0000;
+@msg: #000000;
+@fz: 12px;
+
+.hotnews{
+	color: @time;
+	.hotnews-block{
+		cursor: pointer;
+		width: 100%;
+		height: 80px;
+		.hotnews-block-left{
+			display: block;
+			position: absolute;
+			float: left;
+			width: 15%;
+			height: 79px;
+			line-height: 79px;
+			border-bottom: 1px solid @time;
+		}
+		.hotnews-block-right{
+			background-color: #fff;
+			position: relative;
+			float: right;
+			width: 85%;
+			height: 79px;
+			border-bottom: 1px solid rgba(52,52,52,.3);
+			text-overflow: -o-ellipsis-lastline;  
+			overflow: hidden;  
+			text-overflow: ellipsis;  
+			display: -webkit-box;  
+			-webkit-line-clamp: 3;  
+			-webkit-box-orient: vertical;
+			.hotnews-title{
+				padding-top: 15px;
+				margin-left: 20px;
+				font-size: @fz+4px;
+				color: @title-color
+			}
+			.hotnews-msg{
+				text-indent: @fz+2px;
+				margin-left: 20px;
+				font-size: @fz+2px;
+				color: @msg;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+.block0:hover{
+	background-color: black;
+}
+
+.block1:hover{
+	background-color: black;
+}
+
+.block2:hover{
+	background-color: black;
+}
+
+.block3:hover{
+	background-color: black;
+}
+
+.block0,.block1,.block2,.block3{
+			background-color: #222;
+		}
