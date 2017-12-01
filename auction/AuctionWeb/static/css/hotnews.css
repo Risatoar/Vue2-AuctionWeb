@@ -1,5 +1,7 @@
 .hotnews {
   color: #ffffff;
+  border: 1px solid #03A9F4;
+  border-radius: 4px;
 }
 .hotnews .hotnews-block {
   cursor: pointer;
@@ -11,23 +13,19 @@
   position: absolute;
   float: left;
   width: 15%;
-  height: 79px;
-  line-height: 79px;
+  height: 80px;
+  line-height: 80px;
   border-bottom: 1px solid #ffffff;
 }
 .hotnews .hotnews-block .hotnews-block-right {
-  background-color: #fff;
   position: relative;
   float: right;
   width: 85%;
-  height: 79px;
+  height: 80px;
   border-bottom: 1px solid rgba(52, 52, 52, 0.3);
-  text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
 }
 .hotnews .hotnews-block .hotnews-block-right .hotnews-title {
   padding-top: 15px;
@@ -43,21 +41,35 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.block0:hover {
+.block0 {
+  background-color: #C2185Bs;
+}
+.block1 {
   background-color: black;
+}
+.block2 {
+  background-color: black;
+}
+.block3 {
+  background-color: black;
+}
+.block0:hover {
+  background-color: #03A9F4;
 }
 .block1:hover {
-  background-color: black;
+  background-color: #FFEB3B;
 }
 .block2:hover {
-  background-color: black;
+  background-color: #03A9F4;
 }
 .block3:hover {
-  background-color: black;
+  background-color: #FFEB3B;
 }
 .block0,
+.block2 {
+  background-color: #00BCD4;
+}
 .block1,
-.block2,
 .block3 {
-  background-color: #222;
+  background-color: #FFC107;
 }
