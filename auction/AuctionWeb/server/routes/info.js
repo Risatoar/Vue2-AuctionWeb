@@ -40,18 +40,18 @@ router.get("/information",function(req,res,next){
   })
 })
 
-// // router.post("/addgoods",(req,res,next)=>{
-// //   new Goods(req.body).save((err,doc)=>{
-// //     if(err){
-// //       console.log(err)
-// //     }
-// //     else{
-// //       res.json({
-// //           list: doc
-// //       })
-// //     }
-// //   })
-// // })
+router.post("/addinfo",(req,res,next)=>{
+  new Infos(req.body).save((err,doc)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.json({
+          list: doc
+      })
+    }
+  })
+})
 
 
 module.exports=router

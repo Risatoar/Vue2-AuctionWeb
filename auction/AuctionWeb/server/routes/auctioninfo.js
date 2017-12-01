@@ -40,18 +40,18 @@ router.get("/auction",function(req,res,next){
   })
 })
 
-// router.post("/addgoods",(req,res,next)=>{
-//   new Goods(req.body).save((err,doc)=>{
-//     if(err){
-//       console.log(err)
-//     }
-//     else{
-//       res.json({
-//           list: doc
-//       })
-//     }
-//   })
-// })
+router.post("/auction",(req,res,next)=>{
+  new Goods(req.body).save((err,doc)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.json({
+          list: doc
+      })
+    }
+  })
+})
 
 
 module.exports=router
