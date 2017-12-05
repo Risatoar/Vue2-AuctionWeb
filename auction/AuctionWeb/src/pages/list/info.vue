@@ -2,9 +2,7 @@
   <div> 
     <div class="auctioninfo"> 
       <div class="auctioninfo-head"> 
-      	<router-link :to="{path: '/info'}">
-        <a class="head-words">拍卖公告</a>
-        </router-link> 
+        <a class="head-words">拍卖公告</a> 
         <a class="head-more" @click="morenews">更多</a> 
       </div> 
        <div class="biaodan">
@@ -13,7 +11,7 @@
       <button class="btn btn-info" @click="addproduct">add</button>
     </div>
       <div class="auctioninfo-body" v-for="(item,index) in auctioninfo"> 
-        <div class="auctioninfo-body-item"  @click="getinfoshow(index)" :class="[{'newsshow' : index - 2 > 0}]"> 
+        <div class="auctioninfo-body-item" v-if="shownews" @click="getinfoshow(index)"> 
           <span class="new">NEW</span> 
           <!-- <button class="delnew btn btn-danger"  @click="getnewsdel(index)">delete</button> -->
           <li class="item-title"><a href="javascript：void(0);">{{ item.acTitle }}</a></li> 
@@ -35,7 +33,7 @@
 
 <script>
 import axios from 'axios'
-import newsdialog from '../dialog.vue'
+import newsdialog from '../../components/dialog.vue'
 	export default {
 		components: {
 			newsdialog
@@ -85,12 +83,11 @@ import newsdialog from '../dialog.vue'
 			},
 			getnewsdel(index) {
 				let id = auctioninfo.info;
-
 			}
 		}
 	}
 </script>
 
 <style scoped>
-@import '/static/css/auctioninfo.css'
+@import '/static/css/info.css'
 </style>

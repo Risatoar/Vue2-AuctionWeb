@@ -2,8 +2,6 @@
   cursor: pointer;
   border: 1px solid #66cd00;
   border-radius: 4px;
-  height: 322px;
-  overflow: hidden;
 }
 .auctioninfo .auctioninfo-head {
   position: relative;
@@ -21,9 +19,6 @@
 .auctioninfo .auctioninfo-head .head-more {
   float: right;
   padding-right: 20px;
-}
-.auctioninfo .auctioninfo-body .newsshow {
-  display: none;
 }
 .auctioninfo .auctioninfo-body .auctioninfo-body-item {
   height: 52px;

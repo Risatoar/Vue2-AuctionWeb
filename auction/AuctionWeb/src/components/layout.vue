@@ -3,11 +3,18 @@
 		<div class="head">
 			<div class="head-inner">
 				<div class="head-inner-company">
-					<p> {{ company }} </p>
+				<router-link :to="{path: '/'}">
+					<span> {{ company }} </span>
+				</router-link>
 				</div>
 				<div class="head-inner-nav">
 					<ul>
-						<li v-for="item in navLists"> {{ item.name }} </li>
+						<router-link :to="{path: '/info'}">
+						<li> 拍卖公告 </li>
+					    </router-link>
+						<li> 法律法规 </li>
+						<li> 拍卖知识 </li>
+						<li> 拍卖预告 </li>
 					</ul>
 				</div>
 				<div class="head-inner-login">

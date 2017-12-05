@@ -19,6 +19,9 @@ export default {
     isShow: {
       type: Boolean,
       default: false
+    },
+    auctioninfo: {
+      type: Array
     }
   },
   data () {

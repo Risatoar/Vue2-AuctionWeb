@@ -4,7 +4,7 @@ import Vue from 'vue'
 import layout from './components/layout.vue'
 import VueRouter from 'vue-router'
 import IndexPage from './pages/index.vue'
-
+import InfoPage from './pages/list/info.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -15,6 +15,10 @@ let router = new VueRouter({
 	{
 		path: '/',
 		component: IndexPage
+	},
+	{
+		path: '/info',
+		component: InfoPage
 	}
 	]
 })
