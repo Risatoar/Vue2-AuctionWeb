@@ -10,7 +10,7 @@
       输入时间  <input type="text" class="productName form-control" v-model="auction.acTime" placeholder="请输入日期：类似2017/9/9格式">
       <button class="btn btn-info" @click="addproduct">add</button>
     </div>
-      <div class="auctioninfo-body" v-for="(item,index) in auctioninfo"> 
+      <div class="auctioninfo-body" v-for="(item,index) in info"> 
         <div class="auctioninfo-body-item" v-if="shownews" @click="getinfoshow(index)"> 
           <span class="new">NEW</span> 
           <!-- <button class="delnew btn btn-danger"  @click="getnewsdel(index)">delete</button> -->
@@ -41,7 +41,7 @@ import newsdialog from '../../components/dialog.vue'
 		data() {
 			return {
 				isShowAboutDialog: false,
-				auctioninfo: [],
+				info: [],
 				showinfo: true,
 				shownews: true,
 				auction: {
@@ -68,16 +68,18 @@ import newsdialog from '../../components/dialog.vue'
 			},
 			getauctioninfo() {
 				axios.get("/auction").then((result)=>{
+					console.log(result)
 					let res = result.data;
-					this.auctioninfo = res.result.list;
+					this.info = res.result.list;
 				});
 			},
 			addproduct() {
 				////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
-				axios.post("/auction",this.auction).then((res)=> {
+				axios.post("/auction",this.auction)
+				.then((res)=> {
 					console.log(res);
 				}).catch((error)=> {
-					console.log(error);
+					// console.log('error' + error);
 				});
 				this.getauctioninfo();
 			},

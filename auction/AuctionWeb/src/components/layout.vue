@@ -9,9 +9,11 @@
 				</div>
 				<div class="head-inner-nav">
 					<ul>
+						<keep-alive>
 						<router-link :to="{path: '/info'}">
 						<li> 拍卖公告 </li>
 					    </router-link>
+					    </keep-alive>
 						<li> 法律法规 </li>
 						<li> 拍卖知识 </li>
 						<li> 拍卖预告 </li>
