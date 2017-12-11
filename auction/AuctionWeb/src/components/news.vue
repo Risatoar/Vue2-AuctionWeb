@@ -26,7 +26,7 @@
 									<div class="listcard">
 										<div class="pic">
 											<a href="#">
-											<img :src="item.img" >
+											<img :src="item.img" class="card-img" >
 											</a>
 										</div>
 										<div class="mainmsg">
@@ -95,42 +95,60 @@ export default {
 				auctionid: 1,
 				auctionname: '顶级珠宝竞品',
 				auctiondate: '2017/12/10',
-				img: require('../../static/img/logo.png')
+				img: require('../../static/img/1.jpg')
 			},
 			{
 				auctionid: 2,
 				auctionname: '顶级珠宝竞品',
 				auctiondate: '2017/12/10',
-				img: require('../../static/img/logo.png')
+				img: require('../../static/img/2.jpg')
 			},
 			{
 				auctionid: 3,
 				auctionname: '顶级珠宝竞品',
 				auctiondate: '2017/12/10',
-				img: require('../../static/img/logo.png')
+				img: require('../../static/img/3.jpg')
 			},
 			{
 				auctionid: 4,
 				auctionname: '顶级珠宝竞品',
 				auctiondate: '2017/12/10',
-				img: require('../../static/img/logo.png')
+				img: require('../../static/img/4.jpg')
 			},
 			{
 				auctionid: 5,
 				auctionname: '顶级珠宝竞品',
 				auctiondate: '2017/12/10',
-				img: require('../../static/img/logo.png')
+				img: require('../../static/img/5.jpg')
 			},
 			{
 				auctionid: 6,
 				auctionname: '顶级珠宝竞品',
 				auctiondate: '2017/12/10',
-				img: require('../../static/img/logo.png')
+				img: require('../../static/img/6.jpg')
 			},{
 				auctionid: 7,
 				auctionname: '顶级珠宝竞品',
 				auctiondate: '2017/12/10',
-				img: require('../../static/img/logo.png')
+				img: require('../../static/img/7.jpg')
+			},
+			{
+				auctionid: 8,
+				auctionname: '顶级珠宝竞品',
+				auctiondate: '2017/12/10',
+				img: require('../../static/img/7.jpg')
+			},
+			{
+				auctionid: 9,
+				auctionname: '顶级珠宝竞品',
+				auctiondate: '2017/12/10',
+				img: require('../../static/img/7.jpg')
+			},
+			{
+				auctionid: 10,
+				auctionname: '顶级珠宝竞品',
+				auctiondate: '2017/12/10',
+				img: require('../../static/img/7.jpg')
 			}]
 		}
 	}

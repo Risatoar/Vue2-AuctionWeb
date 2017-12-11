@@ -40,7 +40,7 @@
 			公司名称：{{ company }} <br>
 			公司电话：110
 		</dialog-box>
-
+		<loading></loading>
 	</div>
 </template>
 

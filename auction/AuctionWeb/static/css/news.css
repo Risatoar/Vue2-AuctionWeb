@@ -1,6 +1,7 @@
 .message {
   margin-top: 20px;
   width: 100%;
+  background-color: #e8edf1;
 }
 .line {
   line-height: 24px;
@@ -25,6 +26,7 @@
   width: 60%;
   height: 340px;
   margin: 0 auto;
+  background-color: #fff;
 }
 .message-inner-top .message-inner-top-left {
   margin-top: 20px;
@@ -42,7 +44,6 @@
   position: relative;
   width: 60%;
   margin: 0 auto;
-  margin-top: 1.5em;
   padding: 3em 0 ;
 }
 .message-inner-middle .message-inner-middle-title {
@@ -65,8 +66,7 @@
   -webkit-justify-content: space-between;
   -ms-flex-pack: start;
   justify-content: space-between;
-  margin-left: -0.625rem;
-  margin-right: -0.625rem;
+  transition: all 0.5s ease-in-out;
 }
 .message-inner-middle .message-inner-middle-body li {
   width: 20%;
@@ -76,19 +76,24 @@
   margin-bottom: 1em;
 }
 .message-inner-middle .message-inner-middle-body .listcard {
-  transition: all 0.15s ease-in-out;
   -webkit-box-shadow: 2px 2px 5px;
+  border-top: 1px solid rgba(34, 34, 34, 0.12);
   box-shadow: 0 2px 5px rgba(34, 34, 34, 0.38);
   position: relative;
   background-color: #fff;
   color: #222;
   overflow: hidden;
+  z-index: 2;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic {
   width: 100%;
   height: 260px;
   margin: 0 auto;
   display: block;
+}
+.message-inner-middle .message-inner-middle-body .listcard .pic .card-img {
+  width: 100%;
+  height: 100%;
 }
 .message-inner-middle .message-inner-middle-body .listcard .mainmsg {
   display: -webkit-box;
@@ -133,6 +138,8 @@
   clear: both;
   width: 100%;
   overflow: hidden;
+  background-color: #fff;
+  margin-top: 3em;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-title {
   font-weight: 600;
@@ -161,6 +168,7 @@
   -webkit-margin-end: 0px;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-body .auction-knowledge {
+  margin-top: 3em;
   font-size: 1.3em;
   font-weight: 600;
   width: 140px;

@@ -74,7 +74,7 @@ export default {
   top: 20%;
   left: 50%;
   margin-left: -25%;
-  z-index: 6;
+  z-index: 10;
   border: 2px solid #464068;
   padding: 2%;
   line-height: 1.6;
