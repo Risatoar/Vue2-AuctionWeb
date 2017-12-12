@@ -103,6 +103,7 @@ export default {
           }else{
             if(res.data.list == 'success'){
               this.errorText = '登录成功'
+              this.$emit('has-log', res.data.user)
             }else{
               if(res.data.list == 'fail'){
               this.errorText = '密码错误'

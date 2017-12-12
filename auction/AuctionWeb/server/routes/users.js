@@ -55,7 +55,8 @@ router.post("/login",(req,res)=>{
     }
     if(_user.pwdlogin == user.pwd){
       return res.json({
-        list: 'success'
+        list: 'success',
+        user: user
       })
     }
     if(_user.pwdlogin != user.pwd){

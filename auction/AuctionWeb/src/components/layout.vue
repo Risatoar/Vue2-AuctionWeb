@@ -20,9 +20,11 @@
 					</ul>
 				</div>
 				<div class="head-inner-login">
+					<li>{{ username }}</li>
 					<li v-if="username === ''" @click="loginClick">登录</li>
 					<li class="nav-pile" >|</li>
-					<li @click="regClick">注册</li>
+					<li v-if="username === ''" @click="regClick">注册</li>
+					<li v-if="username !== ''">退出</li>
 					<li class="nav-pile" >|</li>
 					<li @click="aboutClick">关于我们</li>
 				</div>
@@ -38,7 +40,7 @@
 				Proudly By XuXiang Copyright © 2017. All rights reserved.
 			</p>
 		</div>
-		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')"></login>
+		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')" @has-log="onSuccessLog"></login>
 		<register :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')"></register>
 		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
 			公司名称：{{ company }}
@@ -84,6 +86,11 @@
 			}
 		},
 		methods: {
+			onSuccessLog (data) {
+			  console.log(data)
+			  this.closeDialog ('isLoginDialog')
+			  this.username = data.username
+			},
 			aboutClick() {
 			  this.isShowAboutDialog = true
 			},
