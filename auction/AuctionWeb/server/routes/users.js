@@ -1,9 +1,58 @@
-var express = require('express');
-var router = express.Router();
+var express=require("express")
+var router=express.Router()
+var mongoose=require("mongoose")
+var Users=require("../models/users.js")
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+mongoose.connect('mongodb://127.0.0.1:27017/auction')
 
-module.exports = router;
+
+mongoose.connection.on('connected',function(){
+  console.log("MongoDB connected success.")
+})
+
+
+mongoose.connection.on('error',function(){
+  console.log("MongoDB connected fail.")
+})
+
+mongoose.connection.on('disconnected',function(){
+  console.log("MongoDB connected disconnected.")
+
+})
+
+router.get("/user",function(req,res,next){
+  Users.find({}, function (err,doc){
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+})
+
+// router.post("/addinfo",(req,res,next)=>{
+//   new Infos(req.body).save((err,doc)=>{
+//     if(err){
+//       console.log(err)
+//     }
+//     else{
+//       res.json({
+//           list: doc
+//       })
+//     }
+//   })
+// })
+
+
+module.exports=router
+
