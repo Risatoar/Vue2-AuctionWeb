@@ -42,7 +42,7 @@ export default {
         usernamelogin: '',
         pwdlogin: ''
       },
-      errortext: ''
+      errorText: ''
     }
   },
   computed: {
@@ -85,6 +85,8 @@ export default {
       }
     }
   },
+  mounted() {
+  },
   methods: {
     close () {
       this.$emit('on-close')
@@ -94,8 +96,19 @@ export default {
         this.errorText = '部分选项未通过'
       }
       else{
+        this.errorText = ''
         axios.post("/login",this.userlogin).then((res)=> {
-          console.log(res);
+          if(res.data.list == '该用户未被注册'){
+            this.errorText = '该用户未被注册'
+          }else{
+            if(res.data.list == 'success'){
+              this.errorText = '登录成功'
+            }else{
+              if(res.data.list == 'fail'){
+              this.errorText = '密码错误'
+            }
+          }
+          }
         }).catch((error)=> {
           console.log(error);
         });

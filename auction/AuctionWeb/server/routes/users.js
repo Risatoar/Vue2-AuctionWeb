@@ -42,19 +42,44 @@ router.get("/users",function(req,res,next){
 })
 
 // 用户登录
-router.post("/login",(req,res,next)=>{
-  let _user = req.body;
-  let username = _user.username;
-  let pwd = _user.pwd;
-  let user = new Users(_user)
-  Users.findOne({username:username}, (err, user)=> {
+router.post("/login",(req,res)=>{
+  let _user = req.body
+  Users.findOne({username:_user.usernamelogin},(err,user)=>{
     if(err){
-      console.log(err);
+      console.log(err)
     }
-    else{
-      return res.redirect('/')
+    if(!user){
+      return res.json({
+        list: '该用户未被注册'
+      })
+    }
+    if(_user.pwdlogin == user.pwd){
+      return res.json({
+        list: 'success'
+      })
+    }
+    if(_user.pwdlogin != user.pwd){
+      return res.json({
+        list: 'fail'
+      })
     }
   })
+  // Users.find({username:_user.usernamelogin,pwd:_user.pwdlogin},(err,user)=>{
+  //   if(err){
+  //     console.log(err)
+  //   }
+  //   if(user){
+  //     return res.json({
+  //       list: 'fail',
+  //       doc: user
+  //     })
+  //   }
+    // else{
+    //   return res.json({
+    //     list: 'success'
+    //   })
+    // }
+  // })
 })
 
 // 用户注册操作
@@ -66,7 +91,8 @@ router.post("/register",(req,res,next)=>{
     }
     if(user){
       return res.json({
-        list : '用户名已注册'
+        list : '用户名已注册',
+        doc:user
       });
     }else{
       let user = new Users(_user);
