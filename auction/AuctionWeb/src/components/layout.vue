@@ -41,8 +41,7 @@
 		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')"></login>
 		<register :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')"></register>
 		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
-			公司名称：{{ company }} <br>
-			公司电话：110
+			公司名称：{{ company }}
 		</dialog-box>
 		<loading></loading>
 	</div>

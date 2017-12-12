@@ -43,6 +43,9 @@ module.exports = {
         },
         '/register': {
             target : 'http://localhost:4000'
+        },
+        '/login': {
+            target : 'http://localhost:4000'
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

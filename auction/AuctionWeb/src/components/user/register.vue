@@ -16,6 +16,7 @@
             <span class="regerror">{{ passwordErrors.errorText }}</span>
             </div>
           <button type="button" class="btn btn-success" @click="adduser">REGISTER</button>
+          <br><span>{{ errortext }}</span>
           <slot></slot>
         </div>
       </transition>
@@ -86,10 +87,16 @@ export default {
         status,
         errorText
       }
+    },
+    errorfind() {
+      if (this.userErrors.status || this.passwordErrors.status) {
+        this.errortext = ''
+      }
     }
   },
   mounted() {
-      this.getuser()
+      this.getuser(),
+      this.errorfind()
   },
   methods: {
     close () {
@@ -101,11 +108,22 @@ export default {
         });
     },
     adduser() {
-      axios.post("/register",this.reguser).then((res)=> {
-        console.log(res);
-      }).catch((error)=> {
-        console.log(error);
-      });
+      if (!this.userErrors.status || !this.passwordErrors.status) {
+        this.errortext = '请验证输入信息'
+      }else{
+        this.errortext = ''
+        axios.post("/register",this.reguser).then((res)=> {
+          if(res.data.list == '用户名已注册'){
+            this.errortext = '用户名已注册'
+          }else{
+            if(res.data.save == '注册成功'){
+              this.errortext = '注册成功'
+            }
+          }
+        }).catch((error)=> {
+          console.log(error);
+        });
+      }
     }
   }
 }

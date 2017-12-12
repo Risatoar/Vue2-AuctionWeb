@@ -20,6 +20,7 @@ mongoose.connection.on('disconnected',function(){
 
 })
 
+// 获取所有user的信息
 router.get("/users",function(req,res,next){
   Users.find({}, function (err,doc){
     if(err){
@@ -40,17 +41,56 @@ router.get("/users",function(req,res,next){
   })
 })
 
+// 用户登录
+router.post("/login",(req,res,next)=>{
+  let _user = req.body;
+  let username = _user.username;
+  let pwd = _user.pwd;
+  let user = new Users(_user)
+  Users.findOne({username:username}, (err, user)=> {
+    if(err){
+      console.log(err);
+    }
+    else{
+      return res.redirect('/')
+    }
+  })
+})
+
+// 用户注册操作
 router.post("/register",(req,res,next)=>{
-  new Users(req.body).save((err,doc)=>{
+  let _user = req.body;
+  Users.findOne({username:_user.username},(err,user)=>{
     if(err){
       console.log(err)
     }
-    else{
-      res.json({
-          list: doc
+    if(user){
+      return res.json({
+        list : '用户名已注册'
+      });
+    }else{
+      let user = new Users(_user);
+      user.save((err,user)=>{
+        if(err){
+          console.log(err);
+        }else{
+          res.json({
+            save: '注册成功'
+          })
+        }
       })
     }
   })
+  // new Users(req.body).save((err,doc)=>{
+  //   if(err){
+  //     console.log(err)
+  //   }
+  //   else{
+  //     res.json({
+  //         list: doc
+  //     })
+  //   }
+  // })
 })
 
 

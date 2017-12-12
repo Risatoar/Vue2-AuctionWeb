@@ -7,15 +7,16 @@
           <p class="dialog-close" @click="close">x</p>
           <div class="form-group">
           <label>用户名</label>
-          <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="usernamelogin">
+          <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="userlogin.usernamelogin">
         <span class="loginerror">{{ userErrors.errorText }}</span>
           </div>
           <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="login-pwd" placeholder="Password" v-model="pwdlogin">
+              <input type="password" class="form-control" id="login-pwd" placeholder="Password" v-model="userlogin.pwdlogin">
         <span class="loginerror">{{ passwordErrors.errorText }}</span>
           </div>
-          <button type="button" class="btn btn-success">LOGIN</button>
+           <span>{{ errorText }}</span><br>
+          <button type="button" class="btn btn-success" @click="login">LOGIN</button>
           <slot></slot>
         </div>
       </transition>
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   props: {
     isShow: {
@@ -36,15 +38,17 @@ export default {
   },
   data () {
     return {
-      usernamelogin: '',
-      pwdlogin: '',
+      userlogin:{
+        usernamelogin: '',
+        pwdlogin: ''
+      },
       errortext: ''
     }
   },
   computed: {
     userErrors () {
       let errorText, status
-      if (!/^\w{6,10}$/g.test(this.usernamelogin)) {
+      if (!/^\w{6,10}$/g.test(this.userlogin.usernamelogin)) {
         status = false
         errorText = '账号应该为6-10位'
       }
@@ -63,7 +67,7 @@ export default {
     },
     passwordErrors () {
       let errorText, status
-      if (!/^\w{6,10}$/g.test(this.pwdlogin)) {
+      if (!/^\w{6,10}$/g.test(this.userlogin.pwdlogin)) {
         status = false
         errorText = '密码应该为6-10位'
       }
@@ -84,6 +88,18 @@ export default {
   methods: {
     close () {
       this.$emit('on-close')
+    },
+    login() {
+      if (!this.userErrors.status || !this.passwordErrors.status) {
+        this.errorText = '部分选项未通过'
+      }
+      else{
+        axios.post("/login",this.userlogin).then((res)=> {
+          console.log(res);
+        }).catch((error)=> {
+          console.log(error);
+        });
+      }
     }
   }
 }
