@@ -7,12 +7,12 @@
           <p class="dialog-close" @click="close">x</p>
           <div class="form-group">
           <label>用户名</label>
-          <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名" v-model="usernamereg">
+          <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名" v-model="reguser.username">
         <span class="regerror">{{ userErrors.errorText }}</span>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="reg-pwd" placeholder="Password" v-model="pwdreg">
+            <input type="password" class="form-control" id="reg-pwd" placeholder="Password" v-model="reguser.pwd">
             <span class="regerror">{{ passwordErrors.errorText }}</span>
             </div>
           <button type="button" class="btn btn-success" @click="adduser">REGISTER</button>
@@ -38,15 +38,20 @@ export default {
   },
   data () {
     return {
-      usernamereg: '',
-      pwdreg: '',
+      reguser: {
+        username: '',
+        pwd: '',
+        newusername: '',
+        newpwd: '',
+        usercreatedate: ''
+      },
       errortext: ''
     }
   },
   computed: {
     userErrors () {
       let errorText, status
-      if (!/^\w{6,10}$/g.test(this.usernamereg)) {
+      if (!/^\w{6,10}$/g.test(this.reguser.username)) {
         status = false
         errorText = '账号应该为6-10位'
       }
@@ -65,7 +70,7 @@ export default {
     },
     passwordErrors () {
       let errorText, status
-      if (!/^\w{6,10}$/g.test(this.pwdreg)) {
+      if (!/^\w{6,10}$/g.test(this.reguser.pwd)) {
         status = false
         errorText = '密码应该为6-10位'
       }
@@ -84,7 +89,7 @@ export default {
     }
   },
   mounted() {
-
+      this.getuser()
   },
   methods: {
     close () {
@@ -94,6 +99,13 @@ export default {
       axios.get("/users").then((result)=>{
           let res = result.data;
         });
+    },
+    adduser() {
+      axios.post("/register",this.reguser).then((res)=> {
+        console.log(res);
+      }).catch((error)=> {
+        console.log(error);
+      });
     }
   }
 }
