@@ -21,6 +21,7 @@
 				</div>
 				<div class="head-inner-login">
 					<li>{{ username }}</li>
+					<li>{{ ucookie }}</li>
 					<li v-if="username === ''" @click="loginClick">登录</li>
 					<li class="nav-pile" >|</li>
 					<li v-if="username === ''" @click="regClick">注册</li>
@@ -50,10 +51,11 @@
 </template>
 
 <script>
-    import loading from './LoadingPage.vue'
-    import dialogBox from './dialog.vue'
-    import login from './user/login.vue'
-    import register from './user/register.vue'
+import axios from 'axios'
+import loading from './LoadingPage.vue'
+import dialogBox from './dialog.vue'
+import login from './user/login.vue'
+import register from './user/register.vue'
 	export default{
 		name: 'layout',
 		components: {
@@ -64,6 +66,7 @@
 		},
 		data() {
 			return {
+				ucookie: '',
 				username: '',
 				isLoginDialog: false,
 				isRegDialog: false,
@@ -86,11 +89,21 @@
 			}
 		},
 		methods: {
-			onSuccessLog (data) {
-			  console.log(data)
+			onSuccessLog () {
 			  this.closeDialog ('isLoginDialog')
-			  this.username = data.username
+			  // this.username = data.username
+			  var ucookie = this.cookie
 			},
+		    getCookie: function (cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+            }
+            return "";
+            },
 			aboutClick() {
 			  this.isShowAboutDialog = true
 			},
