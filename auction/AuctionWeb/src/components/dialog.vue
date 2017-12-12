@@ -77,7 +77,6 @@ export default {
   z-index: 10;
   padding: 2%;
   line-height: 1.6;
-  background-color: #000;
 }
 .dialog-close {
   position: absolute;
