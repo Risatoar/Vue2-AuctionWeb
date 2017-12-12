@@ -7,11 +7,13 @@
           <p class="dialog-close" @click="close">x</p>
           <div class="form-group">
           <label>用户名</label>
-          <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名">
+          <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名" v-model="usernamereg">
+        <span class="regerror">{{ userErrors.errorText }}</span>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="reg-pwd" placeholder="Password">
+            <input type="password" class="form-control" id="reg-pwd" placeholder="Password" v-model="pwdreg">
+            <span class="regerror">{{ passwordErrors.errorText }}</span>
             </div>
           <button type="button" class="btn btn-success">REGISTER</button>
           <slot></slot>
@@ -35,6 +37,49 @@ export default {
   },
   data () {
     return {
+      usernamereg: '',
+      pwdreg: '',
+      errortext: ''
+    }
+  },
+  computed: {
+    userErrors () {
+      let errorText, status
+      if (!/^\w{6,10}$/g.test(this.usernamereg)) {
+        status = false
+        errorText = '账号应该为6-10位'
+      }
+      else {
+        status = true
+        errorText = ''
+      }
+      if (!this.userFlag) {
+        errorText = ''
+        this.userFlag = true
+      }
+      return {
+        status,
+        errorText
+      }
+    },
+    passwordErrors () {
+      let errorText, status
+      if (!/^\w{6,10}$/g.test(this.pwdreg)) {
+        status = false
+        errorText = '密码应该为6-10位'
+      }
+      else {
+        status = true
+        errorText = ''
+      }
+      if (!this.passwordFlag) {
+        errorText = ''
+        this.passwordFlag = true
+      }
+      return {
+        status,
+        errorText
+      }
     }
   },
   methods: {
@@ -96,5 +141,7 @@ export default {
   text-align: center;
   cursor: pointer;
 }
-
+.regerror{
+  color: red;
+}
 </style>
