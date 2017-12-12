@@ -1,9 +1,9 @@
 .hotnews {
   color: #ffffff;
-  box-shadow: 0 2px 5px rgba(34, 34, 34, 0.38);
   border-radius: 4px;
   height: 322px;
   transition: all 0.5s ease-in-out;
+  margin-top: 9px;
 }
 .hotnews .hotnews-block {
   cursor: pointer;
@@ -14,17 +14,17 @@
   display: block;
   position: absolute;
   float: left;
-  width: 15%;
+  width: 25%;
   height: 80px;
   line-height: 80px;
-  border-bottom: 1px solid #ffffff;
 }
 .hotnews .hotnews-block .hotnews-block-right {
   position: relative;
   float: right;
-  width: 85%;
+  width: 75%;
   height: 80px;
-  border-bottom: 1px solid rgba(52, 52, 52, 0.3);
+  background-color: #fff;
+  border-bottom: 1px solid rgba(52, 52, 52, 0.15);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

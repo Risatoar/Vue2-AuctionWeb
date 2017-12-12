@@ -8,11 +8,13 @@
 					<p>随时掌握行业动态 即刻了解热点资讯</p>
 				</div>
 				<div class="message-inner-top">
-					<div class="message-inner-top-left">
-						<hotnews></hotnews>
-					</div>
-					<div class="message-inner-top-right">
-						<auctioninfo></auctioninfo>
+					<div class="message-inner-top-background">
+						<div class="message-inner-top-left">
+							<hotnews></hotnews>
+						</div>
+						<div class="message-inner-top-right">
+							<auctioninfo></auctioninfo>
+						</div>
 					</div>
 				</div>
 				<div class="message-inner-middle">
@@ -40,36 +42,38 @@
 						</div>
 					</div>
 					<div class="message-inner-foot">
-						<h2 class="message-inner-foot-title">
-							如何玩转拍卖网
-						</h2>
-						<div class="message-inner-foot-body">
-							<div class="mifb-img">
-								<a href="#">
-								<img :src="showimg" class="showimg">
-								</a>
+						<div class="message-inner-foot-background">
+							<h2 class="message-inner-foot-title">
+								如何玩转拍卖网
+							</h2>
+							<div class="message-inner-foot-body">
+								<div class="mifb-img">
+									<a href="#">
+									<img :src="showimg" class="showimg">
+									</a>
+								</div>
+								<ul class="mifb-ul">
+									<li class="col-md-3 asda">
+										<h3>注册帐号完全免费</h3>
+										<p>使用电子邮箱注册新账号。</p>
+									</li>
+									<li class="col-md-3">
+										<h3>开价竞价仅 €1起</h3>
+										<p>开价竞拍，赢取心仪拍品！</p>
+									</li>
+									<li class="col-md-3">
+										<h3>交易付款安全可靠</h3>
+										<p>选择您的付款方式提交您的支付款项。</p>
+									</li>
+									<li class="col-md-3">
+										<h3>中标拍品快速配送</h3>
+										<p>您成功投得的拍品将于3个工作日内安排配送。</p>
+									</li>
+								</ul>
+								<router-link class="btn btn-warning auction-knowledge" :to="{path:'knowledge/'}">
+									查看更多
+								</router-link>
 							</div>
-							<ul class="mifb-ul">
-								<li class="col-md-3 asda">
-									<h3>注册帐号完全免费</h3>
-									<p>使用电子邮箱注册新账号。</p>
-								</li>
-								<li class="col-md-3">
-									<h3>开价竞价仅 €1起</h3>
-									<p>开价竞拍，赢取心仪拍品！</p>
-								</li>
-								<li class="col-md-3">
-									<h3>交易付款安全可靠</h3>
-									<p>选择您的付款方式提交您的支付款项。</p>
-								</li>
-								<li class="col-md-3">
-									<h3>中标拍品快速配送</h3>
-									<p>您成功投得的拍品将于3个工作日内安排配送。</p>
-								</li>
-							</ul>
-							<router-link class="btn btn-warning auction-knowledge" :to="{path:'knowledge/'}">
-								查看更多
-							</router-link>
 						</div>
 					</div>
 				</div>

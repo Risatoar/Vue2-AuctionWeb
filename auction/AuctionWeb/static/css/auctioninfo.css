@@ -4,6 +4,7 @@
   border-radius: 4px;
   height: 322px;
   overflow: hidden;
+  margin-top: 9px;
   transition: all 0.5s ease-in-out;
 }
 .auctioninfo .auctioninfo-head {

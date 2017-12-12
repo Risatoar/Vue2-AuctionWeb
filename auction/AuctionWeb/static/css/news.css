@@ -1,7 +1,7 @@
 .message {
   margin-top: 20px;
   width: 100%;
-  background-color: #e8edf1;
+  background-color: #fff;
 }
 .line {
   line-height: 24px;
@@ -22,38 +22,40 @@
   opacity: 0.5;
 }
 .message-inner-top {
+  background-color: #e8edf1;
+}
+.message-inner-top .message-inner-top-background {
   position: relative;
   width: 60%;
-  height: 340px;
+  height: 680px;
   margin: 0 auto;
-  background-color: #fff;
 }
-.message-inner-top .message-inner-top-left {
-  margin-top: 20px;
-  position: absolute;
-  float: left;
-  width: 50%;
-}
-.message-inner-top .message-inner-top-right {
-  margin-top: 20px;
+.message-inner-top .message-inner-top-background .message-inner-top-left {
   position: relative;
-  float: right;
-  width: 48%;
+  float: left;
+  width: 100%;
+}
+.message-inner-top .message-inner-top-background .message-inner-top-right {
+  position: relative;
+  float: left;
+  width: 100%;
 }
 .message-inner-middle {
   position: relative;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
   padding: 3em 0 ;
 }
 .message-inner-middle .message-inner-middle-title {
-  width: 100%;
+  width: 60%;
   font-size: 1.2em;
-  margin-bottom: 1em;
+  margin: 0 auto;
 }
 .message-inner-middle .message-inner-middle-body {
-  width: 100%;
+  width: 60%;
   height: 80%;
+  margin: 0 auto;
+  margin-top: 1.5em;
   clear: both;
   display: -webkit-box;
   display: -webkit-flex;
@@ -83,7 +85,7 @@
   background-color: #fff;
   color: #222;
   overflow: hidden;
-  z-index: 2;
+  z-index: 0;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic {
   width: 100%;
@@ -134,11 +136,14 @@
   border-radius: 0.5em;
 }
 .message-inner-middle .message-inner-foot {
+  background-color: #e8edf1;
+}
+.message-inner-middle .message-inner-foot .message-inner-foot-background {
   padding: 3em 0;
   clear: both;
-  width: 100%;
+  width: 60%;
+  margin: 0 auto;
   overflow: hidden;
-  background-color: #fff;
   margin-top: 3em;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-title {

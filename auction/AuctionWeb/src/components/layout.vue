@@ -20,7 +20,9 @@
 					</ul>
 				</div>
 				<div class="head-inner-login">
-					<li v-if="username === ''">管理员登录</li>
+					<li v-if="username === ''" @click="loginClick">登录</li>
+					<li class="nav-pile" >|</li>
+					<li @click="regClick">注册</li>
 					<li class="nav-pile" >|</li>
 					<li @click="aboutClick">关于我们</li>
 				</div>
@@ -36,6 +38,28 @@
 				Proudly By XuXiang Copyright © 2017. All rights reserved.
 			</p>
 		</div>
+		<dialog-box :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')">
+			<div class="form-group">
+				<label>用户名</label>
+				<input type="text" class="form-control" id="login-username" placeholder="请输入用户名">
+			</div>
+			<div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="login-pwd" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-success">LOGIN</button>
+		</dialog-box>
+		<dialog-box :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')">
+			<div class="form-group">
+				<label>用户名</label>
+				<input type="text" class="form-control" id="reg-username" placeholder="请输入用户名">
+			</div>
+			<div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="reg-pwd" placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-success">REGISTER</button>
+		</dialog-box>
 		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
 			公司名称：{{ company }} <br>
 			公司电话：110
@@ -56,6 +80,8 @@
 		data() {
 			return {
 				username: '',
+				isLoginDialog: false,
+				isRegDialog: false,
 				isShowAboutDialog: false,
 				company: '天台始丰拍卖有限公司',
 				navLists: [
@@ -77,6 +103,12 @@
 		methods: {
 			aboutClick() {
 			  this.isShowAboutDialog = true
+			},
+			loginClick() {
+				this.isLoginDialog = true
+			},
+			regClick() {
+				this.isRegDialog = true
 			},
 			closeDialog(attr) {
               this[attr] = false
@@ -235,5 +267,11 @@ body
 
     background: #e3e4e8;
 }
-
+.form-control{
+	margin: 0 auto;
+	width: 400px;
+}
+label{
+	color: #fff;
+}
 </style>

@@ -5,7 +5,7 @@
 .message {
 	margin-top: 20px;
 	width: 100%;
-	background-color: #e8edf1
+	background-color: #fff;
 }
 
 .line {
@@ -29,38 +29,40 @@
 }
 
 .message-inner-top{
-	position: relative;
-	width: 60%;
-	height: 340px;
-	margin: 0 auto;
-	background-color: #fff;
-	.message-inner-top-left{
-		margin-top: 20px;
-		position:absolute;
-		float: left;
-		width: 50%;
-	}
-	.message-inner-top-right{
-		margin-top: 20px;
-		position:relative;
-		float: right;
-		width: 48%;
+	background-color: #e8edf1;
+	.message-inner-top-background{
+		position: relative;
+		width: 60%;
+		height: 680px;
+		margin: 0 auto;
+		.message-inner-top-left{
+			position:relative;
+			float: left;
+			width: 100%;
+		}
+		.message-inner-top-right{
+			position:relative;
+			float: left;
+			width: 100%;
+		}
 	}
 }
 
 .message-inner-middle{
 	position: relative;
-	width: 60%;
+	width: 100%;
 	margin: 0 auto;
 	padding: 3em 0 ;
 	.message-inner-middle-title{
-		width: 100%;
+		width: 60%;
 		font-size: 1.2em;
-		margin-bottom: 1em;
+		margin: 0 auto;
 	}
 	.message-inner-middle-body{
-		width: 100%;
+		width: 60%;
 		height: 80%;
+		margin: 0 auto;
+		margin-top: 1.5em;
 		clear: both;
 		display: -webkit-box;
 	    display: -webkit-flex;
@@ -89,7 +91,7 @@
 			background-color: #fff;
 			color: #222;
 			overflow: hidden;
-			z-index: 2;
+			z-index: 0;
 			.pic{
 			width: 100%;
 			height: 260px;
@@ -140,12 +142,15 @@
 		}
 	}}
 	.message-inner-foot{
-		padding: 3em 0;
-		clear: both;
-		width: 100%;
-		overflow: hidden;
-		background-color: #fff;
-		margin-top: 3em;
+		background-color: #e8edf1;
+		.message-inner-foot-background{
+			padding: 3em 0;
+			clear: both;
+			width: 60%;
+			margin: 0 auto;
+			overflow: hidden;
+			margin-top: 3em;
+		}
 		.message-inner-foot-title{
 			font-weight: 600;
 			text-align: center;
