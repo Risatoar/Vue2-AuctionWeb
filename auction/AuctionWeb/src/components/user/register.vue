@@ -15,7 +15,7 @@
             <input type="password" class="form-control" id="reg-pwd" placeholder="Password" v-model="pwdreg">
             <span class="regerror">{{ passwordErrors.errorText }}</span>
             </div>
-          <button type="button" class="btn btn-success">REGISTER</button>
+          <button type="button" class="btn btn-success" @click="adduser">REGISTER</button>
           <slot></slot>
         </div>
       </transition>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'dialogBox',
   props: {
@@ -82,9 +83,17 @@ export default {
       }
     }
   },
+  mounted() {
+
+  },
   methods: {
     close () {
       this.$emit('on-close')
+    },
+    getuser() {
+      axios.get("/users").then((result)=>{
+          let res = result.data;
+        });
     }
   }
 }

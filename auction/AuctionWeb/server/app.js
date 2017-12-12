@@ -9,7 +9,6 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var auction = require('./routes/auctioninfo.js');
 var info = require('./routes/info.js');
-
 var app = express();
 
 // view engine setup
@@ -27,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use(users);
 app.use(auction);
 app.use(info);
 

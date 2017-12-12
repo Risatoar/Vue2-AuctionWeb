@@ -20,7 +20,7 @@ mongoose.connection.on('disconnected',function(){
 
 })
 
-router.get("/user",function(req,res,next){
+router.get("/users",function(req,res,next){
   Users.find({}, function (err,doc){
     if(err){
       res.json({
@@ -40,18 +40,18 @@ router.get("/user",function(req,res,next){
   })
 })
 
-// router.post("/addinfo",(req,res,next)=>{
-//   new Infos(req.body).save((err,doc)=>{
-//     if(err){
-//       console.log(err)
-//     }
-//     else{
-//       res.json({
-//           list: doc
-//       })
-//     }
-//   })
-// })
+router.post("/register",(req,res,next)=>{
+  new Users(req.body).save((err,doc)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.json({
+          list: doc
+      })
+    }
+  })
+})
 
 
 module.exports=router
