@@ -44,6 +44,7 @@ router.get("/users",function(req,res,next){
 // 用户登录
 router.post("/login",(req,res)=>{
   let _user = req.body
+  req.user=req.cookies.user;
   Users.findOne({username:_user.usernamelogin},(err,user)=>{
     if(err){
       console.log(err)
@@ -54,7 +55,7 @@ router.post("/login",(req,res)=>{
       })
     }
     if(_user.pwdlogin == user.pwd){
-      res.cookie("user", {username: _user.usernamelogin}, {maxAge: 600000 , httpOnly: false});
+      res.cookie("user", _user.usernamelogin, {maxAge : 10800000});
       return res.json({
         list: 'success',
         user: user
@@ -121,6 +122,8 @@ router.post("/register",(req,res,next)=>{
   // })
 })
 
-
+router.get("/logout",(req,res)=>{
+   res.clearCookie("user")
+})
 module.exports=router
 

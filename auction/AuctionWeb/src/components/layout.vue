@@ -20,12 +20,12 @@
 					</ul>
 				</div>
 				<div class="head-inner-login">
-					<li>{{ username }}</li>
-					<li>{{ ucookie }}</li>
+					<li @click="userspace">{{ username }}</li>
+					<li class="cook">{{ ucookie }}</li>
 					<li v-if="username === ''" @click="loginClick">登录</li>
 					<li class="nav-pile" >|</li>
 					<li v-if="username === ''" @click="regClick">注册</li>
-					<li v-if="username !== ''">退出</li>
+					<li v-if="username !== ''" @click="quit">退出</li>
 					<li class="nav-pile" >|</li>
 					<li @click="aboutClick">关于我们</li>
 				</div>
@@ -88,13 +88,11 @@ import register from './user/register.vue'
 				]
 			}
 		},
+		mounted() {
+			this.setUsername() 
+		},
 		methods: {
-			onSuccessLog () {
-			  this.closeDialog ('isLoginDialog')
-			  // this.username = data.username
-			  var ucookie = this.cookie
-			},
-		    getCookie: function (cname) {
+		    getCookie (cname) {
             var name = cname + "=";
             var ca = document.cookie.split(';');
             for (var i = 0; i < ca.length; i++) {
@@ -104,6 +102,24 @@ import register from './user/register.vue'
             }
             return "";
             },
+            setCookie (cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires="+d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            },
+            deleteCookie: function (name) {
+                this.set(name, '', -1);
+            },
+            setUsername () {
+			  this.username = this.getCookie("user")
+            },
+            onSuccessLog (data) {
+			  this.closeDialog ('isLoginDialog')
+			  // this.username = data.username
+			  // var ucookie = this.cookie
+			  this.username = this.getCookie("user")
+			},
 			aboutClick() {
 			  this.isShowAboutDialog = true
 			},
@@ -115,6 +131,13 @@ import register from './user/register.vue'
 			},
 			closeDialog(attr) {
               this[attr] = false
+            },
+            userspace() {
+            	this.$router.push("/userspace")
+            },
+            quit() {
+            	this.setCookie("user", "", -1);
+            	this.username = this.getCookie("user")
             }
 		}
 	}
