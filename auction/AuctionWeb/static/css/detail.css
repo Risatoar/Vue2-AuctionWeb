@@ -1,0 +1,55 @@
+.detail-wrap {
+  width: 100%;
+  height: 105em;
+  padding: 2em 0;
+  display: block;
+  cursor: pointer;
+}
+.detail-wrap .detail-body {
+  position: relative;
+  display: block;
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+.detail-wrap .detail-body .detail-left {
+  position: absolute;
+  background-color: #009bff;
+  width: 120px;
+  height: 100%;
+}
+.detail-wrap .detail-body .detail-left h1 {
+  font-weight: 600;
+  color: #fff;
+  font-size: 4em;
+  vertical-align: baseline;
+  padding: 15px;
+}
+.detail-wrap .detail-body .detail-left ul {
+  overflow: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 225, 0.14);
+}
+.detail-wrap .detail-body .detail-left li:hover {
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.detail-wrap .detail-body .detail-left li {
+  font-size: 15px;
+  color: #fff;
+  padding: 10px;
+  font-weight: 400;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 225, 0.14);
+}
+.detail-wrap .detail-body .detail-right {
+  width: 1080px;
+  height: 100%;
+  position: relative;
+  background-color: #f9f9f9;
+  float: right;
+  border-top: 1px solid #dedede;
+  border-bottom: 1px solid #dedede;
+  border-right: 1px solid #dedede;
+}

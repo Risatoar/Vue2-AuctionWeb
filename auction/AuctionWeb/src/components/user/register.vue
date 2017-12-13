@@ -118,6 +118,7 @@ export default {
           }else{
             if(res.data.save == '注册成功'){
               this.errortext = '注册成功'
+              this.$emit('on-change')
             }
           }
         }).catch((error)=> {

@@ -10,17 +10,17 @@
 				<div class="head-inner-nav">
 					<ul>
 						<keep-alive>
-						<router-link :to="{path: '/info'}">
+						<router-link :to="{path: '/detail/' + 'info'}">
 						<li> 拍卖公告 </li>
 					    </router-link>
 					    </keep-alive>
-						<li> 法律法规 </li>
-						<li> 拍卖知识 </li>
-						<li> 拍卖预告 </li>
+						<router-link :to="{path: '/detail/' + 'law'}" tag="li"> 法律法规 </router-link>
+						<router-link :to="{path: '/detail/' + 'knowledge'}" tag="li"> 拍卖知识 </router-link>
+						<router-link :to="{path: '/detail/' + 'preview'}" tag="li"> 拍卖预告 </router-link>
 					</ul>
 				</div>
 				<div class="head-inner-login">
-					<li @click="userspace">{{ username }}</li>
+					<router-link :to="{ path : '/user'+'?'+username}" tag="li">{{ username }}</router-link>
 					<li class="cook">{{ ucookie }}</li>
 					<li v-if="username === ''" @click="loginClick">登录</li>
 					<li class="nav-pile" >|</li>
@@ -42,7 +42,7 @@
 			</p>
 		</div>
 		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')" @has-log="onSuccessLog"></login>
-		<register :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')"></register>
+		<register :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')" @on-change="changetoLogin"></register>
 		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
 			公司名称：{{ company }}
 		</dialog-box>
@@ -89,7 +89,7 @@ import register from './user/register.vue'
 			}
 		},
 		mounted() {
-			this.setUsername() 
+			this.setUsername()
 		},
 		methods: {
 		    getCookie (cname) {
@@ -107,9 +107,6 @@ import register from './user/register.vue'
                 d.setTime(d.getTime() + (exdays*24*60*60*1000));
                 var expires = "expires="+d.toUTCString();
                 document.cookie = cname + "=" + cvalue + "; " + expires;
-            },
-            deleteCookie: function (name) {
-                this.set(name, '', -1);
             },
             setUsername () {
 			  this.username = this.getCookie("user")
@@ -132,12 +129,16 @@ import register from './user/register.vue'
 			closeDialog(attr) {
               this[attr] = false
             },
-            userspace() {
-            	this.$router.push("/userspace")
-            },
             quit() {
             	this.setCookie("user", "", -1);
             	this.username = this.getCookie("user")
+            },
+            changetoLogin() {
+            	let _this = this
+            	this.timeout = setTimeout(()=>{
+            		_this.isRegDialog = false;
+            		_this.isLoginDialog = true;
+            	},1000)
             }
 		}
 	}

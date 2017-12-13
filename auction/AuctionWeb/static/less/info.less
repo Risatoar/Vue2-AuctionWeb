@@ -1,63 +1,72 @@
-@w: #fff;
-@title-color: #FF0000;
-@msg: #000000;
-@fz: 12px;
-@headc: #66CD00;
-.auctioninfo{
-	cursor: pointer;
-	border: 1px solid @headc;
-	border-radius: 4px;
-	.auctioninfo-head{
-		position: relative;
-		height: 40px;
-		line-height: 40px;
-		background-color: @headc;
-		color: @w;
-		font-size: @fz+2px;
-		margin-bottom: 20px;
-		.head-words{
-			float: left;
-			padding-left: 20px;
-		}
-		.head-more{
-			float: right;
-			padding-right: 20px;
-		}
-	}
-	.auctioninfo-body{
-		.auctioninfo-body-item{
-			height: 52px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			.new {
-				position: relative;
-			  margin-left: 20px;
-			  width: 34px;
-			  height: 16px;
-			  line-height: 16px;
-			  border-radius: 2px;
-			  font-size: @fz;
-			  float: left;
-			  background: red;
-			  color: #fff;
-			}
-			li{
-				position: relative;
-				padding-bottom: 8px;
-				letter-spacing:2px;
-				text-align: left;
-				margin-left: 80px;
-			}
-			.delnew{
-				float: right;
-				margin-right: 15px;
-			}
-		}
-	}
-}
-.auctioninfo:hover{
-	-webkit-box-shadow:2px 2px 5px #9E9E9E;
-		            box-shadow:2px 2px 5px #9E9E9E;
-}
 
+
+
+.info-body{
+	display: block;
+	padding: 5px 0;
+}
+.info-body-top{
+	padding: 12px 20px;
+    position: relative;
+    overflow: hidden;
+}
+.info-body-top-content{
+	float: left;
+    line-height: 30px;
+    color: #333;
+    font-size: 15px;
+}
+.info-body-list{
+	padding: 5px 10px;
+    overflow: hidden;
+}
+.info-body-list-block{
+	padding: 0 40px 20px 10px;
+}
+.left-img{
+	width: 210px;
+	height: 118.13px;
+	float: left;
+	background-color: #000;
+}
+.list-block-right{
+	margin-left: 230px;
+}
+.block-right-title{
+	line-height: 28px;
+    font-weight: normal;
+    color: #333;
+    float: left;
+}
+.block-right-description{
+	height: 40px;
+	float: left;
+	position: relative;
+    overflow: hidden;
+    font-size: 14px;
+    display: block;
+        color: #999;
+        line-height: 25px;
+        overflow: hidden;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+}
+.block-right-foot{
+	position: relative;
+    width: 100%;
+    display: block;
+    float: left;
+    font-size: 14px;
+    p{
+    	position: relative;
+	    color: #999;
+	    line-height: 25px;
+	    overflow: hidden;
+    }
+    span{
+    	float: left;
+    }
+    i{
+    	float: left;
+    }
+}

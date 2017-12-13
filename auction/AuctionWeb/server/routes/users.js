@@ -122,8 +122,5 @@ router.post("/register",(req,res,next)=>{
   // })
 })
 
-router.get("/logout",(req,res)=>{
-   res.clearCookie("user")
-})
 module.exports=router
 
