@@ -12,9 +12,8 @@
   height: 100%;
   margin: 0 auto;
 }
-.detail-wrap .detail-body .detail-left {
+.detail-wrap .detail-body .detail-left .detailnav {
   position: absolute;
-  background-color: #009bff;
   width: 120px;
   height: 100%;
 }

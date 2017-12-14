@@ -34,7 +34,7 @@
 										<div class="mainmsg">
 											<div class="auctionname">{{ item.auctionname }}</div>
 											<div class="auctiondate">{{ item.auctiondate }}</div>
-											  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/'}">查看详情页</router-link>
+											  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/preview'}">查看详情页</router-link>
 										</div>
 									</div>
 								</li>

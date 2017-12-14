@@ -1,25 +1,19 @@
 <template>
-  <div class="detail-wrap">
-  	<div class="detail-body">
-  		<div class="detail-left">
-  		  <div class="left-nav">
-  		  	<router-view name="left"></router-view>
-  		  </div>
-  		</div>
-  		<div class="detail-right">
-  		  <keep-alive>
-  		    <router-view name="right"></router-view>
-  		  </keep-alive>
-  		</div>
-  	</div>
-  </div>
+	<div class="detailnav" style="background-color: #009bff;">
+		<h1>拍卖公告</h1>
+	    <ul v-for="item in showsLists">
+	      <router-link :to="{ path: '/detail/info/'+ item.path }" tag="li">
+	        {{ item.name }}
+	      </router-link>
+	    </ul>
+	</div>
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
-				showLists: [
+				showsLists: [
 				{
 					name: '拍卖公告',
 					path: 'info',
@@ -45,6 +39,6 @@
 	}
 </script>
 
-<style scoped>
-  @import '/static/css/detail.css'
+<style>
+@import '/static/css/detail.css'
 </style>

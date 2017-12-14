@@ -53,5 +53,5 @@ export default {
 </script>
 
 <style scoped>
-@import '/static/css/info.css'
+@import '/static/css/list.css'
 </style>

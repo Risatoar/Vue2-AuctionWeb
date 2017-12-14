@@ -9,6 +9,10 @@ import DetailPage from './pages/detail.vue'
 import LawPage from './pages/list/law.vue'
 import KnowledgePage from './pages/list/knowledge.vue'
 import PreviewPage from './pages/list/preview.vue'
+import InfoNav from './pages/list/infonav.vue'
+import LawNav from './pages/list/lawnav.vue'
+import KnowNav from './pages/list/knowledgenav.vue'
+import PreNav from './pages/list/previewnav.vue'
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
@@ -32,19 +36,31 @@ let router = new VueRouter({
 		children: [
 			{
 				path: 'info',
-				component: InfoPage
+				components: {
+					left: InfoNav,
+					right: InfoPage
+				}
 			},
 			{
 				path: 'law',
-				component: LawPage
+				components: {
+					left: LawNav,
+					right: LawPage
+				}
 			},
 			{
 				path: 'knowledge',
-				component: KnowledgePage
+				components: {
+					left: KnowNav,
+					right: KnowledgePage
+				}
 			},
 			{
 				path: 'preview',
-				component: PreviewPage
+				components: {
+					left: PreNav,
+					right: PreviewPage
+				}
 			}
 		]
 	}

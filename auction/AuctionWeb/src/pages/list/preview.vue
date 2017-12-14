@@ -1,27 +1,23 @@
 <template>
 	<div>
-		<div class="info-wrap">
-			<div class="info-body">
-				<div class="info-body-top">
-					<span class="info-body-top-content">拍卖预告</span>
+		<div class="preview-wrap">
+			<div class="preview-body">
+				<div class="preview-body-top">
+					<span class="preview-body-top-content">拍卖预告</span>
 				</div>
-				<div class="info-body-list">
-					<div class="info-body-list-block" v-for="item in infolist">
-						<div class="list-block-left">
-							<img class="left-img" src="../../../static/img/mi6.jpg" >
+				<div class="preview-body-list">
+						<div class="preview-body-list-card" v-for="item in prelist">
+						    <router-link :to="{path: 'detail/preview/'}">
+								<div class="preview-card-top">
+									<img class="preview-card-img" src="../../../static/img/mi6.jpg" >
+								</div>
+								<ul>
+									<li class="preview-card-name">{{ item.name }}</li>
+									<li class="preview-card-date">开始时间： {{ item.date }}</li>
+									<li class="preview-card-rest">剩余时间： {{ item.rest }}</li>
+								</ul>
+						    </router-link>
 						</div>
-						<div class="list-block-right">
-							<h3><a class="block-right-title">{{ item.title }}</a></h3>
-							<p class="block-right-description">{{ item.description }}</p>
-							<div class="block-right-foot">
-								<p>
-									<span class="block-right-author">{{ item.author }}</span>
-									<i>.</i>
-									<span class="block-right-date">{{ item.date }}</span>
-								</p>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -35,7 +31,40 @@ export default {
 	},
 	data() {
 		return {
-			infolist: []
+			prelist: [
+			{
+				name: 'm16',
+				date: '2017-12-19',
+				rest: '5天'
+			},
+			{
+				name: 'm16',
+				date: '2017-12-19',
+				rest: '5天'
+			},{
+				name: 'm16',
+				date: '2017-12-19',
+				rest: '5天'
+			},
+			{
+				name: 'm16',
+				date: '2017-12-19',
+				rest: '5天'
+			},
+			{
+				name: 'm16',
+				date: '2017-12-19',
+				rest: '5天'
+			},
+			{
+				name: 'm16',
+				date: '2017-12-19',
+				rest: '5天'
+			},{
+				name: 'm16',
+				date: '2017-12-19',
+				rest: '5天'
+			}]
 		}
 	},
 	mounted() {
@@ -53,5 +82,5 @@ export default {
 </script>
 
 <style scoped>
-@import '/static/css/info.css'
+@import '/static/css/list.css'
 </style>

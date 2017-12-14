@@ -27,18 +27,18 @@
 .message-inner-top .message-inner-top-background {
   position: relative;
   width: 1200px;
-  height: 680px;
+  height: 340px;
   margin: 0 auto;
 }
 .message-inner-top .message-inner-top-background .message-inner-top-left {
   position: relative;
   float: left;
-  width: 100%;
+  width: 49%;
 }
 .message-inner-top .message-inner-top-background .message-inner-top-right {
   position: relative;
-  float: left;
-  width: 100%;
+  float: right;
+  width: 49%;
 }
 .message-inner-middle {
   position: relative;
