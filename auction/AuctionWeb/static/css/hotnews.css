@@ -5,6 +5,9 @@
   transition: all 0.5s ease-in-out;
   margin-top: 9px;
 }
+.hotnews .hotnewsshow {
+  display: none;
+}
 .hotnews .hotnews-block {
   cursor: pointer;
   width: 100%;

@@ -6,13 +6,13 @@
 			输入时间  <input type="text" class="productName form-control" v-model="info.title">
 			输入时间  <input type="text" class="productName form-control" v-model="info.msg">
 			<button class="btn btn-info" @click="addproduct">add</button> -->
-			<div class="hotnews-block" v-for="(item,index) in information">
+			<div class="hotnews-block" v-for="(item,index) in information" :class="[{'hotnewsshow' : index - 3 > 0}]">
 				<div class="hotnews-block-left" :class="['block' + index]">
-					{{ item.time }}
+					{{ item.date }}
 				</div>
 				<div class="hotnews-block-right">
 					<p class="hotnews-title">{{ item.title }}</p>
-					<p class="hotnews-msg">{{ item.msg }}</p>
+					<p class="hotnews-msg">{{ item.description }}</p>
 				</div>
 			</div>
 		</div>
@@ -26,7 +26,6 @@ import axios from 'axios'
 			return {
 				information: [],
 				info: [
-				
 				]
 			}
 		},

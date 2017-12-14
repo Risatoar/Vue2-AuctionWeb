@@ -6,6 +6,9 @@ import VueRouter from 'vue-router'
 import IndexPage from './pages/index.vue'
 import InfoPage from './pages/list/info.vue'
 import DetailPage from './pages/detail.vue'
+import LawPage from './pages/list/law.vue'
+import KnowledgePage from './pages/list/knowledge.vue'
+import PreviewPage from './pages/list/preview.vue'
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
@@ -32,13 +35,16 @@ let router = new VueRouter({
 				component: InfoPage
 			},
 			{
-				path: 'law'
+				path: 'law',
+				component: LawPage
 			},
 			{
-				path: 'knowledge'
+				path: 'knowledge',
+				component: KnowledgePage
 			},
 			{
-				path: 'preview'
+				path: 'preview',
+				component: PreviewPage
 			}
 		]
 	}

@@ -3,7 +3,7 @@
 		<div class="info-wrap">
 			<div class="info-body">
 				<div class="info-body-top">
-					<span class="info-body-top-content">最新消息</span>
+					<span class="info-body-top-content">拍卖知识</span>
 				</div>
 				<div class="info-body-list">
 					<div class="info-body-list-block" v-for="item in infolist">

@@ -2,6 +2,7 @@ var express=require("express")
 var router=express.Router()
 var mongoose=require("mongoose")
 var Users=require("../models/users.js")
+var sd = require("silly-datetime");
 
 mongoose.connect('mongodb://127.0.0.1:27017/auction')
 
@@ -87,7 +88,11 @@ router.post("/login",(req,res)=>{
 
 // 用户注册操作
 router.post("/register",(req,res,next)=>{
-  let _user = req.body;
+  let _user = {
+    username: req.body.username,
+    pwd: req.body.pwd,
+    usercreatedate: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
+  };
   Users.findOne({username:_user.username},(err,user)=>{
     if(err){
       console.log(err)

@@ -4,8 +4,8 @@
   		<div class="detail-left">
   		  <div class="left-nav">
   		  	<h1>详<br>情</h1>
-  		    <ul>
-  		      <router-link v-for="item in showLists" :to="{ path: '/detail/'+ item.path }" tag="li" active-class="active" class="left-nav-li">
+  		    <ul v-for="item in showLists">
+  		      <router-link :to="{ path: '/detail/'+ item.path }" tag="li" active-class="active" class="left-nav-li">
   		        {{ item.name }}
   		      </router-link>
   		    </ul>

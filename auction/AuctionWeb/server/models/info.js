@@ -2,9 +2,10 @@ var mongoose = require("mongoose")
 var Schema = mongoose.Schema
 
 var infoSchema = new Schema({
-	"time": String,
 	"title": String,
-	"msg": String
+	"description": String,
+	"author": String,
+	"date": String
 })
 
 module.exports = mongoose.model("infos", infoSchema)
