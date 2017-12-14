@@ -103,9 +103,11 @@
   text-decoration: none;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
 }
+.preview-body-list-card ul {
+  text-align: center;
+}
 .preview-body-list-card li {
-  width: 100%;
-  margin-left: 3em;
+  padding: 5px;
   text-align: left;
   font-size: 18px;
   font-weight: 550;
