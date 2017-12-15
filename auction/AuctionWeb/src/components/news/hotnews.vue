@@ -7,6 +7,7 @@
 			输入时间  <input type="text" class="productName form-control" v-model="info.msg">
 			<button class="btn btn-info" @click="addproduct">add</button> -->
 			<div class="hotnews-block" v-for="(item,index) in information" :class="[{'hotnewsshow' : index - 3 > 0}]">
+				<router-link :to="{path: '/detail/pages/' + item._id}">
 				<div class="hotnews-block-left" :class="['block' + index]">
 					{{ item.date }}
 				</div>
@@ -14,6 +15,7 @@
 					<p class="hotnews-title">{{ item.title }}</p>
 					<p class="hotnews-msg">{{ item.description }}</p>
 				</div>
+			    </router-link>
 			</div>
 		</div>
 	</div>

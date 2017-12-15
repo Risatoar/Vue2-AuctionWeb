@@ -1,17 +1,17 @@
 .info-body {
   display: block;
-  padding: 5px 0;
 }
 .info-body-top {
+  background-color: #009bff;
   padding: 12px 20px;
   position: relative;
   overflow: hidden;
 }
 .info-body-top-content {
-  float: left;
+  float: right;
   line-height: 30px;
-  color: #333;
-  font-size: 15px;
+  color: #fff;
+  font-size: 1.4em;
 }
 .info-body-list {
   padding: 5px 10px;
@@ -67,20 +67,158 @@
 .block-right-foot i {
   float: left;
 }
+.law-body {
+  display: block;
+}
+.law-body-top {
+  background-color: #7CB342;
+  padding: 12px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.law-body-top-content {
+  float: right;
+  line-height: 30px;
+  color: #fff;
+  font-size: 1.4em;
+}
+.law-body-list {
+  padding: 5px 10px;
+  overflow: hidden;
+}
+.law-body-list-block {
+  padding: 0 40px 20px 10px;
+  height: 118px;
+}
+.left-img {
+  width: 210px;
+  height: 118.13px;
+  float: left;
+  background-color: #000;
+}
+.list-block-right {
+  margin-left: 230px;
+}
+.block-right-title {
+  line-height: 28px;
+  font-weight: normal;
+  color: #333;
+  float: left;
+}
+.block-right-description {
+  height: 40px;
+  float: left;
+  position: relative;
+  font-size: 14px;
+  display: block;
+  color: #999;
+  line-height: 25px;
+  overflow: hidden;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+}
+.block-right-foot {
+  position: relative;
+  width: 100%;
+  display: block;
+  float: left;
+  font-size: 14px;
+}
+.block-right-foot p {
+  position: relative;
+  color: #999;
+  line-height: 25px;
+  overflow: hidden;
+}
+.block-right-foot span {
+  float: left;
+}
+.block-right-foot i {
+  float: left;
+}
+.knowledge-body {
+  display: block;
+}
+.knowledge-body-top {
+  background-color: #6D4C41;
+  padding: 12px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.knowledge-body-top-content {
+  float: right;
+  line-height: 30px;
+  color: #fff;
+  font-size: 1.4em;
+}
+.knowledge-body-list {
+  padding: 5px 10px;
+  overflow: hidden;
+}
+.knowledge-body-list-block {
+  padding: 0 40px 20px 10px;
+  height: 118px;
+}
+.left-img {
+  width: 210px;
+  height: 118.13px;
+  float: left;
+  background-color: #000;
+}
+.list-block-right {
+  margin-left: 230px;
+}
+.block-right-title {
+  line-height: 28px;
+  font-weight: normal;
+  color: #333;
+  float: left;
+}
+.block-right-description {
+  height: 40px;
+  float: left;
+  position: relative;
+  font-size: 14px;
+  display: block;
+  color: #999;
+  line-height: 25px;
+  overflow: hidden;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+}
+.block-right-foot {
+  position: relative;
+  width: 100%;
+  display: block;
+  float: left;
+  font-size: 14px;
+}
+.block-right-foot p {
+  position: relative;
+  color: #999;
+  line-height: 25px;
+  overflow: hidden;
+}
+.block-right-foot span {
+  float: left;
+}
+.block-right-foot i {
+  float: left;
+}
 .preview-body {
   display: block;
-  padding: 5px 0;
 }
 .preview-body-top {
+  background-color: #e53935;
   padding: 12px 20px;
   position: relative;
   overflow: hidden;
 }
 .preview-body-top-content {
-  float: left;
+  float: right;
   line-height: 30px;
-  color: #333;
-  font-size: 15px;
+  color: #fff;
+  font-size: 1.4em;
 }
 .preview-body-list {
   padding: 5px 10px;

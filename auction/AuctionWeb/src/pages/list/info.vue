@@ -3,25 +3,27 @@
 		<div class="info-wrap">
 			<div class="info-body">
 				<div class="info-body-top">
-					<span class="info-body-top-content">最新消息</span>
+					<span class="info-body-top-content" v-touch-ripple>最新消息</span>
 				</div>
 				<div class="info-body-list">
-					<div class="info-body-list-block" v-for="item in infolist">
-						<div class="list-block-left">
-							<img class="left-img" src="../../../static/img/mi6.jpg" >
-						</div>
-						<div class="list-block-right">
-							<h3><a class="block-right-title">{{ item.title }}</a></h3>
-							<p class="block-right-description">{{ item.description }}</p>
-							<div class="block-right-foot">
-								<p>
-									<span class="block-right-author">{{ item.author }}</span>
-									<i>.</i>
-									<span class="block-right-date">{{ item.date }}</span>
-								</p>
+					<router-link v-for="item in infolist" :to="{path: 'pages/' + item._id}">
+						<div class="info-body-list-block" v-touch-ripple>
+							<div class="list-block-left">
+								<img class="left-img" src="../../../static/img/mi6.jpg" >
+							</div>
+							<div class="list-block-right">
+								<h3><a class="block-right-title">{{ item.title }}</a></h3>
+								<p class="block-right-description">{{ item.description }}</p>
+								<div class="block-right-foot">
+									<p>
+										<span class="block-right-author">{{ item.author }}</span>
+										<i>.</i>
+										<span class="block-right-date">{{ item.date }}</span>
+									</p>
+								</div>
 							</div>
 						</div>
-					</div>
+					</router-link>
 				</div>
 			</div>
 		</div>
@@ -30,8 +32,10 @@
 
 <script>
 import axios from 'axios'
+import VueTouchRipple from 'vue-touch-ripple'
 export default {
 	components: {
+		VueTouchRipple
 	},
 	data() {
 		return {

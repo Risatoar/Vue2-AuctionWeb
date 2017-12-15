@@ -34,7 +34,7 @@
 										<div class="mainmsg">
 											<div class="auctionname">{{ item.auctionname }}</div>
 											<div class="auctiondate">{{ item.auctiondate }}</div>
-											  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/previews'}">查看详情页</router-link>
+											  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/previews'}" v-touch-ripple>查看详情页</router-link>
 										</div>
 									</div>
 								</li>
@@ -70,7 +70,7 @@
 										<p>您成功投得的拍品将于3个工作日内安排配送。</p>
 									</li>
 								</ul>
-								<router-link class="btn btn-warning auction-knowledge" :to="{path:'knowledge/'}">
+								<router-link class="btn btn-warning auction-knowledge" :to="{path:'/detail/knowledge'}">
 									查看更多
 								</router-link>
 							</div>

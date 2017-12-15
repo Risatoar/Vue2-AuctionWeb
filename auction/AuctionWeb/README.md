@@ -43,6 +43,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **端口监听** 8080
 - **编辑器**  sublime text3
 - **版本依赖管理**  npm
+- **touch样式管理**  vue-touch-ripple
  -------------------
 
 ## 后端开发

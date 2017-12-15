@@ -21,13 +21,14 @@
 				</div>
 				<div class="head-inner-login">
 					<router-link :to="{ path : '/user'+'?'+username}" tag="li">{{ username }}</router-link>
-					<li class="cook">{{ ucookie }}</li>
 					<li v-if="username === ''" @click="loginClick">登录</li>
 					<li class="nav-pile" >|</li>
 					<li v-if="username === ''" @click="regClick">注册</li>
 					<li v-if="username !== ''" @click="quit">退出</li>
 					<li class="nav-pile" >|</li>
 					<li @click="aboutClick">关于我们</li>
+					<li class="nav-pile" v-if="isAdmin === 'true'">|</li>
+					<li v-if="isAdmin === 'true'" >管理员界面</li>
 				</div>
 			</div>
 		</div>
@@ -56,92 +57,101 @@ import loading from './LoadingPage.vue'
 import dialogBox from './dialog.vue'
 import login from './user/login.vue'
 import register from './user/register.vue'
-	export default{
-		name: 'layout',
-		components: {
-			loading,
-			dialogBox,
-			login,
-			register
-		},
-		data() {
-			return {
-				ucookie: '',
-				username: '',
-				isLoginDialog: false,
-				isRegDialog: false,
-				isShowAboutDialog: false,
-				company: '天台始丰拍卖有限公司',
-				navLists: [
-				{
-					name: '拍卖公告'
-				},
-				{
-					name: '法律法规'
-				},
-				{
-					name: '拍卖知识'
-				},
-				{
-					name: '拍卖预告'
-				}
-				]
+import VueTouchRipple from 'vue-touch-ripple'
+export default{
+	name: 'layout',
+	components: {
+		loading,
+		dialogBox,
+		login,
+		register
+	},
+	data() {
+		return {
+			ucookie: '',
+			username: '',
+			isAdmin: '',
+			isLoginDialog: false,
+			isRegDialog: false,
+			isShowAboutDialog: false,
+			company: '天台始丰拍卖有限公司',
+			navLists: [
+			{
+				name: '拍卖公告'
+			},
+			{
+				name: '法律法规'
+			},
+			{
+				name: '拍卖知识'
+			},
+			{
+				name: '拍卖预告'
 			}
-		},
-		mounted() {
-			this.setUsername()
-		},
-		methods: {
-		    getCookie (cname) {
-            var name = cname + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') c = c.substring(1);
-                if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
-            }
-            return "";
-            },
-            setCookie (cname, cvalue, exdays) {
-                var d = new Date();
-                d.setTime(d.getTime() + (exdays*24*60*60*1000));
-                var expires = "expires="+d.toUTCString();
-                document.cookie = cname + "=" + cvalue + "; " + expires;
-            },
-            setUsername () {
-			  this.username = this.getCookie("user")
-            },
-            onSuccessLog (data) {
-			  this.closeDialog ('isLoginDialog')
-			  // this.username = data.username
-			  // var ucookie = this.cookie
-			  this.username = this.getCookie("user")
-			},
-			aboutClick() {
-			  this.isShowAboutDialog = true
-			},
-			loginClick() {
-				this.isLoginDialog = true
-			},
-			regClick() {
-				this.isRegDialog = true
-			},
-			closeDialog(attr) {
-              this[attr] = false
-            },
-            quit() {
-            	this.setCookie("user", "", -1);
-            	this.username = this.getCookie("user")
-            },
-            changetoLogin() {
-            	let _this = this
-            	this.timeout = setTimeout(()=>{
-            		_this.isRegDialog = false;
-            		_this.isLoginDialog = true;
-            	},1000)
-            }
+			]
 		}
+	},
+	mounted() {
+		this.setUsername();
+		this.setAdmin()
+	},
+	methods: {
+	    getCookie (cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+        }
+        return "";
+        },
+        setCookie (cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*24*60*60*1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+        },
+        setUsername () {
+		    this.username = this.getCookie("user")
+        },
+        setAdmin() {
+        	this.isAdmin = this.getCookie("admin")
+        },
+        onSuccessLog (data) {
+		  this.closeDialog ('isLoginDialog')
+		  // this.username = data.username
+		  // var ucookie = this.cookie
+		  this.username = this.getCookie("user")
+		  this.isAdmin = this.getCookie("admin")
+		},
+		aboutClick() {
+		  this.isShowAboutDialog = true
+		},
+		loginClick() {
+			this.isLoginDialog = true
+		},
+		regClick() {
+			this.isRegDialog = true
+		},
+		closeDialog(attr) {
+          this[attr] = false
+        },
+        quit() {
+        	this.setCookie("user", "", -1);
+        	this.setCookie("admin", "", -1);
+        	this.username = this.getCookie("user")
+        	this.isAdmin = false
+        },
+        changetoLogin() {
+        	let _this = this
+        	this.timeout = setTimeout(()=>{
+        		_this.isRegDialog = false;
+        		_this.isLoginDialog = true;
+        	},1000)
+        }
 	}
+}
 </script>
 
 <style>
@@ -202,6 +212,10 @@ body
     background-color: #222;
     -webkit-box-shadow: 2px 2px 5px #333;
             box-shadow: 2px 2px 5px #333;
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:10
 }
 
 .head-inner

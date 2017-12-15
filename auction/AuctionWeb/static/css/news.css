@@ -178,3 +178,6 @@
   font-weight: 600;
   width: 140px;
 }
+.hideadmin {
+  display: none;
+}

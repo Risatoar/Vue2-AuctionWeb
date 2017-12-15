@@ -57,6 +57,7 @@ router.post("/login",(req,res)=>{
     }
     if(_user.pwdlogin == user.pwd){
       res.cookie("user", _user.usernamelogin, {maxAge : 10800000});
+      res.cookie("admin", user.admin, {maxAge : 10800000});
       return res.json({
         list: 'success',
         user: user

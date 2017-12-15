@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<div class="info-wrap">
-			<div class="info-body">
-				<div class="info-body-top">
-					<span class="info-body-top-content">法律法规</span>
+		<div class="law-wrap">
+			<div class="law-body">
+				<div class="law-body-top">
+					<span class="law-body-top-content">法律法规</span>
 				</div>
-				<div class="info-body-list">
-					<div class="info-body-list-block" v-for="item in infolist">
+				<div class="law-body-list">
+					<div class="law-body-list-block" v-for="item in infolist">
 						<div class="list-block-left">
 							<img class="left-img" src="../../../static/img/mi6.jpg" >
 						</div>

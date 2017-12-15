@@ -3,12 +3,12 @@
   	<div class="detail-body">
   		<div class="detail-left">
   		  <div class="left-nav">
-  		  	<router-view name="left"></router-view>
+  		  	<router-view name="left" transition="back"></router-view>
   		  </div>
   		</div>
   		<div class="detail-right">
   		  <keep-alive>
-  		    <router-view name="right"></router-view>
+  		    <router-view name="right" transition="back"></router-view>
   		  </keep-alive>
   		</div>
   	</div>

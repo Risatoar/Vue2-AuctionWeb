@@ -7,7 +7,7 @@
 				</div>
 				<div class="preview-body-list">
 						<div class="preview-body-list-card" v-for="item in prelist">
-						    <router-link :to="{path: 'detail/preview/'}">
+						    <router-link :to="{path: 'preview/auctionname/' + item._id}">
 								<div class="preview-card-top">
 									<img class="preview-card-img" src="../../../static/img/mi6.jpg" >
 								</div>
@@ -26,8 +26,10 @@
 
 <script>
 import axios from 'axios'
+import { touchRipple } from 'vue-touch-ripple'
 export default {
 	components: {
+		touchRipple
 	},
 	data() {
 		return {

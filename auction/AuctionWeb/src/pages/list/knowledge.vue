@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<div class="info-wrap">
-			<div class="info-body">
-				<div class="info-body-top">
-					<span class="info-body-top-content">拍卖知识</span>
+		<div class="knowledge-wrap">
+			<div class="knowledge-body">
+				<div class="knowledge-body-top">
+					<span class="knowledge-body-top-content" v-touch-ripple>拍卖知识</span>
 				</div>
-				<div class="info-body-list">
-					<div class="info-body-list-block" v-for="item in infolist">
+				<div class="knowledge-body-list">
+					<div class="knowledge-body-list-block" v-for="item in infolist" v-touch-ripple>
 						<div class="list-block-left">
 							<img class="left-img" src="../../../static/img/mi6.jpg" >
 						</div>
@@ -30,8 +30,10 @@
 
 <script>
 import axios from 'axios'
+import VueTouchRipple from 'vue-touch-ripple'
 export default {
 	components: {
+		VueTouchRipple
 	},
 	data() {
 		return {

@@ -1,5 +1,5 @@
 <template>
-	<div class="detailnav" style="background-color: #e53935;s">
+	<div class="detailnav" style="background-color: #e53935">
 		<h1>拍卖预告</h1>
 	    <ul v-for="item in showsLists">
 	      <router-link :to="{ path: '/detail/preview/'+ item.path }" tag="li">

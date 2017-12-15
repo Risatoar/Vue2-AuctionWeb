@@ -1,0 +1,40 @@
+.infodetail-body {
+  display: block;
+}
+.infodetail-body-top {
+  background-color: #009bff;
+  padding: 12px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.infodetail-body-top-content {
+  float: right;
+  line-height: 30px;
+  color: #fff;
+  font-size: 1.4em;
+}
+.infodetail-body-wrap {
+  padding: 5px 10px;
+  overflow: hidden;
+}
+.infode-head {
+  color: #000;
+  padding: 0 40px 20px 10px;
+  height: 118px;
+}
+.infode-head p {
+  font-size: 1em;
+}
+.infode-body {
+  text-align: left;
+  padding: 0 20px 20px 20px;
+  font-weight: normal;
+  letter-spacing: 3px;
+  text-indent: 20px;
+}
+.infode-foot {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
