@@ -14,6 +14,7 @@
 						<li>{{ infodetaillist.description }}</li>
 					</ul> -->
 					<div class="infodetail-body-wrap">
+						<div class="detail-loading" v-if="loading"><h1>loading</h1></div>
 						<div class="infode-head">
 							<h2>{{ infodetaillist.title }}</h2>
 							<p>作者：{{ infodetaillist.author }}</p>
@@ -44,23 +45,29 @@ export default {
 			infodetaillist: [],
 			info: {
 				infoid:''
-			}
+			},
+			lodaing : false
 		}
 	},
-	mounted() {
-		this.getId()
+	created() {
 		this.getinfo()
+	},
+	mounted() {
+		this.getinfo()
+	},
+	watch: {
+	  '$route': 'getinfo'
 	},
 	methods: {
 		getinfo() {
+			this.info.infoid = this.$route.params.id;
+			this.loading = true;
 			axios.post("/infodetail",this.info).then((res)=> {
+				this.loading = false;
 				this.infodetaillist = res.data.result.list;
 	        }).catch((error)=> {
 	          console.log(error);
 	        });
-		},
-		getId() {
-			this.info.infoid = this.$route.params.id
 		}
 	}
 }

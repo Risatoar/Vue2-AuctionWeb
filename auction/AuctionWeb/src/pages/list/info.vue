@@ -45,6 +45,9 @@ export default {
 	mounted() {
 		this.getinfo()
 	},
+	watch: {
+	  '$route': 'getinfo'
+	},
 	methods: {
 		getinfo() {
 			axios.get("/information").then((result)=>{

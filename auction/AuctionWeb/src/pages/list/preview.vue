@@ -6,7 +6,7 @@
 					<span class="preview-body-top-content">拍卖预告</span>
 				</div>
 				<div class="preview-body-list">
-						<div class="preview-body-list-card" v-for="item in prelist">
+						<div class="preview-body-list-card" v-for="item in prelist"  @click="refreshpage">
 						    <router-link :to="{path: 'preview/auctionname/' + item._id}">
 								<div class="preview-card-top">
 									<img class="preview-card-img" src="../../../static/img/mi6.jpg" >
@@ -70,14 +70,17 @@ export default {
 		}
 	},
 	mounted() {
-		this.getinfo()
+		// this.getinfo()
 	},
 	methods: {
-		getinfo() {
-			axios.get("/information").then((result)=>{
-				let res = result.data;
-				this.infolist = res.result.list;
-			});
+		// getinfo() {
+		// 	axios.get("/information").then((result)=>{
+		// 		let res = result.data;
+		// 		this.infolist = res.result.list;
+		// 	});
+		// }
+		refreshpage() {
+			this.$router.go(0)
 		}
 	}
 }

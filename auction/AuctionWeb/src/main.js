@@ -17,6 +17,9 @@ import KnowNav from './pages/list/knowledgenav.vue'
 import PreNav from './pages/list/previewnav.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+Vue.use(iView);
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
@@ -32,7 +35,7 @@ let router = new VueRouter({
 		component: IndexPage
 	},
 	{
-		path: '/user'
+		path: '/user/:userName',
 	},
 	{
 		path: '/test',
@@ -76,6 +79,9 @@ let router = new VueRouter({
 				components: {
 					left: InfoNav,
 					right: InfoDetailPage
+				},
+				meta: {
+					keepAlive: true
 				}
 			}
 		]

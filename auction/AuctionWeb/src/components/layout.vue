@@ -1,37 +1,39 @@
 <template>
 	<div>
 		<div class="head">
-			<div class="head-inner">
-				<div class="head-inner-company">
-				<router-link :to="{path: '/'}">
-					<span> {{ company }} </span>
-				</router-link>
-				</div>
-				<div class="head-inner-nav">
-					<ul>
-						<keep-alive>
-						<router-link :to="{path: '/detail/' + 'info'}">
-						<li> 拍卖公告 </li>
-					    </router-link>
-					    </keep-alive>
-						<router-link :to="{path: '/detail/' + 'law'}" tag="li"> 法律法规 </router-link>
-						<router-link :to="{path: '/detail/' + 'knowledge'}" tag="li"> 拍卖知识 </router-link>
-						<router-link :to="{path: '/detail/' + 'preview'}" tag="li"> 拍卖预告 </router-link>
-					</ul>
-				</div>
-				<div class="head-inner-login">
-					<router-link :to="{ path : '/user'+'?'+username}" tag="li">{{ username }}</router-link>
-					<li v-if="username === ''" @click="loginClick">登录</li>
-					<li class="nav-pile" >|</li>
-					<li v-if="username === ''" @click="regClick">注册</li>
-					<li v-if="username !== ''" @click="quit">退出</li>
-					<li class="nav-pile" >|</li>
-					<li @click="aboutClick">关于我们</li>
-					<li class="nav-pile" v-if="isAdmin === 'true'">|</li>
-					<li v-if="isAdmin === 'true'" >管理员界面</li>
+			<div class="head-wrap">
+					<div class="head-inner">
+						<div class="head-inner-company">
+						<router-link :to="{path: '/'}">
+							<span> {{ company }} </span>
+						</router-link>
+						</div>
+						<div class="head-inner-nav">
+							<ul>
+								<keep-alive>
+								<router-link :to="{path: '/detail/' + 'info'}">
+								<li> 拍卖公告 </li>
+							    </router-link>
+							    </keep-alive>
+								<router-link :to="{path: '/detail/' + 'law'}" tag="li"> 法律法规 </router-link>
+								<router-link :to="{path: '/detail/' + 'knowledge'}" tag="li"> 拍卖知识 </router-link>
+								<router-link :to="{path: '/detail/' + 'preview'}" tag="li"> 拍卖预告 </router-link>
+							</ul>
+						</div>
+						<div class="head-inner-login">
+							<router-link :to="{ path : '/user/'+username}" tag="li">{{ username }}</router-link>
+							<li v-if="username === ''" @click="loginClick">登录</li>
+							<li class="nav-pile" >|</li>
+							<li v-if="username === ''" @click="regClick">注册</li>
+							<li v-if="username !== ''" @click="quit">退出</li>
+							<li class="nav-pile" >|</li>
+							<li @click="aboutClick">关于我们</li>
+							<li class="nav-pile" v-if="isAdmin === 'true'">|</li>
+							<li v-if="isAdmin === 'true'" >管理员界面</li>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
 		<div class="content">
 		  <keep-alive>
 			<router-view></router-view>
@@ -213,9 +215,13 @@ body
     -webkit-box-shadow: 2px 2px 5px #333;
             box-shadow: 2px 2px 5px #333;
     position:fixed;
-    left:0;
-    top:0;
-    z-index:10
+	left:0;
+	top:0;
+	z-index:10;
+	margin-bottom: 80px;
+}
+
+.head-wrap{
 }
 
 .head-inner
@@ -299,7 +305,7 @@ body
     clear: both;
 
     text-overflow: ellipsis;
-     white-space: nowrap;
+    white-space: nowrap;
 
     width: 100%;
     height: 80px;
