@@ -7,13 +7,23 @@
           <p class="dialog-close" @click="close">x</p>
           <div class="form-group">
           <label>用户名</label>
+          <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的用户名">
           <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="userlogin.usernamelogin">
-        <span class="loginerror">{{ userErrors.errorText }}</span>
+          </Poptip>
+          <br>
+          <span class="loginerror">{{ userErrors.errorText }}</span>
           </div>
           <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="login-pwd" placeholder="Password" v-model="userlogin.pwdlogin">
-        <span class="loginerror">{{ passwordErrors.errorText }}</span>
+          <label for="exampleInputPassword1">密码</label>
+          <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的密码">
+          <input type="password" class="form-control" id="login-pwd" placeholder="Password" v-model="userlogin.pwdlogin">
+          </Poptip>
+          <br>
+          <span class="loginerror">
+            <Poptip title="提示标题" content="提示内容">
+                    {{ passwordErrors.errorText }}
+            </Poptip>
+          </span>
           </div>
            <span>{{ errorText }}</span><br>
           <button type="button" class="btn btn-success" @click="login">LOGIN</button>
@@ -48,9 +58,9 @@ export default {
   computed: {
     userErrors () {
       let errorText, status
-      if (!/^\w{6,10}$/g.test(this.userlogin.usernamelogin)) {
+      if (!/^\w{6,20}$/g.test(this.userlogin.usernamelogin)) {
         status = false
-        errorText = '账号应该为6-10位'
+        errorText = '账号应该为6-20位'
       }
       else {
         status = true
@@ -88,6 +98,11 @@ export default {
   mounted() {
   },
   methods: {
+    success (nodesc) {
+        this.$Notice.success({
+            title: '登录成功'
+        });
+    },
     close () {
       this.$emit('on-close')
     },
@@ -102,8 +117,8 @@ export default {
             this.errorText = '该用户未被注册'
           }else{
             if(res.data.list == 'success'){
-              this.errorText = '登录成功'
               this.$emit('has-log', res.data.user)
+              this.success(true)
             }else{
               if(res.data.list == 'fail'){
               this.errorText = '密码错误'

@@ -1,6 +1,5 @@
 .auctioninfo {
   cursor: pointer;
-  border: 1px solid #66cd00;
   border-radius: 4px;
   height: 322px;
   overflow: hidden;
@@ -55,8 +54,4 @@
 .auctioninfo .auctioninfo-body .auctioninfo-body-item .delnew {
   float: right;
   margin-right: 15px;
-}
-.auctioninfo:hover {
-  -webkit-box-shadow: 2px 2px 5px #9E9E9E;
-  box-shadow: 2px 2px 5px #9E9E9E;
 }

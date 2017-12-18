@@ -22,10 +22,10 @@
 						</div>
 						<div class="head-inner-login">
 							<router-link :to="{ path : '/user/'+username}" tag="li">{{ username }}</router-link>
-							<li v-if="username === ''" @click="loginClick">登录</li>
+							<li v-if="username === ''" @click="loginClick">登录  <Icon type="log-in"></Icon></li>
 							<li class="nav-pile" >|</li>
 							<li v-if="username === ''" @click="regClick">注册</li>
-							<li v-if="username !== ''" @click="quit">退出</li>
+							<li v-if="username !== ''" @click="quit">退出  <Icon type="log-out"></Icon></li>
 							<li class="nav-pile" >|</li>
 							<li @click="aboutClick">关于我们</li>
 							<li class="nav-pile" v-if="isAdmin === 'true'">|</li>
@@ -144,6 +144,12 @@ export default{
         	this.setCookie("admin", "", -1);
         	this.username = this.getCookie("user")
         	this.isAdmin = false
+        	this.quitsuccess(true)
+        },
+        quitsuccess (nodesc) {
+           this.$Notice.success({
+               title: '退出成功'
+           });
         },
         changetoLogin() {
         	let _this = this
@@ -218,7 +224,6 @@ body
 	left:0;
 	top:0;
 	z-index:10;
-	margin-bottom: 80px;
 }
 
 .head-wrap{
@@ -310,12 +315,16 @@ body
     width: 100%;
     height: 80px;
 
-    text-align: center;
+    left:0;
+    bottom:0;
 
     background: #e3e4e8;
 }
 .form-control{
 	margin: 0 auto;
 	width: 400px;
+}
+.content{
+	 min-height: 1080px;
 }
 </style>

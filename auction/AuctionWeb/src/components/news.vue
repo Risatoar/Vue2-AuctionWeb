@@ -19,24 +19,26 @@
 				</div>
 				<div class="message-inner-middle">
 					<div class="message-inner-middle-title">
-						<li>我们的拍卖网站每周登记<b>{{ aucCount }}</b>件拍卖品</li>
+						<li>我们的拍卖网站已经登记<b>{{ aucCount }}</b>件拍卖品</li>
 					</div>
 					<div class="message-inner-middle-body">
 						<div class="auctionlist">
 							<ul>
 								<li v-for="(item,index) in blocklist">
-									<div class="listcard">
-										<div class="pic">
-											<a href="#">
-											<img :src="item.img" class="card-img" >
-											</a>
+									<Poptip trigger="hover" title="点击“查看详情页”按钮能看更多消息">
+										<div class="listcard">
+											<div class="pic">
+												<a href="#">
+												<img :src="item.img" class="card-img" >
+												</a>
+											</div>
+											<div class="mainmsg">
+												<div class="auctionname">{{ item.auctionname }}</div>
+												<div class="auctiondate">{{ item.auctiondate }}</div>
+												  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/previews'}" v-touch-ripple>查看详情页</router-link>
+											</div>
 										</div>
-										<div class="mainmsg">
-											<div class="auctionname">{{ item.auctionname }}</div>
-											<div class="auctiondate">{{ item.auctiondate }}</div>
-											  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/previews'}" v-touch-ripple>查看详情页</router-link>
-										</div>
-									</div>
+									</Poptip>
 								</li>
 							</ul>
 						</div>
@@ -79,6 +81,7 @@
 				</div>
 			</div>
 		</div>
+		<BackTop></BackTop>
 	</div>
 </template>
 

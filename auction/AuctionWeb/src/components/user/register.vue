@@ -107,6 +107,11 @@ export default {
           let res = result.data;
         });
     },
+    regsuccess (nodesc) {
+       this.$Notice.success({
+           title: '注册成功'
+       });
+    },
     adduser() {
       if (!this.userErrors.status || !this.passwordErrors.status) {
         this.errortext = '请验证输入信息'
@@ -117,8 +122,8 @@ export default {
             this.errortext = '用户名已注册'
           }else{
             if(res.data.save == '注册成功'){
-              this.errortext = '注册成功'
               this.$emit('on-change')
+              this.regsuccess(true)
             }
           }
         }).catch((error)=> {

@@ -1,27 +1,33 @@
 <template> 
   <div> 
     <div class="auctioninfo"> 
-      <div class="auctioninfo-head"> 
+      <!-- <div class="auctioninfo-head"> 
       	<router-link :to="{path: '/info'}">
         <a class="head-words">拍卖公告</a>
         </router-link> 
         <a class="head-more" @click="morenews">更多</a> 
       </div> 
-       <!-- <div class="biaodan">
+       <div class="biaodan">
       输入标题  <input type="text" class="productId form-control" v-model="auction.acTitle" placeholder="请输入标题">
       输入时间  <input type="text" class="productName form-control" v-model="auction.acTime" placeholder="请输入日期：类似2017/9/9格式">
       <button class="btn btn-info" @click="addproduct">add</button>
-    </div> -->
+    </div>
       <div class="auctioninfo-body" v-for="(item,index) in auctioninfo"> 
         <div class="auctioninfo-body-item"  @click="getinfoshow(index)" :class="[{'newsshow' : index - 4 > 0}]"> 
           <span class="new">NEW</span> 
           <!-- <button class="delnew btn btn-danger"  @click="getnewsdel(index)">delete</button> -->
-          <li class="item-title"><a href="javascript：void(0);">{{ item.acTitle }}</a></li> 
+          <!-- <li class="item-title"><a href="javascript：void(0);">{{ item.acTitle }}</a></li> 
           <li class="item time">时间：{{ item.acTime }}</li> 
         </div> 
-      </div> 
+      </div>  --> 
+      <Card :bordered="false" style="height:380px;">
+                <p slot="title">Borderless card</p>
+                <p>Content of card</p>
+                <p>Content of card</p>
+                <p>Content of card</p>
+            </Card>
     </div>
-    <newsdialog :is-show="isShowAboutDialog" v-if="showinfo" @on-close="closeDialog('isShowAboutDialog')">
+<!--     <newsdialog :is-show="isShowAboutDialog" v-if="showinfo" @on-close="closeDialog('isShowAboutDialog')">
     	<div class="newslist" v-for="(item,index) in auctioninfo"> 
         <div class="newslist-item"> 
           <span class="newslist-index" :class="['news' + index]">事件:{{ index+1 }}</span> 
@@ -29,7 +35,7 @@
           <li class="newslist-time">时间：{{ item.acTime }}</li></br>
         </div> 
       </div> 
-    </newsdialog>
+    </newsdialog> -->
   </div> 
 </template> 
 
