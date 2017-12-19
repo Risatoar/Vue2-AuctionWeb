@@ -95,8 +95,7 @@ export default {
     }
   },
   mounted() {
-      this.getuser(),
-      this.errorfind()
+      this.getuser()
   },
   methods: {
     close () {

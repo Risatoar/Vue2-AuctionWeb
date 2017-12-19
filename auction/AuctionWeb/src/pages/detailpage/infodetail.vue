@@ -46,22 +46,44 @@ export default {
 			info: {
 				infoid:''
 			},
-			lodaing : false
+			loading : true
 		}
 	},
-	created() {
-		this.getinfo()
-	},
+	// created() {
+	// 	this.toTest()
+	// },
 	mounted() {
-		this.getinfo()
+		this.getUrl()
 	},
 	watch: {
-	  '$route': 'getinfo'
+	  '$route': 'getUrl'
 	},
+	// beforeRouteEnter (to, from, next) {
+	//   getPost(to.params.id, (err, post) => {
+	//     next(vm => vm.setData(err, post))
+	//   })
+	// },
+	// // 路由改变前，组件就已经渲染完了
+	// // 逻辑稍稍不同
+	// beforeRouteUpdate (to, from, next) {
+	//   this.post = null
+	//   getPost(to.params.id, (err, post) => {
+	//     this.setData(err, post)
+	//     next()
+	//   })
+	// },
 	methods: {
-		getinfo() {
+		// toTest() {
+		// 	this.$router.push('/test')
+		// },
+		getUrl() {
 			this.info.infoid = this.$route.params.id;
-			this.loading = true;
+			console.log(this.info.infoid)
+			if(this.info.infoid){
+				this.getinfo()
+			}
+		},
+		getinfo() {
 			axios.post("/infodetail",this.info).then((res)=> {
 				this.loading = false;
 				this.infodetaillist = res.data.result.list;

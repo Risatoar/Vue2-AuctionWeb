@@ -60,7 +60,6 @@ import newsdialog from '../dialog.vue'
 		},
 		mounted() {
 			this.getauctioninfo();
-			this.getinfoshow(index);
 		},
 		methods: {
 			closeDialog(attr) {
@@ -68,11 +67,6 @@ import newsdialog from '../dialog.vue'
             },
 			morenews() {
 				this.isShowAboutDialog = true;
-			},
-			getinfoshow(index) {
-				// if(index>2){
-				// 	this.shownews = false;
-				// }
 			},
 			getauctioninfo() {
 				axios.get("/auction").then((result)=>{
@@ -88,10 +82,6 @@ import newsdialog from '../dialog.vue'
 					console.log(error);
 				});
 				this.getauctioninfo();
-			},
-			getnewsdel(index) {
-				let id = auctioninfo.info;
-
 			}
 		}
 	}
