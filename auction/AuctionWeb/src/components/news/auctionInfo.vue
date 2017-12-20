@@ -20,11 +20,11 @@
           <li class="item time">时间：{{ item.acTime }}</li> 
         </div> 
       </div>  --> 
-      <Card :bordered="false" style="height:380px;">
-                <p slot="title">Borderless card</p>
-                <p>Content of card</p>
-                <p>Content of card</p>
-                <p>Content of card</p>
+      <Card :bordered="false" style="height:320px;overflow: hidden;">
+                <p slot="title">消息列表</p>
+                <p v-for=" item in auctioninfo " style="float:left;padding:5px 0;text-align:left;line-height:16px;">
+                	{{ item.acTitle }}
+                </p>
             </Card>
     </div>
 <!--     <newsdialog :is-show="isShowAboutDialog" v-if="showinfo" @on-close="closeDialog('isShowAboutDialog')">

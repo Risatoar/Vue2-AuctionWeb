@@ -6,6 +6,79 @@
 					<span class="law-body-top-content">法律法规</span>
 				</div>
 				<div class="law-body-list">
+					<div v-if="loading">
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+					</div>
 					<div class="law-body-list-block" v-for="item in infolist">
 						<div class="list-block-left">
 							<img class="left-img" src="../../../static/img/mi6.jpg" >
@@ -35,7 +108,8 @@ export default {
 	},
 	data() {
 		return {
-			infolist: []
+			infolist: [],
+			loading: true
 		}
 	},
 	mounted() {
@@ -45,6 +119,7 @@ export default {
 		getinfo() {
 			axios.get("/information").then((result)=>{
 				let res = result.data;
+				this.loading = false
 				this.infolist = res.result.list;
 			});
 		}

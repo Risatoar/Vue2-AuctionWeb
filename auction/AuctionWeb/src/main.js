@@ -18,14 +18,18 @@ import PreNav from './pages/list/previewnav.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
 import iView from 'iview';
+import VueContentPlaceholders from 'vue-content-placeholders'
+import VueStar from 'vue-star'
 import 'iview/dist/styles/iview.css';
 Vue.use(iView);
+Vue.component('VueStar', VueStar)
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(TouchRipple)
+Vue.use(VueContentPlaceholders)
 
 let router = new VueRouter({
 	mode: 'history',

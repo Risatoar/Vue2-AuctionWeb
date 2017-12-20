@@ -1,6 +1,7 @@
 // info页面样式
 .infodetail-body{
 	display: block;
+    height: 100%;
 }
 .infodetail-body-top{
     background-color: #009bff;
@@ -15,7 +16,7 @@
     font-size: 1.4em;
 }
 .infodetail-body-wrap{
-	padding: 5px 10px;
+	padding: 0 10px;
     overflow: hidden;
 }
 .infode-head{
@@ -39,3 +40,39 @@
     left:0;
     bottom:0;
 }
+
+.demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content {
+       height: 100%;
+       margin-top: -16px;
+   }
+
+   .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content > .ivu-tabs-tabpane {
+       background: #fff;
+       padding: 16px;
+       line-height: 26px;
+   }
+
+   .demo-tabs-style1 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab {
+       border-color: transparent;
+   }
+
+   .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active {
+       border-color: #fff;
+   }
+   .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab{
+       border-radius: 0;
+       background: #fff;
+   }
+   .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active{
+       border-top: 1px solid #3399ff;
+   }
+   .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active:before{
+       content: '';
+       display: block;
+       width: 100%;
+       height: 1px;
+       background: #3399ff;
+       position: absolute;
+       top: 0;
+       left: 0;
+   }

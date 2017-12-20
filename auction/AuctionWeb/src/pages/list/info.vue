@@ -6,6 +6,79 @@
 					<span class="info-body-top-content" v-touch-ripple>最新消息</span>
 				</div>
 				<div class="info-body-list">
+					<div v-if="loading">
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+					</div>
 					<div v-for="item in infolist">
 						<router-link  :to="{path: 'pages/' + item._id}">
 							<div class="info-body-list-block" v-touch-ripple>
@@ -41,7 +114,8 @@ export default {
 	},
 	data() {
 		return {
-			infolist: []
+			infolist: [],
+			loading: true
 		}
 	},
 	mounted() {
@@ -50,6 +124,7 @@ export default {
 	methods: {
 		getinfo() {
 			axios.get("/information").then((result)=>{
+				this.loading = false;
 				let res = result.data;
 				this.infolist = res.result.list;
 			});

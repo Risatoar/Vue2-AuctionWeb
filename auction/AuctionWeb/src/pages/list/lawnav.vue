@@ -3,7 +3,9 @@
 		<h1>法律法规</h1>
 	    <ul v-for="item in showsLists">
 	      <router-link :to="{ path: '/detail/law/'+ item.path }" tag="li">
-	        {{ item.name }}
+	        <Affix :offset-top="item.offsettop">
+                <span class="demo-affix">{{ item.name }}</span>
+        	</Affix>
 	      </router-link>
 	    </ul>
 	</div>
@@ -17,22 +19,26 @@
 				{
 					name: '拍卖公告',
 					path: 'info',
-					active: false
+					active: false,
+				    offsettop: 100,
 				},
 				{
 					name: '法律法规',
 					path: 'law',
-					active: false
+					active: false,
+				    offsettop: 150,
 				},
 				{
 					name: '拍卖知识',
 					path: 'knowledge',
-					active: false
+					active: false,
+				    offsettop: 200,
 				},
 				{
 					name: '拍卖预告',
 					path: 'preview',
-					active: false
+					active: false,
+				    offsettop: 250,
 				}]
 			}
 		}

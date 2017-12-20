@@ -6,6 +6,79 @@
 					<span class="knowledge-body-top-content" v-touch-ripple>拍卖知识</span>
 				</div>
 				<div class="knowledge-body-list">
+					<div v-if="loading">
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+						<br><br>
+						<content-placeholders v-if="loading">
+						  <content-placeholders-heading :img="true" />
+						</content-placeholders>
+					</div>
 					<div class="knowledge-body-list-block" v-for="item in infolist" v-touch-ripple>
 						<div class="list-block-left">
 							<img class="left-img" src="../../../static/img/mi6.jpg" >
@@ -37,7 +110,8 @@ export default {
 	},
 	data() {
 		return {
-			infolist: []
+			infolist: [],
+			loading: true
 		}
 	},
 	mounted() {
@@ -46,6 +120,7 @@ export default {
 	methods: {
 		getinfo() {
 			axios.get("/information").then((result)=>{
+				this.loading = false;
 				let res = result.data;
 				this.infolist = res.result.list;
 			});

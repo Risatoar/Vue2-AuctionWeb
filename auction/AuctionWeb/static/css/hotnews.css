@@ -29,6 +29,7 @@
   height: 80px;
   background-color: #fff;
   border-bottom: 1px solid rgba(52, 52, 52, 0.15);
+  border-right: 1px solid rgba(52, 52, 52, 0.15);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

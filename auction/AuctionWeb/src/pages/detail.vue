@@ -7,9 +7,7 @@
   		  </div>
   		</div>
   		<div class="detail-right">
-  		  <keep-alive>
   		    <router-view name="right" transition="back"></router-view>
-  		  </keep-alive>
   		</div>
   	</div>
   </div>
