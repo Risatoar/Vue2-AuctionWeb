@@ -15,15 +15,13 @@ import InfoNav from './pages/list/infonav.vue'
 import LawNav from './pages/list/lawnav.vue'
 import KnowNav from './pages/list/knowledgenav.vue'
 import PreNav from './pages/list/previewnav.vue'
-import HomePage from './components/user/home.vue'
+import HomePage from './pages/home.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
 import iView from 'iview';
 import VueContentPlaceholders from 'vue-content-placeholders'
-import VueStar from 'vue-star'
 import 'iview/dist/styles/iview.css';
 Vue.use(iView);
-Vue.component('VueStar', VueStar)
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
@@ -40,7 +38,7 @@ let router = new VueRouter({
 		component: IndexPage
 	},
 	{
-		path: '/user/:userName',
+		path: '/user/:id',
 		component: HomePage
 	},
 	{

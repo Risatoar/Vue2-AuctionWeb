@@ -1,0 +1,28 @@
+.home {
+  display: block;
+  cursor: pointer;
+  width: 1200px;
+  margin: 0 auto;
+}
+.home .home-wrap {
+  padding: 2em 0;
+  position: relative;
+}
+.home .home-wrap .home-left {
+  float: left;
+}
+.home .home-wrap .home-middle {
+  float: left;
+  width: 600px;
+  height: 800px;
+  border: 1px solid #d7dde4;
+}
+.home .home-wrap .home-right {
+  float: right;
+  position: relative;
+}
+.home .home-wrap .home-right .home-usericon,
+.home .home-wrap .home-right .home-userdetail,
+.home .home-wrap .home-right .home-circle {
+  margin-bottom: 18px;
+}

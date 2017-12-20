@@ -226,7 +226,7 @@ body
     position:fixed;
 	left:0;
 	top:0;
-	z-index:10;
+	z-index:1000;
 }
 
 .head-wrap{
@@ -328,7 +328,11 @@ body
 	width: 400px;
 }
 .content{
-	 min-height: 1080px;
+	background-color: #f8f8f9;
+	margin-top: 80px;
+	width: 100%;
+	position: relative;
+	min-height: 900px;
 }
 .top{
     padding: 10px;

@@ -41,36 +41,36 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - [ ] 后台管理系统
 
 ## 前端开发
-- **框架** vue-v2.9.1全家桶+bootstrap-v3.37+jQuery-v1.8.0
-- **css处理** less
-- **ui框架**  iview
-- **less编译工具** koala
-- **端口监听** 8080
-- **编辑器**  sublime text3
-- **版本依赖管理**  npm
-- **touch样式管理**  vue-touch-ripple
-- **组件按需加载管理**  babel-plugin-import
-- **列表页组件加载渲染**  vue-content-placeholders
+- **框架**： vue-v2.9.1全家桶+bootstrap-v3.37+jQuery-v1.8.0
+- **css处理**： less
+- **ui框架**：  iview
+- **less编译工具**： koala
+- **端口监听**： 8080
+- **编辑器**：  sublime text3
+- **版本依赖管理**：  npm
+- **touch样式管理**：  vue-touch-ripple
+- **组件按需加载管理**：  babel-plugin-import
+- **列表页组件加载渲染**：  vue-content-placeholders
  -------------------
 
 ## 后端开发
-- **框架** express
-- **服务器端**  nodeJs
-- **node进程管理器**  pm2
-- **数据库**  mongodb
-- **数据库框架** mongoose
-- **版本依赖管理**  npm
+- **框架**： express
+- **服务器端**：  nodeJs
+- **node进程管理器**：  pm2
+- **数据库**：  mongodb
+- **数据库框架**： mongoose
+- **版本依赖管理**：  npm
  -------------------
 
 ## Vue.js学习资源
-- **官网**  https://cn.vuejs.org/
-- **vuejs源码**  https://github.com/vuejs/vue
-- **vuejs官方工具**  https://github.com/vuejs
-- **官方论坛**  https://forum.vuejs.org/
-- **vue组件库**  https://github.com/vuejs/awesome-vue
+- **官网**：  https://cn.vuejs.org/
+- **vuejs源码**：  https://github.com/vuejs/vue
+- **vuejs官方工具**：  https://github.com/vuejs
+- **官方论坛**：  https://forum.vuejs.org/
+- **vue组件库**：  https://github.com/vuejs/awesome-vue
 
 ## sublime 插件
 - **emment**
-- **csscomb** css样式排序 使用方法：菜单Tools->Run CSScomb或在CSS文件中按快捷键Ctrl+Shift+C
-- **trailingspaces** 能高亮显示多余的空格和Tab
-- **JsFormat** 可在JS文件中通过鼠标右键->JsFormat或键盘快捷键Ctrl+Alt+F对JS进行格式化
+- **csscomb**： css样式排序 使用方法：菜单Tools->Run CSScomb或在CSS文件中按快捷键Ctrl+Shift+C
+- **trailingspaces**： 能高亮显示多余的空格和Tab
+- **JsFormat**： 可在JS文件中通过鼠标右键->JsFormat或键盘快捷键Ctrl+Alt+F对JS进行格式化

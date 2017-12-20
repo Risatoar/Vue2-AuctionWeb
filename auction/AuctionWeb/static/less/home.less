@@ -54,3 +54,30 @@
 @fm-Content: Text;
 // 辅助文字
 @fm-Help: Help;
+
+.home{
+	display: block;
+	cursor: pointer;
+	width: 1200px;
+	margin: 0 auto;
+	.home-wrap{
+		padding: 2em 0;
+		position: relative;
+		.home-left{
+			float: left;
+		}
+		.home-middle{
+			float: left;
+			width: 600px;
+			height: 800px;
+			border: 1px solid @Border;
+		}
+		.home-right{
+			float: right;
+			position: relative;
+			.home-usericon,.home-userdetail,.home-circle{
+				margin-bottom: 18px;
+			}
+		}
+	}
+}

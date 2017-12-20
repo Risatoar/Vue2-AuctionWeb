@@ -1,5 +1,4 @@
 .message {
-  margin-top: 20px;
   width: 100%;
   background-color: #fff;
 }
@@ -11,6 +10,7 @@
   background-color: #000;
 }
 .message-inner-head {
+  padding: 60px 0;
   position: relative;
 }
 .message-inner-head a {
@@ -34,12 +34,12 @@
 .message-inner-top .message-inner-top-background .message-inner-top-left {
   position: relative;
   float: left;
-  width: 79%;
+  width: 69%;
 }
 .message-inner-top .message-inner-top-background .message-inner-top-right {
   position: relative;
   float: right;
-  width: 20%;
+  width: 30%;
 }
 .message-inner-middle {
   position: relative;

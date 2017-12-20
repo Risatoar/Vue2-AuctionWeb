@@ -20,12 +20,25 @@
           <li class="item time">时间：{{ item.acTime }}</li> 
         </div> 
       </div>  --> 
-      <Card :bordered="false" style="height:320px;overflow: hidden;">
-                <p slot="title">消息列表</p>
-                <p v-for=" item in auctioninfo " style="float:left;padding:5px 0;text-align:left;line-height:16px;">
-                	{{ item.acTitle }}
-                </p>
-            </Card>
+      <Card style="width:350px;height:320px;">
+          <p slot="title">
+              <Icon type="ios-film-outline"></Icon>
+              消息列表
+          </p>
+          <a href="#" slot="extra" @click.prevent="changeLimit">
+              <Icon type="ios-loop-strong"></Icon>
+              Change
+          </a>
+          <ul>
+              <li v-for="item in randomMovieList" style="width:320px;float:left;padding-bottom:14px;">
+                  <a :href="item.url" target="_blank" style="float:left;">{{ item.name }}</a>
+                  <div style="float:right;">
+                      <Icon type="ios-star" v-for="n in 5" :key="n" style="color:#f5a623"></Icon><Icon type="ios-star" v-if="item.rate >= 4.5" style="color:#f5a623"></Icon><Icon type="ios-star-half" v-else style="color:#f5a623"></Icon>
+                      {{ item.rate }}
+                  </div>
+              </li>
+          </ul>
+      </Card>
     </div>
 <!--     <newsdialog :is-show="isShowAboutDialog" v-if="showinfo" @on-close="closeDialog('isShowAboutDialog')">
     	<div class="newslist" v-for="(item,index) in auctioninfo"> 
@@ -55,15 +68,89 @@ import newsdialog from '../dialog.vue'
 				auction: {
 					acTitle: '',
 					acTime: ''
-				}
+				},
+				movieList: [
+				    {
+				        name: 'The Shawshank Redemption',
+				        url: 'https://movie.douban.com/subject/1292052/',
+				        rate: 4.9
+				    },
+				    {
+				        name: 'Leon:The Professional',
+				        url: 'https://movie.douban.com/subject/1295644/',
+				        rate: 4.4
+				    },
+				    {
+				        name: 'Farewell to My Concubine',
+				        url: 'https://movie.douban.com/subject/1291546/',
+				        rate: 4.5
+				    },
+				    {
+				        name: 'Forrest Gump',
+				        url: 'https://movie.douban.com/subject/1292720/',
+				        rate: 4.4
+				    },
+				    {
+				        name: 'Life Is Beautiful',
+				        url: 'https://movie.douban.com/subject/1292063/',
+				        rate: 4.5
+				    },
+				    {
+				        name: 'Spirited Away',
+				        url: 'https://movie.douban.com/subject/1291561/',
+				        rate: 4.2
+				    },
+				    {
+				        name: 'Schindlers List',
+				        url: 'https://movie.douban.com/subject/1295124/',
+				        rate: 4.4
+				    },
+				    {
+				        name: 'The Legend of 1900',
+				        url: 'https://movie.douban.com/subject/1292001/',
+				        rate: 4.2
+				    },
+				    {
+				        name: 'WALL·E',
+				        url: 'https://movie.douban.com/subject/2131459/',
+				        rate: 4.3
+				    },
+				    {
+				        name: 'Inception',
+				        url: 'https://movie.douban.com/subject/3541415/',
+				        rate: 4.2
+				    }
+				],
+				randomMovieList: []
 			}
 		},
 		mounted() {
 			this.getauctioninfo();
+			this.changeLimit();
 		},
 		methods: {
 			closeDialog(attr) {
               this[attr] = false
+            },
+            changeLimit () {
+                function getArrayItems(arr, num) {
+                    const temp_array = [];
+                    for (let index in arr) {
+                        temp_array.push(arr[index]);
+                    }
+                    const return_array = [];
+                    for (let i = 0; i<num; i++) {
+                        if (temp_array.length>0) {
+                            const arrIndex = Math.floor(Math.random()*temp_array.length);
+                            return_array[i] = temp_array[arrIndex];
+                            temp_array.splice(arrIndex, 1);
+                        } else {
+                            break;
+                        }
+                    }
+                    return return_array;
+                }
+                this.randomMovieList = getArrayItems(this.movieList, 9);
             },
 			morenews() {
 				this.isShowAboutDialog = true;
