@@ -15,6 +15,7 @@ import InfoNav from './pages/list/infonav.vue'
 import LawNav from './pages/list/lawnav.vue'
 import KnowNav from './pages/list/knowledgenav.vue'
 import PreNav from './pages/list/previewnav.vue'
+import HomePage from './components/user/home.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
 import iView from 'iview';
@@ -40,6 +41,7 @@ let router = new VueRouter({
 	},
 	{
 		path: '/user/:userName',
+		component: HomePage
 	},
 	{
 		path: '/test',

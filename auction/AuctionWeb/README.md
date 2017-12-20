@@ -31,10 +31,14 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
  -------------------
 
 ## 功能实现
-- **登录/注册**  游客普通注册+管理员登录
-- **首页展示**  选择数据库中前五条信息进行拍卖信息展示
-- **各navi分项展示**  根据对应的navi展示相应分类信息列表
-- **管理员职能**  增删改查用户、各分类信息
+- [x] 游客普通注册+管理员登录
+- [x] 首页信息展示
+- [x] 根据对应的navi展示相应分类信息列表
+- [ ] 用户个人中心
+- [ ] 用户进行增删改查
+- [ ] 评价系统
+- [ ] 拍卖预告系统
+- [ ] 后台管理系统
 
 ## 前端开发
 - **框架** vue-v2.9.1全家桶+bootstrap-v3.37+jQuery-v1.8.0
@@ -47,7 +51,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **touch样式管理**  vue-touch-ripple
 - **组件按需加载管理**  babel-plugin-import
 - **列表页组件加载渲染**  vue-content-placeholders
-- **点赞动画**  VueStar
  -------------------
 
 ## 后端开发
