@@ -92,25 +92,43 @@ router.post("/register",(req,res,next)=>{
   let _user = {
     username: req.body.username,
     pwd: req.body.pwd,
+    nickname: req.body.nickname,
+    age: req.body.age,
+    truename: req.body.truename,
+    company: req.body.company,
+    telephone: req.body.telephone,
+    mail: req.body.mail,
     usercreatedate: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
   };
   Users.findOne({username:_user.username},(err,user)=>{
     if(err){
       console.log(err)
     }
-    if(user){
+    else if(user){
       return res.json({
         list : '用户名已注册',
         doc:user
       });
     }else{
-      let user = new Users(_user);
-      user.save((err,user)=>{
+      Users.findOne({nickname:_user.nickname},(err,nickname)=>{
         if(err){
-          console.log(err);
+          console.log(err)
+        }
+        else if(nickname){
+          return res.json({
+            list : '该昵称已被使用',
+            doc:nickname
+          });
         }else{
-          res.json({
-            save: '注册成功'
+          let user = new Users(_user);
+          user.save((err,user)=>{
+            if(err){
+              console.log(err);
+            }else{
+              res.json({
+                save: '注册成功'
+              })
+            }
           })
         }
       })

@@ -25,7 +25,9 @@
           </span>
           </div>
            <span>{{ errorText }}</span><br>
-          <button type="button" class="btn btn-success" @click="login">LOGIN</button>
+          <button type="button" class="btn btn-info login" @click="login">LOGIN</button>
+          <div class="findpwd">找回密码</div>
+          <div class="toregister" @click="changetoreg">注册</div>
           <slot></slot>
         </div>
       </transition>
@@ -65,10 +67,6 @@ export default {
         status = true
         errorText = ''
       }
-      if (!this.userFlag) {
-        errorText = ''
-        this.userFlag = true
-      }
       return {
         status,
         errorText
@@ -84,10 +82,6 @@ export default {
         status = true
         errorText = ''
       }
-      if (!this.passwordFlag) {
-        errorText = ''
-        this.passwordFlag = true
-      }
       return {
         status,
         errorText
@@ -101,6 +95,9 @@ export default {
         this.$Notice.success({
             title: '登录成功'
         });
+    },
+    changetoreg() {
+      this.$emit('on-change')
     },
     close () {
       this.$emit('on-close')
@@ -163,9 +160,11 @@ export default {
   height: 100%;
 }
 .dialog-content {
-  width: 35%;
+  border: 1px solid #dddee1;
+  border-radius: 16px;
+  width: 25%;
   position: fixed;
-  max-height: 50%;
+  max-height: 40%;
   overflow: auto;
   background: #fff;
   top: 20%;
@@ -185,10 +184,35 @@ export default {
   text-align: center;
   cursor: pointer;
 }
+.findpwd {
+  color: #2d8cf0;
+  position: absolute;
+  right: 50px;
+  bottom: 15px;
+  width: 80px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.toregister {
+  color: #2d8cf0;
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+  width: 40px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
 .loginerror{
   color: red;
 }
-input{
-  width: 200px;
+.login{
+  margin: 0 auto;
+  position: absolute;
+  left: 190px;
+  width: 100px;
+  bottom: 15px;
+  cursor: pointer;
 }
 </style>

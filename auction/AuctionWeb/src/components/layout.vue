@@ -44,7 +44,7 @@
 				Proudly By XuXiang Copyright © 2017. All rights reserved.
 			</p>
 		</div>
-		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')" @has-log="onSuccessLog"></login>
+		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')" @has-log="onSuccessLog" @on-change="changetoRegister"></login>
 		<register :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')" @on-change="changetoLogin"></register>
 		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
 			公司名称：{{ company }}
@@ -160,6 +160,13 @@ export default{
         		_this.isRegDialog = false;
         		_this.isLoginDialog = true;
         	},1000)
+        },
+        changetoRegister() {
+        	let _this = this
+        	this.timeout = setTimeout(()=>{
+        		_this.isRegDialog = true;
+        		_this.isLoginDialog = false;
+        	},500)
         }
 	}
 }
