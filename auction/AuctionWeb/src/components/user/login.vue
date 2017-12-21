@@ -208,11 +208,8 @@ export default {
   color: red;
 }
 .login{
-  margin: 0 auto;
-  position: absolute;
-  left: 190px;
+  position: relative;
   width: 100px;
-  bottom: 15px;
   cursor: pointer;
 }
 </style>

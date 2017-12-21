@@ -4,9 +4,18 @@ var Schema = mongoose.Schema
 var userSchema = new Schema({
 	"username": String,
 	"pwd": String,
-	"nickname": String,
-	"icon": String,
-	"age": String,
+	"nickname": {
+		type: String,
+		default: 'no'
+	},
+	"icon": {
+		type: String,
+		default: 'no'
+	},
+	"age": {
+		type: String,
+		default: 'no'
+	},
 	"truename": String,
 	"company": String,
 	"telephone": String,

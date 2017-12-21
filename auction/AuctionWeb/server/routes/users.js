@@ -42,6 +42,23 @@ router.get("/users",function(req,res,next){
   })
 })
 
+// 获取某一个用户的信息
+router.post("/userdetails",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          list:user
+        }
+      });
+    }
+  })
+})
+
 // 用户登录
 router.post("/login",(req,res)=>{
   let _user = req.body

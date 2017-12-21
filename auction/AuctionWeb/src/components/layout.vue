@@ -129,6 +129,7 @@ export default{
 		  // var ucookie = this.cookie
 		  this.username = this.getCookie("user")
 		  this.isAdmin = this.getCookie("admin")
+		  this.$router.go(0)
 		},
 		aboutClick() {
 		  this.isShowAboutDialog = true
@@ -145,7 +146,7 @@ export default{
         quit() {
         	this.setCookie("user", "", -1);
         	this.setCookie("admin", "", -1);
-        	this.username = this.getCookie("user")
+        	this.username = ''
         	this.isAdmin = false
         	this.quitsuccess(true)
         },

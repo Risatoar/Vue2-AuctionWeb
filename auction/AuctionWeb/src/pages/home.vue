@@ -33,7 +33,7 @@
                         </MenuItem>
                         <MenuItem name="5" @click.native="showChange">
                             <Icon type="heart-broken"></Icon>
-                            找回密码
+                            修改密码
                         </MenuItem>
                     </MenuGroup>
                     <RadioGroup v-model="theme3" style="position: relative;margin:0 auto;color:#2d8cf0;margin-top:100px;">
@@ -49,7 +49,7 @@
             <newslist v-if="showNewsList"></newslist>
             <comment v-if="showComment"></comment>
             <previewlist v-if="showPreviewList"></previewlist>
-            <userdetail v-if="showUserDetail"></userdetail>
+            <userdetail v-if="showUserDetail" :userd="userdetails"></userdetail>
             <changepwd v-if="showChangePwd"></changepwd>
           </div>
           <div class="home-right">
@@ -57,7 +57,7 @@
               <Card style="width:350px;">
                   <div style="text-align:center">
                       <img src="../../static/img/1.jpg" height="100" width="100" style="border-radius: 100px;border: 5px solid #dddee1;margin-bottom:10px;">
-                      <h3>{{ username }}</h3>
+                      <h3>{{ userdetails.username }}</h3>
                   </div>
               </Card>
             </div>
@@ -68,7 +68,7 @@
               </Card>
             </div>
             <div class="home-circle">
-              <p>您的个人信息完整度</p>
+              <p>您的个人信息完整度   <Icon type="refresh" @click.native="refreshcircle"></Icon></p>
                 <br>
               <i-circle :percent="percent">
                   <span class="demo-Circle-inner" style="font-size:24px">{{ percent }}%</span>
@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import auctioninfo from '../components/news/auctionInfo.vue'
 import comment from './home/comment.vue'
 import newslist from './home/newslist.vue'
@@ -104,7 +105,11 @@ export default {
       return {
          theme3: 'dark',
          percent: 60,
-         username: '',
+         user: {
+          username: ''
+         },
+         userdetails: [],
+         totle: 6,
          showComment: false,
          showNewsList: false,
          showPreviewList: false,
@@ -112,6 +117,12 @@ export default {
          showChangePwd: false
       }
     },
+    // computed: {
+    //   isComple() {
+    //     let cont = 0;
+    //     console.log(this.userdetails.nickname)
+    //   }
+    // },
     mounted() {
       this.getUsername()
       this.showNews()
@@ -128,8 +139,34 @@ export default {
         return "";
         },
         getUsername () {
-        this.username = this.getCookie("user")
+          this.user.username = this.getCookie("user")
+          this.getUserDetail()
         },
+        getUserDetail() {
+          axios.post('/userdetails',this.user).then((res)=>{
+            this.userdetails = res.data.result.list;
+            this.refreshcircle()
+          })
+        },
+        refreshcircle() {
+          if(this.userdetails.age === "" && this.userdetails.nickname === ""){
+            this.percent = (6/8)*100
+          }else if(this.userdetails.age !== "" && this.userdetails.nickname === ""){
+            this.percent = 87.5
+          }else if(this.userdetails.age === "" && this.userdetails.nickname !== ""){
+            this.percent = 87.5
+          }else if(this.userdetails.age !== "" && this.userdetails.nickname !== ""){
+            this.percent = 100
+          }
+          this.success()
+        },
+        success () {
+          this.$Message.success('刷新成功');
+        },
+        // setTimeoutRef() {
+        //   let _this = this
+        //   setTimeout(_this.refrshcircle(),100)
+        // },
         showNews() {
           this.showNewsList = true
           this.showComment = false

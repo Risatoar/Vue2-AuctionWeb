@@ -1,11 +1,23 @@
 <template>
 	<div class="home-userdetail">
-		<h1>暂未有信息，敬请关注哦~</h1>
+		<li>{{ userd.username }}</li>
+		<li>{{ userd.nickname }}</li>
+		<li>{{ userd.age }}</li>
+		<li>{{ userd.truename }}</li>
+		<li>{{ userd.company }}</li>
+		<li>{{ userd.telephone }}</li>
+		<li>{{ userd.icon }}</li>
+		<li>{{ userd.mail }}</li>
 	</div>
 </template>
 
 <script>
 export default {
+	props: {
+	  userd: {
+	    type: Array
+	  }
+	}
 }
 </script>
 
