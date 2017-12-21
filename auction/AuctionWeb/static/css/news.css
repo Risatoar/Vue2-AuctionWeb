@@ -2,6 +2,9 @@
   width: 100%;
   background-color: #fff;
 }
+.message-inner {
+  z-index: 999;
+}
 .line {
   line-height: 24px;
   margin: 0 auto;

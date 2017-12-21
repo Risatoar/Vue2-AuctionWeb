@@ -4,9 +4,9 @@
       <div class="dialog-cover"  v-if="isShow" @click="close"></div>
       <transition name="pass">
         <div class="dialog-content"  v-if="isShow">
+          <h3 style="padding:15px 0;">账号密码登录</h3>
           <p class="dialog-close" @click="close">x</p>
           <div class="form-group">
-          <label>用户名</label>
           <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的用户名">
           <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="userlogin.usernamelogin">
           </Poptip>
@@ -14,9 +14,8 @@
           <span class="loginerror">{{ userErrors.errorText }}</span>
           </div>
           <div class="form-group">
-          <label for="exampleInputPassword1">密码</label>
           <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的密码">
-          <input type="password" class="form-control" id="login-pwd" placeholder="Password" v-model="userlogin.pwdlogin">
+          <input type="password" class="form-control" id="login-pwd" placeholder="请输入密码" v-model="userlogin.pwdlogin">
           </Poptip>
           <br>
           <span class="loginerror">
@@ -164,16 +163,17 @@ export default {
   height: 100%;
 }
 .dialog-content {
-  width: 40%;
+  width: 35%;
   position: fixed;
   max-height: 50%;
   overflow: auto;
   background: #fff;
   top: 20%;
-  left: 50%;
+  left: 55%;
   margin-left: -20%;
-  z-index: 10;
+  z-index: 999;
   padding: 2%;
+  display: block;
   line-height: 1.6;
 }
 .dialog-close {
@@ -187,5 +187,8 @@ export default {
 }
 .loginerror{
   color: red;
+}
+input{
+  width: 200px;
 }
 </style>

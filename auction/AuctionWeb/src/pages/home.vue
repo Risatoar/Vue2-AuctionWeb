@@ -18,7 +18,7 @@
                             拍卖信息
                         </MenuItem>
                         <MenuItem name="2" @click.native="showPreview">
-                            <Icon type="chatbubbles"></Icon>
+                            <Icon type="information"></Icon>
                             拍卖预告
                         </MenuItem>
                         <MenuItem name="3" @click.native="showCom">
@@ -114,6 +114,7 @@ export default {
     },
     mounted() {
       this.getUsername()
+      this.showNews()
     },
     methods: {
       getCookie (cname) {

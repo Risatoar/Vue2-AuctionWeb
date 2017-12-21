@@ -1,8 +1,9 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 require('vue-touch-ripple/component.css')
+import 'iview/dist/styles/iview.css';
+
 import Vue from 'vue'
-import TouchRipple from 'vue-touch-ripple'
 import layout from './components/layout.vue'
 import VueRouter from 'vue-router'
 import IndexPage from './pages/index.vue'
@@ -18,10 +19,12 @@ import PreNav from './pages/list/previewnav.vue'
 import HomePage from './pages/home.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
+
 import iView from 'iview';
 import VueContentPlaceholders from 'vue-content-placeholders'
-import 'iview/dist/styles/iview.css';
-Vue.use(iView);
+import VueParticles from 'vue-particles'
+import TouchRipple from 'vue-touch-ripple'
+
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
@@ -29,6 +32,8 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(TouchRipple)
 Vue.use(VueContentPlaceholders)
+Vue.use(VueParticles)
+Vue.use(iView);
 
 let router = new VueRouter({
 	mode: 'history',
