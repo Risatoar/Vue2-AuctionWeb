@@ -33,7 +33,7 @@
               <li v-for="item in randomMovieList" style="width:320px;float:left;padding-bottom:14px;">
                   <a :href="item.url" target="_blank" style="float:left;">{{ item.name }}</a>
                   <div style="float:right;">
-                      <Icon type="ios-star" v-for="n in 5" :key="n" style="color:#f5a623"></Icon><Icon type="ios-star" v-if="item.rate >= 4.5" style="color:#f5a623"></Icon><Icon type="ios-star-half" v-else style="color:#f5a623"></Icon>
+                      <Icon type="ios-star" v-for="n in 4" :key="n" style="color:#f5a623"></Icon><Icon type="ios-star" v-if="item.rate >= 4.5" style="color:#f5a623"></Icon><Icon type="ios-star-half" v-else style="color:#f5a623"></Icon>
                       {{ item.rate }}
                   </div>
               </li>

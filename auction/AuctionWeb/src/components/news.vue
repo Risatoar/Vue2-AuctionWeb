@@ -5,7 +5,7 @@
 				<div class="message-inner-head">
 					<h3>信 息 中 心</h3>
 					<div class="line"></div>
-					<p>随时掌握行业动态 即刻了解热点资讯</p>
+					<p>足不出户 即刻网罗天下资讯</p>
 				</div>
 				<div class="message-inner-top">
 					<div class="message-inner-top-background">
