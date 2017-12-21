@@ -149,6 +149,7 @@ export default{
         	this.username = ''
         	this.isAdmin = false
         	this.quitsuccess(true)
+        	this.$router.go(0)
         },
         quitsuccess (nodesc) {
            this.$Notice.success({
