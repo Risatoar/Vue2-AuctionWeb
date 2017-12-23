@@ -21,7 +21,7 @@
 							</ul>
 						</div>
 						<div class="head-inner-login">
-							<router-link :to="{ path : '/user/'+username}" tag="li">{{ username }}</router-link>
+							<router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" /></router-link>
 							<li v-if="username === ''" @click="loginClick">登录  <Icon type="log-in"></Icon></li>
 							<li class="nav-pile" >|</li>
 							<li v-if="username === ''" @click="regClick">注册</li>
@@ -195,6 +195,7 @@ export default{
 a
 {
     text-decoration-line: none;
+    color: inherit;
 }
 
 p
