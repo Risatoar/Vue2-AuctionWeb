@@ -3,6 +3,7 @@
 		<div class="hnewslist-top">
 			<div class="hnewslist-top-wrap">
 				<h3>您发出过的拍卖信息都在这里</h3>
+				<Icon type="plus-round" class="infoadd" @click.native="toAdd"></Icon>
 			</div>
 		</div>
 		<div class="hnewslist-body">
@@ -70,6 +71,11 @@ export default {
 			}
 			]
 		}
+	},
+	methods: {
+		toAdd() {
+			this.$router.push({path:'/infoadd'})
+		}
 	}
 }
 </script>
@@ -80,6 +86,7 @@ export default {
 	width: 598px;
 }
 .hnewslist-top-wrap{
+	position: relative;
 	width: 598px;
 	padding:20px 5px;
 	background-color: #fff;
@@ -87,6 +94,11 @@ export default {
 }
 h3{
 	font-family: Helvetica;
+}
+.infoadd{
+	top: 20px;
+	right: 20px;
+	position: absolute;
 }
 .hnewslist-body{
 	padding:20px 5px;

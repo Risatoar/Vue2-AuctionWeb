@@ -55,29 +55,34 @@
 // 辅助文字
 @fm-Help: Help;
 
-.home{
-	text-align: center;
-	display: block;
-	cursor: pointer;
+.addinfo{
 	width: 1200px;
 	margin: 0 auto;
-	.home-wrap{
+	.addinfo-wrap{
 		padding: 2em 0;
-		position: relative;
-		.home-left{
-			float: left;
-		}
-		.home-middle{
-			float: left;
-			width: 600px;
-			height: 800px;
-			border: 1px solid @Border;
-		}
-		.home-right{
-			float: right;
+		.addinfo-content{
 			position: relative;
-			.home-usericon,.home-userdetail,.home-circle{
-				margin-bottom: 18px;
+			border: 1px solid @Disabled;
+			.addinfo-content-head-title{
+				padding:15px 10px;
+				font-size: @fz-MainHead+8px;
+				font-family: @fm-MainHead;
+			}
+			.addinfo-btn{
+				top: 10px;
+				right: 10px;
+				position: absolute;
+				font-size: @fz-MainHead;
+				font-family: @fm-MainHead;
+			}
+			.addinfo-content-addtitle{
+				padding:15px 10px;
+				.input-title{
+					width: 100%;
+				}
+			}
+			.addinfo-content-body{
+				padding:15px 10px;
 			}
 		}
 	}

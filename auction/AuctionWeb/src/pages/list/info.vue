@@ -87,7 +87,8 @@
 								</div>
 								<div class="list-block-right">
 									<h3><a class="block-right-title">{{ item.title }}</a></h3>
-									<p class="block-right-description">{{ item.description }}</p>
+									<p class="block-right-description" v-html="item.description">
+									</p>
 									<div class="block-right-foot">
 										<p>
 											<span class="block-right-author">{{ item.author }}</span>

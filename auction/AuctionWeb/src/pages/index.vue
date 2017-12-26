@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<particles></particles>
+		<div class="particles">
+			<particles></particles>
+		</div>
 		<news></news>
 	</div>
 </template>
@@ -17,5 +19,7 @@ export default {
 </script>
 
 <style scoped>
-
+.particles{
+	z-index: 0;
+}
 </style>

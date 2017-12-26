@@ -55,6 +55,9 @@ module.exports = {
         },
         '/userdetails': {
             target : 'http://localhost:4000'
+        },
+        '/addinfo': {
+            target : 'http://localhost:4000'
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

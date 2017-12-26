@@ -1,0 +1,32 @@
+.addinfo {
+  width: 1200px;
+  margin: 0 auto;
+}
+.addinfo .addinfo-wrap {
+  padding: 2em 0;
+}
+.addinfo .addinfo-wrap .addinfo-content {
+  position: relative;
+  border: 1px solid #c3cbd6;
+}
+.addinfo .addinfo-wrap .addinfo-content .addinfo-content-head-title {
+  padding: 15px 10px;
+  font-size: 24px;
+  font-family: Main Head;
+}
+.addinfo .addinfo-wrap .addinfo-content .addinfo-btn {
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  font-size: 16px;
+  font-family: Main Head;
+}
+.addinfo .addinfo-wrap .addinfo-content .addinfo-content-addtitle {
+  padding: 15px 10px;
+}
+.addinfo .addinfo-wrap .addinfo-content .addinfo-content-addtitle .input-title {
+  width: 100%;
+}
+.addinfo .addinfo-wrap .addinfo-content .addinfo-content-body {
+  padding: 15px 10px;
+}

@@ -22,7 +22,7 @@
 						       <i-col span="12" class="demo-tabs-style1" style="background: #e3e8ee;padding:16px;width:100%;height:1642px;">
 						           <Tabs type="card">
 						               <Tab-pane label="消息简介">
-						               	<div >
+						               	<div style="text-align:center;">
 						               		<p style="padding-top:5px;padding-bottom:5px;font-size:24px;color:#464c5b;font-family:Main Head;font-weight: bold;">
 						               		  {{ infodetaillist.title }}
 						               		</p>
@@ -47,7 +47,7 @@
 						               	</div>
 						               </Tab-pane>
 						               <Tab-pane label="详情页面">
-						               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text">{{ infodetaillist.description }}</p>
+						               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text" v-html="infodetaillist.description"></p>
 						               </Tab-pane>
 						           </Tabs>
 						       </i-col>

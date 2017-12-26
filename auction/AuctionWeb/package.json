@@ -16,6 +16,7 @@
     "bootstrap": "^3.3.7",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
+    "effect-input": "^0.1.1",
     "ejs": "^2.5.6",
     "express": "~4.14.1",
     "iview": "^2.7.4",
@@ -32,7 +33,8 @@
     "vue-particles": "^1.0.9",
     "vue-resource": "^1.3.1",
     "vue-router": "^3.0.1",
-    "vue-touch-ripple": "^2.4.0"
+    "vue-touch-ripple": "^2.4.0",
+    "vue2-editor": "^2.3.11"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

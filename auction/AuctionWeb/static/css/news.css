@@ -1,6 +1,7 @@
 .message {
   width: 100%;
   background-color: #fff;
+  text-align: center;
 }
 .message-inner {
   z-index: 999;
@@ -89,7 +90,6 @@
   background-color: #fff;
   color: #222;
   overflow: hidden;
-  z-index: 0;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic {
   width: 100%;
@@ -151,24 +151,32 @@
   margin-top: 3em;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-title {
+  z-index: 1000;
   font-weight: 600;
   text-align: center;
   margin-bottom: 1.5em;
 }
+.message-inner-middle .message-inner-foot .message-inner-foot-body {
+  z-index: 1000;
+}
 .message-inner-middle .message-inner-foot .message-inner-foot-body li {
+  z-index: 1000;
   float: left;
   font-weight: 600;
   margin-bottom: 1.5em;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-body .mifb-img {
+  z-index: 1000;
   width: 100%;
   margin-bottom: 2em;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-body .mifb-img .showimg {
+  z-index: 1000;
   width: 60%;
   height: 20em;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-body p {
+  z-index: 1000;
   display: block;
   color: #727272;
   -webkit-margin-before: 1em;
@@ -177,6 +185,7 @@
   -webkit-margin-end: 0px;
 }
 .message-inner-middle .message-inner-foot .message-inner-foot-body .auction-knowledge {
+  z-index: 1000;
   margin-top: 3em;
   font-size: 1.3em;
   font-weight: 600;

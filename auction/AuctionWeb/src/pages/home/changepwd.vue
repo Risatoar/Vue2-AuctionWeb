@@ -1,6 +1,6 @@
 <template>
 	<div class="home-changepwd">
-		<label>老密码</label>
+	<label>老密码</label>
         <input type="password" class="form-control" id="reg-pwd" placeholder="老密码">
         <label>新密码</label>
         <input type="password" class="form-control" id="reg-pwd" placeholder="老密码">
@@ -12,6 +12,8 @@
 
 <script>
 export default {
+    methods: {
+    }
 }
 </script>
 

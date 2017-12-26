@@ -189,7 +189,6 @@ export default{
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
 }
 
 a
@@ -236,7 +235,7 @@ body
     position:fixed;
 	left:0;
 	top:0;
-	z-index:1000;
+	z-index: 999;
 }
 
 .head-wrap{
@@ -324,6 +323,7 @@ body
 
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: center;
 
     width: 100%;
     height: 80px;

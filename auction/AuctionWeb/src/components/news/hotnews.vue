@@ -13,7 +13,7 @@
 				</div>
 				<div class="hotnews-block-right">
 					<p class="hotnews-title">{{ item.title }}</p>
-					<p class="hotnews-msg">{{ item.description }}</p>
+					<p class="hotnews-msg" v-html="item.description"></p>
 				</div>
 			    </router-link>
 			</div>
