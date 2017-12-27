@@ -30,30 +30,33 @@
 }
 .list-block-right {
   margin-left: 230px;
+  display: flex;
+  flex-direction: column;
 }
 .block-right-title {
   line-height: 28px;
   font-weight: normal;
   color: #333;
-  float: left;
 }
 .block-right-description {
   height: 40px;
-  float: left;
   position: relative;
   font-size: 14px;
   display: block;
   color: #999;
   line-height: 25px;
-  overflow: hidden;
   -webkit-margin-before: 1em;
   -webkit-margin-after: 1em;
+  display: inline-block;
+  white-space: nowrap;
+  width: 800px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .block-right-foot {
   position: relative;
   width: 100%;
   display: block;
-  float: left;
   font-size: 14px;
 }
 .block-right-foot p {

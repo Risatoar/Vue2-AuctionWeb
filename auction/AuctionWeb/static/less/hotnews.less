@@ -27,6 +27,7 @@
 		    color: #fff;
 		}
 		.hotnews-block-right{
+			text-align: left;
 			position: relative;
 			float: right;
 			width: 90%;
@@ -34,9 +35,6 @@
 			background-color: #fff;
 			border-bottom: 1px solid rgba(52,52,52,.15);
 			border-right: 1px solid rgba(52,52,52,.15);
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
 			.hotnews-title{
 				padding-top: 15px;
 				margin-left: 20px;
@@ -44,6 +42,11 @@
 				color: @title-color
 			}
 			.hotnews-msg{
+				display: inline-block;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow:ellipsis;
+				width: 700px;
 				text-indent: @fz+2px;
 				margin-left: 20px;
 				font-size: @fz+2px;

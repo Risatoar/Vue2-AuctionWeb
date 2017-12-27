@@ -23,6 +23,7 @@
   color: #fff;
 }
 .hotnews .hotnews-block .hotnews-block-right {
+  text-align: left;
   position: relative;
   float: right;
   width: 90%;
@@ -30,9 +31,6 @@
   background-color: #fff;
   border-bottom: 1px solid rgba(52, 52, 52, 0.15);
   border-right: 1px solid rgba(52, 52, 52, 0.15);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .hotnews .hotnews-block .hotnews-block-right .hotnews-title {
   padding-top: 15px;
@@ -41,6 +39,11 @@
   color: #ff0000;
 }
 .hotnews .hotnews-block .hotnews-block-right .hotnews-msg {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 700px;
   text-indent: 14px;
   margin-left: 20px;
   font-size: 14px;

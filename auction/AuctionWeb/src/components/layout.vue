@@ -330,7 +330,6 @@ body
 
     left:0;
     bottom:0;
-
     background: #e3e4e8;
 }
 .form-control{
