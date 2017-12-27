@@ -41,13 +41,13 @@
 						               		<div style="padding:60px;width:600px;margin:0 auto;">
 	   						               		<Card :bordered="false">
 	   			               		                <p slot="title">消息简介</p>
-	   			               		                <p>{{ infodetaillist.title }}</p>
+	   			               		                <p>{{ infodetaillist.description }}</p>
 	   			               		            </Card>
 						               		</div>
 						               	</div>
 						               </Tab-pane>
 						               <Tab-pane label="详情页面">
-						               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text" v-html="infodetaillist.description"></p>
+						               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text" v-html="infodetaillist.maintext"></p>
 						               </Tab-pane>
 						           </Tabs>
 						       </i-col>

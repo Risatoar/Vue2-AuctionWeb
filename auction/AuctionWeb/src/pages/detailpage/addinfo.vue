@@ -11,8 +11,14 @@
 				<div class="addinfo-content-addtitle">
 					<effect-input type="haruki" label="请输入标题" v-model="add.title" class="input-title"></effect-input>
 				</div>
+				<div class="addinfo-content-adddescription">
+					<effect-input type="haruki" label="请输入简介" v-model="add.description" class="input-description"></effect-input>
+				</div>
 				<div class="addinfo-content-body">
-					<vue-editor v-model="add.description"></vue-editor>
+					<vue-editor v-model="add.maintext"></vue-editor>
+					<div class="addinfo-content-preview">
+						<p v-html=""></p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -31,7 +37,8 @@ export default {
 			add: {
 				author: '',
 				title: '',
-				description: ''
+				description: '',
+				maintext: ''
 			},
 			username: ''
 		}

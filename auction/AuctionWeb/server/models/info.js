@@ -5,6 +5,11 @@ var infoSchema = new Schema({
 	"title": String,
 	"description": String,
 	"author": String,
+	"maintext": String,
+	"stars": {
+		type: String,
+		default: 0
+	},
 	"date": String
 })
 

@@ -27,6 +27,12 @@
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-addtitle .input-title {
   width: 100%;
 }
+.addinfo .addinfo-wrap .addinfo-content .addinfo-content-adddescription {
+  padding: 15px 10px;
+}
+.addinfo .addinfo-wrap .addinfo-content .addinfo-content-adddescription .input-description {
+  width: 100%;
+}
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-body {
   padding: 15px 10px;
 }

@@ -47,6 +47,8 @@ router.post("/addinfo",(req,res,next)=>{
     author: req.body.author,
     title: req.body.title,
     description: req.body.description,
+    maintext: req.body.maintext,
+    stars: 0,
     date: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
   };
   new Infos(infoma).save((err,doc)=>{
@@ -65,7 +67,7 @@ router.post("/infodetail",function(req,res,next){
   let _info = req.body
   let infoid = ObjectID(_info.infoid)
   Infos.findOne({_id:infoid}, (err,doc)=>{
-    if(err){  
+    if(err){
       res.json({
         status: '1',
         msg: err.message
