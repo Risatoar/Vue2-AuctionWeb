@@ -1,3 +1,8 @@
+.infodetail-wrap {
+  height: 100%;
+  min-height: 130em;
+  background: #e3e8ee;
+}
 .infodetail-body {
   display: block;
   height: 100%;
@@ -16,6 +21,7 @@
 }
 .infodetail-body-wrap {
   padding: 0 10px;
+  height: 97.33%;
   overflow: hidden;
 }
 .infode-head {
@@ -27,6 +33,7 @@
   font-size: 1em;
 }
 .infode-body {
+  height: 100%;
   text-align: left;
   padding: 0 20px 20px 20px;
   font-weight: normal;
@@ -47,6 +54,7 @@
   background: #fff;
   padding: 16px;
   line-height: 26px;
+  height: 100%;
 }
 .demo-tabs-style1 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab {
   border-color: transparent;

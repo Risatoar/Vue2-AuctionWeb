@@ -1,73 +1,71 @@
 <template>
-	<div>
-		<div class="infodetail-wrap">
-			<div class="infodetail-body">
-				<div class="infodetail-body-top">
-					<span class="infodetail-body-top-content" v-touch-ripple>Title:{{ infodetaillist.title }}</span>
-					<!-- <vue-star animate="animated rubberBand" color="#F05654">
-					    <a slot="icon" class="fa fa-heart" @click="handleClick"></a>
-					  </vue-star> -->
+<div class="infodetail-wrap">
+	<div class="infodetail-body">
+		<div class="infodetail-body-top">
+			<span class="infodetail-body-top-content" v-touch-ripple>Title:{{ infodetaillist.title }}</span>
+			<!-- <vue-star animate="animated rubberBand" color="#F05654">
+			    <a slot="icon" class="fa fa-heart" @click="handleClick"></a>
+			  </vue-star> -->
+		</div>
+		<div class="infodetail-body">
+			<!-- <ul>
+				<li>{{ infodetaillist._id }}</li>
+				<li>{{ infodetaillist.author }}</li>
+				<li>{{ infodetaillist.date }}</li>
+				<li>{{ infodetaillist.title }}</li>
+				<li>{{ infodetaillist.description }}</li>
+			</ul> -->
+			<div class="infodetail-body-wrap">
+				<div class="detail-loading" v-if="loading"><h1>loading</h1></div>
+				<Row :gutter="32">
+				       <i-col span="12" class="demo-tabs-style1" style="background: #e3e8ee;padding:16px;width:100%;height:100%;">
+				           <Tabs type="card">
+				               <Tab-pane label="消息简介">
+				               	<div style="text-align:center;">
+				               		<p style="padding-top:5px;padding-bottom:5px;font-size:24px;color:#464c5b;font-family:Main Head;font-weight: bold;">
+				               		  {{ infodetaillist.title }}
+				               		</p>
+				               		<p style="padding-top:5px;font-size:14px;color:#464c5b;font-family:Main Head;font-weight: bold;">
+				               		  <Icon type="person"></Icon>  作者：{{ infodetaillist.author }} | <Icon type="calendar"></Icon>  发布时间：{{ infodetaillist.date }} | <Icon type="wand"></Icon>  评分: {{ infodetaillist.stars }} 颗星
+				               		</p>
+				               		<div style="margin-top:50px;">
+				               			<!-- <Rate show-text :value.sync="valueCustomText">
+				               			                <span style="color: #f5a623">{{ valueCustomText }}</span>
+				               			            </Rate> -->
+				               			<Rate show-text :value.sync="valueHalf" @on-change="clickstar" v-model="stars"></Rate>
+				               		</div>
+				               		<i-button @click="success" v-if="false"></i-button>
+				               		<i-button @click="error" v-if="false"></i-button>
+				               		<span >觉得内容怎么样？给作者打个星吧！</span>
+				               		<div style="padding:60px;width:600px;margin:0 auto;">
+						               		<Card :bordered="false">
+			               		                <p slot="title">消息简介</p>
+			               		                <p>{{ infodetaillist.description }}</p>
+			               		            </Card>
+				               		</div>
+				               	</div>
+				               </Tab-pane>
+				               <Tab-pane label="详情页面">
+				               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text;line-height:2;" v-html="infodetaillist.maintext"></p>
+				               </Tab-pane>
+				           </Tabs>
+				       </i-col>
+				</Row>
+				<!-- <div class="infode-head">
+					<h2>{{ infodetaillist.title }}</h2>
+					<p>作者：{{ infodetaillist.author }}</p>
+					<p>发布时间：{{ infodetaillist.date }}</p>
 				</div>
-				<div class="infodetail-body">
-					<!-- <ul>
-						<li>{{ infodetaillist._id }}</li>
-						<li>{{ infodetaillist.author }}</li>
-						<li>{{ infodetaillist.date }}</li>
-						<li>{{ infodetaillist.title }}</li>
-						<li>{{ infodetaillist.description }}</li>
-					</ul> -->
-					<div class="infodetail-body-wrap">
-						<div class="detail-loading" v-if="loading"><h1>loading</h1></div>
-						<Row :gutter="32">
-						       <i-col span="12" class="demo-tabs-style1" style="background: #e3e8ee;padding:16px;width:100%;height:1642px;">
-						           <Tabs type="card">
-						               <Tab-pane label="消息简介">
-						               	<div style="text-align:center;">
-						               		<p style="padding-top:5px;padding-bottom:5px;font-size:24px;color:#464c5b;font-family:Main Head;font-weight: bold;">
-						               		  {{ infodetaillist.title }}
-						               		</p>
-						               		<p style="padding-top:5px;font-size:14px;color:#464c5b;font-family:Main Head;font-weight: bold;">
-						               		  <Icon type="person"></Icon>  作者：{{ infodetaillist.author }} | <Icon type="calendar"></Icon>  发布时间：{{ infodetaillist.date }} | <Icon type="wand"></Icon>  评分: {{ firstStars }} 颗星
-						               		</p>
-						               		<div style="margin-top:50px;">
-						               			<!-- <Rate show-text :value.sync="valueCustomText">
-						               			                <span style="color: #f5a623">{{ valueCustomText }}</span>
-						               			            </Rate> -->
-						               			<Rate show-text :value.sync="valueHalf" @on-change="clickstar" v-model="stars"></Rate>
-						               		</div>
-						               		<i-button @click="success" v-if="false"></i-button>
-						               		<i-button @click="error" v-if="false"></i-button>
-						               		<span >觉得内容怎么样？给作者打个星吧！</span>
-						               		<div style="padding:60px;width:600px;margin:0 auto;">
-	   						               		<Card :bordered="false">
-	   			               		                <p slot="title">消息简介</p>
-	   			               		                <p>{{ infodetaillist.description }}</p>
-	   			               		            </Card>
-						               		</div>
-						               	</div>
-						               </Tab-pane>
-						               <Tab-pane label="详情页面">
-						               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text;line-height:2;" v-html="infodetaillist.maintext"></p>
-						               </Tab-pane>
-						           </Tabs>
-						       </i-col>
-						</Row>
-						<!-- <div class="infode-head">
-							<h2>{{ infodetaillist.title }}</h2>
-							<p>作者：{{ infodetaillist.author }}</p>
-							<p>发布时间：{{ infodetaillist.date }}</p>
-						</div>
-						<div class="infode-body">
-							<p>
-								内容：{{ infodetaillist.description }}
-							</p>
-						</div>
-						<div class="infode-foot">所有解释权归本网站所有</div> -->
-					</div>
+				<div class="infode-body">
+					<p>
+						内容：{{ infodetaillist.description }}
+					</p>
 				</div>
+				<div class="infode-foot">所有解释权归本网站所有</div> -->
 			</div>
 		</div>
 	</div>
+</div>
 </template>
 
 <script>
@@ -161,6 +159,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 @import '/static/css/detailpage.css'
 </style>

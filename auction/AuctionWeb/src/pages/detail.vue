@@ -3,11 +3,11 @@
   	<div class="detail-body">
   		<div class="detail-left">
   		  <div class="left-nav">
-  		  	<router-view name="left" transition="back"></router-view>
+  		  	<router-view name="left"></router-view>
   		  </div>
   		</div>
   		<div class="detail-right">
-  		    <router-view name="right" transition="back"></router-view>
+  		    <router-view name="right"></router-view>
   		</div>
   	</div>
   </div>
@@ -43,6 +43,6 @@
 	}
 </script>
 
-<style scoped>
+<style>
   @import '/static/css/detail.css'
 </style>

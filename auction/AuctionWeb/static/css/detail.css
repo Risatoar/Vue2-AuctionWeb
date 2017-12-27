@@ -2,7 +2,6 @@
   margin-top: 80px;
   width: 100%;
   min-height: 130em;
-  height: 100em;
   padding: 2em 0;
   display: block;
   cursor: pointer;
@@ -12,6 +11,7 @@
   display: flex;
   justify-content: flex-start;
   width: 1200px;
+  min-height: 130em;
   height: 100%;
   margin: 0 auto;
 }
