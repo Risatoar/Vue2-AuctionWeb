@@ -37,8 +37,11 @@
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-body {
   padding: 15px 10px;
 }
+.addinfo .addinfo-wrap .addinfo-content h3 {
+  padding: 15px 0;
+}
 .addinfo .addinfo-wrap .addinfo-content h2 {
-  margin-top: 20px;
+  padding: 30px 0 15px 0;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-preview {
   min-height: 200px;

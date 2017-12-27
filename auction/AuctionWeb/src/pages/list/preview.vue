@@ -8,14 +8,23 @@
 				<div class="preview-body-list">
 					<div class="preview-body-list-card" v-for="item in prelist">
 					    <router-link :to="{path: 'preview/auctionname/' + item._id}">
-							<div class="preview-card-top">
+							<!-- <div class="preview-card-top">
 								<img class="preview-card-img" src="../../../static/img/mi6.jpg" >
 							</div>
 							<ul>
 								<li class="preview-card-name">{{ item.name }}</li>
 								<li class="preview-card-date">开始时间： {{ item.date }}</li>
 								<li class="preview-card-rest">剩余时间： {{ item.rest }}</li>
-							</ul>
+							</ul> -->
+
+							<Card style="width:330px">
+						        <div style="text-align:center">
+						            <img v-lazy="'/static/img/' + item.image" style="width:50%">
+						            <li class="preview-card-name">{{ item.title }}</li>
+						            <li class="preview-card-startdate">拍卖开始时间: {{ item.startdate }}</li>
+						            <li class="preview-card-deadline">拍卖结束时间： {{ item.finaldate }}</li>
+						        </div>
+						    </Card>
 					    </router-link>
 					</div>
 				</div>
@@ -34,53 +43,19 @@ export default {
 	data() {
 		return {
 			loading: true,
-			prelist: [
-			{
-				name: 'm16',
-				date: '2017-12-14 13:14',
-				rest: '5天'
-			},
-			{
-				name: 'm16',
-				date: '2017-12-14 13:14',
-				rest: '5天'
-			},{
-				name: 'm16',
-				date: '2017-12-14 13:14',
-				rest: '5天'
-			},
-			{
-				name: 'm16',
-				date: '2017-12-14 13:14',
-				rest: '5天'
-			},
-			{
-				name: 'm16',
-				date: '2017-12-14 13:14',
-				rest: '5天'
-			},
-			{
-				name: 'm16',
-				date: '2017-12-14 13:14',
-				rest: '5天'
-			},{
-				name: 'm16',
-				date: '2017-12-19',
-				rest: '5天'
-			}
-			]
+			prelist: []
 		}
 	},
 	mounted() {
-		// this.getinfo()
+		this.getAllPreview()
 	},
 	methods: {
-		// getinfo() {
-		// 	axios.get("/information").then((result)=>{
-		// 		let res = result.data;
-		// 		this.infolist = res.result.list;
-		// 	});
-		// }
+		getAllPreview() {
+			axios.get("/allpreviews").then((result)=>{
+				let res = result.data;
+				this.prelist = res.result.list;
+			});
+		}
 	}
 }
 </script>

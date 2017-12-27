@@ -20,6 +20,7 @@ import HomePage from './pages/home.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
 import AddInfoPage from './pages/detailpage/addinfo.vue'
+import AddPreviewPage from './pages/detailpage/addpreview.vue'
 
 // 外部插件导入
 import iView from 'iview';
@@ -28,6 +29,7 @@ import VueParticles from 'vue-particles'
 import TouchRipple from 'vue-touch-ripple'
 import EffectInput from 'effect-input'
 import VueQuillEditor from 'vue-quill-editor'
+import VueLazyload from 'vue-lazyload'
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
@@ -47,6 +49,13 @@ Vue.use(iView);
 Vue.use(EffectInput)
 Vue.use(VueQuillEditor)
 
+Vue.use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'dist/error.png',
+  loading: 'static/loading-svg/loading-bars.svg',
+  try: 3 // default 1
+})
+
 let router = new VueRouter({
 	mode: 'history',
 	routes: [
@@ -65,6 +74,10 @@ let router = new VueRouter({
 	{
 		path: '/infoadd',
 		component: AddInfoPage
+	},
+	{
+		path: '/previewadd',
+		component: AddPreviewPage
 	},
 	{
 		path: '/detail',

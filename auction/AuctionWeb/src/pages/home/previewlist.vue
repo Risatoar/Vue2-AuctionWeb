@@ -3,6 +3,9 @@
 		<div class="hnewslist-top">
 			<div class="hnewslist-top-wrap">
 				<h3>您发出过的拍卖信息都在这里</h3>
+				<button @click="toAddPreview" class="btn btn-info previewadd">
+					发布一个呗~
+				</button>
 			</div>
 		</div>
 		<div class="hnewslist-body">
@@ -70,6 +73,11 @@ export default {
 			}
 			]
 		}
+	},
+	methods: {
+		toAddPreview() {
+			this.$router.push({path:'/previewadd'})
+		}
 	}
 }
 </script>
@@ -84,6 +92,10 @@ export default {
 	padding:20px 5px;
 	background-color: #fff;
 	vertical-align:middle;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
 h3{
 	font-family: Helvetica;
@@ -106,6 +118,7 @@ h3{
     -ms-flex-pack: center;
     justify-content: center;
     min-width: 0;
+    text-align: left;
 }
 .hnewslist-block img{
 	float: left;

@@ -1,30 +1,40 @@
 <!--
-拍卖信息添加界面
+拍卖预告信息添加界面
 author：risatoar
-date：2017/12/26
+date：2017/12/27
 -->
 <template>
-	<div class="addinfo">
-		<div class="addinfo-wrap">
-			<div class="addinfo-content">
-				<div class="addinfo-content-head">
-					<div class="addinfo-content-head-title">
+	<div class="addpreview">
+		<div class="addpreview-wrap">
+			<div class="addpreview-content">
+				<div class="addpreview-content-head">
+					<div class="addpreview-content-head-title">
 						现在就来发布一则拍卖消息吧！
 					</div>
-					<button class="btn btn-info addinfo-btn" @click="addinfo">立即发布!</button>
+					<button class="btn btn-info addpreview-btn" @click="addpreview">立即发布!</button>
 				</div>
-				<div class="addinfo-content-addtitle">
+				<div class="addpreview-content-addtitle">
 					<effect-input type="juro" label="点击这里输入标题" v-model="add.title" class="input-title"></effect-input>
 				</div>
-				<div class="addinfo-content-adddescription">
+				<div class="addpreview-content-adddescription">
 					<effect-input type="yoko" label="请输入简介" v-model="add.description" class="input-description"></effect-input>
 				</div>
-				<div class="addinfo-content-body">
+				<div class="timepicker">
+					<span class="timepicker-title">请在这里选择拍卖开始及结束时间</span>
+					<div class="timepicker-date">
+						<Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px" format="yyyy-MM-dd" @on-change="add.setdate=$event">
+						</Date-picker>
+					</div>
+					<span class="timepicker-show">
+		            	拍卖开始日期:{{ add.setdate[0] }}----拍卖结束时间:{{ add.setdate[1] }}
+		            </span>
+				</div>
+				<div class="addpreview-content-body">
 					<h3>请输入拍卖信息主要内容</h3>
 					<vue-editor v-model="add.maintext"></vue-editor>
 					<h2>预览</h2>
-					<div class="addinfo-content-preview">
-						<p v-html="add.maintext" class="addinfo-content-preview-maintext"></p>
+					<div class="addpreview-content-preview">
+						<p v-html="add.maintext" class="addpreview-content-preview-maintext"></p>
 					</div>
 				</div>
 			</div>
@@ -45,9 +55,9 @@ export default {
 				author: '',
 				title: '',
 				description: '',
-				maintext: ''
-			},
-			username: ''
+				maintext: '',
+				setdate: ''
+			}
 		}
 	},
 	methods: {
@@ -67,10 +77,10 @@ export default {
         setAuthor() {
         	this.add.author = this.getCookie("user")
         },
-		addinfo() {
+		addpreview() {
 			////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
 			this.setAuthor()
-			axios.post("/addinfo",this.add).then((res)=> {
+			axios.post("/addpreview",this.add).then((res)=> {
 				console.log(res);
 				if(res.status == '200'){
 					this.success()

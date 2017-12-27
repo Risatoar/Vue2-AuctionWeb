@@ -54,6 +54,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **粒子效果背景**：  vue-particles
 - **输入框特效**：  effect-input
 - **富文本编辑器**：  vue2-editor
+- **图片懒加载**：  vue-lazyload
  -------------------
 
 ## 后端开发

@@ -31,59 +31,12 @@
 						  <content-placeholders-heading :img="true" />
 						</content-placeholders>
 						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
 					</div>
 					<div v-for="item in infolist">
 						<router-link  :to="{path: 'pages/' + item._id}">
 							<div class="info-body-list-block" v-touch-ripple>
 								<div class="list-block-left">
-									<img class="left-img" src="../../../static/img/mi6.jpg" >
+									<img class="left-img" src="/static/img/mi6.jpg" >
 								</div>
 								<div class="list-block-right">
 									<h3><a class="block-right-title">{{ item.title }}</a></h3>
@@ -92,7 +45,6 @@
 									<div class="block-right-foot">
 										<p>
 											<span class="block-right-author">{{ item.author }}</span>
-											<i>.</i>
 											<span class="block-right-date">{{ item.date }}</span>
 										</p>
 									</div>

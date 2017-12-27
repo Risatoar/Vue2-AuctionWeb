@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var auction = require('./routes/auctioninfo.js');
 var info = require('./routes/info.js');
+let preview = require('./routes/previews.js');
 var app = express();
 
 // view engine setup
@@ -33,6 +34,7 @@ app.use('/', index);
 app.use(users);
 app.use(auction);
 app.use(info);
+app.use(preview);
 
 app.all('*',function (req, res, next) {
 	console.log(req,res)

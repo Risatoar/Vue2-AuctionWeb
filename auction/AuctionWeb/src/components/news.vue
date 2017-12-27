@@ -29,12 +29,12 @@
 										<div class="listcard">
 											<div class="pic">
 												<a href="#">
-												<img :src="item.img" class="card-img" >
+												<img v-lazy="'/static/img/' + item.image" class="card-img" >
 												</a>
 											</div>
 											<div class="mainmsg">
-												<div class="auctionname">{{ item.auctionname }}</div>
-												<div class="auctiondate">{{ item.auctiondate }}</div>
+												<div class="auctionname">{{ item.title }}</div>
+												<div class="auctiondate">{{ item.startdate }}-{{ item.finaldate }}</div>
 												  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/preview'}" v-touch-ripple>查看详情页</router-link>
 											</div>
 										</div>
@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import hotnews from './news/hotnews.vue'
 import auctioninfo from './news/auctionInfo.vue'
 export default {
@@ -96,66 +97,18 @@ export default {
 		return {
 			aucCount: 10000,
 			showimg: require('../../static/img/1a.jpg'),
-			blocklist: [
-			{
-				auctionid: 1,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/1.jpg')
-			},
-			{
-				auctionid: 2,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/2.jpg')
-			},
-			{
-				auctionid: 3,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/3.jpg')
-			},
-			{
-				auctionid: 4,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/4.jpg')
-			},
-			{
-				auctionid: 5,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/5.jpg')
-			},
-			{
-				auctionid: 6,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/6.jpg')
-			},{
-				auctionid: 7,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/7.jpg')
-			},
-			{
-				auctionid: 8,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/7.jpg')
-			},
-			{
-				auctionid: 9,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/7.jpg')
-			},
-			{
-				auctionid: 10,
-				auctionname: '顶级珠宝竞品',
-				auctiondate: '2017/12/10',
-				img: require('../../static/img/7.jpg')
-			}]
+			blocklist: []
+		}
+	},
+	mounted() {
+		this.getAllPreview()
+	},
+	methods: {
+		getAllPreview() {
+			axios.get("/allpreviews").then((result)=>{
+				let res = result.data;
+				this.blocklist = res.result.list;
+			});
 		}
 	}
 }

@@ -55,6 +55,8 @@
 // 辅助文字
 @fm-Help: Help;
 
+
+// 拍卖信息增加页
 .addinfo{
 	width: 1200px;
 	margin: 0 auto;
@@ -91,10 +93,89 @@
 			.addinfo-content-body{
 				padding:15px 10px;
 			}
+			h3{
+				padding:15px 0;
+			}
 			h2{
-				margin-top: 20px;
+				padding:30px 0 15px 0;
 			}
 			.addinfo-content-preview{
+				min-height: 200px;
+				padding:15px 10px;
+				border: 1px solid @Disabled;
+				height: 100%;
+				text-indent:25px;
+				color:#657180;
+				font-family:Text;
+				line-height: 2;
+			}
+		}
+	}
+}
+
+
+// 拍卖预告添加页
+.addpreview{
+	width: 1200px;
+	margin: 0 auto;
+	.addpreview-wrap{
+		padding: 2em 0;
+		.addpreview-content{
+			position: relative;
+			border: 1px solid @Disabled;
+			.addpreview-content-head-title{
+				padding:15px 10px;
+				font-size: @fz-MainHead+8px;
+				font-family: @fm-MainHead;
+			}
+			.addpreview-btn{
+				top: 10px;
+				right: 10px;
+				position: absolute;
+				font-size: @fz-MainHead;
+				font-family: @fm-MainHead;
+			}
+			.addpreview-content-addtitle{
+				padding:15px 10px;
+				.input-title{
+					width: 100%;
+				}
+			}
+			.addpreview-content-adddescription{
+				padding:15px 10px;
+				.input-description{
+					width: 100%;
+				}
+			}
+			.timepicker{
+				width: 100%;
+				display: inline-flex;
+				flex-flow: row nowrap;
+				align-items: center;
+				padding:25px 10px 50px 10px;
+				.timepicker-title{
+					font-size: @fz-MainHead + 6px;
+					font-family: @fz-MainHead;
+				}
+				.timepicker-date{
+					padding:0 30px;
+				}
+				.timepicker-show{
+					color: @Content;
+					font-size: @fz-MainHead;
+					font-family: @fz-MainHead;
+				}
+			}
+			.addpreview-content-body{
+				padding:15px 10px;
+			}
+			h3{
+				padding:15px 0;
+			}
+			h2{
+				padding:30px 0 15px 0;
+			}
+			.addpreview-content-preview{
 				min-height: 200px;
 				padding:15px 10px;
 				border: 1px solid @Disabled;
