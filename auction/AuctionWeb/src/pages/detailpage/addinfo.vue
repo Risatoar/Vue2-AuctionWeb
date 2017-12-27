@@ -9,15 +9,16 @@
 					<button class="btn btn-info addinfo-btn" @click="addinfo">立即发布!</button>
 				</div>
 				<div class="addinfo-content-addtitle">
-					<effect-input type="haruki" label="请输入标题" v-model="add.title" class="input-title"></effect-input>
+					<effect-input type="juro" label="请输入标题" v-model="add.title" class="input-title"></effect-input>
 				</div>
 				<div class="addinfo-content-adddescription">
-					<effect-input type="haruki" label="请输入简介" v-model="add.description" class="input-description"></effect-input>
+					<effect-input type="yoko" label="请输入简介" v-model="add.description" class="input-description"></effect-input>
 				</div>
 				<div class="addinfo-content-body">
 					<vue-editor v-model="add.maintext"></vue-editor>
+					<h2>预览</h2>
 					<div class="addinfo-content-preview">
-						<p v-html=""></p>
+						<p v-html="add.maintext" class="addinfo-content-preview-maintext"></p>
 					</div>
 				</div>
 			</div>

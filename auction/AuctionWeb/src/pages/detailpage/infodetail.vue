@@ -47,7 +47,7 @@
 						               	</div>
 						               </Tab-pane>
 						               <Tab-pane label="详情页面">
-						               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text" v-html="infodetaillist.maintext"></p>
+						               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text;line-height:2;" v-html="infodetaillist.maintext"></p>
 						               </Tab-pane>
 						           </Tabs>
 						       </i-col>

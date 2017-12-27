@@ -3,7 +3,7 @@
 	<vue-particles
 	    color="#2d8cf0"
 	    :particleOpacity="0.7"
-	    :particlesNumber="80"
+	    :particlesNumber="50"
 	    shapeType="star"
 	    :particleSize="4"
 	    linesColor="#5cadff"
