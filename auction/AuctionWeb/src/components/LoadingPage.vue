@@ -1,18 +1,23 @@
-<template> 
-  <div class="loading"> 
-    <div class="loading" > 
-      <div id="loaderImage"></div> 
-    </div> 
-  </div> 
-</template> 
- 
+<!--
+loading全局组件
+author：risatoar
+date：null
+-->
+<template>
+  <div class="loading">
+    <div class="loading" >
+      <div id="loaderImage"></div>
+    </div>
+  </div>
+</template>
+
 <script>
-export default { 
-  name: 'loading' 
-} 
-</script> 
- 
-<style> 
+export default {
+  name: 'loading'
+}
+</script>
+
+<style>
    #loaderImage
 {
     position: absolute;

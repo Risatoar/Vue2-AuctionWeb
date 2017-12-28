@@ -48,7 +48,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **less编译工具**： koala
 - **端口监听**： 8080
 - **编辑器**：  sublime text3
-- **版本依赖管理**：  npm
+- **包管理工具**：  npm
 - **touch样式管理**：  vue-touch-ripple
 - **组件按需加载管理**：  babel-plugin-import
 - **列表页组件加载渲染**：  vue-content-placeholders

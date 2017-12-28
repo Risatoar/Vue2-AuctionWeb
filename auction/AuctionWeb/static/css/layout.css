@@ -119,7 +119,7 @@ body {
   width: 100px;
   display: flex;
   flex-direction: column;
-  text-align: center;
+  align-items: center;
 }
 .user-list a {
   height: 40px;

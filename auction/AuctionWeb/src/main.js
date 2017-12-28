@@ -30,6 +30,7 @@ import TouchRipple from 'vue-touch-ripple'
 import EffectInput from 'effect-input'
 import VueQuillEditor from 'vue-quill-editor'
 import VueLazyload from 'vue-lazyload'
+import infiniteScroll from 'vue-infinite-scroll'
 // import LoginPage from './components/user/login.vue'
 // import RegisterPage from './components/user/register.vue'
 
@@ -48,6 +49,7 @@ Vue.use(VueParticles)
 Vue.use(iView);
 Vue.use(EffectInput)
 Vue.use(VueQuillEditor)
+Vue.use(infiniteScroll)
 
 Vue.use(VueLazyload, {
   preLoad: 1.3,

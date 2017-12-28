@@ -1,33 +1,50 @@
+<!--
+登录组件
+author：risatoar
+date：null
+-->
+
 <template>
   <div>
     <div class="dialog">
+      <!-- 设置遮罩,点击触发登录框隐藏事件 -->
       <div class="dialog-cover"  v-if="isShow" @click="close"></div>
+      <!-- 登录框隐藏及展示动画 -->
       <transition name="pass">
+        <!-- 登录框整体 -->
         <div class="dialog-content"  v-if="isShow">
           <h3 style="padding:15px 0;">账号密码登录</h3>
+          <!-- 设置关闭,点击触发登录框隐藏事件 -->
           <p class="dialog-close" @click="close">x</p>
           <div class="form-group">
+          <!-- 输入提示 -->
           <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的用户名">
+          <!-- 用户名输入 -->
           <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="userlogin.usernamelogin">
           </Poptip>
           <br>
+          <!-- 用户名错误信息提示 -->
           <span class="loginerror">{{ userErrors.errorText }}</span>
           </div>
           <div class="form-group">
+          <!-- 输入提示 -->
           <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的密码">
+          <!-- 密码输入 -->
           <input type="password" class="form-control" id="login-pwd" placeholder="请输入密码" v-model="userlogin.pwdlogin">
           </Poptip>
           <br>
+          <!-- 密码错误信息提示 -->
           <span class="loginerror">
             <Poptip title="提示标题" content="提示内容">
                     {{ passwordErrors.errorText }}
             </Poptip>
           </span>
           </div>
-           <span>{{ errorText }}</span><br>
+          <!-- 总体错误检查提示 -->
+          <span>{{ errorText }}</span><br>
           <button type="button" class="btn btn-info login" @click="login">LOGIN</button>
           <div class="findpwd">找回密码</div>
-          <div class="toregister" @click="changetoreg">注册</div>
+          <div class="toregister" @click="changeToReg">注册</div>
           <slot></slot>
         </div>
       </transition>
@@ -57,6 +74,7 @@ export default {
     }
   },
   computed: {
+    // 用户名输入验证
     userErrors () {
       let errorText, status
       if (!/^\w{6,20}$/g.test(this.userlogin.usernamelogin)) {
@@ -72,6 +90,7 @@ export default {
         errorText
       }
     },
+    // 密码输入验证
     passwordErrors () {
       let errorText, status
       if (!/^\w{6,10}$/g.test(this.userlogin.pwdlogin)) {
@@ -88,20 +107,22 @@ export default {
       }
     }
   },
-  mounted() {
-  },
   methods: {
+    // 登录成功全局消息提醒,引用iview的全局消息插件
     success (nodesc) {
         this.$Notice.success({
             title: '登录成功'
         });
     },
-    changetoreg() {
+    // 切换到注册组件
+    changeToReg() {
       this.$emit('on-change')
     },
+    // 关闭登录组件
     close () {
       this.$emit('on-close')
     },
+    // 利用post向后台传登录表单,验证登录信息
     login() {
       if (!this.userErrors.status || !this.passwordErrors.status) {
         this.errorText = '部分选项未通过'

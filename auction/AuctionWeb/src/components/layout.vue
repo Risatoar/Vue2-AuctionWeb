@@ -1,13 +1,21 @@
+<!--
+layout全局组件
+author：risatoar
+date：null
+-->
 <template>
 	<div>
+		<!-- layout头部,用来展示导航栏信息 -->
 		<div class="head">
 			<div class="head-wrap">
 					<div class="head-inner">
+						<!-- 公司标志 -->
 						<div class="head-inner-company">
 						<router-link :to="{path: '/'}">
 							<span> {{ company }} </span>
 						</router-link>
 						</div>
+						<!-- 导航栏 -->
 						<div class="head-inner-nav">
 							<ul>
 								<keep-alive>
@@ -20,15 +28,19 @@
 								<router-link :to="{path: '/detail/' + 'preview'}" tag="li"> 拍卖预告 </router-link>
 							</ul>
 						</div>
+						<!-- 登录注册模块 -->
 						<div class="head-inner-login">
 							<!-- <router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" /></router-link> -->
 							<!-- <router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> -->
 							<li v-if="username !== ''">
-								<Dropdown trigger="custom" :visible="visible" style="margin-left: 40px">
+								<!-- 下拉组件 -->
+								<Dropdown trigger="custom" :visible="visible" style="margin-left: 20px">
+									<!-- 头像 -->
 								    <a href="javascript:void(0)" @click="handleOpen">
 								        <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" @click="handleOpen"/>
 								        <Icon type="arrow-down-b"></Icon>
 								    </a>
+								    <!-- 下拉组件详情 -->
 								    <Dropdown-menu slot="list">
 								    	<ul class="user-list" @click="handleClose">
 								    		<router-link :to="{ path : '/user/'+username}" tag="a">
@@ -60,13 +72,15 @@
 							<li v-if="isAdmin === 'true'" >管理员界面</li>
 						</div>
 					</div>
-				</div>
 			</div>
-		<div class="content">
+		</div>
+		<!-- layout内容详情区块 -->
+		<div class="content" @click="handleClose">
 		  <keep-alive>
 			<router-view></router-view>
 		  </keep-alive>
 		</div>
+		<!-- layout脚注区块 -->
 		<div class="foot">
 			<p>
 				Proudly By XuXiang Copyright © 2017. All rights reserved.
@@ -132,6 +146,7 @@ export default{
 		this.setAdmin()
 	},
 	methods: {
+		// 获取当前路径cookie
 	    getCookie (cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -142,18 +157,22 @@ export default{
         }
         return "";
         },
+        // 设置cookie的属性
         setCookie (cname, cvalue, exdays) {
             var d = new Date();
             d.setTime(d.getTime() + (exdays*24*60*60*1000));
             var expires = "expires="+d.toUTCString();
             document.cookie = cname + "=" + cvalue + "; " + expires;
         },
+        // 通过cookie获取username的值
         setUsername () {
 		    this.username = this.getCookie("user")
         },
+        // 通过cookie获取管理员权限的值
         setAdmin() {
         	this.isAdmin = this.getCookie("admin")
         },
+        // 登录成功事件
         onSuccessLog (data) {
 		  this.closeDialog ('isLoginDialog')
 		  // this.username = data.username
@@ -165,15 +184,21 @@ export default{
 		aboutClick() {
 		  this.isShowAboutDialog = true
 		},
+		// 显示登录界面
 		loginClick() {
 			this.isLoginDialog = true
+			this.isRegDialog = false
 		},
+		// 显示注册界面
 		regClick() {
 			this.isRegDialog = true
+			this.isLoginDialog = false
 		},
+		// 关闭弹出层
 		closeDialog(attr) {
           this[attr] = false
         },
+        // 退出登录
         quit() {
         	this.setCookie("user", "", -1);
         	this.setCookie("admin", "", -1);
@@ -182,11 +207,13 @@ export default{
         	this.quitsuccess(true)
         	this.$router.go(0)
         },
+        // 退出成功全局提示
         quitsuccess (nodesc) {
            this.$Notice.success({
                title: '退出成功'
            });
         },
+        // 从注册转到登录
         changetoLogin() {
         	let _this = this
         	this.timeout = setTimeout(()=>{
@@ -194,6 +221,7 @@ export default{
         		_this.isLoginDialog = true;
         	},1000)
         },
+        // 从登录转到注册
         changetoRegister() {
         	let _this = this
         	this.timeout = setTimeout(()=>{
@@ -201,9 +229,11 @@ export default{
         		_this.isLoginDialog = false;
         	},500)
         },
+        // 头像处下拉框显示
         handleOpen () {
             this.visible = true;
         },
+        // 头像处下拉框隐藏
         handleClose () {
             this.visible = false;
         }

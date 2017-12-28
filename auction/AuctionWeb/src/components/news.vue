@@ -1,3 +1,8 @@
+<!--
+主页消息模块
+author：risatoar
+date：null
+-->
 <template>
 	<div>
 		<div class="message">
@@ -97,7 +102,7 @@ export default {
 	},
 	data() {
 		return {
-			aucCount: 10000,
+			aucCount: '',
 			showimg: require('../../static/img/1a.jpg'),
 			blocklist: []
 		}
@@ -110,6 +115,7 @@ export default {
 			axios.get("/allpreviews").then((result)=>{
 				let res = result.data;
 				this.blocklist = res.result.list;
+				this.aucCount = res.result.count;
 			});
 		}
 	}

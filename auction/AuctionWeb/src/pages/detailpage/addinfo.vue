@@ -11,7 +11,7 @@ date：2017/12/26
 					<div class="addinfo-content-head-title">
 						现在就来发布一则拍卖消息吧！
 					</div>
-					<button class="btn btn-info addinfo-btn" @click="addinfo">立即发布!</button>
+					<button class="btn btn-info addinfo-btn" @click="addInfo">立即发布!</button>
 				</div>
 				<div class="addinfo-content-addtitle">
 					<effect-input type="juro" label="点击这里输入标题" v-model="add.title" class="input-title"></effect-input>
@@ -67,7 +67,7 @@ export default {
         setAuthor() {
         	this.add.author = this.getCookie("user")
         },
-		addinfo() {
+		addInfo() {
 			////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
 			this.setAuthor()
 			axios.post("/addinfo",this.add).then((res)=> {

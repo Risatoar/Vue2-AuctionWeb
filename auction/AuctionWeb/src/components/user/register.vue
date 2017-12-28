@@ -1,15 +1,22 @@
 <template>
   <div>
     <div class="dialog">
+      <!-- 设置遮罩,点击触发注册框隐藏事件 -->
       <div class="dialog-cover"  v-if="isShow" @click="close"></div>
+      <!-- 注册框隐藏及展示动画 -->
       <transition name="pass">
+        <!-- 注册框整体 -->
         <div class="dialog-content"  v-if="isShow">
+          <!-- 设置关闭,点击触发登录框隐藏事件 -->
           <p class="dialog-close" @click="close">x</p>
           <h3 style="padding:15px 0;">还没有账号吗？快来注册一个吧！</h3>
           <p>带红色星号的都是必填项目</p>
           <div class="form-group">
+          <!-- 设置红色星号用来区分必填项目 -->
           <label>用户名</label><Icon type="star" style="color:#ed3f14"></Icon>
+          <!-- 注册用户名输入 -->
           <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名" v-model="reguser.username">
+          <!-- 错误信息提示 -->
         <span class="regerror">{{ userErrors.errorText }}</span>
           </div>
           <div class="form-group">
@@ -45,7 +52,7 @@
             <input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail">
             <span class="regerror">{{ mailErrors.errorText }}</span>
           </div>
-          <button type="button" class="btn btn-success" @click="adduser" style="width:200px;">注册</button>
+          <button type="button" class="btn btn-success" @click="addUser" style="width:200px;">注册</button>
           <br><span>{{ errortext }}</span>
           <slot></slot>
         </div>
@@ -82,6 +89,7 @@ export default {
     }
   },
   computed: {
+    // 用户名输入验证
     userErrors () {
       let errorText, status
       if (!/^\w{6,10}$/g.test(this.reguser.username)) {
@@ -97,6 +105,7 @@ export default {
         errorText
       }
     },
+    // 密码输入验证
     passwordErrors () {
       let errorText, status
       if (!/^\w{6,10}$/g.test(this.reguser.pwd)) {
@@ -112,6 +121,7 @@ export default {
         errorText
       }
     },
+    // 真实姓名输入验证
     truenameErrors() {
       let errorText, status
       if (/^\s*$/g.test(this.reguser.truename)) {
@@ -127,6 +137,7 @@ export default {
         errorText
       }
     },
+    // 公司名输入验证
     companyErrors () {
       let errorText, status
       if (/^\s*$/g.test(this.reguser.company)) {
@@ -142,6 +153,7 @@ export default {
         errorText
       }
     },
+    // 电话号码输入验证
     telephoneErrors () {
       let errorText, status
       if (/^\s*$/g.test(this.reguser.telephone)) {
@@ -161,6 +173,7 @@ export default {
         errorText
       }
     },
+    // 电子邮箱输入验证
     mailErrors () {
       let errorText, status
       if (/^\s*$/g.test(this.reguser.mail)) {
@@ -180,30 +193,35 @@ export default {
         errorText
       }
     },
+    // 输入错误是否存在判断
     errorfind() {
       if (this.userErrors.status || this.passwordErrors.status || this.companyErrors.status || this.telephoneErrors.status || this.mailErrors.status || this.truenameErrors.status) {
         this.errortext = ''
       }
     }
   },
-  mounted() {
-      this.getuser()
-  },
+  // mounted() {
+  //     this.getUser()
+  // },
   methods: {
     close () {
       this.$emit('on-close')
     },
-    getuser() {
-      axios.get("/users").then((result)=>{
-          let res = result.data;
-        });
-    },
+    // getUser() {
+    //   axios.get("/users").then((result)=>{
+    //       let res = result.data;
+    //     });
+    // },
+
+
+    // 注册成功全局提示
     regsuccess (nodesc) {
        this.$Notice.success({
            title: '注册成功'
        });
     },
-    adduser() {
+    // 利用post向后台传注册表单,验证注册信息
+    addUser() {
       if (!this.userErrors.status || !this.passwordErrors.status || !this.companyErrors.status || !this.telephoneErrors.status || !this.mailErrors.status || !this.truenameErrors.status) {
         this.errortext = '请验证输入信息'
       }else{

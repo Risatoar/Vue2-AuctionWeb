@@ -40,6 +40,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - [ ] 拍卖预告系统
 - [ ] 后台管理系统
 
+
 ## 前端开发
 - **框架**： vue-v2.9.1全家桶+bootstrap-v3.37+jQuery-v1.8.0
 - **css处理**： less
@@ -47,11 +48,14 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **less编译工具**： koala
 - **端口监听**： 8080
 - **编辑器**：  sublime text3
-- **版本依赖管理**：  npm
+- **包管理工具**：  npm
 - **touch样式管理**：  vue-touch-ripple
 - **组件按需加载管理**：  babel-plugin-import
 - **列表页组件加载渲染**：  vue-content-placeholders
 - **粒子效果背景**：  vue-particles
+- **输入框特效**：  effect-input
+- **富文本编辑器**：  vue2-editor
+- **图片懒加载**：  vue-lazyload
  -------------------
 
 ## 后端开发
@@ -75,3 +79,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **csscomb**： css样式排序 使用方法：菜单Tools->Run CSScomb或在CSS文件中按快捷键Ctrl+Shift+C
 - **trailingspaces**： 能高亮显示多余的空格和Tab
 - **JsFormat**： 可在JS文件中通过鼠标右键->JsFormat或键盘快捷键Ctrl+Alt+F对JS进行格式化
+
+## MIT
+- **注意**： 本项目不遵从mit协议,请勿用于商业用途,分享转载请发信至作者邮箱，所有解释权归copyright所有。
+

@@ -1,7 +1,14 @@
+<!--
+弹出层组件
+author：risatoar
+date：null
+-->
 <template>
   <div>
     <div class="dialog">
+      <!-- 设置遮罩,点击触发弹出层隐藏事件 -->
       <div class="dialog-cover"  v-if="isShow" @click="close"></div>
+      <!-- 弹出层隐藏及展示动画 -->
       <transition name="pass">
         <div class="dialog-content"  v-if="isShow">
           <p class="dialog-close" @click="close">x</p>
