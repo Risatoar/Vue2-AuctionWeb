@@ -48,7 +48,7 @@ router.post("/addinfo",(req,res,next)=>{
     title: req.body.title,
     description: req.body.description,
     maintext: req.body.maintext,
-    stars: 0,
+    stars: 0.0,
     date: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
   };
   new Infos(infoma).save((err,doc)=>{

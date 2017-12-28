@@ -25,20 +25,22 @@
 						<div class="auctionlist">
 							<ul>
 								<li v-for="(item,index) in blocklist">
-									<Poptip trigger="hover" title="点击“查看详情页”按钮能看更多消息">
-										<div class="listcard">
-											<div class="pic">
-												<a href="#">
-												<img v-lazy="'/static/img/' + item.image" class="card-img" >
-												</a>
+									<span v-if="index<=14">
+										<Poptip trigger="hover" title="点击“查看详情页”按钮能看更多消息">
+											<div class="listcard">
+												<div class="pic">
+													<a href="#">
+													<img v-lazy="'/static/img/' + item.image" class="card-img" >
+													</a>
+												</div>
+												<div class="mainmsg">
+													<div class="auctionname">{{ item.title }}</div>
+													<div class="auctiondate">{{ item.startdate }}-{{ item.finaldate }}</div>
+													  <router-link class="btn btn-info detailbtn" :to="{path: '/detail/preview/auctionname/' + item._id}" v-touch-ripple>查看详情页</router-link>
+												</div>
 											</div>
-											<div class="mainmsg">
-												<div class="auctionname">{{ item.title }}</div>
-												<div class="auctiondate">{{ item.startdate }}-{{ item.finaldate }}</div>
-												  <router-link class="btn btn-info detailbtn" :to="{path: '/detail/preview/auctionname/' + item._id}" v-touch-ripple>查看详情页</router-link>
-											</div>
-										</div>
-									</Poptip>
+										</Poptip>
+									</span>
 								</li>
 							</ul>
 						</div>

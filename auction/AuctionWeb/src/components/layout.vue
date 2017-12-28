@@ -21,11 +21,39 @@
 							</ul>
 						</div>
 						<div class="head-inner-login">
-							<router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" /></router-link>
-							<li v-if="username === ''" @click="loginClick">登录  <Icon type="log-in"></Icon></li>
-							<li class="nav-pile" >|</li>
+							<!-- <router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" /></router-link> -->
+							<!-- <router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> -->
+							<li v-if="username !== ''">
+								<Dropdown trigger="custom" :visible="visible" style="margin-left: 40px">
+								    <a href="javascript:void(0)" @click="handleOpen">
+								        <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" @click="handleOpen"/>
+								        <Icon type="arrow-down-b"></Icon>
+								    </a>
+								    <Dropdown-menu slot="list">
+								    	<ul class="user-list" @click="handleClose">
+								    		<router-link :to="{ path : '/user/'+username}" tag="a">
+								    			<Icon type="person"></Icon> 个人中心
+								    		</router-link>
+								    		<router-link :to="{ path : '/infoadd/'}" tag="a">
+								    			<Icon type="edit"></Icon> 写个公告
+								    	    </router-link>
+								    		<router-link :to="{ path : '/previewadd/'}" tag="a">
+								    			<Icon type="compose"></Icon> 发个预告
+								    		</router-link>
+								    		<a v-if="username !== ''" @click="quit">
+								    			<Icon type="log-out"></Icon> 退出登录
+								    		</a>
+								    	</ul>
+								        <div style="text-align: center;margin:10px;">
+								            <i-button type="primary" @click="handleClose">关闭</i-button>
+								        </div>
+								    </Dropdown-menu>
+								</Dropdown>
+							</li>
+						    <!-- </router-link> -->
+							<li v-if="username === ''" @click="loginClick">登录</li>
+							<li class="nav-pile" v-if="username === ''">|</li>
 							<li v-if="username === ''" @click="regClick">注册</li>
-							<li v-if="username !== ''" @click="quit">退出  <Icon type="log-out"></Icon></li>
 							<li class="nav-pile" >|</li>
 							<li @click="aboutClick">关于我们</li>
 							<li class="nav-pile" v-if="isAdmin === 'true'">|</li>
@@ -75,6 +103,7 @@ export default{
 	},
 	data() {
 		return {
+			visible: false,
 			ucookie: '',
 			username: '',
 			isAdmin: '',
@@ -171,185 +200,17 @@ export default{
         		_this.isRegDialog = true;
         		_this.isLoginDialog = false;
         	},500)
+        },
+        handleOpen () {
+            this.visible = true;
+        },
+        handleClose () {
+            this.visible = false;
         }
 	}
 }
 </script>
 
 <style>
-*
-{
-    font: inherit;
-    font-size: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    vertical-align: baseline;
-
-    border: 0;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-a
-{
-    text-decoration-line: none;
-    color: inherit;
-}
-
-p
-{
-    text-decoration: none;
-}
-
-ul,
-li
-{
-    list-style: none;
-}
-
-table
-{
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-body
-{
-    font-size: 16px;
-    line-height: 1;
-
-    color: #000;
-}
-
-.head
-{
-    line-height: 50px;
-
-    width: 100%;
-    height: 80px;
-
-    background-color: #222;
-    -webkit-box-shadow: 2px 2px 5px #333;
-            box-shadow: 2px 2px 5px #333;
-    position:fixed;
-	left:0;
-	top:0;
-	z-index: 999;
-}
-
-.head-wrap{
-}
-
-.head-inner
-{
-    width: 1200px;
-    margin: 0 auto;
-}
-
-.head-inner-company
-{
-    font-size: 24px;
-    line-height: 80px;
-
-    float: left;
-
-    width: 300px;
-
-    color: #fff;
-}
-
-.head-inner-nav
-{
-    font-size: 24px;
-    line-height: 80px;
-
-    float: left;
-
-    margin: 0 auto;
-
-    color: #fff;
-
-}
-
-.head-inner-nav li
-{
-    font-size: 20px;
-    line-height: 80px;
-
-    float: left;
-
-    width: 100px;
-
-    text-align: center;
-
-    color: #fff;
-    background-color: #080808;
-}
-
-.head-inner-nav li:hover
-{
-    cursor: pointer;
-
-    background-color: #222;
-}
-
-.head-inner-login
-{
-    float: right;
-
-    color: #fff;
-}
-
-.head-inner-login li
-{
-    line-height: 80px;
-
-    float: left;
-
-    cursor: pointer;
-}
-
-.nav-pile
-{
-    padding: 0 10px;
-}
-
-.foot
-{
-    line-height: 80px;
-
-    clear: both;
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-align: center;
-
-    width: 100%;
-    height: 80px;
-
-    left:0;
-    bottom:0;
-    background: #e3e4e8;
-}
-.form-control{
-	margin: 0 auto;
-	width: 400px;
-}
-.content{
-	background-color: #f8f8f9;
-	margin-top: 80px;
-	width: 100%;
-	position: relative;
-	min-height: 900px;
-}
-.top{
-    padding: 10px;
-    background: rgba(0, 153, 229, .7);
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-}
+@import '/static/css/layout.css'
 </style>

@@ -72,10 +72,14 @@ export default {
 		}
 	},
 	mounted() {
-		this.getinfo()
+		this.getinfo();
 	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0);
+		},
 		getinfo() {
+			this.gotop();
 			axios.get("/information").then((result)=>{
 				this.loading = false;
 				let res = result.data;
