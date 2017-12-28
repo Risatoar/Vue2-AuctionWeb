@@ -33,6 +33,8 @@
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-adddescription .input-description {
   width: 100%;
+  text-align: center;
+  text-indent: 25px;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-body {
   padding: 15px 10px;
@@ -81,12 +83,15 @@
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-addtitle .input-title {
   width: 100%;
+  text-align: center;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-adddescription {
   padding: 15px 10px;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-adddescription .input-description {
   width: 100%;
+  text-align: center;
+  text-indent: 25px;
 }
 .addpreview .addpreview-wrap .addpreview-content .timepicker {
   width: 100%;

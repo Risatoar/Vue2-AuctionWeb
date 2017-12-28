@@ -51,6 +51,7 @@ export default {
 }
 
 .dialog {
+  display: inline-block;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -59,7 +60,7 @@ export default {
   background: #000;
   opacity: .1;
   position: fixed;
-  z-index: 5;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
@@ -67,6 +68,7 @@ export default {
 }
 .dialog-content {
   width: 40%;
+  display: inline-block;
   position: fixed;
   max-height: 50%;
   overflow: auto;
@@ -74,7 +76,7 @@ export default {
   top: 20%;
   left: 50%;
   margin-left: -20%;
-  z-index: 10;
+  z-index: 999;
   padding: 2%;
   line-height: 1.6;
 }
@@ -87,5 +89,7 @@ export default {
   text-align: center;
   cursor: pointer;
 }
-
+p{
+  text-align: center;
+}
 </style>

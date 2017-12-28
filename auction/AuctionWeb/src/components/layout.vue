@@ -47,7 +47,9 @@
 		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')" @has-log="onSuccessLog" @on-change="changetoRegister"></login>
 		<register :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')" @on-change="changetoLogin"></register>
 		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
-			公司名称：{{ company }}
+			<p>公司名称：{{ company }}</p>
+			<p>公司电话：1111111111111</p>
+			<p>法人：risatoar</p>
 		</dialog-box>
 		<loading></loading>
 		<Back-top :height="100" :bottom="100">

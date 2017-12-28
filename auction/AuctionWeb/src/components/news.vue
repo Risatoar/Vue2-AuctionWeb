@@ -35,7 +35,7 @@
 											<div class="mainmsg">
 												<div class="auctionname">{{ item.title }}</div>
 												<div class="auctiondate">{{ item.startdate }}-{{ item.finaldate }}</div>
-												  <router-link class="btn btn-info detailbtn" :to="{path: 'detail/preview'}" v-touch-ripple>查看详情页</router-link>
+												  <router-link class="btn btn-info detailbtn" :to="{path: '/detail/preview/auctionname/' + item._id}" v-touch-ripple>查看详情页</router-link>
 											</div>
 										</div>
 									</Poptip>

@@ -55,3 +55,9 @@
   float: right;
   margin-right: 15px;
 }
+.infotitle {
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

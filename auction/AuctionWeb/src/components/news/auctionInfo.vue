@@ -30,12 +30,14 @@
               Change
           </a>
           <ul>
-              <li v-for="item in randomMovieList" style="width:320px;float:left;padding-bottom:14px;">
-                  <a :href="item.url" target="_blank" style="float:left;">{{ item.name }}</a>
-                  <div style="float:right;">
-                      <Icon type="ios-star" v-for="n in 4" :key="n" style="color:#f5a623"></Icon><Icon type="ios-star" v-if="item.rate >= 4.5" style="color:#f5a623"></Icon><Icon type="ios-star-half" v-else style="color:#f5a623"></Icon>
-                      {{ item.rate }}
-                  </div>
+              <li v-for="item in randomInfoList" style="width:320px;float:left;padding-bottom:14px;">
+	          <router-link  :to="{path: '/detail/pages/' + item._id}">
+	             <a style="float:left;" class="infotitle">{{ item.title }}</a>
+	          </router-link>
+              <div style="float:right;">
+                  <Icon type="ios-star" v-for="n in 4" :key="n" style="color:#f5a623"></Icon><Icon type="ios-star" v-if="item.stars >= 4.5" style="color:#f5a623"></Icon><Icon type="ios-star-half" v-else style="color:#f5a623"></Icon>
+                  {{ item.stars }}
+              </div>
               </li>
           </ul>
       </Card>
@@ -69,64 +71,14 @@ import newsdialog from '../dialog.vue'
 					acTitle: '',
 					acTime: ''
 				},
-				movieList: [
-				    {
-				        name: 'The Shawshank Redemption',
-				        url: 'https://movie.douban.com/subject/1292052/',
-				        rate: 4.9
-				    },
-				    {
-				        name: 'Leon:The Professional',
-				        url: 'https://movie.douban.com/subject/1295644/',
-				        rate: 4.4
-				    },
-				    {
-				        name: 'Farewell to My Concubine',
-				        url: 'https://movie.douban.com/subject/1291546/',
-				        rate: 4.5
-				    },
-				    {
-				        name: 'Forrest Gump',
-				        url: 'https://movie.douban.com/subject/1292720/',
-				        rate: 4.4
-				    },
-				    {
-				        name: 'Life Is Beautiful',
-				        url: 'https://movie.douban.com/subject/1292063/',
-				        rate: 4.5
-				    },
-				    {
-				        name: 'Spirited Away',
-				        url: 'https://movie.douban.com/subject/1291561/',
-				        rate: 4.2
-				    },
-				    {
-				        name: 'Schindlers List',
-				        url: 'https://movie.douban.com/subject/1295124/',
-				        rate: 4.4
-				    },
-				    {
-				        name: 'The Legend of 1900',
-				        url: 'https://movie.douban.com/subject/1292001/',
-				        rate: 4.2
-				    },
-				    {
-				        name: 'WALL·E',
-				        url: 'https://movie.douban.com/subject/2131459/',
-				        rate: 4.3
-				    },
-				    {
-				        name: 'Inception',
-				        url: 'https://movie.douban.com/subject/3541415/',
-				        rate: 4.2
-				    }
-				],
-				randomMovieList: []
+				infoList: [],
+				randomInfoList: []
 			}
 		},
-		mounted() {
+		created() {
 			this.getauctioninfo();
-			this.changeLimit();
+		},
+		mounted() {
 		},
 		methods: {
 			closeDialog(attr) {
@@ -150,26 +102,27 @@ import newsdialog from '../dialog.vue'
                     }
                     return return_array;
                 }
-                this.randomMovieList = getArrayItems(this.movieList, 9);
+                this.randomInfoList = getArrayItems(this.infoList, 9);
             },
 			morenews() {
 				this.isShowAboutDialog = true;
 			},
 			getauctioninfo() {
-				axios.get("/auction").then((result)=>{
+				axios.get("/information").then((result)=>{
 					let res = result.data;
-					this.auctioninfo = res.result.list;
+					this.infoList = res.result.list;
+					this.changeLimit();
 				});
 			},
-			addproduct() {
-				////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
-				axios.post("/auction",this.auction).then((res)=> {
-					console.log(res);
-				}).catch((error)=> {
-					console.log(error);
-				});
-				this.getauctioninfo();
-			}
+			// addproduct() {
+			// 	////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
+			// 	axios.post("/auction",this.auction).then((res)=> {
+			// 		console.log(res);
+			// 	}).catch((error)=> {
+			// 		console.log(error);
+			// 	});
+			// 	this.getauctioninfo();
+			// }
 		}
 	}
 </script>

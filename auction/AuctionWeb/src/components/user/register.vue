@@ -243,6 +243,7 @@ export default {
 }
 
 .dialog {
+  text-align: center;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -280,6 +281,9 @@ export default {
   height: 20px;
   text-align: center;
   cursor: pointer;
+}
+input{
+  text-align: center;
 }
 .regerror{
   color: red;
