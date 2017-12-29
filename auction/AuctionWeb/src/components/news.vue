@@ -34,9 +34,14 @@ date：null
 										<Poptip trigger="hover" title="点击“查看详情页”按钮能看更多消息">
 											<div class="listcard">
 												<div class="pic">
-													<a href="#">
 													<img v-lazy="'/static/img/' + item.image" class="card-img" >
-													</a>
+													<div class="detailwrap">
+														<ul>
+															<li>发布人:{{ item.author }}</li>
+															<li>浏览:{{ item.watchcount }}次</li>
+															<li>描述:{{ item.description }}</li>
+														</ul>
+													</div>
 												</div>
 												<div class="mainmsg">
 													<div class="auctionname">{{ item.title }}</div>
@@ -62,21 +67,17 @@ date：null
 									</a>
 								</div>
 								<ul class="mifb-ul">
-									<li class="col-md-3 asda">
+									<li class="col-md-4 asda">
 										<h3>注册帐号完全免费</h3>
-										<p>使用电子邮箱注册新账号。</p>
+										<p>注册你的专属企业账户。</p>
 									</li>
-									<li class="col-md-3">
-										<h3>开价竞价仅 €1起</h3>
-										<p>开价竞拍，赢取心仪拍品！</p>
+									<li class="col-md-4">
+										<h3>每日资讯一手送达</h3>
+										<p>为您推送每日消息</p>
 									</li>
-									<li class="col-md-3">
+									<li class="col-md-4">
 										<h3>交易付款安全可靠</h3>
 										<p>选择您的付款方式提交您的支付款项。</p>
-									</li>
-									<li class="col-md-3">
-										<h3>中标拍品快速配送</h3>
-										<p>您成功投得的拍品将于3个工作日内安排配送。</p>
 									</li>
 								</ul>
 								<router-link class="btn btn-warning auction-knowledge" :to="{path:'/detail/knowledge'}">

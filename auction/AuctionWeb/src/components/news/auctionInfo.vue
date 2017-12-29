@@ -43,7 +43,7 @@ date：null
           <ul>
               <li v-for="item in randomInfoList" style="width:320px;float:left;padding-bottom:14px;">
 	          <router-link  :to="{path: '/detail/pages/' + item._id}">
-	             <a style="float:left;" class="infotitle">{{ item.title }}</a>
+	             <a style="float:left;text-align:left;" class="infotitle">{{ item.title }}</a>
 	          </router-link>
               <div style="float:right;">
                 <!-- 根据评分来显示星星数 -->

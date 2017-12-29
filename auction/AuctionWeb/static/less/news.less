@@ -91,21 +91,92 @@
 		}
 		.listcard{
 			-webkit-box-shadow: 2px 2px 5px;
-			border-top: 1px solid rgba(34,34,34,0.12);
             box-shadow:  0 2px 5px rgba(34,34,34,0.38);
-			position: relative;
 			background-color: #fff;
 			color: #222;
+			margin-bottom: 20px;
+			border-radius: 4px;
 			overflow: hidden;
+			display: inline-block;
+			vertical-align: middle;
+			-webkit-transform: perspective(1px) translateZ(0);
+			transform: perspective(1px) translateZ(0);
+			-webkit-transition-duration: 0.3s;
+			transition-duration: 0.3s;
+			-webkit-transition-property: box-shadow, transform;
+			transition-property: box-shadow, transform;
 			.pic{
-			width: 100%;
+			width: 200%;
 			height: 260px;
 			margin: 0 auto;
+			position: relative;
 			display: block;
-			.card-img{
-				width: 100%;
-				height: 100%;
+			overflow: hidden;
+			display: inline-block;
+			-webkit-transition-duration: 0.3s;
+			transition-duration: 0.3s;
+				.card-img{
+					position: absolute;
+					right: 50%;
+					width: 50%;
+					height: 100%;
+				}
+				.detailwrap{
+					// background-image:-webkit-linear-gradient(
+					//    to right,
+					//    rgba(0,0,0,0) 0%,
+					//    rgba(0,0,0,0.4) 5%,
+					//    rgba(0,0,0,0.6) 10%,
+					//    rgba(0,0,0,0.6) 90%,
+					//    rgba(0,0,0,0.4) 95%,
+					//    rgba(0,0,0,0) 100%);
+					// background-image: linear-gradient(
+					//    to right,
+					//    rgba(0,0,0,0) 0%,
+					//    rgba(0,0,0,0.4) 5%,
+					//    rgba(0,0,0,0.6) 10%,
+					//    rgba(0,0,0,0.6) 90%,
+					//    rgba(0,0,0,0.4) 95%,
+					//    rgba(0,0,0,0) 100%);
+					background: url(http://www.daoyouz.com/picture/abed28443746d19e427bae2564cc19a4.jpg) no-repeat;
+					opacity: .3;
+					color: #fff;
+					position: absolute;
+					left: 50%;
+					width: 50%;
+					height: 100%;
+					overflow: hidden;
+					ul{
+						padding: 10px 5px;
+						width: 201px;
+						height: 100%;
+						display: flex;
+						flex-direction: column;
+						align-items: stretch;
+						overflow: inherit;
+						li{
+							width: 201px;
+							text-align: left;
+						}
+					}
+				}
 			}
+			.pic:hover{
+			  -webkit-transform: translateX(-201px);
+			  transform: translateX(-201px);
+			  /* move the element up by 5px */
+			}
+		}
+		.listcard:hover, .listcard:focus, .listcard:active {
+		  -webkit-transform: translateY(-5px);
+		  transform: translateY(-5px);
+		  /* move the element up by 5px */
+		}
+		.listcard:hover:before, .listcard:focus:before, .listcard:active:before {
+		  opacity: 1;
+		  -webkit-transform: translateY(5px);
+		  transform: translateY(5px);
+		  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 		}
 		.mainmsg{
 			display: -webkit-box;
@@ -169,6 +240,20 @@
 				float: left;
 				font-weight: 600;
 				margin-bottom: 1.5em;
+				position: relative;
+				display: inline-block;
+				vertical-align: middle;
+				-webkit-transform: perspective(1px) translateZ(0);
+				transform: perspective(1px) translateZ(0);
+				box-shadow: 0 0 1px transparent;
+				-webkit-transition-duration: 0.5s;
+				transition-duration: 0.5s;
+			}
+			li:hover, li:focus, li:active {
+			  -webkit-transform: scale(1.2);
+			  transform: scale(1.2);
+			  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+			  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 			}
 			.mifb-img{
 				z-index: 1000;
@@ -197,7 +282,7 @@
 				width: 140px;
 			}
 		}
-	}
+	
 }
 
 .hideadmin{

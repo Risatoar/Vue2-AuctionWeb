@@ -84,24 +84,82 @@
 }
 .message-inner-middle .message-inner-middle-body .listcard {
   -webkit-box-shadow: 2px 2px 5px;
-  border-top: 1px solid rgba(34, 34, 34, 0.12);
   box-shadow: 0 2px 5px rgba(34, 34, 34, 0.38);
-  position: relative;
   background-color: #fff;
   color: #222;
+  margin-bottom: 20px;
+  border-radius: 4px;
   overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic {
-  width: 100%;
+  width: 200%;
   height: 260px;
   margin: 0 auto;
+  position: relative;
   display: block;
+  overflow: hidden;
+  display: inline-block;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic .card-img {
-  width: 100%;
+  position: absolute;
+  right: 50%;
+  width: 50%;
   height: 100%;
 }
-.message-inner-middle .message-inner-middle-body .listcard .mainmsg {
+.message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap {
+  background: url(http://www.daoyouz.com/picture/abed28443746d19e427bae2564cc19a4.jpg) no-repeat;
+  opacity: .3;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+.message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap ul {
+  padding: 10px 5px;
+  width: 201px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: inherit;
+}
+.message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap ul li {
+  width: 201px;
+  text-align: left;
+}
+.message-inner-middle .message-inner-middle-body .listcard .pic:hover {
+  -webkit-transform: translateX(-201px);
+  transform: translateX(-201px);
+  /* move the element up by 5px */
+}
+.message-inner-middle .message-inner-middle-body .listcard:hover,
+.message-inner-middle .message-inner-middle-body .listcard:focus,
+.message-inner-middle .message-inner-middle-body .listcard:active {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  /* move the element up by 5px */
+}
+.message-inner-middle .message-inner-middle-body .listcard:hover:before,
+.message-inner-middle .message-inner-middle-body .listcard:focus:before,
+.message-inner-middle .message-inner-middle-body .listcard:active:before {
+  opacity: 1;
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+}
+.message-inner-middle .message-inner-middle-body .mainmsg {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -117,7 +175,7 @@
   flex: 1 0 auto;
   padding: 1em;
 }
-.message-inner-middle .message-inner-middle-body .listcard .mainmsg .auctionname {
+.message-inner-middle .message-inner-middle-body .mainmsg .auctionname {
   float: left;
   text-align: left;
   position: relative;
@@ -128,21 +186,21 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
-.message-inner-middle .message-inner-middle-body .listcard .mainmsg .auctiondate {
+.message-inner-middle .message-inner-middle-body .mainmsg .auctiondate {
   text-align: left;
   margin-top: 0.3em;
   font-size: 1em;
   color: #727272;
 }
-.message-inner-middle .message-inner-middle-body .listcard .mainmsg .detailbtn {
+.message-inner-middle .message-inner-middle-body .mainmsg .detailbtn {
   width: 120px;
   margin-top: 0.3em;
   border-radius: 0.5em;
 }
-.message-inner-middle .message-inner-foot {
+.message-inner-foot {
   background-color: #e8edf1;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-background {
+.message-inner-foot .message-inner-foot-background {
   padding: 3em 0;
   clear: both;
   width: 1200px;
@@ -150,32 +208,48 @@
   overflow: hidden;
   margin-top: 3em;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-title {
+.message-inner-foot .message-inner-foot-title {
   z-index: 1000;
   font-weight: 600;
   text-align: center;
   margin-bottom: 1.5em;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-body {
+.message-inner-foot .message-inner-foot-body {
   z-index: 1000;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-body li {
+.message-inner-foot .message-inner-foot-body li {
   z-index: 1000;
   float: left;
   font-weight: 600;
   margin-bottom: 1.5em;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-body .mifb-img {
+.message-inner-foot .message-inner-foot-body li:hover,
+.message-inner-foot .message-inner-foot-body li:focus,
+.message-inner-foot .message-inner-foot-body li:active {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+.message-inner-foot .message-inner-foot-body .mifb-img {
   z-index: 1000;
   width: 100%;
   margin-bottom: 2em;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-body .mifb-img .showimg {
+.message-inner-foot .message-inner-foot-body .mifb-img .showimg {
   z-index: 1000;
   width: 60%;
   height: 20em;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-body p {
+.message-inner-foot .message-inner-foot-body p {
   z-index: 1000;
   display: block;
   color: #727272;
@@ -184,7 +258,7 @@
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
 }
-.message-inner-middle .message-inner-foot .message-inner-foot-body .auction-knowledge {
+.message-inner-foot .message-inner-foot-body .auction-knowledge {
   z-index: 1000;
   margin-top: 3em;
   font-size: 1.3em;
