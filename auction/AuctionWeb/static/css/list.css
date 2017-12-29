@@ -252,6 +252,9 @@
 .preview-body-list-card ul {
   text-align: center;
 }
+.preview-body-list-card .preview-card-name {
+  font-size: 24px;
+}
 .preview-body-list-card li {
   text-align: center;
   padding: 5px;

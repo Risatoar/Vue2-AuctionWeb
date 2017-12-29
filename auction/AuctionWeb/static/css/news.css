@@ -87,6 +87,7 @@
   box-shadow: 0 2px 5px rgba(34, 34, 34, 0.38);
   background-color: #fff;
   color: #222;
+  cursor: pointer;
   margin-bottom: 20px;
   border-radius: 4px;
   overflow: hidden;
@@ -117,7 +118,7 @@
   height: 100%;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap {
-  background: url(http://www.daoyouz.com/picture/abed28443746d19e427bae2564cc19a4.jpg) no-repeat;
+  background: url(http://www.daoyouz.com/picture/abed28443746d19e427bae2564cc19a4.jpg) repeat;
   opacity: .3;
   color: #fff;
   position: absolute;

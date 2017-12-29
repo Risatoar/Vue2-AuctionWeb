@@ -80,6 +80,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **trailingspaces**： 能高亮显示多余的空格和Tab
 - **JsFormat**： 可在JS文件中通过鼠标右键->JsFormat或键盘快捷键Ctrl+Alt+F对JS进行格式化
 
-## MIT
+## License
 - **注意**： 本项目不遵从mit协议,请勿用于商业用途,分享转载请发信至作者邮箱，所有解释权归copyright所有。
 
