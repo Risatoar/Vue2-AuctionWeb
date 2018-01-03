@@ -93,12 +93,10 @@
   overflow: hidden;
   display: inline-block;
   vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
-  -webkit-transition-property: box-shadow, transform;
-  transition-property: box-shadow, transform;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic {
   width: 200%;
@@ -118,8 +116,8 @@
   height: 100%;
 }
 .message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap {
-  background: url(http://www.daoyouz.com/picture/abed28443746d19e427bae2564cc19a4.jpg) repeat;
-  opacity: .3;
+  background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514723571464&di=27736017d381466db98fb2275a86fb2e&imgtype=0&src=http%3A%2F%2Fwww.51pptmoban.com%2Fd%2Ffile%2F2014%2F06%2F08%2F28b48a6780b2b7573bd28e71e83b81f5.jpg) repeat;
+  opacity: .8;
   color: #fff;
   position: absolute;
   left: 50%;

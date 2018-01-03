@@ -14,10 +14,12 @@ date：2017/12/27
 					<button class="btn btn-info addpreview-btn" @click="addpreview">立即发布!</button>
 				</div>
 				<div class="addpreview-content-addtitle">
-					<effect-input type="juro" label="点击这里输入标题" v-model="add.title" class="input-title"></effect-input>
+					<label>点击这里输入标题</label>
+					<input type="text" class="form-control input-title" label="点击这里输入标题" v-model="add.title"></input>
 				</div>
 				<div class="addpreview-content-adddescription">
-					<effect-input type="yoko" label="请输入简介" v-model="add.description" class="input-description"></effect-input>
+					<label>请输入简介</label>
+					<input type="text" class="form-control input-description" label="请输入简介" v-model="add.description"></input>
 				</div>
 				<div class="timepicker">
 					<span class="timepicker-title">请在这里选择拍卖开始及结束时间</span>

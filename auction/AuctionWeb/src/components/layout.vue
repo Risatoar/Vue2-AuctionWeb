@@ -77,7 +77,9 @@ date：null
 		<!-- layout内容详情区块 -->
 		<div class="content" @click="handleClose">
 		  <keep-alive>
-			<router-view></router-view>
+		  	<transition :name="transitionName">
+			<router-view class="child-view"></router-view>
+			</transition>
 		  </keep-alive>
 		</div>
 		<!-- layout脚注区块 -->
@@ -124,7 +126,8 @@ export default{
 			isLoginDialog: false,
 			isRegDialog: false,
 			isShowAboutDialog: false,
-			company: '天台始丰拍卖有限公司',
+			transitionName: 'slide-left',
+			company: '台州始丰拍卖有限公司',
 			navLists: [
 			{
 				name: '拍卖公告'
@@ -237,7 +240,16 @@ export default{
         handleClose () {
             this.visible = false;
         }
-	}
+	},
+	watch: {
+	    '$route' (to, from) {
+	      if(to.path == '/'){
+	        this.transitionName = 'slide-right';
+	      }else{
+	        this.transitionName = 'slide-left';
+	      }
+	    }
+	  }
 }
 </script>
 

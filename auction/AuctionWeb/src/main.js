@@ -25,9 +25,9 @@ import AddPreviewPage from './pages/detailpage/addpreview.vue'
 // 外部插件导入
 import iView from 'iview';
 import VueContentPlaceholders from 'vue-content-placeholders'
-import VueParticles from 'vue-particles'
+// import VueParticles from 'vue-particles'
 import TouchRipple from 'vue-touch-ripple'
-import EffectInput from 'effect-input'
+// import EffectInput from 'effect-input'
 import VueQuillEditor from 'vue-quill-editor'
 import VueLazyload from 'vue-lazyload'
 import infiniteScroll from 'vue-infinite-scroll'
@@ -37,7 +37,7 @@ import infiniteScroll from 'vue-infinite-scroll'
 // 外部样式导入
 require('vue-touch-ripple/component.css')
 import 'iview/dist/styles/iview.css';
-import 'effect-input/dist/index.css'
+// import 'effect-input/dist/index.css'
 
 Vue.config.productionTip = false
 
@@ -45,9 +45,9 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(TouchRipple)
 Vue.use(VueContentPlaceholders)
-Vue.use(VueParticles)
+// Vue.use(VueParticles)
 Vue.use(iView);
-Vue.use(EffectInput)
+// Vue.use(EffectInput)
 Vue.use(VueQuillEditor)
 Vue.use(infiniteScroll)
 

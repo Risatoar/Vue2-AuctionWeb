@@ -14,10 +14,12 @@ date：2017/12/26
 					<button class="btn btn-info addinfo-btn" @click="addInfo">立即发布!</button>
 				</div>
 				<div class="addinfo-content-addtitle">
-					<effect-input type="juro" label="点击这里输入标题" v-model="add.title" class="input-title"></effect-input>
+					<label>点击这里输入标题</label>
+					<input type="text" class="form-control input-title" label="点击这里输入标题" v-model="add.title"></input>
 				</div>
 				<div class="addinfo-content-adddescription">
-					<effect-input type="yoko" label="请输入简介" v-model="add.description" class="input-description"></effect-input>
+					<label>请输入简介</label>
+					<input type="text" class="form-control input-description" label="请输入简介" v-model="add.description"></input>
 				</div>
 				<div class="addinfo-content-body">
 					<h3>请输入拍卖信息主要内容</h3>
