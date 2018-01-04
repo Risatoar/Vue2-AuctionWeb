@@ -44,11 +44,13 @@ body {
 .head-inner {
   width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 .head-inner-company {
   font-size: 24px;
   line-height: 80px;
-  float: left;
   width: 300px;
   color: #fff;
 }
@@ -56,8 +58,6 @@ body {
   width: 500px;
   font-size: 24px;
   line-height: 80px;
-  float: left;
-  margin: 0 auto;
   color: #fff;
 }
 .head-inner-nav li {
@@ -74,7 +74,6 @@ body {
   background-color: #222;
 }
 .head-inner-login {
-  float: right;
   color: #fff;
 }
 .head-inner-login li {

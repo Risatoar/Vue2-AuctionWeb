@@ -15,7 +15,7 @@ date：null
 
 			<!-- 展示数据库最新前四条数据 -->
 			<div class="hotnews-block" v-for="(item,index) in information" :class="[{'hotnewsshow' : index - 3 > 0}]">
-				<router-link :to="{path: '/detail/pages/' + item._id}">
+				<router-link :to="{path: '/detail/info/' + item._id}">
 				<div class="hotnews-block-left" :class="['block' + index]">
 					{{ item.date }}
 				</div>

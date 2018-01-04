@@ -33,7 +33,7 @@
 						<br><br>
 					</div>
 					<div v-for="item in infolist">
-						<router-link  :to="{path: 'pages/' + item._id}">
+						<router-link  :to="{path: 'info/' + item._id}">
 							<div class="info-body-list-block" v-touch-ripple>
 								<div class="list-block-left">
 									<img class="left-img" src="/static/img/mi6.jpg" >

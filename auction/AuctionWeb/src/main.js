@@ -20,6 +20,7 @@ import PreNav from './pages/list/previewnav.vue'
 import HomePage from './pages/home.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
+import PreviewDetailPage from './pages/detailpage/previewdetail.vue'
 import AddInfoPage from './pages/detailpage/addinfo.vue'
 import AddPreviewPage from './pages/detailpage/addpreview.vue'
 
@@ -139,7 +140,7 @@ let router = new VueRouter({
 				}
 			},
 			{
-				path: 'pages/:id',
+				path: 'info/:id',
 				components: {
 					left: InfoNav,
 					right: InfoDetailPage
@@ -147,8 +148,12 @@ let router = new VueRouter({
 				meta: {
 					keepAlive: true
 				}
-			}
+			},
 		]
+	},
+	{
+		path: '/predetail/:id',
+		component: PreviewDetailPage
 	}
 	]
 })

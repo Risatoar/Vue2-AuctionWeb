@@ -7,7 +7,7 @@
 				</div>
 				<div class="preview-body-list">
 					<div class="preview-body-list-card" v-for="item in prelist">
-					    <router-link :to="{path: 'preview/auctionname/' + item._id}">
+					    <router-link :to="{path: '/predetail/' + item._id}">
 							<!-- <div class="preview-card-top">
 								<img class="preview-card-img" src="../../../static/img/mi6.jpg" >
 							</div>

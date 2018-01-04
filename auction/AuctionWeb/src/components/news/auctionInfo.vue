@@ -42,7 +42,7 @@ date：null
           <!-- 消息及评分展示列  -->
           <ul>
               <li v-for="item in randomInfoList" style="width:320px;float:left;padding-bottom:14px;">
-	          <router-link  :to="{path: '/detail/pages/' + item._id}">
+	          <router-link  :to="{path: '/detail/info/' + item._id}">
 	             <a style="float:left;text-align:left;" class="infotitle">{{ item.title }}</a>
 	          </router-link>
               <div style="float:right;">
