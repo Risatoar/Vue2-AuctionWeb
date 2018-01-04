@@ -4,7 +4,7 @@
   		<div class="detail-left">
   		  <div class="left-nav">
   		  	<transition :name="transitionName">
-  		  	<router-view name="left" class="child-view"></router-view>
+  		  	<router-view name="left"></router-view>
   		  	</transition>
   		  </div>
   		</div>
@@ -21,6 +21,7 @@
 export default {
 	data() {
 		return {
+			transitionName: 'slide-left',
 			showLists: [
 			{
 				name: '拍卖公告',

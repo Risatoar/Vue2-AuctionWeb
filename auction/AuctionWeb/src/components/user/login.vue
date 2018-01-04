@@ -180,21 +180,92 @@ export default {
   width: 100%;
   height: 100%;
 }
-.dialog-content {
+@media screen and (max-width: 575px){
+ .dialog-content {
   border: 1px solid #dddee1;
   border-radius: 16px;
-  width: 25%;
+  width: 100%;
+  height: 290px;
   position: fixed;
   max-height: 40%;
-  overflow: auto;
   background: #fff;
   top: 20%;
-  left: 55%;
+  z-index: 999;
+  padding: 10px;
+  display: inline-block;
+  overflow: auto;
+}
+}
+@media screen and (min-width: 576px) and (max-width: 767px){
+ .dialog-content {
+  border: 1px solid #dddee1;
+  border-radius: 16px;
+  width: 460px;
+  height: 290px;
+  position: fixed;
+  max-height: 40%;
+  background: #fff;
+  top: 20%;
+  left: 35%;
   margin-left: -20%;
   z-index: 999;
-  padding: 2%;
-  display: block;
-  line-height: 1.6;
+  padding: 10px;
+  display: inline-block;
+  overflow: auto;
+}
+}
+@media screen and (min-width: 768px) and (max-width: 991px){
+ .dialog-content {
+  border: 1px solid #dddee1;
+  border-radius: 16px;
+  width: 495px;
+  height: 290px;
+  position: fixed;
+  max-height: 40%;
+  background: #fff;
+  top: 20%;
+  left: 40%;
+  margin-left: -20%;
+  z-index: 999;
+  padding: 10px;
+  display: inline-block;
+  overflow: auto;
+}
+}
+@media screen and (min-width: 992px) and (max-width: 1199px){
+ .dialog-content {
+  border: 1px solid #dddee1;
+  border-radius: 16px;
+  width: 495px;
+  height: 290px;
+  position: fixed;
+  max-height: 40%;
+  background: #fff;
+  top: 20%;
+  left: 45%;
+  margin-left: -20%;
+  z-index: 999;
+  padding: 10px;
+  display: inline-block;
+  overflow: auto;
+}
+}
+@media screen and (min-width: 1200px){
+ .dialog-content {
+  border: 1px solid #dddee1;
+  border-radius: 16px;
+  width: 495px;
+  height: 290px;
+  position: fixed;
+  max-height: 40%;
+  background: #fff;
+  top: 20%;
+  left: 35%;
+  z-index: 999;
+  padding: 10px;
+  display: inline-block;
+  overflow: auto;
+}
 }
 .dialog-close {
   position: absolute;

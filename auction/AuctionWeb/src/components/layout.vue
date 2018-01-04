@@ -16,7 +16,7 @@ date：null
 						</router-link>
 						</div>
 						<!-- 导航栏 -->
-						<div class="head-inner-nav">
+						<nav class="head-inner-nav">
 							<ul>
 								<keep-alive>
 								<router-link :to="{path: '/detail/' + 'info'}">
@@ -27,7 +27,7 @@ date：null
 								<router-link :to="{path: '/detail/' + 'knowledge'}" tag="li"> 拍卖知识 </router-link>
 								<router-link :to="{path: '/detail/' + 'preview'}" tag="li"> 拍卖预告 </router-link>
 							</ul>
-						</div>
+						</nav>
 						<!-- 登录注册模块 -->
 						<div class="head-inner-login">
 							<!-- <router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" /></router-link> -->
@@ -104,6 +104,7 @@ date：null
 
 <script>
 import axios from 'axios'
+import { mapState } from 'vuex'
 import loading from './LoadingPage.vue'
 import dialogBox from './dialog.vue'
 import login from './user/login.vue'
@@ -121,8 +122,6 @@ export default{
 		return {
 			visible: false,
 			ucookie: '',
-			username: '',
-			isAdmin: '',
 			isLoginDialog: false,
 			isRegDialog: false,
 			isShowAboutDialog: false,
@@ -148,6 +147,16 @@ export default{
 		this.setUsername();
 		this.setAdmin()
 	},
+	computed: {
+		// 利用mapState简化从vuex取值操作
+		...mapState(['username','isAdmin'])
+		// username() {
+		// 	return this.$store.state.username
+		// },
+		// isAdmin() {
+		// 	return this.$store.state.isAdmin
+		// }
+	},
 	methods: {
 		// 获取当前路径cookie
 	    getCookie (cname) {
@@ -167,22 +176,21 @@ export default{
             var expires = "expires="+d.toUTCString();
             document.cookie = cname + "=" + cvalue + "; " + expires;
         },
-        // 通过cookie获取username的值
+        // 通过cookie获取username的值,把username的值放入Vuex中
         setUsername () {
-		    this.username = this.getCookie("user")
+        	let usernameCookie = this.getCookie("user")
+		    this.$store.commit("updateUserName",usernameCookie)
         },
-        // 通过cookie获取管理员权限的值
+        // 通过cookie获取管理员权限的值,把isAdmin的值放入Vuex中
         setAdmin() {
-        	this.isAdmin = this.getCookie("admin")
+        	let isAdminCookie = this.getCookie("admin")
+        	this.$store.commit("updateIsAdmin",isAdminCookie)
         },
         // 登录成功事件
         onSuccessLog (data) {
 		  this.closeDialog ('isLoginDialog')
-		  // this.username = data.username
-		  // var ucookie = this.cookie
-		  this.username = this.getCookie("user")
-		  this.isAdmin = this.getCookie("admin")
-		  this.$router.go(0)
+		  this.setUsername(),
+		  this.setAdmin()
 		},
 		aboutClick() {
 		  this.isShowAboutDialog = true
@@ -241,6 +249,7 @@ export default{
             this.visible = false;
         }
 	},
+	// watch监听路由跳转,设置跳转动画
 	watch: {
 	    '$route' (to, from) {
 	      if(to.path == '/'){
@@ -249,7 +258,7 @@ export default{
 	        this.transitionName = 'slide-left';
 	      }
 	    }
-	  }
+	}
 }
 </script>
 

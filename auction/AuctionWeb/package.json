@@ -33,7 +33,8 @@
     "vue-router": "^3.0.1",
     "vue-star": "^0.0.4",
     "vue-touch-ripple": "^2.4.0",
-    "vue2-editor": "^2.3.11"
+    "vue2-editor": "^2.3.11",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

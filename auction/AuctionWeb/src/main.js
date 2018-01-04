@@ -2,10 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
 import Vue from 'vue'
+import VueRouter from 'vue-router'
+import Vuex from 'vuex'
 
 // 页面组件导入
 import layout from './components/layout.vue'
-import VueRouter from 'vue-router'
 import IndexPage from './pages/index.vue'
 import InfoPage from './pages/list/info.vue'
 import DetailPage from './pages/detail.vue'
@@ -42,6 +43,7 @@ import 'iview/dist/styles/iview.css';
 Vue.config.productionTip = false
 
 // 外部插件导入
+Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(TouchRipple)
 Vue.use(VueContentPlaceholders)
@@ -58,6 +60,28 @@ Vue.use(VueLazyload, {
   try: 3 // default 1
 })
 
+
+// Vuex配置管理
+const store = new Vuex.Store({
+	state: {
+		nickname: '',
+		username: '',
+		isAdmin: ''
+	},
+	mutations: {
+		updateUserName(state,username){
+			state.username = username;
+		},
+		updateNickName(state,nickname){
+			state.nickname = nickname;
+		},
+		updateIsAdmin(state,isAdmin){
+			state.isAdmin = isAdmin;
+		},
+	}
+});
+
+// 路由配置管理
 let router = new VueRouter({
 	mode: 'history',
 	routes: [
@@ -133,6 +157,7 @@ let router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<layout/>',
   components: { layout }
 })
