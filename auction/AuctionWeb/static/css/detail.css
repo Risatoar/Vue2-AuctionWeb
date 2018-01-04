@@ -8,7 +8,11 @@
 }
 .detail-wrap .detail-body {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
   width: 1200px;
   height: 100%;
