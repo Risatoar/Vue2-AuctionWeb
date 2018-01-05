@@ -127,14 +127,6 @@
   text-align: center;
   width: 240px;
 }
-@-webkit-keyframes navhover{
-  from {background-color: @SubColor;font-size: 25px;-webkit-transform:rotate(10deg);transform:rotate(10deg);}
-  to {background-color: #080808;font-size: 16px;}
-}
-@keyframes navhover{
-  from {background-color: @SubColor;font-size: 25px;-webkit-transform:rotate(10deg);transform:rotate(10deg);}
-  to {background-color: #080808;font-size: 16px;}
-}
 .pre-nav-li li:hover{
   color: #fff;
   background-color: #080808;
@@ -162,10 +154,10 @@
           justify-content: space-between;
 }
 .previewdetail-img{
-  padding: 20px 10px 12px;
   width: 418px;
   height: 418px;
   border: 1px solid @Border;
+  overflow: hidden;
 }
 .previewdetail-information-right{
   width: 730px;
@@ -173,6 +165,7 @@
 }
 .pre-info-right-title{
   width: 730px;
+  font-weight: 700;
   background-color: #fff;
 }
 .pre-info-right-title h2{
@@ -198,13 +191,9 @@
           justify-content: space-between;
   padding: 0 10px 0 8px;
   border-radius: 4px;
-  background-color: rgba(35,35,35,.1);
 }
 .pre-info-right-detail span{
   margin: 0 10px;
-}
-.pre-info-right-detail span::after{
-    content: " ";
 }
 .pre-info-right-warning{
   margin: 10px 0;
@@ -223,4 +212,85 @@
   font-size: @fz-MainHead;
   text-align: center;
   background-color: #3399ff;
+}
+.timeToEnd{
+  line-height: 1.5;
+}
+.timeShow{
+  display: flex;
+  flex-direction: row;
+  font-size: 26px;
+}
+.timeorange{
+  color: @LightPrimary;
+}
+.timered{
+  color: @Error;
+}
+.timeShow div{
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 20px;
+  border: 2px solid ;
+  animation: jump .5s 3;
+}
+.timeShow div::before{
+  content: "";
+  clear: both;
+  display: block;
+}
+.timeShow div::after{
+  content: "";
+  clear: both;
+  display: block;
+}
+.timeShow strong{
+  padding: 0 5px;
+}
+.timeShow strong::before{
+  content: "";
+  clear: both;
+  display: block;
+}
+.timeShow strong::after{
+  content: "";
+  clear: both;
+  display: block;
+}
+@keyframes jump{
+  0% {
+   transform: translate(0px, 0px);
+  }
+  50% {
+     transform: translate(0px, -10px);
+  }
+  100% {
+     transform: translate(0px, 0px);
+  }
+}
+@-webkit-keyframes navhover{
+  from {
+    background-color: @SubColor;
+    font-size: 25px;
+    -webkit-transform:rotate(10deg);
+    transform:rotate(10deg);
+  }
+  to {
+    background-color: #080808;
+    font-size: 16px;
+  }
+}
+@keyframes navhover{
+  0% {
+    background-color: @SubColor;
+    font-size: 25px;
+  }
+  50% {
+    background-color: #4F4F4F;
+  }
+  100% {
+    background-color: #080808;
+    font-size: 16px;
+  }
 }

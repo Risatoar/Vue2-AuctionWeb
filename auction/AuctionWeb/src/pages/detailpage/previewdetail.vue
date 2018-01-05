@@ -1,5 +1,5 @@
 <template>
-<div class="previewdetail-wrap">
+<div class="previewdetail-wrap" @click="dead">
 	<div class="previewdetail-nav">
 		<nav class="pre-nav-li">
 			<ul>
@@ -25,13 +25,17 @@
 					<div class="pre-content">
 						<div class="pre-content-wrap">
 							<div class="pre-description"><Icon type="chatbox-working"></Icon><span>{{ item.description }}</span></div>
-							<div class="pre-startdate"><Icon type="ios-time"></Icon><span>开始时间</span>{{ item.startdate }}</div>
-							<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>结束时间</span>{{ item.finaldate }}</div>
+							<div class="pre-startdate"><Icon type="ios-time"></Icon><span>拍卖开始</span>{{ item.startdate }}</div>
+							<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>拍卖结束</span>{{ item.finaldate }}</div>
 							<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ item.watchcount }}</div>
 							<div class="timeToEnd">
 								<span><h2>距离结束还有</h2></span>
-								<br>
-								<div>10天10时10分10秒</div>
+								<div class="timeShow" :class="[lday>=1?'timeorange':'timered']">
+									<div>{{ lday }}</div><strong>天</strong>
+									<div>{{lhours}}</div><strong>小时</strong>
+									<div>{{lminutes}}</div><strong>分钟</strong>
+									<div>{{lseconds}}</div><strong>秒</strong>
+								</div>
 							</div>
 						</div>
 						<div class="pre-info-right-warning">
@@ -58,6 +62,15 @@ import axios from 'axios'
 export default {
 	data() {
 		return {
+			deadTime: '',
+			infodetaillist: [],
+			lday: '',
+			lhours: '',
+			lminutes: '',
+			lseconds: '',
+			info: {
+				infoid:''
+			},
 			PreList: [
 			{
 				image: '10.jpg',
@@ -68,6 +81,46 @@ export default {
 				watchcount: '1'
 			}
 			]
+		}
+	},
+	mounted() {
+		this.dead()
+	},
+	// watch: {
+	//   '$route': 'getUrl'
+	// },
+	// computed: {
+	// 	dead() {
+	// 		setInterval(this.leftTimer(2018,1,6,12,11,11),1000);
+	// 	}
+	// },
+	methods: {
+		dead() {
+		  setInterval(()=>{
+			this.leftTimer(2018,1,6,14,8,30)
+		  },1000);
+		},
+		leftTimer(year,month,day,hour,minute,second){
+		  var leftTime = (new Date(year,month-1,day,hour,minute,second)) - (new Date()); //计算剩余的毫秒数
+		  var days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数
+		  var hours = parseInt(leftTime / 1000 / 60 / 60 % 24 , 10); //计算剩余的小时
+		  var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟
+		  var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+		  days = this.checkTime(days);
+		  hours = this.checkTime(hours);
+		  minutes = this.checkTime(minutes);
+		  seconds = this.checkTime(seconds);
+		  this.lday = days;
+		  this.lhours = hours;
+		  this.lminutes = minutes;
+		  this.lseconds = seconds;
+		},
+	    checkTime(i){ //将0-9的数字前面加上0，例1变为01
+		  if(i<10)
+		  {
+		    i = "0" + i;
+		  }
+		  return i;
 		}
 	}
 }
