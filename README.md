@@ -36,8 +36,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - [x] 根据对应的navi展示相应分类信息列表
 - [x] 用户个人中心
 - [ ] 用户进行增删改查
-- [x] 评价系统
-- [ ] 拍卖预告系统
+- [ ] 评价系统
+- [x] 拍卖预告系统
 - [ ] 后台管理系统
 
 
