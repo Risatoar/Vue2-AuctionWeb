@@ -8,11 +8,12 @@ var previewSchema = new Schema({
 	"maintext": String,
 	"image": {
 		type: String,
-		default: "mi6.jpg"
+		default: "iphone.png"
 	},
-	startdate: String,
-	finaldate: String,
-	finaltime: String,
+	"saleprice": String,
+	"startdate": String,
+	"finaldate": String,
+	"finaltime": String,
 	"watch": [
 		{
 			"watcher": String,

@@ -48,6 +48,7 @@ router.post("/addpreview",(req,res,next)=>{
     title: req.body.title,
     description: req.body.description,
     maintext: req.body.maintext,
+    saleprice: req.body.saleprice,
     startdate: req.body.setdate[0],
     finaldate: req.body.setdate[1],
     finaltime: req.body.setdate[2],

@@ -21,6 +21,10 @@ date：2017/12/27
 					<label>请输入简介</label>
 					<input type="text" class="form-control input-description" label="请输入简介" v-model="add.description"></input>
 				</div>
+				<div class="addpreview-content-addsaleprice">
+					<label>请输入价格</label>
+					<input type="text" class="form-control input-saleprice" label="请输入价格" v-model="add.saleprice"></input>
+				</div>
 				<div class="timepicker">
 					<span class="timepicker-title">请在这里选择拍卖开始及结束时间</span>
 					<div class="timepicker-date">
@@ -61,6 +65,7 @@ export default {
 				title: '',
 				description: '',
 				maintext: '',
+				saleprice: '',
 				setdate: ''
 			}
 		}

@@ -1,6 +1,6 @@
 <template>
 <div class="previewdetail-wrap" @click="getTime1">
-	<div class="previewdetail-nav">
+<!-- 	<div class="previewdetail-nav">
 		<nav class="pre-nav-li">
 			<ul>
 				<li>首页</li>
@@ -10,7 +10,7 @@
 				<li>拍卖预告</li>
 			</ul>
 		</nav>
-	</div>
+	</div> -->
 	<div class="previewdetail-body">
 		<div class="previewdetail-information">
 			<div class="previewdetail-information-left">
@@ -53,6 +53,10 @@
 					</div>
 				</div>
 			</div>
+			<div class="previewdetail-information-bottom">
+				<article v-html="PreList.maintext">
+				</article>
+			</div>
 		</div>
 	</div>
 </div>
@@ -75,15 +79,7 @@ export default {
 			pre: {
 				previewid:''
 			},
-			PreList: {
-				image: '10.jpg',
-				title: 'vue-lazyload',
-				description: '用于图片延迟加载的 Vue 模块',
-				startdate: '2017-12-01',
-				finaldate: '2018-02-07',
-				finaltime: '02:02:02',
-				watchcount: '1'
-			}
+			PreList: {}
 		}
 	},
 	mounted() {

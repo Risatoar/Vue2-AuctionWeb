@@ -93,6 +93,14 @@
   text-align: center;
   text-indent: 25px;
 }
+.addpreview .addpreview-wrap .addpreview-content .addpreview-content-addsaleprice {
+  padding: 15px 10px;
+}
+.addpreview .addpreview-wrap .addpreview-content .addpreview-content-addsaleprice .input-saleprice {
+  width: 100%;
+  text-align: center;
+  text-indent: 25px;
+}
 .addpreview .addpreview-wrap .addpreview-content .timepicker {
   width: 100%;
   display: inline-flex;
