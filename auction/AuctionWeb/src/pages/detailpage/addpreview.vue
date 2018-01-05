@@ -27,9 +27,11 @@ date：2017/12/27
 						<Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px" format="yyyy-MM-dd" @on-change="add.setdate=$event">
 						</Date-picker>
 					</div>
-					<span class="timepicker-show">
-		            	拍卖开始日期:{{ add.setdate[0] }}----拍卖结束时间:{{ add.setdate[1] }}
-		            </span>
+		            </br>
+		            <span class="timepicker-title">选择拍卖结束具体时间</span>
+		            <div class="timepicker-date">
+						<Time-picker type="time" placeholder="选择时间" style="width: 168px" @on-change="timess=$event"></Time-picker>
+					</div>
 				</div>
 				<div class="addpreview-content-body">
 					<h3>请输入拍卖信息主要内容</h3>
@@ -53,6 +55,7 @@ export default {
 	},
 	data() {
 		return {
+			timess:'',
 			add: {
 				author: '',
 				title: '',
@@ -79,9 +82,13 @@ export default {
         setAuthor() {
         	this.add.author = this.getCookie("user")
         },
+        pushTime() {
+        	this.add.setdate.push(this.timess)
+        },
 		addpreview() {
 			////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
 			this.setAuthor()
+			this.pushTime()
 			axios.post("/addpreview",this.add).then((res)=> {
 				console.log(res);
 				if(res.status == '200'){

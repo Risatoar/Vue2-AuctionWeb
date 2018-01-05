@@ -1,5 +1,5 @@
 <template>
-<div class="previewdetail-wrap" @click="dead">
+<div class="previewdetail-wrap" @click="getTime1">
 	<div class="previewdetail-nav">
 		<nav class="pre-nav-li">
 			<ul>
@@ -12,22 +12,22 @@
 		</nav>
 	</div>
 	<div class="previewdetail-body">
-		<div class="previewdetail-information" v-for="item in PreList">
+		<div class="previewdetail-information">
 			<div class="previewdetail-information-left">
-				<img v-lazy="'/static/img/' + item.image" class="previewdetail-img">
+				<img v-lazy="'/static/img/' + this.PreList.image" class="previewdetail-img">
 			</div>
 			<div class="previewdetail-information-right">
 				<!-- 过长的class采用简写 -->
 				<div class="pre-info-right-detail">
 					<div class="pre-info-right-title">
-						<h2>{{ item.title }}</h2>
+						<h2>{{ PreList.title }}</h2>
 					</div>
 					<div class="pre-content">
 						<div class="pre-content-wrap">
-							<div class="pre-description"><Icon type="chatbox-working"></Icon><span>{{ item.description }}</span></div>
-							<div class="pre-startdate"><Icon type="ios-time"></Icon><span>拍卖开始</span>{{ item.startdate }}</div>
-							<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>拍卖结束</span>{{ item.finaldate }}</div>
-							<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ item.watchcount }}</div>
+							<div class="pre-description"><Icon type="chatbox-working"></Icon><span>{{ PreList.description }}</span></div>
+							<div class="pre-startdate"><Icon type="ios-time"></Icon><span>拍卖开始</span>{{ PreList.startdate }}</div>
+							<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>拍卖结束</span>{{ PreList.finaldate }}</div>
+							<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ PreList.watchcount }}</div>
 							<div class="timeToEnd">
 								<span><h2>距离结束还有</h2></span>
 								<div class="timeShow" :class="[lday>=1?'timeorange':'timered']">
@@ -68,36 +68,58 @@ export default {
 			lhours: '',
 			lminutes: '',
 			lseconds: '',
-			info: {
-				infoid:''
+			DateArray: [],
+			TimeArray: [],
+			pre: {
+				previewid:''
 			},
-			PreList: [
-			{
+			PreList: {
 				image: '10.jpg',
 				title: 'vue-lazyload',
 				description: '用于图片延迟加载的 Vue 模块',
 				startdate: '2017-12-01',
-				finaldate: '2018-01-02',
+				finaldate: '2018-02-07',
+				finaltime: '02:02:02',
 				watchcount: '1'
 			}
-			]
 		}
 	},
 	mounted() {
-		this.dead()
+		this.getUrl()
 	},
-	// watch: {
-	//   '$route': 'getUrl'
-	// },
+	watch: {
+	  '$route': 'getUrl'
+	},
 	// computed: {
 	// 	dead() {
 	// 		setInterval(this.leftTimer(2018,1,6,12,11,11),1000);
 	// 	}
 	// },
 	methods: {
-		dead() {
+		getUrl() {
+			this.pre.previewid = this.$route.params.id;
+			console.log(this.pre.previewid)
+			if(this.pre.previewid){
+				this.getPreview()
+			}
+		},
+		getPreview() {
+			axios.post("/previewdetail",this.pre).then((res)=> {
+				this.loading = false;
+				this.PreList = res.data.result.list;
+				this.getTime1();
+	        }).catch((error)=> {
+	          console.log(error);
+	        });
+		},
+		getTime1() {
+			this.DateArray = this.PreList.finaldate.split('-');
+			this.TimeArray = this.PreList.finaltime.split(':');
+			this.dead(this.DateArray,this.TimeArray)
+		},
+		dead(arr1,arr2) {
 		  setInterval(()=>{
-			this.leftTimer(2018,1,6,14,8,30)
+			this.leftTimer(arr1[0],arr1[1],arr1[2],arr2[0],arr2[1],arr2[2])
 		  },1000);
 		},
 		leftTimer(year,month,day,hour,minute,second){

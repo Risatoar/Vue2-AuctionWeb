@@ -96,7 +96,7 @@
 .addpreview .addpreview-wrap .addpreview-content .timepicker {
   width: 100%;
   display: inline-flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   padding: 25px 10px 50px 10px;
 }

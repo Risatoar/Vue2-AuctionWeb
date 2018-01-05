@@ -50,6 +50,7 @@ router.post("/addpreview",(req,res,next)=>{
     maintext: req.body.maintext,
     startdate: req.body.setdate[0],
     finaldate: req.body.setdate[1],
+    finaltime: req.body.setdate[2],
     watch: [
     {
       watcher: req.body.author,
@@ -71,27 +72,28 @@ router.post("/addpreview",(req,res,next)=>{
   })
 })
 
-// router.post("/infodetail",function(req,res,next){
-//   let _info = req.body
-//   let infoid = ObjectID(_info.infoid)
-//   Infos.findOne({_id:infoid}, (err,doc)=>{
-//     if(err){
-//       res.json({
-//         status: '1',
-//         msg: err.message
-//       });
-//     }else {
-//       res.json({
-//         status: '0',
-//         msg: '',
-//         result: {
-//           count:doc.length,
-//           list:doc
-//         }
-//       });
-//     }
-//   })
-// })
+router.post("/previewdetail",function(req,res,next){
+  let _pre = req.body
+  let preid = ObjectID(_pre.previewid)
+  Previews.findOne({_id:preid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+})
+
 
 
 module.exports=router

@@ -12,6 +12,7 @@ var previewSchema = new Schema({
 	},
 	startdate: String,
 	finaldate: String,
+	finaltime: String,
 	"watch": [
 		{
 			"watcher": String,
