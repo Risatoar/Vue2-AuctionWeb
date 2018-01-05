@@ -30,12 +30,13 @@
 							<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ PreList.watchcount }}</div>
 							<div class="timeToEnd">
 								<span><h2>距离结束还有</h2></span>
-								<div class="timeShow" :class="[lday>=1?'timeorange':'timered']">
+								<div class="timeShow" :class="[lday>=1?'timeorange':'timered']" v-if="NotDead">
 									<div>{{ lday }}</div><strong>天</strong>
 									<div>{{lhours}}</div><strong>小时</strong>
 									<div>{{lminutes}}</div><strong>分钟</strong>
 									<div>{{lseconds}}</div><strong>秒</strong>
 								</div>
+								<div v-if="!NotDead" class="timeShow timered"><del>已经结束</del></div>
 							</div>
 						</div>
 						<div class="pre-info-right-warning">
@@ -70,6 +71,7 @@ export default {
 			lseconds: '',
 			DateArray: [],
 			TimeArray: [],
+			NotDead: true,
 			pre: {
 				previewid:''
 			},
@@ -124,6 +126,10 @@ export default {
 		},
 		leftTimer(year,month,day,hour,minute,second){
 		  var leftTime = (new Date(year,month-1,day,hour,minute,second)) - (new Date()); //计算剩余的毫秒数
+		  if(new Date()>new Date(year,month-1,day,hour,minute,second)){
+		  	this.NotDead=false
+		  }
+		  console.log(leftTime)
 		  var days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数
 		  var hours = parseInt(leftTime / 1000 / 60 / 60 % 24 , 10); //计算剩余的小时
 		  var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟
@@ -137,7 +143,7 @@ export default {
 		  this.lminutes = minutes;
 		  this.lseconds = seconds;
 		},
-	    checkTime(i){ //将0-9的数字前面加上0，例1变为01
+	    checkTime(i) { //将0-9的数字前面加上0，例1变为01
 		  if(i<10)
 		  {
 		    i = "0" + i;
