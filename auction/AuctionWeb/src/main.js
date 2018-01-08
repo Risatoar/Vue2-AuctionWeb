@@ -67,7 +67,7 @@ const store = new Vuex.Store({
 	state: {
 		nickname: '',
 		username: '',
-		isAdmin: ''
+		isAdmin: '',
 	},
 	mutations: {
 		updateUserName(state,username){

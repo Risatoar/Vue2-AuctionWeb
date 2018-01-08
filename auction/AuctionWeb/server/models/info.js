@@ -8,7 +8,7 @@ var infoSchema = new Schema({
 	"maintext": String,
 	"stars": {
 		type: String,
-		default: 0
+		default: 0.0
 	},
 	"date": String
 })

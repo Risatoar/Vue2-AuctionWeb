@@ -256,6 +256,7 @@
   font-weight: normal;
   letter-spacing: 3px;
   text-indent: 20px;
+  line-height: 2;
   text-align: left;
 }
 @keyframes jump {

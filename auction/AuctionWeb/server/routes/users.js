@@ -73,8 +73,8 @@ router.post("/login",(req,res)=>{
       })
     }
     if(_user.pwdlogin == user.pwd){
-      res.cookie("user", _user.usernamelogin, {maxAge : 10800000});
-      res.cookie("admin", user.admin, {maxAge : 10800000});
+      res.cookie("user", _user.usernamelogin, {maxAge : 300000});
+      res.cookie("admin", user.admin, {maxAge : 300000});
       return res.json({
         list: 'success',
         user: user
@@ -162,6 +162,70 @@ router.post("/register",(req,res,next)=>{
   //   }
   // })
 })
+
+router.post("/ChangePwd",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      if(req.body.oldPwd == user.pwd){
+        Users.update({username:req.body.username},{$set:{pwd:req.body.newPwd1}},(err,user)=>{
+          if(err){
+            console.log(err)
+          }else{
+            return res.json({
+            status: '1001'
+            })
+          }
+        })
+      }else{
+        return res.json({
+          status: '1002'
+        })
+      }
+    }
+  })
+})
+
+// router.post("/ChangePwd",(req,res)=>{
+//   let _user = {
+//     username: req.body.username,
+//     pwd: req.body.oldPwd,
+//     newpwd: req.body.newPwd1
+//   }
+//   Users.findOne({username:_user.username},(err,user)=>{
+//     if(err){
+//       console.log(err)
+//     }else {
+//       res.json({
+//         status: '0',
+//         msg: '',
+//         result: {
+//           list:user
+//         }
+//       });
+//     }
+//     else if(_user.pwd == user.pwd){
+//       return res.json({
+//         statue: '1001',
+//         list: 'success',
+//         user: user
+//       })
+//       Users.update({username:_user.username},{$set:{ pwd: _user.newpwd}},(err,newuser)=>{
+//         return res.json({
+//           statue: 1002,
+//           list: 'success',
+//           newuser: newuser
+//         })
+//       })
+//     }
+//     else if(_user.pwdlogin != user.pwd){
+//       return res.json({
+//         status: '1003',
+//         list: 'fail'
+//       })
+//     }
+//   })
 
 module.exports=router
 

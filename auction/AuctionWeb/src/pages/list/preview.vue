@@ -21,7 +21,7 @@
 						        <div style="text-align:center">
 						            <img v-lazy="'/static/img/' + item.image" style="width:50%">
 						            <li class="preview-card-name">{{ item.title }}</li>
-						            <li class="preview-card-startdate">拍卖开始时间: {{ item.startdate }}</li>
+						            <li class="preview-card-startdate">拍卖开始时间： {{ item.startdate }}</li>
 						            <li class="preview-card-deadline">拍卖结束时间： {{ item.finaldate }}</li>
 						        </div>
 						    </Card>

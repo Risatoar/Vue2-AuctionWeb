@@ -1,5 +1,5 @@
 <template>
-<div class="previewdetail-wrap" @click="getTime1">
+<div class="previewdetail-wrap">
 <!-- 	<div class="previewdetail-nav">
 		<nav class="pre-nav-li">
 			<ul>
@@ -26,7 +26,7 @@
 						<div class="pre-content-wrap">
 							<div class="pre-description"><Icon type="chatbox-working"></Icon><span>{{ PreList.description }}</span></div>
 							<div class="pre-startdate"><Icon type="ios-time"></Icon><span>拍卖开始</span>{{ PreList.startdate }}</div>
-							<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>拍卖结束</span>{{ PreList.finaldate }}</div>
+							<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>拍卖结束</span>{{ PreList.finaldate }}  {{ PreList.finaltime }}</div>
 							<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ PreList.watchcount }}</div>
 							<div class="timeToEnd">
 								<span><h2>距离结束还有</h2></span>
@@ -64,11 +64,10 @@
 
 <script>
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
 	data() {
 		return {
-			deadTime: '',
-			infodetaillist: [],
 			lday: '',
 			lhours: '',
 			lminutes: '',
@@ -116,9 +115,11 @@ export default {
 			this.dead(this.DateArray,this.TimeArray)
 		},
 		dead(arr1,arr2) {
-		  setInterval(()=>{
+		  let timeChange
+		  this.timeChange = setInterval(()=>{
 			this.leftTimer(arr1[0],arr1[1],arr1[2],arr2[0],arr2[1],arr2[2])
 		  },1000);
+		  console.log(timeChange)
 		},
 		leftTimer(year,month,day,hour,minute,second){
 		  var leftTime = (new Date(year,month-1,day,hour,minute,second)) - (new Date()); //计算剩余的毫秒数
@@ -146,6 +147,10 @@ export default {
 		  }
 		  return i;
 		}
+	},
+	destroyed () {
+	  // 组件关闭时清除定时器
+	  clearInterval(this.timeChange)
 	}
 }
 </script>
