@@ -22,7 +22,7 @@
 								<Icon type="edit" style="padding:0 5px;color:#2d8cf0;"></Icon>修改
 							</span>
 							<span class="save" v-if="save1">
-								<span @click="chickSave('edit1','save1')">保存</span>
+								<span @click="chickSave('edit1','save1','nickname')">保存</span>
 								<span @click="hideSave('edit1','save1')">取消</span>
 							</span>
 						</td>
@@ -37,7 +37,7 @@
 								<Icon type="edit" style="padding:0 5px;color:#2d8cf0;"></Icon>修改
 							</span>
 							<span class="save" v-if="save2">
-								<span @click="chickSave('edit2','save2')">保存</span>
+								<span @click="chickSave('edit2','save2','age')">保存</span>
 								<span @click="hideSave('edit2','save2')">取消</span>
 							</span>
 						</td>
@@ -52,7 +52,7 @@
 								<Icon type="edit" style="padding:0 5px;color:#2d8cf0;"></Icon>修改
 							</span>
 							<span class="save" v-if="save3">
-								<span @click="chickSave('edit3','save3')">保存</span>
+								<span @click="chickSave('edit3','save3','truename')">保存</span>
 								<span @click="hideSave('edit3','save3')">取消</span>
 							</span>
 						</td>
@@ -67,7 +67,7 @@
 								<Icon type="edit" style="padding:0 5px;color:#2d8cf0;"></Icon>修改
 							</span>
 							<span class="save" v-if="save4">
-								<span @click="chickSave('edit4','save4')">保存</span>
+								<span @click="chickSave('edit4','save4','company')">保存</span>
 								<span @click="hideSave('edit4','save4')">取消</span>
 							</span>
 						</td>
@@ -82,7 +82,7 @@
 								<Icon type="edit" style="padding:0 5px;color:#2d8cf0;"></Icon>修改
 							</span>
 							<span class="save" v-if="save5">
-								<span @click="chickSave('edit5','save5')">保存</span>
+								<span @click="chickSave('edit5','save5','telephone')">保存</span>
 								<span @click="hideSave('edit5','save5')">取消</span>
 							</span>
 						</td>
@@ -145,7 +145,7 @@
 								<Icon type="edit" style="padding:0 5px;color:#2d8cf0;"></Icon>修改
 							</span>
 							<span class="save" v-if="save7">
-								<span @click="chickSave('edit7','save7')">保存</span>
+								<span @click="chickSave('edit7','save7','mail')">保存</span>
 								<span @click="hideSave('edit7','save7')">取消</span>
 							</span>
 						</td>
@@ -156,6 +156,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
 	props: {
 	  userd: {
@@ -178,7 +179,6 @@ export default {
 			save6 : false,
 			edit7 : true,
 			save7 : false,
-
 			defaultList: [],
 			imgName: '',
 			visible: false,
@@ -186,6 +186,18 @@ export default {
 		}
 	},
 	methods: {
+		postChange(attr) {
+			console.log(this.attr)
+			axios.post("/edit/" + attr,this.userd).then((res)=> {
+			    if(res.data.status == 1001){
+			        this.success('修改成功')
+			    }else if(res.data.status == 1002){
+			        this.error('修改失败,密码错误')
+			    }
+			}).catch((error)=> {
+			  console.log(error);
+			});
+		},
 		showSave(attr1,attr2) {
 			this[attr1] = false
 			this[attr2] = true
@@ -200,10 +212,11 @@ export default {
 				this['edit' + i] =false
 			}
 		},
-		chickSave(attr1,attr2) {
+		chickSave(attr1,attr2,attr3) {
 			this[attr1] = true
 			this[attr2] = false
-			this.success()
+			console.log(attr3)
+			this.postChange(attr3)
 		},
 		inputShow(attr1,attr2) {
 			this[attr1] = false

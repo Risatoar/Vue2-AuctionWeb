@@ -187,45 +187,113 @@ router.post("/ChangePwd",function(req,res,next){
   })
 })
 
-// router.post("/ChangePwd",(req,res)=>{
-//   let _user = {
-//     username: req.body.username,
-//     pwd: req.body.oldPwd,
-//     newpwd: req.body.newPwd1
-//   }
-//   Users.findOne({username:_user.username},(err,user)=>{
-//     if(err){
-//       console.log(err)
-//     }else {
-//       res.json({
-//         status: '0',
-//         msg: '',
-//         result: {
-//           list:user
-//         }
-//       });
-//     }
-//     else if(_user.pwd == user.pwd){
-//       return res.json({
-//         statue: '1001',
-//         list: 'success',
-//         user: user
-//       })
-//       Users.update({username:_user.username},{$set:{ pwd: _user.newpwd}},(err,newuser)=>{
-//         return res.json({
-//           statue: 1002,
-//           list: 'success',
-//           newuser: newuser
-//         })
-//       })
-//     }
-//     else if(_user.pwdlogin != user.pwd){
-//       return res.json({
-//         status: '1003',
-//         list: 'fail'
-//       })
-//     }
-//   })
+router.post("/edit/nickname",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{nickname:req.body.nickname}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/edit/age",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{age:req.body.age}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/edit/truename",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{truename:req.body.truename}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/edit/company",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{company:req.body.company}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/edit/telephone",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{telephone:req.body.telephone}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/edit/mail",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{mail:req.body.mail}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
 
 module.exports=router
 
