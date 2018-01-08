@@ -15,7 +15,7 @@
 					<tr>
 						<td class="td1"><Icon type="pizza"></Icon>  昵称</td>
 						<td class="td2">
-							<input type="text" placeholder="填写你的昵称" v-model="userd.nickname" @click="inputShow('edit1','save1')">
+							<input type="text" maxlength="10" placeholder="填写你的昵称" v-model="userd.nickname" @click="inputShow('edit1','save1')">
 						</td>
 						<td>
 							<span  @click="showSave('edit1','save1')" v-if="edit1">
@@ -30,7 +30,7 @@
 					<tr>
 						<td class="td1"><Icon type="happy-outline"></Icon>  年龄</td>
 						<td class="td2">
-							<input type="text" placeholder="填写你的年龄" v-model="userd.age" @click="inputShow('edit2','save2')">
+							<input type="text" maxlength="3" placeholder="填写你的年龄" v-model="userd.age" @click="inputShow('edit2','save2')">
 						</td>
 						<td>
 							<span @click="showSave('edit2','save2')" v-if="edit2">
@@ -45,7 +45,7 @@
 					<tr>
 						<td class="td1"><Icon type="icecream"></Icon>  真实姓名</td>
 						<td class="td2">
-							<input type="text" placeholder="填写你的真实姓名" v-model="userd.truename" @click="inputShow('edit3','save3')">
+							<input type="text" maxlength="15" placeholder="填写你的真实姓名" v-model="userd.truename" @click="inputShow('edit3','save3')">
 						</td>
 						<td>
 							<span @click="showSave('edit3','save3')" v-if="edit3">
@@ -60,7 +60,7 @@
 					<tr>
 						<td class="td1"><Icon type="location"></Icon>  公司名称</td>
 						<td class="td2">
-							<input type="text" placeholder="填写你的公司名称" v-model="userd.company" @click="inputShow('edit4','save4')">
+							<input type="text" maxlength="20" placeholder="填写你的公司名称" v-model="userd.company" @click="inputShow('edit4','save4')">
 						</td>
 						<td>
 							<span @click="showSave('edit4','save4')" v-if="edit4">
@@ -75,7 +75,7 @@
 					<tr>
 						<td class="td1"><Icon type="ios-telephone"></Icon>  电话/手机号</td>
 						<td class="td2">
-							<input type="text" placeholder="填写你的电话/手机号" v-model="userd.telephone" @click="inputShow('edit5','save5')">
+							<input type="text" maxlength="11" placeholder="填写你的电话/手机号" v-model="userd.telephone" @click="inputShow('edit5','save5')">
 						</td>
 						<td>
 							<span @click="showSave('edit5','save5')" v-if="edit5">
@@ -138,7 +138,7 @@
 					<tr>
 						<td class="td1"><Icon type="email"></Icon>  电子邮箱</td>
 						<td class="td2">
-							<input type="text" placeholder="填写你的邮箱" v-model="userd.mail" @click="inputShow('edit7','save7')">
+							<input type="text" maxlength="30" placeholder="填写你的邮箱" v-model="userd.mail" @click="inputShow('edit7','save7')">
 						</td>
 						<td>
 							<span @click="showSave('edit7','save7')" v-if="edit7">
@@ -193,10 +193,21 @@ export default {
 			        this.success('修改成功')
 			    }else if(res.data.status == 1002){
 			        this.error('修改失败,密码错误')
+			    }else if(res.data.status == 1003){
+			    	this.warning('数据没有修改过')
 			    }
 			}).catch((error)=> {
 			  console.log(error);
 			});
+		},
+		success (msg) {
+		    this.$Message.success(msg);
+		},
+		warning (msg) {
+		    this.$Message.warning(msg);
+		},
+		error (msg) {
+		    this.$Message.error(msg);
 		},
 		showSave(attr1,attr2) {
 			this[attr1] = false

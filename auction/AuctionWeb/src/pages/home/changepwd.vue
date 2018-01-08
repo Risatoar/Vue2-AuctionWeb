@@ -38,6 +38,8 @@ export default {
                     this.success('修改成功')
                 }else if(res.data.status == 1002){
                     this.error('修改失败,密码错误')
+                }else if(res.data.status == 1003){
+                    this.warning('新密码两次输入不同')
                 }
             }).catch((error)=> {
               console.log(error);
@@ -46,8 +48,8 @@ export default {
         success (msg) {
             this.$Message.success(msg);
         },
-        warning () {
-            this.$Message.warning('这是一条警告的提示');
+        warning (msg) {
+            this.$Message.warning(msg);
         },
         error (msg) {
             this.$Message.error(msg);

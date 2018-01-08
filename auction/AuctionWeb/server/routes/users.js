@@ -167,6 +167,10 @@ router.post("/ChangePwd",function(req,res,next){
   Users.findOne({username:req.body.username},(err,user)=>{
     if(err){
       console.log(err)
+    }else if(req.body.newPwd1 !== req.body.newPwd2){
+      return res.json({
+        status: '1003'
+      })
     }else {
       if(req.body.oldPwd == user.pwd){
         Users.update({username:req.body.username},{$set:{pwd:req.body.newPwd1}},(err,user)=>{
@@ -191,6 +195,10 @@ router.post("/edit/nickname",function(req,res,next){
   Users.findOne({username:req.body.username},(err,user)=>{
     if(err){
       console.log(err)
+    }else if(user.nickname == req.body.nickname){
+      return res.json({
+        status: '1003'
+      })
     }else {
       Users.update({username:req.body.username},{$set:{nickname:req.body.nickname}},(err,user)=>{
         if(err){
@@ -209,6 +217,10 @@ router.post("/edit/age",function(req,res,next){
   Users.findOne({username:req.body.username},(err,user)=>{
     if(err){
       console.log(err)
+    }else if(user.age == req.body.age){
+      return res.json({
+        status: '1003'
+      })
     }else {
       Users.update({username:req.body.username},{$set:{age:req.body.age}},(err,user)=>{
         if(err){
@@ -227,6 +239,10 @@ router.post("/edit/truename",function(req,res,next){
   Users.findOne({username:req.body.username},(err,user)=>{
     if(err){
       console.log(err)
+    }else if(user.truename == req.body.truename){
+      return res.json({
+        status: '1003'
+      })
     }else {
       Users.update({username:req.body.username},{$set:{truename:req.body.truename}},(err,user)=>{
         if(err){
@@ -245,6 +261,10 @@ router.post("/edit/company",function(req,res,next){
   Users.findOne({username:req.body.username},(err,user)=>{
     if(err){
       console.log(err)
+    }else if(user.company == req.body.company){
+      return res.json({
+        status: '1003'
+      })
     }else {
       Users.update({username:req.body.username},{$set:{company:req.body.company}},(err,user)=>{
         if(err){
@@ -263,6 +283,10 @@ router.post("/edit/telephone",function(req,res,next){
   Users.findOne({username:req.body.username},(err,user)=>{
     if(err){
       console.log(err)
+    }else if(user.telephone == req.body.telephone){
+      return res.json({
+        status: '1003'
+      })
     }else {
       Users.update({username:req.body.username},{$set:{telephone:req.body.telephone}},(err,user)=>{
         if(err){
@@ -281,6 +305,10 @@ router.post("/edit/mail",function(req,res,next){
   Users.findOne({username:req.body.username},(err,user)=>{
     if(err){
       console.log(err)
+    }else if(user.mail == req.body.mail){
+      return res.json({
+        status: '1003'
+      })
     }else {
       Users.update({username:req.body.username},{$set:{mail:req.body.mail}},(err,user)=>{
         if(err){
