@@ -5,50 +5,48 @@ date：null
 -->
 
 <template>
-  <div>
-    <div class="dialog">
-      <!-- 设置遮罩,点击触发登录框隐藏事件 -->
-      <div class="dialog-cover"  v-if="isShow" @click="close"></div>
-      <!-- 登录框隐藏及展示动画 -->
-      <transition name="pass">
-        <!-- 登录框整体 -->
-        <div class="dialog-content"  v-if="isShow">
-          <h3 style="padding:15px 0;">账号密码登录</h3>
-          <!-- 设置关闭,点击触发登录框隐藏事件 -->
-          <p class="dialog-close" @click="close">x</p>
-          <div class="form-group">
-          <!-- 输入提示 -->
-          <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的用户名">
-          <!-- 用户名输入 -->
-          <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="userlogin.usernamelogin">
-          </Poptip>
-          <br>
-          <!-- 用户名错误信息提示 -->
-          <span class="loginerror">{{ userErrors.errorText }}</span>
-          </div>
-          <div class="form-group">
-          <!-- 输入提示 -->
-          <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的密码">
-          <!-- 密码输入 -->
-          <input type="password" class="form-control" id="login-pwd" placeholder="请输入密码" v-model="userlogin.pwdlogin">
-          </Poptip>
-          <br>
-          <!-- 密码错误信息提示 -->
-          <span class="loginerror">
-            <Poptip title="提示标题" content="提示内容">
-                    {{ passwordErrors.errorText }}
-            </Poptip>
-          </span>
-          </div>
-          <!-- 总体错误检查提示 -->
-          <span>{{ errorText }}</span><br>
-          <button type="button" class="btn btn-info login" @click="login">LOGIN</button>
-          <div class="findpwd">找回密码</div>
-          <div class="toregister" @click="changeToReg">注册</div>
-          <slot></slot>
+  <div class="dialog">
+    <!-- 设置遮罩,点击触发登录框隐藏事件 -->
+    <div class="dialog-cover"  v-if="isShow" @click="close"></div>
+    <!-- 登录框隐藏及展示动画 -->
+    <transition name="pass">
+      <!-- 登录框整体 -->
+      <div class="dialog-content"  v-if="isShow">
+        <h3 style="padding:15px 0;">账号密码登录</h3>
+        <!-- 设置关闭,点击触发登录框隐藏事件 -->
+        <p class="dialog-close" @click="close">x</p>
+        <div class="form-group">
+        <!-- 输入提示 -->
+        <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的用户名">
+        <!-- 用户名输入 -->
+        <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="userlogin.usernamelogin">
+        </Poptip>
+        <br>
+        <!-- 用户名错误信息提示 -->
+        <span class="loginerror">{{ userErrors.errorText }}</span>
         </div>
-      </transition>
-    </div>
+        <div class="form-group">
+        <!-- 输入提示 -->
+        <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的密码">
+        <!-- 密码输入 -->
+        <input type="password" class="form-control" id="login-pwd" placeholder="请输入密码" v-model="userlogin.pwdlogin">
+        </Poptip>
+        <br>
+        <!-- 密码错误信息提示 -->
+        <span class="loginerror">
+          <Poptip title="提示标题" content="提示内容">
+                  {{ passwordErrors.errorText }}
+          </Poptip>
+        </span>
+        </div>
+        <!-- 总体错误检查提示 -->
+        <span>{{ errorText }}</span><br>
+        <button type="button" class="btn btn-info login" @click="login">LOGIN</button>
+        <div class="findpwd">找回密码</div>
+        <div class="toregister" @click="changeToReg">注册</div>
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 

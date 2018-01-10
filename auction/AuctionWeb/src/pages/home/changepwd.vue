@@ -6,7 +6,7 @@ date：2017/12/26
 <template>
     <!-- 修改密码页面 -->
 	<div class="home-changepwd">
-	<label>老密码</label>
+	    <label>老密码</label>
         <input type="password" class="form-control" id="reg-pwd" placeholder="老密码" v-model="oldPwd">
         <label>新密码</label>
         <input type="password" class="form-control" id="reg-pwd" placeholder="老密码" v-model="newPwd1">

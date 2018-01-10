@@ -1,63 +1,61 @@
 <template>
-  <div>
-    <div class="dialog">
-      <!-- 设置遮罩,点击触发注册框隐藏事件 -->
-      <div class="dialog-cover"  v-if="isShow" @click="close"></div>
-      <!-- 注册框隐藏及展示动画 -->
-      <transition name="pass">
-        <!-- 注册框整体 -->
-        <div class="dialog-content"  v-if="isShow">
-          <!-- 设置关闭,点击触发登录框隐藏事件 -->
-          <p class="dialog-close" @click="close">x</p>
-          <h3 style="padding:15px 0;">还没有账号吗？快来注册一个吧！</h3>
-          <p>带红色星号的都是必填项目</p>
-          <div class="form-group">
-          <!-- 设置红色星号用来区分必填项目 -->
-          <label>用户名</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <!-- 注册用户名输入 -->
-          <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名" v-model="reguser.username">
-          <!-- 错误信息提示 -->
-        <span class="regerror">{{ userErrors.errorText }}</span>
-          </div>
-          <div class="form-group">
-            <label>密码</label><Icon type="star" style="color:#ed3f14"></Icon>
-            <input type="password" class="form-control" id="reg-pwd" placeholder="Password" v-model="reguser.pwd">
-            <span class="regerror">{{ passwordErrors.errorText }}</span>
-          </div>
-          <div class="form-group">
-            <label>昵称</label>
-            <input type="text" class="form-control" id="reg-nickname" placeholder="请输入昵称" v-model="reguser.nickname">
-          </div>
-          <div class="form-group">
-            <label>年龄</label>
-            <input type="text" class="form-control" id="reg-age" placeholder="请输入年龄" v-model="reguser.age">
-          </div>
-          <div class="form-group">
-            <label>真实姓名</label><Icon type="star" style="color:#ed3f14"></Icon>
-            <input type="text" class="form-control" id="reg-truename" placeholder="请输入真实姓名" v-model="reguser.truename">
-            <span class="regerror">{{ truenameErrors.errorText }}</span>
-          </div>
-          <div class="form-group">
-            <label>公司名称</label><Icon type="star" style="color:#ed3f14"></Icon>
-            <input type="text" class="form-control" id="reg-company" placeholder="请输入公司名" v-model="reguser.company">
-            <span class="regerror">{{ companyErrors.errorText }}</span>
-          </div>
-          <div class="form-group">
-            <label>电话</label><Icon type="star" style="color:#ed3f14"></Icon>
-            <input type="telephone" class="form-control" id="reg-telephone" placeholder="请输入电话/手机" v-model="reguser.telephone">
-            <span class="regerror">{{ telephoneErrors.errorText }}</span>
-          </div>
-          <div class="form-group">
-            <label>邮箱</label><Icon type="star" style="color:#ed3f14"></Icon>
-            <input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail">
-            <span class="regerror">{{ mailErrors.errorText }}</span>
-          </div>
-          <button type="button" class="btn btn-success" @click="addUser" style="width:200px;">注册</button>
-          <br><span>{{ errortext }}</span>
-          <slot></slot>
+  <div class="dialog">
+    <!-- 设置遮罩,点击触发注册框隐藏事件 -->
+    <div class="dialog-cover"  v-if="isShow" @click="close"></div>
+    <!-- 注册框隐藏及展示动画 -->
+    <transition name="pass">
+      <!-- 注册框整体 -->
+      <div class="dialog-content"  v-if="isShow">
+        <!-- 设置关闭,点击触发登录框隐藏事件 -->
+        <p class="dialog-close" @click="close">x</p>
+        <h3 style="padding:15px 0;">还没有账号吗？快来注册一个吧！</h3>
+        <p>带红色星号的都是必填项目</p>
+        <div class="form-group">
+        <!-- 设置红色星号用来区分必填项目 -->
+        <label>用户名</label><Icon type="star" style="color:#ed3f14"></Icon>
+        <!-- 注册用户名输入 -->
+        <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名" v-model="reguser.username">
+        <!-- 错误信息提示 -->
+      <span class="regerror">{{ userErrors.errorText }}</span>
         </div>
-      </transition>
-    </div>
+        <div class="form-group">
+          <label>密码</label><Icon type="star" style="color:#ed3f14"></Icon>
+          <input type="password" class="form-control" id="reg-pwd" placeholder="Password" v-model="reguser.pwd">
+          <span class="regerror">{{ passwordErrors.errorText }}</span>
+        </div>
+        <div class="form-group">
+          <label>昵称</label>
+          <input type="text" class="form-control" id="reg-nickname" placeholder="请输入昵称" v-model="reguser.nickname">
+        </div>
+        <div class="form-group">
+          <label>年龄</label>
+          <input type="text" class="form-control" id="reg-age" placeholder="请输入年龄" v-model="reguser.age">
+        </div>
+        <div class="form-group">
+          <label>真实姓名</label><Icon type="star" style="color:#ed3f14"></Icon>
+          <input type="text" class="form-control" id="reg-truename" placeholder="请输入真实姓名" v-model="reguser.truename">
+          <span class="regerror">{{ truenameErrors.errorText }}</span>
+        </div>
+        <div class="form-group">
+          <label>公司名称</label><Icon type="star" style="color:#ed3f14"></Icon>
+          <input type="text" class="form-control" id="reg-company" placeholder="请输入公司名" v-model="reguser.company">
+          <span class="regerror">{{ companyErrors.errorText }}</span>
+        </div>
+        <div class="form-group">
+          <label>电话</label><Icon type="star" style="color:#ed3f14"></Icon>
+          <input type="telephone" class="form-control" id="reg-telephone" placeholder="请输入电话/手机" v-model="reguser.telephone">
+          <span class="regerror">{{ telephoneErrors.errorText }}</span>
+        </div>
+        <div class="form-group">
+          <label>邮箱</label><Icon type="star" style="color:#ed3f14"></Icon>
+          <input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail">
+          <span class="regerror">{{ mailErrors.errorText }}</span>
+        </div>
+        <button type="button" class="btn btn-success" @click="addUser" style="width:200px;">注册</button>
+        <br><span>{{ errortext }}</span>
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 
