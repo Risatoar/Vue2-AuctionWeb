@@ -1,58 +1,58 @@
 .hotnews {
+  height: 322px;
+  margin-top: 9px;
+  transition: all 0.5s ease-in-out;
   color: #ffffff;
   border-radius: 4px;
-  height: 322px;
-  transition: all 0.5s ease-in-out;
-  margin-top: 9px;
 }
 .hotnews .hotnewsshow {
   display: none;
 }
 .hotnews .hotnews-block {
-  cursor: pointer;
   width: 100%;
   height: 80px;
+  cursor: pointer;
 }
 .hotnews .hotnews-block .hotnews-block-left {
-  display: block;
+  line-height: 80px;
   position: absolute;
+  display: block;
   float: left;
   width: 10%;
   height: 80px;
-  line-height: 80px;
   color: #fff;
 }
 .hotnews .hotnews-block .hotnews-block-right {
-  text-align: left;
   position: relative;
   float: right;
   width: 90%;
   height: 80px;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(52, 52, 52, 0.15);
+  text-align: left;
   border-right: 1px solid rgba(52, 52, 52, 0.15);
+  border-bottom: 1px solid rgba(52, 52, 52, 0.15);
+  background-color: #fff;
 }
 .hotnews .hotnews-block .hotnews-block-right .hotnews-title {
-  padding-top: 15px;
-  margin-left: 20px;
   font-size: 16px;
+  margin-left: 20px;
+  padding-top: 15px;
   color: #ff0000;
 }
 .hotnews .hotnews-block .hotnews-block-right .hotnews-msg {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 700px;
-  text-indent: 14px;
-  margin-left: 20px;
   font-size: 14px;
-  color: #000000;
+  display: inline-block;
+  overflow: hidden;
+  width: 700px;
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 20px;
+  white-space: nowrap;
+  text-indent: 14px;
+  text-overflow: ellipsis;
+  color: #000000;
 }
 .block0 {
-  background-color: #C2185Bs;
+  background-color: #c2185bs;
 }
 .block1 {
   background-color: black;
@@ -64,22 +64,22 @@
   background-color: black;
 }
 .block0:hover {
-  background-color: #03A9F4;
+  background-color: #03a9f4;
 }
 .block1:hover {
-  background-color: #FFEB3B;
+  background-color: #ffeb3b;
 }
 .block2:hover {
-  background-color: #03A9F4;
+  background-color: #03a9f4;
 }
 .block3:hover {
-  background-color: #FFEB3B;
+  background-color: #ffeb3b;
 }
 .block0,
 .block2 {
-  background-color: #00BCD4;
+  background-color: #00bcd4;
 }
 .block1,
 .block3 {
-  background-color: #FFC107;
+  background-color: #ffc107;
 }

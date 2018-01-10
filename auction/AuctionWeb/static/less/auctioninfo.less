@@ -1,70 +1,84 @@
 @w: #fff;
-@title-color: #FF0000;
-@msg: #000000;
+@title-color: #f00;
+@msg: #000;
 @fz: 12px;
-@headc: #66CD00;
-.auctioninfo{
-	cursor: pointer;
-	border-radius: 4px;
-	height: 322px;
+@headc: #66cd00;
+
+.auctioninfo {
 	overflow: hidden;
+	height: 322px;
 	margin-top: 9px;
+	cursor: pointer;
 	transition: all .5s ease-in-out;
-	.auctioninfo-head{
+	border-radius: 4px;
+
+	.auctioninfo-head {
+		font-size: @fz+2px;
+		line-height: 40px;
 		position: relative;
 		height: 40px;
-		line-height: 40px;
-		background-color: @headc;
-		color: @w;
-		font-size: @fz+2px;
 		margin-bottom: 20px;
-		.head-words{
+		color: @w;
+		background-color: @headc;
+
+		.head-words {
 			float: left;
 			padding-left: 20px;
 		}
-		.head-more{
+
+		.head-more {
 			float: right;
 			padding-right: 20px;
 		}
+
 	}
-	.auctioninfo-body{
+
+	.auctioninfo-body {
 		.newsshow {
-				display: none;
-			}
-		.auctioninfo-body-item{
-			height: 52px;
+			display: none;
+		}
+
+		.auctioninfo-body-item {
 			overflow: hidden;
-			text-overflow: ellipsis;
+			height: 52px;
 			white-space: nowrap;
+			text-overflow: ellipsis;
+
 			.new {
+				font-size: @fz;
+				line-height: 16px;
 				position: relative;
-			  margin-left: 20px;
-			  width: 34px;
-			  height: 16px;
-			  line-height: 16px;
-			  border-radius: 2px;
-			  font-size: @fz;
-			  float: left;
-			  background: red;
-			  color: #fff;
+				float: left;
+				width: 34px;
+				height: 16px;
+				margin-left: 20px;
+				color: #fff;
+				border-radius: 2px;
+				background: red;
 			}
-			li{
+
+			li {
 				position: relative;
-				padding-bottom: 8px;
-				letter-spacing:2px;
-				text-align: left;
 				margin-left: 80px;
+				padding-bottom: 8px;
+				text-align: left;
+				letter-spacing: 2px;
 			}
-			.delnew{
+
+			.delnew {
 				float: right;
 				margin-right: 15px;
 			}
+
 		}
+
 	}
+
 }
-.infotitle{
-	width: 140px;
+
+.infotitle {
 	overflow: hidden;
-	text-overflow:ellipsis;
+	width: 140px;
 	white-space: nowrap;
+	text-overflow: ellipsis;
 }

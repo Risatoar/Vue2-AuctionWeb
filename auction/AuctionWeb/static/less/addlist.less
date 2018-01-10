@@ -1,147 +1,188 @@
 // 拍卖信息增加页
-@import "base.less";
+@import 'base.less';
 
-.addinfo{
+.addinfo {
 	width: 1200px;
 	margin: 0 auto;
-	.addinfo-wrap{
+
+	.addinfo-wrap {
 		padding: 2em 0;
-		.addinfo-content{
+
+		.addinfo-content {
 			position: relative;
 			border: 1px solid @Disabled;
-			.addinfo-content-head-title{
-				padding:15px 10px;
-				font-size: @fz-MainHead+8px;
+
+			.addinfo-content-head-title {
 				font-family: @fm-MainHead;
+				font-size: @fz-MainHead+8px;
+				padding: 15px 10px;
 			}
-			.addinfo-btn{
+
+			.addinfo-btn {
+				font-family: @fm-MainHead;
+				font-size: @fz-MainHead;
+				position: absolute;
 				top: 10px;
 				right: 10px;
-				position: absolute;
-				font-size: @fz-MainHead;
-				font-family: @fm-MainHead;
 			}
-			.addinfo-content-addtitle{
-				padding:15px 10px;
-				.input-title{
-					text-align: center;
-					width: 100%;
-				}
-			}
-			.addinfo-content-adddescription{
-				padding:15px 10px;
-				.input-description{
+
+			.addinfo-content-addtitle {
+				padding: 15px 10px;
+
+				.input-title {
 					width: 100%;
 					text-align: center;
-					text-indent:25px;
 				}
+
 			}
-			.addinfo-content-body{
-				padding:15px 10px;
+
+			.addinfo-content-adddescription {
+				padding: 15px 10px;
+
+				.input-description {
+					width: 100%;
+					text-align: center;
+					text-indent: 25px;
+				}
+
 			}
-			h3{
-				padding:15px 0;
+
+			.addinfo-content-body {
+				padding: 15px 10px;
 			}
-			h2{
-				padding:30px 0 15px 0;
+
+			h3 {
+				padding: 15px 0;
 			}
-			.addinfo-content-preview{
-				min-height: 200px;
-				padding:15px 10px;
-				border: 1px solid @Disabled;
-				height: 100%;
-				text-indent:25px;
-				color:#657180;
-				font-family:Text;
+
+			h2 {
+				padding: 30px 0 15px 0;
+			}
+
+			.addinfo-content-preview {
+				font-family: Text;
 				line-height: 2;
+				height: 100%;
+				min-height: 200px;
+				padding: 15px 10px;
+				text-indent: 25px;
+				color: #657180;
+				border: 1px solid @Disabled;
 			}
+
 		}
+
 	}
+
 }
 
-
 // 拍卖预告添加页
-.addpreview{
+.addpreview {
 	width: 1200px;
 	margin: 0 auto;
-	.addpreview-wrap{
+
+	.addpreview-wrap {
 		padding: 2em 0;
-		.addpreview-content{
+
+		.addpreview-content {
 			position: relative;
 			border: 1px solid @Disabled;
-			.addpreview-content-head-title{
-				padding:15px 10px;
-				font-size: @fz-MainHead+8px;
+
+			.addpreview-content-head-title {
 				font-family: @fm-MainHead;
+				font-size: @fz-MainHead+8px;
+				padding: 15px 10px;
 			}
-			.addpreview-btn{
+
+			.addpreview-btn {
+				font-family: @fm-MainHead;
+				font-size: @fz-MainHead;
+				position: absolute;
 				top: 10px;
 				right: 10px;
-				position: absolute;
-				font-size: @fz-MainHead;
-				font-family: @fm-MainHead;
 			}
-			.addpreview-content-addtitle{
-				padding:15px 10px;
-				.input-title{
+
+			.addpreview-content-addtitle {
+				padding: 15px 10px;
+
+				.input-title {
 					width: 100%;
 					text-align: center;
 				}
+
 			}
-			.addpreview-content-adddescription{
-				padding:15px 10px;
-				.input-description{
+
+			.addpreview-content-adddescription {
+				padding: 15px 10px;
+
+				.input-description {
 					width: 100%;
 					text-align: center;
-					text-indent:25px;
+					text-indent: 25px;
 				}
+
 			}
-			.addpreview-content-addsaleprice{
-				padding:15px 10px;
-				.input-saleprice{
+
+			.addpreview-content-addsaleprice {
+				padding: 15px 10px;
+
+				.input-saleprice {
 					width: 100%;
 					text-align: center;
-					text-indent:25px;
+					text-indent: 25px;
 				}
+
 			}
-			.timepicker{
-				width: 100%;
+
+			.timepicker {
 				display: inline-flex;
+				width: 100%;
+				padding: 25px 10px 50px 10px;
 				flex-flow: row wrap;
 				align-items: center;
-				padding:25px 10px 50px 10px;
-				.timepicker-title{
+
+				.timepicker-title {
+					font-family: @fz-MainHead;
 					font-size: @fz-MainHead + 6px;
+				}
+
+				.timepicker-date {
+					padding: 0 30px;
+				}
+
+				.timepicker-show {
 					font-family: @fz-MainHead;
-				}
-				.timepicker-date{
-					padding:0 30px;
-				}
-				.timepicker-show{
-					color: @Content;
 					font-size: @fz-MainHead;
-					font-family: @fz-MainHead;
+					color: @Content;
 				}
+
 			}
-			.addpreview-content-body{
-				padding:15px 10px;
+
+			.addpreview-content-body {
+				padding: 15px 10px;
 			}
-			h3{
-				padding:15px 0;
+
+			h3 {
+				padding: 15px 0;
 			}
-			h2{
-				padding:30px 0 15px 0;
+
+			h2 {
+				padding: 30px 0 15px 0;
 			}
-			.addpreview-content-preview{
-				min-height: 200px;
-				padding:15px 10px;
-				border: 1px solid @Disabled;
-				height: 100%;
-				text-indent:25px;
-				color:#657180;
-				font-family:Text;
+
+			.addpreview-content-preview {
+				font-family: Text;
 				line-height: 2;
+				height: 100%;
+				min-height: 200px;
+				padding: 15px 10px;
+				text-indent: 25px;
+				color: #657180;
+				border: 1px solid @Disabled;
 			}
+
 		}
+
 	}
+
 }

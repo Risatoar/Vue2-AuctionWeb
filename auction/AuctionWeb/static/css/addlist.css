@@ -10,23 +10,23 @@
   border: 1px solid #c3cbd6;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-head-title {
-  padding: 15px 10px;
-  font-size: 24px;
   font-family: Main Head;
+  font-size: 24px;
+  padding: 15px 10px;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-btn {
+  font-family: Main Head;
+  font-size: 16px;
+  position: absolute;
   top: 10px;
   right: 10px;
-  position: absolute;
-  font-size: 16px;
-  font-family: Main Head;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-addtitle {
   padding: 15px 10px;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-addtitle .input-title {
-  text-align: center;
   width: 100%;
+  text-align: center;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-adddescription {
   padding: 15px 10px;
@@ -46,14 +46,14 @@
   padding: 30px 0 15px 0;
 }
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-preview {
-  min-height: 200px;
-  padding: 15px 10px;
-  border: 1px solid #c3cbd6;
-  height: 100%;
-  text-indent: 25px;
-  color: #657180;
   font-family: Text;
   line-height: 2;
+  height: 100%;
+  min-height: 200px;
+  padding: 15px 10px;
+  text-indent: 25px;
+  color: #657180;
+  border: 1px solid #c3cbd6;
 }
 .addpreview {
   width: 1200px;
@@ -67,16 +67,16 @@
   border: 1px solid #c3cbd6;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-head-title {
-  padding: 15px 10px;
-  font-size: 24px;
   font-family: Main Head;
+  font-size: 24px;
+  padding: 15px 10px;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-btn {
+  font-family: Main Head;
+  font-size: 16px;
+  position: absolute;
   top: 10px;
   right: 10px;
-  position: absolute;
-  font-size: 16px;
-  font-family: Main Head;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-addtitle {
   padding: 15px 10px;
@@ -102,23 +102,23 @@
   text-indent: 25px;
 }
 .addpreview .addpreview-wrap .addpreview-content .timepicker {
-  width: 100%;
   display: inline-flex;
+  width: 100%;
+  padding: 25px 10px 50px 10px;
   flex-flow: row wrap;
   align-items: center;
-  padding: 25px 10px 50px 10px;
 }
 .addpreview .addpreview-wrap .addpreview-content .timepicker .timepicker-title {
-  font-size: 22px;
   font-family: 16px;
+  font-size: 22px;
 }
 .addpreview .addpreview-wrap .addpreview-content .timepicker .timepicker-date {
   padding: 0 30px;
 }
 .addpreview .addpreview-wrap .addpreview-content .timepicker .timepicker-show {
-  color: #657180;
-  font-size: 16px;
   font-family: 16px;
+  font-size: 16px;
+  color: #657180;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-body {
   padding: 15px 10px;
@@ -130,12 +130,12 @@
   padding: 30px 0 15px 0;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-preview {
-  min-height: 200px;
-  padding: 15px 10px;
-  border: 1px solid #c3cbd6;
-  height: 100%;
-  text-indent: 25px;
-  color: #657180;
   font-family: Text;
   line-height: 2;
+  height: 100%;
+  min-height: 200px;
+  padding: 15px 10px;
+  text-indent: 25px;
+  color: #657180;
+  border: 1px solid #c3cbd6;
 }

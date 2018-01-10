@@ -2,11 +2,11 @@
   height: 100%;
 }
 .detailnav h1 {
-  font-weight: 600;
-  color: #fff;
   font-size: 4em;
-  vertical-align: baseline;
+  font-weight: 600;
   padding: 15px;
+  vertical-align: baseline;
+  color: #fff;
 }
 .detailnav ul {
   overflow: hidden;
@@ -19,10 +19,10 @@
 }
 .detailnav li {
   font-size: 15px;
-  color: #fff;
-  padding: 10px;
   font-weight: 400;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  color: #fff;
   border-top: 1px solid rgba(255, 255, 225, 0.14);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }

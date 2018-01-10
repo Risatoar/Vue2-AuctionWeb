@@ -1,19 +1,19 @@
 .auctioninfo {
-  cursor: pointer;
-  border-radius: 4px;
-  height: 322px;
   overflow: hidden;
+  height: 322px;
   margin-top: 9px;
+  cursor: pointer;
   transition: all 0.5s ease-in-out;
+  border-radius: 4px;
 }
 .auctioninfo .auctioninfo-head {
+  font-size: 14px;
+  line-height: 40px;
   position: relative;
   height: 40px;
-  line-height: 40px;
-  background-color: #66cd00;
-  color: #ffffff;
-  font-size: 14px;
   margin-bottom: 20px;
+  color: #ffffff;
+  background-color: #66cd00;
 }
 .auctioninfo .auctioninfo-head .head-words {
   float: left;
@@ -27,37 +27,37 @@
   display: none;
 }
 .auctioninfo .auctioninfo-body .auctioninfo-body-item {
-  height: 52px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  height: 52px;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .auctioninfo .auctioninfo-body .auctioninfo-body-item .new {
+  font-size: 12px;
+  line-height: 16px;
   position: relative;
-  margin-left: 20px;
+  float: left;
   width: 34px;
   height: 16px;
-  line-height: 16px;
-  border-radius: 2px;
-  font-size: 12px;
-  float: left;
-  background: red;
+  margin-left: 20px;
   color: #fff;
+  border-radius: 2px;
+  background: red;
 }
 .auctioninfo .auctioninfo-body .auctioninfo-body-item li {
   position: relative;
-  padding-bottom: 8px;
-  letter-spacing: 2px;
-  text-align: left;
   margin-left: 80px;
+  padding-bottom: 8px;
+  text-align: left;
+  letter-spacing: 2px;
 }
 .auctioninfo .auctioninfo-body .auctioninfo-body-item .delnew {
   float: right;
   margin-right: 15px;
 }
 .infotitle {
-  width: 140px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  width: 140px;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }

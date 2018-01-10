@@ -8,53 +8,53 @@
   height: 100%;
 }
 .infodetail-body-top {
-  background-color: #009bff;
-  padding: 12px 20px;
   position: relative;
   overflow: hidden;
+  padding: 12px 20px;
+  background-color: #009bff;
 }
 .infodetail-body-top-content {
-  float: right;
-  line-height: 30px;
-  color: #fff;
   font-size: 1.4em;
+  line-height: 30px;
+  float: right;
+  color: #fff;
 }
 .infodetail-body-wrap {
-  padding: 0 10px;
-  height: 97.33%;
   overflow: hidden;
+  height: 97.33%;
+  padding: 0 10px;
 }
 .infode-head {
-  color: #000;
-  padding: 0 40px 20px 10px;
   height: 118px;
+  padding: 0 40px 20px 10px;
+  color: #000;
 }
 .infode-head p {
   font-size: 1em;
 }
 .infode-body {
-  height: 100%;
-  text-align: left;
-  padding: 0 20px 20px 20px;
   font-weight: normal;
-  letter-spacing: 3px;
+  height: 100%;
+  padding: 0 20px 20px 20px;
+  text-align: left;
   text-indent: 20px;
+  letter-spacing: 3px;
 }
 .infode-foot {
-  width: 100%;
   position: fixed;
-  left: 0;
   bottom: 0;
+  left: 0;
+  width: 100%;
 }
 .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content {
   height: 100%;
   margin-top: -16px;
 }
 .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content > .ivu-tabs-tabpane {
-  background: #fff;
-  padding: 16px;
   line-height: 26px;
   height: 100%;
+  padding: 16px;
+  background: #fff;
 }
 .demo-tabs-style1 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab {
   border-color: transparent;
@@ -67,34 +67,34 @@
   background: #fff;
 }
 .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active {
-  border-top: 1px solid #3399ff;
+  border-top: 1px solid #39f;
 }
 .demo-tabs-style2 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active:before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: #3399ff;
   position: absolute;
   top: 0;
   left: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  content: '';
+  background: #39f;
 }
 .previewdetail-wrap {
-  margin-top: 80px;
+  font-family: Text;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  min-height: 50em;
-  padding: 2em 0;
   display: block;
+  min-height: 50em;
+  margin-top: 80px;
+  padding: 2em 0;
   cursor: pointer;
-  font-family: Text;
 }
 .previewdetail-nav {
   width: 100%;
   height: 50px;
-  background-color: rgba(35, 35, 35, 0.1);
   border-bottom: 5px solid #080808;
+  background-color: rgba(35, 35, 35, 0.1);
 }
 .pre-nav-li {
   width: 1200px;
@@ -104,22 +104,22 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: row;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
-  flex-direction: row;
 }
 .pre-nav-li li {
-  height: 45px;
   line-height: 45px;
-  text-align: center;
   width: 240px;
+  height: 45px;
+  text-align: center;
 }
 .pre-nav-li li:hover {
-  color: #fff;
-  background-color: #080808;
   -webkit-animation: navhover .6s;
   animation: navhover .6s;
+  color: #fff;
+  background-color: #080808;
 }
 .previewdetail-body {
   width: 1200px;
@@ -127,12 +127,12 @@
   margin: 0 auto;
 }
 .previewdetail-information {
-  color: #464c5b;
-  padding: 2em 10px;
-  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100%;
+  padding: 2em 10px;
+  color: #464c5b;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-flow: row wrap;
@@ -142,43 +142,43 @@
   justify-content: space-between;
 }
 .previewdetail-img {
+  overflow: hidden;
   width: 418px;
   height: 418px;
   border: 1px solid #d7dde4;
-  overflow: hidden;
 }
 .previewdetail-information-right {
   width: 730px;
   background-color: #fff;
 }
 .pre-info-right-title {
-  width: 730px;
   font-weight: 700;
+  width: 730px;
   background-color: #fff;
 }
 .pre-info-right-title h2 {
-  padding: 20px 10px 12px;
-  line-height: 1;
   font-weight: 500;
+  line-height: 1;
+  padding: 20px 10px 12px;
   color: #000;
 }
 .pre-info-right-detail {
-  padding: 0 10px 0 8px;
   line-height: 3;
+  padding: 0 10px 0 8px;
 }
 .pre-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-direction: row;
+  padding: 0 10px 0 8px;
+  border-radius: 4px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
-  flex-direction: row;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 0 10px 0 8px;
-  border-radius: 4px;
 }
 .pre-content-wrap {
   width: 356px;
@@ -188,30 +188,30 @@
   margin: 0 10px;
 }
 .pre-info-right-warning {
-  margin: 10px 0;
-  border: 3px solid #3399ff;
-  border-radius: 4px;
-  width: 330px;
   font-size: 12px;
   line-height: 2;
+  width: 330px;
+  margin: 10px 0;
+  border: 3px solid #39f;
+  border-radius: 4px;
 }
 .pre-info-right-warning p {
-  text-indent: 16px;
   padding: 0 10px;
+  text-indent: 16px;
 }
 .pre-warning-title {
-  color: #fff;
   font-size: 16px;
   text-align: center;
-  background-color: #3399ff;
+  color: #fff;
+  background-color: #39f;
 }
 .timeToEnd {
   line-height: 1.5;
 }
 .timeShow {
+  font-size: 26px;
   display: flex;
   flex-direction: row;
-  font-size: 26px;
 }
 .timeorange {
   color: #5cadff;
@@ -222,42 +222,42 @@
 .timeShow div {
   width: 40px;
   height: 40px;
+  animation: jump 1s infinite;
   text-align: center;
+  border: 2px solid;
   border-radius: 20px;
-  border: 2px solid ;
-  animation: jump 1s infinite ;
 }
 .timeShow div::before {
-  content: "";
-  clear: both;
   display: block;
+  clear: both;
+  content: '';
 }
 .timeShow div::after {
-  content: "";
-  clear: both;
   display: block;
+  clear: both;
+  content: '';
 }
 .timeShow strong {
   padding: 0 5px;
 }
 .timeShow strong::before {
-  content: "";
-  clear: both;
   display: block;
+  clear: both;
+  content: '';
 }
 .timeShow strong::after {
-  content: "";
-  clear: both;
   display: block;
+  clear: both;
+  content: '';
 }
 .previewdetail-information-bottom {
+  font-weight: normal;
+  line-height: 2;
   width: 1200px;
   margin-top: 30px;
-  font-weight: normal;
-  letter-spacing: 3px;
-  text-indent: 20px;
-  line-height: 2;
   text-align: left;
+  text-indent: 20px;
+  letter-spacing: 3px;
 }
 @keyframes jump {
   0% {
@@ -272,26 +272,26 @@
 }
 @-webkit-keyframes navhover {
   from {
-    background-color: #9ea7b4;
     font-size: 25px;
     -webkit-transform: rotate(10deg);
     transform: rotate(10deg);
+    background-color: #9ea7b4;
   }
   to {
-    background-color: #080808;
     font-size: 16px;
+    background-color: #080808;
   }
 }
 @keyframes navhover {
   0% {
-    background-color: #9ea7b4;
     font-size: 25px;
+    background-color: #9ea7b4;
   }
   50% {
-    background-color: #4F4F4F;
+    background-color: #4f4f4f;
   }
   100% {
-    background-color: #080808;
     font-size: 16px;
+    background-color: #080808;
   }
 }

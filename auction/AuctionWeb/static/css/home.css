@@ -1,13 +1,13 @@
 .home {
-  text-align: center;
   display: block;
-  cursor: pointer;
   width: 1200px;
   margin: 0 auto;
+  cursor: pointer;
+  text-align: center;
 }
 .home .home-wrap {
-  padding: 2em 0;
   position: relative;
+  padding: 2em 0;
 }
 .home .home-wrap .home-left {
   float: left;
@@ -19,8 +19,8 @@
   border: 1px solid #d7dde4;
 }
 .home .home-wrap .home-right {
-  float: right;
   position: relative;
+  float: right;
 }
 .home .home-wrap .home-right .home-usericon,
 .home .home-wrap .home-right .home-userdetail,

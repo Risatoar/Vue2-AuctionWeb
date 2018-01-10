@@ -4,19 +4,19 @@
 // 颜色
 
 // 主色调
-@Primary: #3399ff;
+@Primary: #39f;
 // 主色调-亮
 @LightPrimary: #5cadff;
 // 主色调-暗
 @DarkPrimary: #3091f2;
 // 成功
-@Success: #00cc66;
+@Success: #0c6;
 // 消息
-@Info: #3399ff;
+@Info: #39f;
 // 警告
-@Warning: #ff9900;
+@Warning: #f90;
 // 错误
-@Error: #ff6600;
+@Error: #f60;
 // 标题
 @Title: #464c5b;
 // 内容
@@ -29,8 +29,6 @@
 @Border: #d7dde4;
 // 分割线
 @Divider: #e3e8ee;
-
-
 // 文字
 
 // 文字-字号
@@ -42,7 +40,6 @@
 @fz-SmallHead: 12px;
 // 正文
 @fz-Content: 12px;
-
 // 文字-字体
 // 主标题
 @fm-MainHead: Main Head;
@@ -55,31 +52,38 @@
 // 辅助文字
 @fm-Help: Help;
 
-.home{
-	text-align: center;
+.home {
 	display: block;
-	cursor: pointer;
 	width: 1200px;
 	margin: 0 auto;
-	.home-wrap{
-		padding: 2em 0;
+	cursor: pointer;
+	text-align: center;
+
+	.home-wrap {
 		position: relative;
-		.home-left{
+		padding: 2em 0;
+
+		.home-left {
 			float: left;
 		}
-		.home-middle{
+
+		.home-middle {
 			float: left;
 			width: 600px;
 			height: 800px;
 			border: 1px solid @Border;
 		}
-		.home-right{
-			float: right;
+
+		.home-right {
 			position: relative;
-			.home-usericon,.home-userdetail,.home-circle{
+			float: right;
+
+			.home-usericon, .home-userdetail, .home-circle {
 				margin-bottom: 18px;
 			}
+
 		}
+
 	}
 
 }

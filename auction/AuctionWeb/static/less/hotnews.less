@@ -1,100 +1,107 @@
-@time: #ffffff;
-@title-color: #FF0000;
-@msg: #000000;
+@time: #fff;
+@title-color: #f00;
+@msg: #000;
 @fz: 12px;
 
-
-.hotnews{
+.hotnews {
+	height: 322px;
+	margin-top: 9px;
+	transition: all .5s ease-in-out;
 	color: @time;
 	border-radius: 4px;
-	height: 322px;
-	transition: all .5s ease-in-out;
-	margin-top: 9px;
-	.hotnewsshow{
+
+	.hotnewsshow {
 		display: none;
 	}
-	.hotnews-block{
-		cursor: pointer;
+
+	.hotnews-block {
 		width: 100%;
 		height: 80px;
-		.hotnews-block-left{
-			display: block;
+		cursor: pointer;
+
+		.hotnews-block-left {
+			line-height: 80px;
 			position: absolute;
+			display: block;
 			float: left;
 			width: 10%;
 			height: 80px;
-			line-height: 80px;
-		    color: #fff;
+			color: #fff;
 		}
-		.hotnews-block-right{
-			text-align: left;
+
+		.hotnews-block-right {
 			position: relative;
 			float: right;
 			width: 90%;
 			height: 80px;
+			text-align: left;
+			border-right: 1px solid rgba(52, 52, 52, .15);
+			border-bottom: 1px solid rgba(52, 52, 52, .15);
 			background-color: #fff;
-			border-bottom: 1px solid rgba(52,52,52,.15);
-			border-right: 1px solid rgba(52,52,52,.15);
-			.hotnews-title{
-				padding-top: 15px;
-				margin-left: 20px;
+
+			.hotnews-title {
 				font-size: @fz+4px;
-				color: @title-color
-			}
-			.hotnews-msg{
-				display: inline-block;
-				white-space: nowrap;
-				overflow: hidden;
-				text-overflow:ellipsis;
-				width: 700px;
-				text-indent: @fz+2px;
 				margin-left: 20px;
+				padding-top: 15px;
+				color: @title-color;
+			}
+
+			.hotnews-msg {
 				font-size: @fz+2px;
-				color: @msg;
+				display: inline-block;
+				overflow: hidden;
+				width: 700px;
 				margin-top: 10px;
 				margin-bottom: 10px;
+				margin-left: 20px;
+				white-space: nowrap;
+				text-indent: @fz+2px;
+				text-overflow: ellipsis;
+				color: @msg;
 			}
+
 		}
+
 	}
+
 }
 
-.block0{
-	background-color: #C2185Bs;
+.block0 {
+	background-color: #c2185bs;
 }
 
-.block1{
+.block1 {
 	background-color: black;
 }
 
-.block2{
+.block2 {
 	background-color: black;
 }
 
-.block3{
+.block3 {
 	background-color: black;
 }
 
-
-.block0:hover{
-	background-color: #03A9F4;
+.block0:hover {
+	background-color: #03a9f4;
 }
 
-.block1:hover{
-	background-color: #FFEB3B;
+.block1:hover {
+	background-color: #ffeb3b;
 }
 
-.block2:hover{
-	background-color: #03A9F4;
+.block2:hover {
+	background-color: #03a9f4;
 }
 
-.block3:hover{
-	background-color: #FFEB3B;
+.block3:hover {
+	background-color: #ffeb3b;
 }
 
-.block0,.block2{
-			background-color: #00BCD4;
-		}
+.block0, .block2 {
+	background-color: #00bcd4;
+}
 
-.block1,.block3{
-			background-color: #FFC107;
-		}
+.block1, .block3 {
+	background-color: #ffc107;
+}
