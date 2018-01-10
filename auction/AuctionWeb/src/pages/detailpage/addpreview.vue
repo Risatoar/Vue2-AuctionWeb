@@ -4,43 +4,57 @@ author：risatoar
 date：2017/12/27
 -->
 <template>
+	<!-- 拍卖预告信息添加界面 -->
 	<div class="addpreview">
+		<!-- 拍卖预告信息添加界面背景层 -->
 		<div class="addpreview-wrap">
+			<!-- 拍卖预告信息添加界面内容层 -->
 			<div class="addpreview-content">
+				<!-- 拍卖预告信息添加界面头部 -->
 				<div class="addpreview-content-head">
+					<!-- 拍卖预告信息添加界面头部标题 -->
 					<div class="addpreview-content-head-title">
 						现在就来发布一则拍卖消息吧！
 					</div>
+					<!-- 拍卖预告信息添加界面头部发布按钮 -->
 					<button class="btn btn-info addpreview-btn" @click="addpreview">立即发布!</button>
 				</div>
+				<!-- 拍卖预告信息添加界面标题添加 -->
 				<div class="addpreview-content-addtitle">
 					<label>点击这里输入标题</label>
 					<input type="text" class="form-control input-title" label="点击这里输入标题" v-model="add.title"></input>
 				</div>
+				<!-- 拍卖预告信息添加界面简介添加 -->
 				<div class="addpreview-content-adddescription">
 					<label>请输入简介</label>
 					<input type="text" class="form-control input-description" label="请输入简介" v-model="add.description"></input>
 				</div>
+				<!-- 拍卖预告信息添加界面价格添加 -->
 				<div class="addpreview-content-addsaleprice">
 					<label>请输入价格</label>
 					<input type="text" class="form-control input-saleprice" label="请输入价格" v-model="add.saleprice"></input>
 				</div>
+				<!-- 拍卖预告信息添加界面时间选择区块，采用了iview的datepicker和timepicker组件 -->
 				<div class="timepicker">
 					<span class="timepicker-title">请在这里选择拍卖开始及结束时间</span>
+					<!-- 通过datepicker选择拍卖预告开始及结束日期 -->
 					<div class="timepicker-date">
 						<Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px" format="yyyy-MM-dd" @on-change="add.setdate=$event">
 						</Date-picker>
 					</div>
 		            </br>
 		            <span class="timepicker-title">选择拍卖结束具体时间</span>
+		            <!-- 通过datepicker选择拍卖预告具体结束时间 -->
 		            <div class="timepicker-date">
 						<Time-picker type="time" placeholder="选择时间" style="width: 168px" @on-change="timess=$event"></Time-picker>
 					</div>
 				</div>
 				<div class="addpreview-content-body">
 					<h3>请输入拍卖信息主要内容</h3>
+					<!-- 拍卖预告添加界面主要内容添加，富文本编辑器采用了vue-editor -->
 					<vue-editor v-model="add.maintext"></vue-editor>
 					<h2>预览</h2>
+					<!-- 主要内容信息预览区块，可以看到输入的内容在实际界面的样式 -->
 					<div class="addpreview-content-preview">
 						<p v-html="add.maintext" class="addpreview-content-preview-maintext"></p>
 					</div>
@@ -71,9 +85,11 @@ export default {
 		}
 	},
 	methods: {
+		// 调用iview组件的emit事件展示全局发送成功提示
 		success () {
         	this.$Message.success('发送成功');
         },
+        // 设置获取cookie的代理方法
 		getCookie (cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -84,14 +100,16 @@ export default {
         }
         return "";
         },
+         // 通过cookie名获取username，设置拍卖预告作者
         setAuthor() {
         	this.add.author = this.getCookie("user")
         },
+        // 将选择的具体拍卖预告结束时间利用push方法拼接到日期数组中
         pushTime() {
         	this.add.setdate.push(this.timess)
         },
+        // 通过axios封装的ajax操作来与后台进行异步post操作,添加拍卖预告
 		addpreview() {
-			////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
 			this.setAuthor()
 			this.pushTime()
 			axios.post("/addpreview",this.add).then((res)=> {

@@ -1,30 +1,40 @@
+<!--
+查看发出过的拍卖预告功能界面
+author：risatoar
+date：2017/12/26
+-->
 <template>
-	<div class="home-newslist">
-		<div class="hnewslist-top">
-			<div class="hnewslist-top-wrap">
+	<!-- 发出过的拍卖信息功能界面主体 -->
+	<div class="home-previewlist">
+		<!-- 发出过的拍卖信息功能界面头部 -->
+		<div class="hpreviewlist-top">
+			<!-- 发出过的拍卖信息功能界面头部背景层 -->
+			<div class="hpreviewlist-top-wrap">
 				<h3>您发出过的拍卖信息都在这里</h3>
 				<button @click="toAddPreview" class="btn btn-info previewadd">
 					发布一个呗~
 				</button>
 			</div>
 		</div>
-		<div class="hnewslist-body">
-			<div class="hnewslist-body-list" v-for="item in mynewslist">
-				<div class="hnewslist-block">
-					<div class="hnewslist-block-left">
+		<!-- 发出过的拍卖信息功能界面消息列表 -->
+		<div class="hpreviewlist-body">
+			<div class="hpreviewlist-body-list" v-for="item in mypreviewlist">
+				<div class="hpreviewlist-block">
+					<div class="hpreviewlist-block-left">
 						<img src="../../../static/img/mi6.jpg">
 					</div>
-					<div class="hnewslist-block-right">
+					<div class="hpreviewlist-block-right">
 						<li>
-							<a class="hnewslist-block-right-title">{{ item.title }}</a>
+							<a class="hpreviewlist-block-right-title">{{ item.title }}</a>
 						</li>
 						<li>
-						  <a class="hnewslist-block-right-date">{{ item.date }}</a>
+						  <a class="hpreviewlist-block-right-date">{{ item.date }}</a>
 					    </li>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- 分页功能 -->
 		<div class="page">
 			<Page :total="100"></Page>
 		</div>
@@ -35,7 +45,7 @@
 export default {
 	data() {
 		return {
-			mynewslist: [
+			mypreviewlist: [
 			{
 				"date" : "2017/11/30",
 			    "author" : "risatoar",
@@ -83,11 +93,11 @@ export default {
 </script>
 
 <style scoped>
-.hnewslist-top{
+.hpreviewlist-top{
 	height: 80px;
 	width: 598px;
 }
-.hnewslist-top-wrap{
+.hpreviewlist-top-wrap{
 	width: 598px;
 	padding:20px 5px;
 	background-color: #fff;
@@ -100,12 +110,12 @@ export default {
 h3{
 	font-family: Helvetica;
 }
-.hnewslist-body{
+.hpreviewlist-body{
 	padding:20px 5px;
 	height: 630px;
 	width: 598px;
 }
-.hnewslist-block{
+.hpreviewlist-block{
 	height: 90px;
 	-webkit-box-flex: 1;
     -ms-flex: 1 1 auto;
@@ -120,21 +130,21 @@ h3{
     min-width: 0;
     text-align: left;
 }
-.hnewslist-block img{
+.hpreviewlist-block img{
 	float: left;
 	width: 108px;
 	height: 90px;
 }
-.hnewslist-block-right{
+.hpreviewlist-block-right{
 	margin: .5em 0 1em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.hnewslist-block-right li{
+.hpreviewlist-block-right li{
 	padding:10px 0;
 }
-.hnewslist-block-right a{
+.hpreviewlist-block-right a{
 	color: inherit;
 	font-size: 16px;
     font-weight: 600;

@@ -4,6 +4,7 @@ author：risatoar
 date：null
 -->
 <template>
+<!-- 页面加载loading -->
   <div class="loading">
     <div class="loading" >
       <div id="loaderImage"></div>

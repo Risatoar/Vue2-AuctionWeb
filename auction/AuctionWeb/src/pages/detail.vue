@@ -1,6 +1,14 @@
+<!--
+导航详情界面
+author：risatoar
+date：2017/12/13
+-->
 <template>
+  <!-- 导航详情界面背景层 -->
   <div class="detail-wrap">
+  	<!-- 导航详情界面主体 -->
   	<div class="detail-body">
+  		<!-- 导航详情界面左侧,利用route-view展示不同的导航 -->
   		<div class="detail-left">
   		  <div class="left-nav">
   		  	<transition :name="transitionName">
@@ -8,6 +16,7 @@
   		  	</transition>
   		  </div>
   		</div>
+  		<!-- 导航详情界面右侧,利用route-view展示不同的消息列表 -->
   		<div class="detail-right">
   			<transition :name="transitionName">
   		    <router-view name="right" class="child-view"></router-view>
@@ -45,6 +54,7 @@ export default {
 			}]
 		}
 	},
+	// 监控路由变化来展示不同的路由过度动画
 	watch: {
 	    '$route' (to, from) {
 	      if(to.path == '/'){

@@ -1,8 +1,14 @@
+<!--
+拍卖预告左侧导航组件界面
+author：risatoar
+date：2017/12/13
+-->
 <template>
 	<div class="detailnav" style="background-color: #e53935">
 		<h1>拍卖预告</h1>
 	    <ul v-for="item in showsLists">
 	      <router-link :to="{ path: '/detail/preview/'+ item.path }" tag="li">
+	      	<!-- 利用iview的Affix组件实现图钉效果 -->
 	        <Affix :offset-top="item.offsettop">
                 <span class="demo-affix">{{ item.name }}</span>
             </Affix>

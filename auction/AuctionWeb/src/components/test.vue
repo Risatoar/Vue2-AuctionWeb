@@ -1,18 +1,11 @@
 <template>
-  <div>
-    <Dropdown trigger="custom" :visible="visible" style="margin-left: 20px">
-        <a href="javascript:void(0)" @click="handleOpen">
-            custom 触发
-            <Icon type="arrow-down-b"></Icon>
-        </a>
-        <Dropdown-menu slot="list">
-            <p>常用于各种自定义下拉内容的场景。</p>
-            <div style="text-align: right;margin:10px;">
-                <i-button type="primary" @click="handleClose">关闭</i-button>
-            </div>
-        </Dropdown-menu>
-    </Dropdown>
-  </div>
+    <div>
+        <dialog id="dialog" ref="mybox">
+            <h2>我是对话框标题</h2>
+            <p>我是对话框内容</p>
+        </dialog>
+        <button @click="asdasd" class="btn btn-info"></button>
+    </div>
 </template>
 <script>
     export default {
@@ -27,6 +20,9 @@
             },
             handleClose () {
                 this.visible = false;
+            },
+            asdasd() {
+                this.$refs.mybox.style.display = 'block';
             }
         }
     }

@@ -1,15 +1,16 @@
+<!--
+主页组件界面
+author：risatoar
+date：2017/10/29
+-->
 <template>
 	<div>
-<!-- 		<div class="particles">
-			<particles></particles>
-		</div> -->
-		<news></news>
+	  <news></news>
 	</div>
 </template>
 
 <script>
 import news from '../components/news.vue'
-// import particles from '../components/particles.vue'
 export default {
 	components: {
 		news

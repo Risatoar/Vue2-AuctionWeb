@@ -1,98 +1,58 @@
+<!--
+法律法规右侧列表组件界面
+author：risatoar
+date：2017/12/13
+-->
 <template>
-	<div>
-		<div class="law-wrap">
-			<div class="law-body">
-				<div class="law-body-top">
-					<span class="law-body-top-content">法律法规</span>
+	<!-- 法律法规列表组件界面背景层 -->
+	<div class="law-wrap">
+		<!-- 法律法规列表组件界面主体层 -->
+		<div class="law-body">
+			<div class="law-body-top">
+				<!-- 法律法规列表组件界面副标题 -->
+				<span class="law-body-top-content">法律法规</span>
+			</div>
+			<div class="law-body-list">
+				<!-- 页面加载loding动画 -->
+				<div v-if="loading">
+					<content-placeholders v-if="loading">
+					  <content-placeholders-heading :img="true" />
+					</content-placeholders>
+					<br><br>
+					<content-placeholders v-if="loading">
+					  <content-placeholders-heading :img="true" />
+					</content-placeholders>
+					<br><br>
+					<content-placeholders v-if="loading">
+					  <content-placeholders-heading :img="true" />
+					</content-placeholders>
+					<br><br>
+					<content-placeholders v-if="loading">
+					  <content-placeholders-heading :img="true" />
+					</content-placeholders>
+					<br><br>
+					<content-placeholders v-if="loading">
+					  <content-placeholders-heading :img="true" />
+					</content-placeholders>
+					<br><br>
+					<content-placeholders v-if="loading">
+					  <content-placeholders-heading :img="true" />
+					</content-placeholders>
 				</div>
-				<div class="law-body-list">
-					<div v-if="loading">
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
-						<br><br>
-						<content-placeholders v-if="loading">
-						  <content-placeholders-heading :img="true" />
-						</content-placeholders>
+				<!-- 法律法规信息列表展示 -->
+				<div class="law-body-list-block" v-for="item in infolist">
+					<div class="list-block-left">
+						<img class="left-img" src="../../../static/img/mi6.jpg" >
 					</div>
-					<div class="law-body-list-block" v-for="item in infolist">
-						<div class="list-block-left">
-							<img class="left-img" src="../../../static/img/mi6.jpg" >
-						</div>
-						<div class="list-block-right">
-							<h3><a class="block-right-title">{{ item.title }}</a></h3>
-							<p class="block-right-description">{{ item.description }}</p>
-							<div class="block-right-foot">
-								<p>
-									<span class="block-right-author">{{ item.author }}</span>
-									<i>.</i>
-									<span class="block-right-date">{{ item.date }}</span>
-								</p>
-							</div>
+					<div class="list-block-right">
+						<h3><a class="block-right-title">{{ item.title }}</a></h3>
+						<p class="block-right-description">{{ item.description }}</p>
+						<div class="block-right-foot">
+							<p>
+								<span class="block-right-author">{{ item.author }}</span>
+								<i>.</i>
+								<span class="block-right-date">{{ item.date }}</span>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -116,6 +76,7 @@ export default {
 		this.getinfo()
 	},
 	methods: {
+		// 获取法律法规消息列表
 		getinfo() {
 			axios.get("/information").then((result)=>{
 				let res = result.data;

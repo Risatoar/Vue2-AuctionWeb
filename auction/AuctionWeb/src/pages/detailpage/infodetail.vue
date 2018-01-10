@@ -1,24 +1,25 @@
+<!--
+拍卖公告信息详情界面
+author：risatoar
+date：2017/12/20
+-->
 <template>
-<div class="infodetail-wrap">
-	<div class="infodetail-body">
-		<div class="infodetail-body-top">
-			<span class="infodetail-body-top-content" v-touch-ripple>Title:{{ infodetaillist.title }}</span>
-			<!-- <vue-star animate="animated rubberBand" color="#F05654">
-			    <a slot="icon" class="fa fa-heart" @click="handleClick"></a>
-			  </vue-star> -->
-		</div>
+	<!-- 拍卖公告详情页面背景 -->
+	<div class="infodetail-wrap">
+		<!-- 拍卖公告详情页面内容部分 -->
 		<div class="infodetail-body">
-			<!-- <ul>
-				<li>{{ infodetaillist._id }}</li>
-				<li>{{ infodetaillist.author }}</li>
-				<li>{{ infodetaillist.date }}</li>
-				<li>{{ infodetaillist.title }}</li>
-				<li>{{ infodetaillist.description }}</li>
-			</ul> -->
+			<!-- 拍卖公告详情页面顶部标题,根据数据库查询结果异步更改标题 -->
+			<div class="infodetail-body-top">
+				<span class="infodetail-body-top-content" v-touch-ripple>Title:{{ infodetaillist.title }}</span>
+			</div>
+			<!-- 拍卖公告详情页面顶部标题,根据数据库查询结果异步更改标题 -->
 			<div class="infodetail-body-wrap">
+				<!-- 页面加载时loading动画 -->
 				<div class="detail-loading" v-if="loading"><h1>loading</h1></div>
+				<!-- 采用iview的tabs组件来分布展示拍卖公告详细信息 -->
 				<Row :gutter="32">
 				       <i-col span="12" class="demo-tabs-style1" style="background: #e3e8ee;padding:16px;width:100%;height:100%;">
+				       	<!-- tab分为两个区块：消息简介/详情页面 -->
 				           <Tabs type="card">
 				               <Tab-pane label="消息简介">
 				               	<div style="text-align:center;">
@@ -28,44 +29,29 @@
 				               		<p style="padding-top:5px;font-size:14px;color:#464c5b;font-family:Main Head;font-weight: bold;">
 				               		  <Icon type="person"></Icon>  作者：{{ infodetaillist.author }} | <Icon type="calendar"></Icon>  发布时间：{{ infodetaillist.date }} | <Icon type="wand"></Icon>  评分: {{ infodetaillist.stars }} 颗星
 				               		</p>
+				               		<!-- 评分区块利用iview的rate组件实现 -->
 				               		<div style="margin-top:50px;">
-				               			<!-- <Rate show-text :value.sync="valueCustomText">
-				               			                <span style="color: #f5a623">{{ valueCustomText }}</span>
-				               			            </Rate> -->
 				               			<Rate show-text :value.sync="valueHalf" @on-change="clickstar" v-model="stars"></Rate>
 				               		</div>
-				               		<i-button @click="success" v-if="false"></i-button>
-				               		<i-button @click="error" v-if="false"></i-button>
-				               		<span >觉得内容怎么样？给作者打个星吧！</span>
+				               		<span>觉得内容怎么样？给作者打个星吧！</span>
 				               		<div style="padding:60px;width:600px;margin:0 auto;">
-						               		<Card :bordered="false">
-			               		                <p slot="title">消息简介</p>
-			               		                <p>{{ infodetaillist.description }}</p>
-			               		            </Card>
+					               		<Card :bordered="false">
+		               		                <p slot="title">消息简介</p>
+		               		                <p>{{ infodetaillist.description }}</p>
+		               		            </Card>
 				               		</div>
 				               	</div>
 				               </Tab-pane>
+				               <!-- 详情页面tab展示 -->
 				               <Tab-pane label="详情页面">
 				               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text;line-height:2;" v-html="infodetaillist.maintext"></p>
 				               </Tab-pane>
 				           </Tabs>
 				       </i-col>
 				</Row>
-				<!-- <div class="infode-head">
-					<h2>{{ infodetaillist.title }}</h2>
-					<p>作者：{{ infodetaillist.author }}</p>
-					<p>发布时间：{{ infodetaillist.date }}</p>
-				</div>
-				<div class="infode-body">
-					<p>
-						内容：{{ infodetaillist.description }}
-					</p>
-				</div>
-				<div class="infode-foot">所有解释权归本网站所有</div> -->
 			</div>
 		</div>
 	</div>
-</div>
 </template>
 
 <script>
@@ -91,40 +77,22 @@ export default {
 			isFirstStar: true,
 		}
 	},
-	// created() {
-	// 	this.toTest()
-	// },
 	mounted() {
 		this.getUrl()
 	},
+	// 利用vue的watch来监控路由变化,执行getUrl函数
 	watch: {
 	  '$route': 'getUrl'
 	},
-	// beforeRouteEnter (to, from, next) {
-	//   getPost(to.params.id, (err, post) => {
-	//     next(vm => vm.setData(err, post))
-	//   })
-	// },
-	// // 路由改变前，组件就已经渲染完了
-	// // 逻辑稍稍不同
-	// beforeRouteUpdate (to, from, next) {
-	//   this.post = null
-	//   getPost(to.params.id, (err, post) => {
-	//     this.setData(err, post)
-	//     next()
-	//   })
-	// },
 	methods: {
-		// toTest() {
-		// 	this.$router.push('/test')
-		// },
+		// 获取当前url的params所带的id属性,赋值给info对象的infoid属性
 		getUrl() {
 			this.info.infoid = this.$route.params.id;
-			console.log(this.info.infoid)
 			if(this.info.infoid){
 				this.getinfo()
 			}
 		},
+		// 通过infoid查询对应的详情信息
 		getinfo() {
 			axios.post("/infodetail",this.info).then((res)=> {
 				this.loading = false;
@@ -133,6 +101,7 @@ export default {
 	          console.log(error);
 	        });
 		},
+		// 判断当前评分是否为第一次评分
 		clickstar() {
 			if(this.isFirstStar){
 				this.isFirstStar = false;

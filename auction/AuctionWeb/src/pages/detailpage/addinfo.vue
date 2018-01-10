@@ -4,26 +4,36 @@ author：risatoar
 date：2017/12/26
 -->
 <template>
+	<!-- 拍卖信息添加界面 -->
 	<div class="addinfo">
+		<!-- 拍卖信息添加界面背景层 -->
 		<div class="addinfo-wrap">
+			<!-- 拍卖信息添加界面内容层 -->
 			<div class="addinfo-content">
+				<!-- 拍卖信息添加界面头部 -->
 				<div class="addinfo-content-head">
+					<!-- 拍卖信息添加界面头部标题 -->
 					<div class="addinfo-content-head-title">
 						现在就来发布一则拍卖消息吧！
 					</div>
+					<!-- 拍卖信息添加界面头部发布按钮 -->
 					<button class="btn btn-info addinfo-btn" @click="addInfo">立即发布!</button>
 				</div>
+				<!-- 拍卖信息添加界面标题添加 -->
 				<div class="addinfo-content-addtitle">
 					<label>点击这里输入标题</label>
 					<input type="text" class="form-control input-title" label="点击这里输入标题" v-model="add.title"></input>
 				</div>
+				<!-- 拍卖信息添加界面简介添加 -->
 				<div class="addinfo-content-adddescription">
 					<label>请输入简介</label>
 					<input type="text" class="form-control input-description" label="请输入简介" v-model="add.description"></input>
 				</div>
+				<!-- 拍卖信息添加界面主要内容添加，富文本编辑器采用了vue-editor -->
 				<div class="addinfo-content-body">
 					<h3>请输入拍卖信息主要内容</h3>
 					<vue-editor v-model="add.maintext"></vue-editor>
+					<!-- 主要内容信息预览区块，可以看到输入的内容在实际界面的样式 -->
 					<h2>预览</h2>
 					<div class="addinfo-content-preview">
 						<p v-html="add.maintext" class="addinfo-content-preview-maintext"></p>
@@ -56,6 +66,7 @@ export default {
 		success () {
         	this.$Message.success('发送成功');
         },
+        // 获取cookie
 		getCookie (cname) {
         var name = cname + "=";
         var ca = document.cookie.split(';');
@@ -66,11 +77,12 @@ export default {
         }
         return "";
         },
+        // 通过cookie名获取username，设置拍卖公告作者
         setAuthor() {
         	this.add.author = this.getCookie("user")
         },
+        // 通过axios封装的ajax操作来与后台进行异步post操作,添加拍卖公告
 		addInfo() {
-			////JSON.stringify（）JSON.stringify() 方法用于将 JavaScript 值转换为 JSON 字符串。 为了清除不想要的东西
 			this.setAuthor()
 			axios.post("/addinfo",this.add).then((res)=> {
 				console.log(res);

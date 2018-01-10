@@ -1,4 +1,10 @@
+<!--
+修改密码界面
+author：risatoar
+date：2017/12/26
+-->
 <template>
+    <!-- 修改密码页面 -->
 	<div class="home-changepwd">
 	<label>老密码</label>
         <input type="password" class="form-control" id="reg-pwd" placeholder="老密码" v-model="oldPwd">
@@ -20,12 +26,14 @@ export default {
             newPwd2: ''
         }
     },
+    // 通过vuex获取当前usernmae
     computed: {
         username() {
          return this.$store.state.username
         },
     },
     methods: {
+        // 通过axios向后台传新旧密码输入表单,通过result传来的不同status值展示不同全局提示
         postPwd() {
             let PWD = {
                 username: this.username,

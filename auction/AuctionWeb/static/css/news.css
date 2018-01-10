@@ -82,7 +82,7 @@
   padding-right: 0.625em;
   margin-bottom: 1em;
 }
-.message-inner-middle .message-inner-middle-body .listcard {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard {
   -webkit-box-shadow: 2px 2px 5px;
   box-shadow: 0 2px 5px rgba(34, 34, 34, 0.38);
   background-color: #fff;
@@ -98,7 +98,7 @@
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-.message-inner-middle .message-inner-middle-body .listcard .pic {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic {
   width: 200%;
   height: 260px;
   margin: 0 auto;
@@ -109,13 +109,13 @@
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-.message-inner-middle .message-inner-middle-body .listcard .pic .card-img {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .card-img {
   position: absolute;
   right: 50%;
   width: 50%;
   height: 100%;
 }
-.message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .detailwrap {
   background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514723571464&di=27736017d381466db98fb2275a86fb2e&imgtype=0&src=http%3A%2F%2Fwww.51pptmoban.com%2Fd%2Ffile%2F2014%2F06%2F08%2F28b48a6780b2b7573bd28e71e83b81f5.jpg) repeat;
   opacity: .8;
   color: #fff;
@@ -125,7 +125,7 @@
   height: 100%;
   overflow: hidden;
 }
-.message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap ul {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .detailwrap ul {
   padding: 10px 5px;
   width: 201px;
   height: 100%;
@@ -134,25 +134,25 @@
   align-items: stretch;
   overflow: inherit;
 }
-.message-inner-middle .message-inner-middle-body .listcard .pic .detailwrap ul li {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .detailwrap ul li {
   width: 201px;
   text-align: left;
 }
-.message-inner-middle .message-inner-middle-body .listcard .pic:hover {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic:hover {
   -webkit-transform: translateX(-201px);
   transform: translateX(-201px);
   /* move the element up by 5px */
 }
-.message-inner-middle .message-inner-middle-body .listcard:hover,
-.message-inner-middle .message-inner-middle-body .listcard:focus,
-.message-inner-middle .message-inner-middle-body .listcard:active {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:hover,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:focus,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:active {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
   /* move the element up by 5px */
 }
-.message-inner-middle .message-inner-middle-body .listcard:hover:before,
-.message-inner-middle .message-inner-middle-body .listcard:focus:before,
-.message-inner-middle .message-inner-middle-body .listcard:active:before {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:hover:before,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:focus:before,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:active:before {
   opacity: 1;
   -webkit-transform: translateY(5px);
   transform: translateY(5px);

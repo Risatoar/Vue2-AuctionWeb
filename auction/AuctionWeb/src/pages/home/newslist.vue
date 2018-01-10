@@ -1,6 +1,14 @@
+<!--
+查看发出过的拍卖信息功能界面
+author：risatoar
+date：2017/12/26
+-->
 <template>
+	<!-- 发出过的拍卖信息功能界面主体 -->
 	<div class="home-newslist">
+		<!-- 发出过的拍卖信息功能界面头部 -->
 		<div class="hnewslist-top">
+			<!-- 发出过的拍卖信息功能界面头部背景层 -->
 			<div class="hnewslist-top-wrap">
 				<h3>您发出过的拍卖信息都在这里</h3>
 				<button @click="toAddInfo" class="btn btn-info infoadd">
@@ -8,6 +16,7 @@
 				</button>
 			</div>
 		</div>
+		<!-- 发出过的拍卖信息功能界面消息列表 -->
 		<div class="hnewslist-body">
 			<div class="hnewslist-body-list" v-for="item in mynewslist">
 				<div class="hnewslist-block">
@@ -25,6 +34,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- 分页功能 -->
 		<div class="page">
 			<Page :total="100"></Page>
 		</div>
