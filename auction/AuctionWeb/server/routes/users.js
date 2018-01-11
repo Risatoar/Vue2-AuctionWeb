@@ -3,6 +3,24 @@ var router=express.Router()
 var mongoose=require("mongoose")
 var Users=require("../models/users.js")
 var sd = require("silly-datetime");
+var fs = require("fs");//操作文件
+var multer = require('multer');//接收图片
+
+
+var storage = multer.diskStorage({
+    //设置上传后文件路径，uploads文件夹会自动创建。
+    destination: function (req, file, cb) {
+        cb(null, './static/img/uploads')
+    },
+    //给上传文件重命名，获取添加后缀名
+    filename: function (req, file, cb) {
+        cb(null,  file.originalname);
+     }
+ });
+
+var upload = multer({
+    storage: storage
+});
 
 mongoose.connect('mongodb://127.0.0.1:27017/auction')
 
@@ -321,6 +339,31 @@ router.post("/edit/mail",function(req,res,next){
       })
     }
   })
+})
+
+router.post('/edit/icon', upload.single('file'), function(req, res, next) {
+    // req.file 是 前端表单name=="imageFile" 的文件信息（不是数组）
+  //   Users.findOne({username:req.body.username},(err,user)=>{
+  //   if(err){
+  //     console.log(err)
+  //   }else if(user.icon == req.body.icon){
+  //     return res.json({
+  //       status: '1003'
+  //     })
+  //   }else {
+  //     Users.update({username:req.body.username},{$set:{mail:req.body.mail}},(err,user)=>{})
+  //   }
+  // })
+    fs.rename(req.file.path, "upload/" + req.file.originalname, function(err) {
+        if (err) {
+            throw err;
+        }
+        console.log('上传成功!');
+    })
+    res.writeHead(200, {
+        "Access-Control-Allow-Origin": "*"
+    });
+    res.end(JSON.stringify(req.file));
 })
 
 module.exports=router

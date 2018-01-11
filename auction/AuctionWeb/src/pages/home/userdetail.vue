@@ -110,6 +110,7 @@ date：2017/12/26
 						</div>
 						<Upload
 						    ref="upload"
+						    :data="checkUser"
 						    :show-upload-list="false"
 						    :default-file-list="defaultList"
 						    :on-success="handleSuccess"
@@ -120,14 +121,14 @@ date：2017/12/26
 						    :before-upload="handleBeforeUpload"
 						    multiple
 						    type="drag"
-						    action="/userdetails"
+						    action="/edit/icon"
 						    style="display: inline-block;width:58px;">
 						    <div style="width: 58px;height:58px;line-height: 58px;">
 						        <Icon type="camera" size="20"></Icon>
 						    </div>
 						</Upload>
-						<Modal title="View Image" v-model="visible">
-						    <img :src="'https://o5wwk8baw.qnssl.com/' + imgName + '/large'" v-if="visible" style="width: 100%">
+						<Modal title="查看大图" v-model="visible">
+						    <img :src="'http://localhost:8080/static/img/uploads/' + imgName " v-if="visible" style="width: 100%">
 						</Modal>
 					</td>
 				</tr>
@@ -179,10 +180,25 @@ export default {
 			defaultList: [],
 			imgName: '',
 			visible: false,
-			uploadList: []
+			uploadList: [],
+			nowUpLoad: '',
+			checkUser: ''
 		}
 	},
+	created() {
+		this.setDefault()
+		this.setUser()
+	},
 	methods: {
+		setUser() {
+			this.checkUser = this.userd.username
+		},
+		setDefault() {
+			this.defaultList[0] = {
+				name: this.userd.icon,
+				url: 'http://localhost:8080/static/img/uploads/' + this.userd.icon
+			}
+		},
 		// 通过axios向后台传对应的个人信息字段修改,通过result传来的不同status值展示不同全局提示
 		postChange(attr) {
 			console.log(this.attr)
@@ -250,8 +266,9 @@ export default {
         },
         // 上传图片路径
         handleSuccess (res, file) {
-            file.url = 'https://o5wwk8baw.qnssl.com/7eb99afb9d5f317c912f08b5212fd69a/avatar';
-            file.name = '7eb99afb9d5f317c912f08b5212fd69a';
+            file.url = 'http://localhost:8080/static/img/uploads/' + res.filename;
+            file.name = res.filename;
+            this.imgName = res.filename;
         },
         // 判断图片格式
         handleFormatError (file) {
@@ -267,7 +284,7 @@ export default {
                 desc: 'File  ' + file.name + ' is too large, no more than 2M.'
             });
         },
-        // 判断同时上传的图片是否大于5张
+        // 判断同时上传的图片是否大于1张
         handleBeforeUpload () {
             const check = this.uploadList.length < 5;
             if (!check) {

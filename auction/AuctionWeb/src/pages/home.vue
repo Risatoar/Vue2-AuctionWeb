@@ -61,7 +61,7 @@
           <div class="home-usericon">
             <Card style="width:350px;">
                 <div style="text-align:center">
-                    <img src="../../static/img/1.jpg" height="100" width="100" style="border-radius: 100px;border: 5px solid #dddee1;margin-bottom:10px;">
+                    <img v-lazy="'/static/img/uploads/' + userdetails.icon" height="100" width="100" style="border-radius: 100px;border: 5px solid #dddee1;margin-bottom:10px;">
                     <h3>{{ userdetails.nickname }}</h3>
                 </div>
             </Card>
