@@ -18,14 +18,15 @@ date：null
 						<!-- 导航栏 -->
 						<nav class="head-inner-nav">
 							<ul>
-								<keep-alive>
-								<router-link :to="{path: '/detail/' + 'info'}">
-								<li> 拍卖公告 </li>
+								<router-link :to="{path: '/detail/' + 'info'}" tag="li">
+								拍卖公告
 							    </router-link>
-							    </keep-alive>
-								<router-link :to="{path: '/detail/' + 'law'}" tag="li"> 法律法规 </router-link>
-								<router-link :to="{path: '/detail/' + 'knowledge'}" tag="li"> 拍卖知识 </router-link>
-								<router-link :to="{path: '/detail/' + 'preview'}" tag="li"> 拍卖预告 </router-link>
+								<router-link :to="{path: '/detail/' + 'law'}" tag="li"> 法律法规
+								</router-link>
+								<router-link :to="{path: '/detail/' + 'knowledge'}" tag="li"> 拍卖知识
+								</router-link>
+								<router-link :to="{path: '/detail/' + 'preview'}" tag="li"> 拍卖预告
+								</router-link>
 							</ul>
 						</nav>
 						<!-- 登录注册模块 -->
@@ -88,9 +89,17 @@ date：null
 				Proudly By XuXiang Copyright © 2017. All rights reserved.
 			</p>
 		</div>
-		<login :is-show="isLoginDialog" @on-close="closeDialog('isLoginDialog')" @has-log="onSuccessLog" @on-change="changetoRegister"></login>
-		<register :is-show="isRegDialog" @on-close="closeDialog('isRegDialog')" @on-change="changetoLogin"></register>
-		<dialog-box :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
+		<login :is-show="isLoginDialog"
+		       @on-close="closeDialog('isLoginDialog')"
+		       @has-log="onSuccessLog"
+		       @on-change="changetoRegister">
+		</login>
+		<register :is-show="isRegDialog"
+				  @on-close="closeDialog('isRegDialog')"
+				  @on-change="changetoLogin">
+		</register>
+		<dialog-box :is-show="isShowAboutDialog"
+		            @on-close="closeDialog('isShowAboutDialog')">
 			<p>公司名称：{{ company }}</p>
 			<p>公司电话：1111111111111</p>
 			<p>法人：risatoar</p>

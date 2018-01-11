@@ -52,8 +52,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **touch样式管理**：  vue-touch-ripple
 - **组件按需加载管理**：  babel-plugin-import
 - **列表页组件加载渲染**：  vue-content-placeholders
-- **粒子效果背景**：  vue-particles
-- **输入框特效**：  effect-input
 - **富文本编辑器**：  vue2-editor
 - **图片懒加载**：  vue-lazyload
  -------------------

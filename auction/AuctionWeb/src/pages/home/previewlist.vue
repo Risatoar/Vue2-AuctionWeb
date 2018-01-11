@@ -108,6 +108,7 @@ export default {
 	justify-content: space-around;
 }
 h3{
+	padding: 0 5px;
 	font-family: Helvetica;
 }
 .hpreviewlist-body{

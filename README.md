@@ -36,8 +36,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - [x] 根据对应的navi展示相应分类信息列表
 - [x] 用户个人中心
 - [ ] 用户进行增删改查
-- [ ] 评价系统
-- [x] 拍卖预告系统
+- [x] 评价系统
+- [ ] 拍卖预告系统
 - [ ] 后台管理系统
 
 
@@ -52,8 +52,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **touch样式管理**：  vue-touch-ripple
 - **组件按需加载管理**：  babel-plugin-import
 - **列表页组件加载渲染**：  vue-content-placeholders
-- **粒子效果背景**：  vue-particles
-- **输入框特效**：  effect-input
 - **富文本编辑器**：  vue2-editor
 - **图片懒加载**：  vue-lazyload
  -------------------
@@ -80,6 +78,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **trailingspaces**： 能高亮显示多余的空格和Tab
 - **JsFormat**： 可在JS文件中通过鼠标右键->JsFormat或键盘快捷键Ctrl+Alt+F对JS进行格式化
 
-## License
+## MIT
 - **注意**： 本项目不遵从mit协议,请勿用于商业用途,分享转载请发信至作者邮箱，所有解释权归copyright所有。
 

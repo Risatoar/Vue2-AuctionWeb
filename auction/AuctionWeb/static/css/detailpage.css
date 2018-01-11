@@ -83,6 +83,7 @@
   font-family: Text;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   display: block;
   min-height: 50em;
@@ -103,8 +104,10 @@
 .pre-nav-li ul {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: row;
+  -webkit-flex-direction: row;
+          flex-direction: row;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -129,6 +132,7 @@
 .previewdetail-information {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   height: 100%;
   padding: 2em 10px;
@@ -136,10 +140,12 @@
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-flow: row wrap;
-  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+          flex-flow: row wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
 }
 .previewdetail-img {
   overflow: hidden;
@@ -169,8 +175,11 @@
 .pre-content {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: row;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   padding: 0 10px 0 8px;
   border-radius: 4px;
   -webkit-box-orient: horizontal;
@@ -178,11 +187,14 @@
   -ms-flex-direction: row;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
 }
 .pre-content-wrap {
   width: 356px;
-  flex-flow: column wrap;
+  -webkit-flex-flow: column wrap;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
 }
 .pre-info-right-detail span {
   margin: 0 10px;
@@ -210,8 +222,15 @@
 }
 .timeShow {
   font-size: 26px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 .timeorange {
   color: #5cadff;
@@ -222,7 +241,8 @@
 .timeShow div {
   width: 40px;
   height: 40px;
-  animation: jump 1s infinite;
+  -webkit-animation: jump 1s infinite;
+          animation: jump 1s infinite;
   text-align: center;
   border: 2px solid;
   border-radius: 20px;
@@ -259,15 +279,32 @@
   text-indent: 20px;
   letter-spacing: 3px;
 }
-@keyframes jump {
+@-webkit-keyframes jump {
   0% {
-    transform: translate(0px, 0px);
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
   }
   50% {
-    transform: translate(0px, -10px);
+    -webkit-transform: translate(0px, -10px);
+            transform: translate(0px, -10px);
   }
   100% {
-    transform: translate(0px, 0px);
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+}
+@keyframes jump {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+  }
+  50% {
+    -webkit-transform: translate(0px, -10px);
+            transform: translate(0px, -10px);
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
   }
 }
 @-webkit-keyframes navhover {
