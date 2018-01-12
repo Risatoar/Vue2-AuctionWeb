@@ -38,8 +38,8 @@ date：null
 								<Dropdown trigger="custom" :visible="visible" style="margin-left: 20px">
 									<!-- 头像 -->
 								    <a href="javascript:void(0)" @click="handleOpen">
-								        <img v-lazy="'/static/img/uploads/' + icon" height="40" width="40" style="border-radius: 40px;">
-								        <Icon type="arrow-down-b"></Icon>
+								        <!-- <img v-lazy="'/static/img/uploads/' + icon" height="40" width="40" style="border-radius: 40px;"> -->
+								        <Avatar icon="person" size="large" />
 								    </a>
 								    <!-- 下拉组件详情 -->
 								    <Dropdown-menu slot="list">
@@ -156,6 +156,7 @@ export default{
 		this.setUsername();
 		this.setAdmin()
 		this.setIcon()
+		this.gotop()
 	},
 	computed: {
 		// 利用mapState简化从vuex取值操作
@@ -168,6 +169,9 @@ export default{
 		// }
 	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		},
 		// 获取当前路径cookie
 	    getCookie (cname) {
         var name = cname + "=";

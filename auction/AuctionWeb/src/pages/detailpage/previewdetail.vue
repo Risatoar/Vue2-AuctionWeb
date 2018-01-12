@@ -12,7 +12,7 @@ date：2017/12/20
 			<div class="previewdetail-information">
 				<!-- 拍卖预告信息详情界面内容层左侧,展示当前拍卖预告的展示图片 -->
 				<div class="previewdetail-information-left">
-					<img v-lazy="'/static/img/' + this.PreList.image" class="previewdetail-img">
+					<img v-lazy="'/static/img/' + this.PreList.covermap" class="previewdetail-img">
 				</div>
 				<!-- 拍卖预告信息详情界面内容层右侧 -->
 				<div class="previewdetail-information-right">
@@ -87,12 +87,16 @@ export default {
 	},
 	mounted() {
 		this.getUrl()
+		this.gotop()
 	},
 	// 利用vue的watch来监控路由变化,执行getUrl函数
 	watch: {
 	  '$route': 'getUrl'
 	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		},
 		// 获取当前url的params所带的id属性,赋值给pre对象的previewid属性
 		getUrl() {
 			this.pre.previewid = this.$route.params.id;

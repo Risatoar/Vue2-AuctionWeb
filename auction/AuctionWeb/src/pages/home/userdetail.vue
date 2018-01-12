@@ -108,6 +108,7 @@ date：2017/12/26
 						        <Progress v-if="item.showProgress" :percent="item.percentage" hide-info></Progress>
 						    </template>
 						</div>
+						<Poptip trigger="hover" content="点击图标选择头像并上传">
 						<Upload
 						    ref="upload"
 						    :show-upload-list="false"
@@ -129,6 +130,7 @@ date：2017/12/26
 						<Modal title="查看大图" v-model="visible">
 						    <img :src="'http://localhost:8080/static/img/uploads/' + imgName " v-if="visible" style="width: 100%">
 						</Modal>
+					</Poptip>
 					</td>
 				</tr>
 				<!-- 电子邮箱展示及修改 -->
@@ -263,7 +265,7 @@ export default {
             const fileList = this.$refs.upload.fileList;
             this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
         },
-        // 上传图片路径
+        // 上传图片路径成功回调
         handleSuccess (res, file) {
             file.url = 'http://localhost:8080/static/img/uploads/' + res.filename;
             file.name = res.filename;
@@ -277,14 +279,15 @@ export default {
 
             axios.post("/edit/icon",this.userd).then((res)=> {
 			    if(res.data.status == 1001){
-			        this.success('修改成功')
+			        this.success('头像设置成功')
 			    }else if(res.data.status == 1002){
-			        this.error('修改失败')
+			        this.error('头像设置失败')
 			    }else if(res.data.status == 1003){
-			    	this.warning('数据没有修改过')
+			    	this.warning('请选择不同的头像进行上传')
 			    }
 			}).catch((error)=> {
 			  console.log(error);
+			  this.error('上传失败,请重新尝试上传或者换一个头像进行上传')
 			});
         },
         // 判断图片格式

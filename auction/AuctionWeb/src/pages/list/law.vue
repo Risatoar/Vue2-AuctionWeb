@@ -74,8 +74,12 @@ export default {
 	},
 	mounted() {
 		this.getinfo()
+		this.gotop()
 	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		},
 		// 获取法律法规消息列表
 		getinfo() {
 			axios.get("/information").then((result)=>{

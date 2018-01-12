@@ -18,7 +18,7 @@ date：2017/12/13
 				    <router-link :to="{path: '/predetail/' + item._id}">
 						<Card style="width:330px">
 					        <div style="text-align:center">
-					            <img v-lazy="'/static/img/' + item.image" style="width:50%">
+					            <img v-lazy="'/static/img/uploads/' + item.covermap" style="width:50%;height:148px;margin-bottom:10px;">
 					            <li class="preview-card-name">{{ item.title }}</li>
 					            <li class="preview-card-startdate">拍卖开始时间： {{ item.startdate }}</li>
 					            <li class="preview-card-deadline">拍卖结束时间： {{ item.finaldate }}</li>
@@ -46,8 +46,12 @@ export default {
 	},
 	mounted() {
 		this.getAllPreview()
+		this.gotop()
 	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		},
 		// 获取拍卖预告消息列表
 		getAllPreview() {
 			axios.get("/allpreviews").then((result)=>{

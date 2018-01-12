@@ -29,6 +29,7 @@ date：2017/12/26
 					<label>请输入简介</label>
 					<input type="text" class="form-control input-description" label="请输入简介" v-model="add.description"></input>
 				</div>
+				<!-- 图片上传 -->
 				<div style="padding: 20px 10px;width:300px;">
 					<Upload
 					    multiple
@@ -78,7 +79,13 @@ export default {
 			visible: false,
 		}
 	},
+	mounted() {
+		this.gotop()
+	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		},
 		success () {
         	this.$Message.success('发送成功');
         },
@@ -97,6 +104,7 @@ export default {
         setAuthor() {
         	this.add.author = this.getCookie("user")
         },
+        // 图片上传成功回调
         handleSuccess (res, file) {
         	console.log(res)
             this.add.covermap = res.originalname;

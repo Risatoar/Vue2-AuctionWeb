@@ -42,7 +42,7 @@ date：null
 									<Poptip trigger="hover" title="点击“查看详情页”按钮能看更多消息">
 										<div class="message-preview-list-listcard">
 											<div class="pic">
-												<img v-lazy="'/static/img/' + item.image" class="card-img" >
+												<img v-lazy="'/static/img/uploads/' + item.covermap" class="card-img" style="width:220px;">
 												<div class="detailwrap">
 													<ul>
 														<li>发布人:{{ item.author }}</li>

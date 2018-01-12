@@ -283,6 +283,10 @@
   font-weight: 550;
   padding: 5px;
   text-align: center;
+  white-space: nowrap;
+  width: 296px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .preview-body-list-card:before {
   position: absolute;

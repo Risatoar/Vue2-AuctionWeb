@@ -94,7 +94,7 @@
 
 		li {
 			float: left;
-			width: 20%;
+			width: 240px;
 			margin-bottom: 1em;
 			padding-right: .625em;
 			padding-left: .625em;
@@ -111,6 +111,7 @@
 			transform: translateZ(0);
 			vertical-align: middle;
 			color: #222;
+			width: 220px;
 			border-radius: 4px;
 			background-color: #fff;
 			-webkit-box-shadow: 2px 2px 5px;
@@ -119,7 +120,6 @@
 			.pic {
 				position: relative;
 				display: block;
-				display: inline-block;
 				overflow: hidden;
 				width: 200%;
 				height: 260px;
@@ -148,13 +148,13 @@
 						display: flex;
 						overflow: inherit;
 						flex-direction: column;
-						width: 201px;
+						width: 220px;
 						height: 100%;
 						padding: 10px 5px;
 						align-items: stretch;
 
 						li {
-							width: 201px;
+							width: 220px;
 							text-align: left;
 						}
 
@@ -165,8 +165,8 @@
 			}
 
 			.pic:hover {
-				-webkit-transform: translateX(-201px);
-				transform: translateX(-201px);                /* move the element up by 5px */
+				-webkit-transform: translateX(-220px);
+				transform: translateX(-220px);                /* move the element up by 5px */
 			}
 
 		}
@@ -206,8 +206,10 @@
 				float: left;
 				margin-bottom: .3em;
 				text-align: left;
-				word-wrap: break-word;
-				overflow-wrap: break-word;
+				white-space: nowrap;
+			    width: 220px;
+			    overflow: hidden;
+			    text-overflow:ellipsis;
 			}
 
 			.auctiondate {

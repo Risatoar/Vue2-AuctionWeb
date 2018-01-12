@@ -34,6 +34,20 @@ date：2017/12/27
 					<label>请输入价格</label>
 					<input type="text" class="form-control input-saleprice" label="请输入价格" v-model="add.saleprice"></input>
 				</div>
+				<!-- 图片上传 -->
+				<div style="padding: 20px 10px;width:300px;">
+					<Upload
+					    multiple
+					    type="drag"
+					    action="/uploads"
+					    :on-success="handleSuccess"
+					    >
+					    <div>
+					        <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+					        <p>添加封面图片</p>
+					    </div>
+					</Upload>
+				</div>
 				<!-- 拍卖预告信息添加界面时间选择区块，采用了iview的datepicker和timepicker组件 -->
 				<div class="timepicker">
 					<span class="timepicker-title">请在这里选择拍卖开始及结束时间</span>
@@ -80,14 +94,25 @@ export default {
 				description: '',
 				maintext: '',
 				saleprice: '',
-				setdate: ''
+				setdate: '',
+				covermap: ''
 			}
 		}
 	},
+	mounted() {
+		this.gotop()
+	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		},
 		// 调用iview组件的emit事件展示全局发送成功提示
 		success () {
         	this.$Message.success('发送成功');
+        },
+        handleSuccess (res, file) {
+        	console.log(res)
+            this.add.covermap = res.originalname;
         },
         // 设置获取cookie的代理方法
 		getCookie (cname) {

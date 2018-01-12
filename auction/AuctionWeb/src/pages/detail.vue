@@ -50,6 +50,14 @@ export default {
 			}]
 		}
 	},
+	mounted() {
+		this.gotop()
+	},
+	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		}
+	},
 	// 监控路由变化来展示不同的路由过度动画
 	watch: {
 	    '$route' (to, from) {

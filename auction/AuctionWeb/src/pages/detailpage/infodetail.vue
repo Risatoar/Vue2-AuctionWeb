@@ -79,12 +79,16 @@ export default {
 	},
 	mounted() {
 		this.getUrl()
+		this.gotop()
 	},
 	// 利用vue的watch来监控路由变化,执行getUrl函数
 	watch: {
 	  '$route': 'getUrl'
 	},
 	methods: {
+		gotop() {
+			window.scrollTo(0,0)
+		},
 		// 获取当前url的params所带的id属性,赋值给info对象的infoid属性
 		getUrl() {
 			this.info.infoid = this.$route.params.id;
