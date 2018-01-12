@@ -121,7 +121,7 @@ date：2017/12/26
 						    :before-upload="handleBeforeUpload"
 						    multiple
 						    type="drag"
-						    action="/edit/icon"
+						    action="/uploads"
 						    style="display: inline-block;width:58px;">
 						    <div style="width: 58px;height:58px;line-height: 58px;">
 						        <Icon type="camera" size="20"></Icon>
@@ -188,6 +188,11 @@ export default {
 	created() {
 		this.setDefault()
 		this.setUser()
+	},
+	computed: {
+		icon() {
+			return this.$store.state.icon
+		}
 	},
 	methods: {
 		setUser() {
@@ -269,6 +274,24 @@ export default {
             file.url = 'http://localhost:8080/static/img/uploads/' + res.filename;
             file.name = res.filename;
             this.imgName = res.filename;
+            this.userd.icon = res.filename;
+            this.defaultList[0].name = file.name;
+            this.defaultList[0].url = file.url;
+            this.$store.commit("updateIcon",file.name)
+            const fileList = this.$refs.upload.fileList;
+            this.$refs.upload.fileList.splice(fileList.indexOf(file), 1);
+
+            axios.post("/edit/icon",this.userd).then((res)=> {
+			    if(res.data.status == 1001){
+			        this.success('修改成功')
+			    }else if(res.data.status == 1002){
+			        this.error('修改失败')
+			    }else if(res.data.status == 1003){
+			    	this.warning('数据没有修改过')
+			    }
+			}).catch((error)=> {
+			  console.log(error);
+			});
         },
         // 判断图片格式
         handleFormatError (file) {

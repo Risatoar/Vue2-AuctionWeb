@@ -68,6 +68,7 @@ const store = new Vuex.Store({
 		nickname: '',
 		username: '',
 		isAdmin: '',
+		icon: ''
 	},
 	mutations: {
 		updateUserName(state,username){
@@ -78,6 +79,9 @@ const store = new Vuex.Store({
 		},
 		updateIsAdmin(state,isAdmin){
 			state.isAdmin = isAdmin;
+		},
+		updateIcon(state,icon){
+			state.icon = icon;
 		},
 	}
 });

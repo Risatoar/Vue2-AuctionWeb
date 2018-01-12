@@ -38,7 +38,7 @@ date：null
 								<Dropdown trigger="custom" :visible="visible" style="margin-left: 20px">
 									<!-- 头像 -->
 								    <a href="javascript:void(0)" @click="handleOpen">
-								        <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" @click="handleOpen"/>
+								        <img v-lazy="'/static/img/uploads/' + icon" height="40" width="40" style="border-radius: 40px;">
 								        <Icon type="arrow-down-b"></Icon>
 								    </a>
 								    <!-- 下拉组件详情 -->
@@ -155,10 +155,11 @@ export default{
 	mounted() {
 		this.setUsername();
 		this.setAdmin()
+		this.setIcon()
 	},
 	computed: {
 		// 利用mapState简化从vuex取值操作
-		...mapState(['username','isAdmin'])
+		...mapState(['username','isAdmin','icon'])
 		// username() {
 		// 	return this.$store.state.username
 		// },
@@ -195,11 +196,16 @@ export default{
         	let isAdminCookie = this.getCookie("admin")
         	this.$store.commit("updateIsAdmin",isAdminCookie)
         },
+        setIcon() {
+        	let iconCookie = this.getCookie("icon")
+        	this.$store.commit("updateIcon",iconCookie)
+        },
         // 登录成功事件
         onSuccessLog (data) {
 		  this.closeDialog ('isLoginDialog')
 		  this.setUsername(),
-		  this.setAdmin()
+		  this.setAdmin(),
+		  this.setIcon()
 		},
 		aboutClick() {
 		  this.isShowAboutDialog = true
@@ -224,6 +230,7 @@ export default{
         	this.setCookie("admin", "", -1);
         	this.username = ''
         	this.isAdmin = false
+        	this.icon = ''
         	this.quitsuccess(true)
         	this.$router.go(0)
         },

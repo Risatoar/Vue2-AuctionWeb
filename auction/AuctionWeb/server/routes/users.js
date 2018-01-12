@@ -93,6 +93,7 @@ router.post("/login",(req,res)=>{
     if(_user.pwdlogin == user.pwd){
       res.cookie("user", _user.usernamelogin, {maxAge : 300000});
       res.cookie("admin", user.admin, {maxAge : 300000});
+      res.cookie("icon", user.icon, {maxAge : 300000});
       return res.json({
         list: 'success',
         user: user
@@ -341,19 +342,30 @@ router.post("/edit/mail",function(req,res,next){
   })
 })
 
-router.post('/edit/icon', upload.single('file'), function(req, res, next) {
+router.post("/edit/icon",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else if(user.icon == req.body.icon){
+      return res.json({
+        status: '1003'
+      })
+    }else {
+      Users.update({username:req.body.username},{$set:{icon:req.body.icon}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post('/uploads', upload.single('file'), function(req, res, next) {
     // req.file 是 前端表单name=="imageFile" 的文件信息（不是数组）
-  //   Users.findOne({username:req.body.username},(err,user)=>{
-  //   if(err){
-  //     console.log(err)
-  //   }else if(user.icon == req.body.icon){
-  //     return res.json({
-  //       status: '1003'
-  //     })
-  //   }else {
-  //     Users.update({username:req.body.username},{$set:{mail:req.body.mail}},(err,user)=>{})
-  //   }
-  // })
     fs.rename(req.file.path, "upload/" + req.file.originalname, function(err) {
         if (err) {
             throw err;
