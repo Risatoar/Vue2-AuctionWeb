@@ -45,7 +45,7 @@ date：2017/12/13
 					<router-link :to="{path: 'info/' + item._id}">
 						<div class="info-body-list-block" v-touch-ripple>
 							<div class="list-block-left">
-								<img class="left-img" src="/static/img/mi6.jpg" >
+								<img class="left-img" v-lazy="'/static/img/uploads/' + item.covermap" style="background-color:#fff;">
 							</div>
 							<div class="list-block-right">
 								<h3>
@@ -58,10 +58,10 @@ date：2017/12/13
 								<div class="block-right-foot">
 									<p>
 										<span class="block-right-author">
-											{{ item.author }}
+											作者：{{ item.author }}
 										</span>
 										<span class="block-right-date">
-											{{ item.date }}
+											发布时间：{{ item.date }}
 										</span>
 									</p>
 								</div>

@@ -6,10 +6,18 @@ var infoSchema = new Schema({
 	"description": String,
 	"author": String,
 	"maintext": String,
+	"covermap": String,
 	"stars": {
 		type: Number,
 		default: 0.0
 	},
+	"watch": [
+		{
+			"watcher": String,
+			"watchdate": String
+		}
+	],
+	"watchcount": String,
 	"date": String
 })
 

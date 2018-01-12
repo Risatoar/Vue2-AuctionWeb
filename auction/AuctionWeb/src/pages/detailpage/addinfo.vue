@@ -29,6 +29,19 @@ date：2017/12/26
 					<label>请输入简介</label>
 					<input type="text" class="form-control input-description" label="请输入简介" v-model="add.description"></input>
 				</div>
+				<div style="padding: 20px 10px;width:300px;">
+					<Upload
+					    multiple
+					    type="drag"
+					    action="/uploads"
+					    :on-success="handleSuccess"
+					    >
+					    <div>
+					        <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+					        <p>添加封面图片</p>
+					    </div>
+					</Upload>
+				</div>
 				<!-- 拍卖信息添加界面主要内容添加，富文本编辑器采用了vue-editor -->
 				<div class="addinfo-content-body">
 					<h3>请输入拍卖信息主要内容</h3>
@@ -57,9 +70,12 @@ export default {
 				author: '',
 				title: '',
 				description: '',
-				maintext: ''
+				maintext: '',
+				covermap: '',
+				watcher: ''
 			},
-			username: ''
+			username: '',
+			visible: false,
 		}
 	},
 	methods: {
@@ -80,6 +96,10 @@ export default {
         // 通过cookie名获取username，设置拍卖公告作者
         setAuthor() {
         	this.add.author = this.getCookie("user")
+        },
+        handleSuccess (res, file) {
+        	console.log(res)
+            this.add.covermap = res.originalname;
         },
         // 通过axios封装的ajax操作来与后台进行异步post操作,添加拍卖公告
 		addInfo() {

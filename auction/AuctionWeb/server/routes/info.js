@@ -73,6 +73,7 @@ router.post("/addinfo",(req,res,next)=>{
     title: req.body.title,
     description: req.body.description,
     maintext: req.body.maintext,
+    covermap: req.body.covermap,
     date: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
   };
   new Infos(infoma).save((err,doc)=>{

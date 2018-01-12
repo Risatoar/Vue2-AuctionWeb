@@ -110,7 +110,6 @@ date：2017/12/26
 						</div>
 						<Upload
 						    ref="upload"
-						    :data="checkUser"
 						    :show-upload-list="false"
 						    :default-file-list="defaultList"
 						    :on-success="handleSuccess"
@@ -181,13 +180,11 @@ export default {
 			imgName: '',
 			visible: false,
 			uploadList: [],
-			nowUpLoad: '',
-			checkUser: ''
+			nowUpLoad: ''
 		}
 	},
 	created() {
 		this.setDefault()
-		this.setUser()
 	},
 	computed: {
 		icon() {
@@ -195,9 +192,6 @@ export default {
 		}
 	},
 	methods: {
-		setUser() {
-			this.checkUser = this.userd.username
-		},
 		setDefault() {
 			this.defaultList[0] = {
 				name: this.userd.icon,

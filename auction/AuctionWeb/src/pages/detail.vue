@@ -11,16 +11,12 @@ date：2017/12/13
   		<!-- 导航详情界面左侧,利用route-view展示不同的导航 -->
   		<div class="detail-left">
   		  <div class="left-nav">
-  		  	<transition :name="transitionName">
   		  	<router-view name="left"></router-view>
-  		  	</transition>
   		  </div>
   		</div>
   		<!-- 导航详情界面右侧,利用route-view展示不同的消息列表 -->
   		<div class="detail-right">
-  			<transition :name="transitionName">
   		    <router-view name="right" class="child-view"></router-view>
-  		    </transition>
   		</div>
   	</div>
   </div>
