@@ -5,25 +5,28 @@
   cursor: pointer;
   text-align: center;
 }
+
 .home .home-wrap {
   position: relative;
   padding: 2em 0;
 }
+
 .home .home-wrap .home-left {
   float: left;
 }
+
 .home .home-wrap .home-middle {
   float: left;
   width: 600px;
   height: 800px;
   border: 1px solid #d7dde4;
 }
+
 .home .home-wrap .home-right {
   position: relative;
   float: right;
 }
-.home .home-wrap .home-right .home-usericon,
-.home .home-wrap .home-right .home-userdetail,
-.home .home-wrap .home-right .home-circle {
+
+.home .home-wrap .home-right .home-usericon, .home .home-wrap .home-right .home-userdetail, .home .home-wrap .home-right .home-circle {
   margin-bottom: 18px;
 }

@@ -2,18 +2,22 @@
   width: 1200px;
   margin: 0 auto;
 }
+
 .addinfo .addinfo-wrap {
   padding: 2em 0;
 }
+
 .addinfo .addinfo-wrap .addinfo-content {
   position: relative;
   border: 1px solid #c3cbd6;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-head-title {
   padding: 15px 10px;
   font-size: 24px;
   font-family: Main Head;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-btn {
   top: 10px;
   right: 10px;
@@ -21,28 +25,36 @@
   font-size: 16px;
   font-family: Main Head;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-addtitle {
   padding: 15px 10px;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-addtitle .input-title {
   text-align: center;
   width: 100%;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-adddescription {
   padding: 15px 10px;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-adddescription .input-description {
   width: 100%;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-body {
   padding: 15px 10px;
 }
+
 .addinfo .addinfo-wrap .addinfo-content h3 {
   padding: 15px 0;
 }
+
 .addinfo .addinfo-wrap .addinfo-content h2 {
   padding: 30px 0 15px 0;
 }
+
 .addinfo .addinfo-wrap .addinfo-content .addinfo-content-preview {
   min-height: 200px;
   padding: 15px 10px;

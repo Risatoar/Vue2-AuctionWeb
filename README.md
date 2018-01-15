@@ -65,6 +65,15 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **版本依赖管理**：  npm
  -------------------
 
+## 性能优化方案
+- **图片展示采用懒加载**： 利用vue-lazyload组件实现
+- **页面静态资源减少**： 利用vue的数据驱动视图思想,页面的资源大部分通过请求后台资源得到
+- **减少多余的ajax请求**： 减少多余的ajax请求,合并部分后台接口,提高数据复用性
+- **优化代码**： 通过反复检查减少冗余代码
+- **视觉干预**： 通过loading画面进行视觉欺骗,让用户度过白屏视觉
+- **数据库选择**： 通过对mongodb与mysql的对比,mongodb在数据处理上的性能更加出色,并且mongodb能存储更符合前端操作的json数据
+
+
 ## Vue.js学习资源
 - **官网**：  https://cn.vuejs.org/
 - **vuejs源码**：  https://github.com/vuejs/vue

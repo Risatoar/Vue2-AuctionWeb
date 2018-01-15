@@ -4,9 +4,10 @@
   margin-top: 9px;
   cursor: pointer;
   -webkit-transition: all 0.5s ease-in-out;
-          transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   border-radius: 4px;
 }
+
 .auctioninfo .auctioninfo-head {
   font-size: 14px;
   line-height: 40px;
@@ -16,23 +17,28 @@
   color: #ffffff;
   background-color: #66cd00;
 }
+
 .auctioninfo .auctioninfo-head .head-words {
   float: left;
   padding-left: 20px;
 }
+
 .auctioninfo .auctioninfo-head .head-more {
   float: right;
   padding-right: 20px;
 }
+
 .auctioninfo .auctioninfo-body .newsshow {
   display: none;
 }
+
 .auctioninfo .auctioninfo-body .auctioninfo-body-item {
   overflow: hidden;
   height: 52px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .auctioninfo .auctioninfo-body .auctioninfo-body-item .new {
   font-size: 12px;
   line-height: 16px;
@@ -45,6 +51,7 @@
   border-radius: 2px;
   background: red;
 }
+
 .auctioninfo .auctioninfo-body .auctioninfo-body-item li {
   position: relative;
   margin-left: 80px;
@@ -52,10 +59,12 @@
   text-align: left;
   letter-spacing: 2px;
 }
+
 .auctioninfo .auctioninfo-body .auctioninfo-body-item .delnew {
   float: right;
   margin-right: 15px;
 }
+
 .infotitle {
   overflow: hidden;
   width: 140px;
