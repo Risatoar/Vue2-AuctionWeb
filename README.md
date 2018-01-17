@@ -28,6 +28,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **email** risatoar@163.com
 - **GitHub** https://github.com/xuxiang9608
 - **开始日期**  2017/10/1
+- **项目线上地址(www.risatoar.cn)**  由于云主机是腾讯云的1g渣渣主机,带宽很低,访问经常会超时。。。
  -------------------
 
 ## 功能实现
@@ -63,6 +64,10 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **数据库**：  mongodb
 - **数据库框架**： mongoose
 - **版本依赖管理**：  npm
+
+### 数据备份操作
+- **备份**：mongodump -h 127.0.0.1:27017 -d auction -o C:\ (适合没有账号密码的用户)
+- **数据恢复**：mongorestore  -h 127.0.0.1:27017 -d auction --dir C:\auction
  -------------------
 
 ## 性能优化方案
