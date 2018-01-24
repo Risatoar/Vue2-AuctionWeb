@@ -48,7 +48,7 @@ export default {
       }
       else {
         return this.nowIndex - 1
-      } 
+      }
     },
     nextIndex () {
       if (this.nowIndex === this.slides.length - 1) {

@@ -27,9 +27,9 @@ date：null
 			</div>
 			<!-- 消息页面中间段部分区块 -->
 			<div class="message-inner-middle">
-				<!-- 中间段区块标题,展示到目前为止已经登记了多少件拍卖品 -->
+				<!-- 中间段区块标题 -->
 				<div class="message-inner-middle-title">
-					<li>我们的拍卖网站已经登记<b>{{ aucCount }}</b>件拍卖品</li>
+					<li>新上良品</li>
 				</div>
 				<!-- 中间段内容部分 -->
 				<div class="message-inner-middle-body">
@@ -111,7 +111,6 @@ export default {
 	},
 	data() {
 		return {
-			aucCount: '',
 			showimg: require('../../static/img/1a.jpg'),
 			blocklist: []
 		}
@@ -124,7 +123,6 @@ export default {
 			axios.get("/allpreviews").then((result)=>{
 				let res = result.data;
 				this.blocklist = res.result.list;
-				this.aucCount = res.result.count;
 			});
 		}
 	}

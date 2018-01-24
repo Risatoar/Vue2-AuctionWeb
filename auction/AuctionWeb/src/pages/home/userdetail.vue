@@ -128,7 +128,7 @@ date：2017/12/26
 						    </div>
 						</Upload>
 						<Modal title="查看大图" v-model="visible">
-						    <img :src="'http://localhost:8080/static/img/uploads/' + imgName " v-if="visible" style="width: 100%">
+						    <img :src="'/static/img/uploads/' + imgName " v-if="visible" style="width: 100%">
 						</Modal>
 					</Poptip>
 					</td>
@@ -197,7 +197,7 @@ export default {
 		setDefault() {
 			this.defaultList[0] = {
 				name: this.userd.icon,
-				url: 'http://localhost:8080/static/img/uploads/' + this.userd.icon
+				url: '/static/img/uploads/' + this.userd.icon
 			}
 		},
 		// 通过axios向后台传对应的个人信息字段修改,通过result传来的不同status值展示不同全局提示

@@ -28,7 +28,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - **email** risatoar@163.com
 - **GitHub** https://github.com/xuxiang9608
 - **开始日期**  2017/10/1
-- **项目线上地址(www.risatoar.cn)**  由于云主机是腾讯云的1g渣渣主机,带宽很低,访问经常会超时。。。
+- **项目线上地址(http://risatoar.cn)**
+	后台暂未部署到服务器端,敬请等待。
  -------------------
 
 ## 功能实现
