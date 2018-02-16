@@ -175,40 +175,32 @@ export default {
         //   let _this = this
         //   setTimeout(_this.refrshcircle(),100)
         // },
-        showNews() {
-          this.showNewsList = true
+        initShow () {
+          this.showNewsList = false
           this.showComment = false
           this.showPreviewList = false
           this.showUserDetail = false
           this.showChangePwd = false
+        },
+        showNews() {
+          this.initShow()
+          this.showNewsList = true
         },
         showPreview() {
+          this.initShow()
           this.showPreviewList = true
-          this.showComment = false
-          this.showNewsList = false
-          this.showUserDetail = false
-          this.showChangePwd = false
         },
         showCom() {
+          this.initShow()
           this.showComment = true
-          this.showPreviewList = false
-          this.showNewsList = false
-          this.showUserDetail = false
-          this.showChangePwd = false
         },
         showUser() {
+          this.initShow()
           this.showUserDetail = true
-          this.showPreviewList = false
-          this.showNewsList = false
-          this.showComment = false
-          this.showChangePwd = false
         },
         showChange() {
+          this.initShow()
           this.showChangePwd = true
-          this.showPreviewList = false
-          this.showNewsList = false
-          this.showComment = false
-          this.showUserDetail = false
         }
     }
 }
