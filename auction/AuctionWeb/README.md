@@ -1,83 +1,86 @@
-# auctionweb
-
-> vue2.0 重构拍卖信息网页
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+## 源码目录介绍
 ```
+./server                                   // 后端文件
+├── bin
+│   └── sprite.js                          // 后端文件入口文件
+├── models
+│   ├── auction.js                         // 拍卖公告模型文件
+│   ├── info.js                            // 拍卖消息模型文件
+│   ├── previews.js                        // 拍卖预告模型文件
+│   └── users.js                           // 用户模型文件
+├── public                                 // 通用文件夹
+│   └── stylesheets                        // css样式文件夹
+│   	└── style.css                      // 后端css样式
+├── routes                                 // 路由文件夹
+│   ├── auctioninfo.js                     // 拍卖公告路由及api集合文件
+│   ├── index.js                           // 后端主页文件
+│   ├── info.js                            // 拍卖消息路由及api集合文件
+│   ├── previews.js                        // 拍卖预告路由及api集合文件
+│   └── users.js                           // 用户路由及api集合文件
+├── views                                  // jade文件夹
+│   ├── error.jade                         // 出错模板
+│   ├── index.jade                         // 主页模板
+│   └── layout.jade                        // layout模板
+├── app.js                                 // 通过express控制后端逻辑
+└── package.json                           // package.json
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+./src                                      // 前端文件
+├── assets                                 // 前端静态资源文件
+│   ├── css                         	   // 系统静态css文件夹
+│   ├── images                             // 系统图片文件夹
+│   └── javascript                         // 静态js文件夹(暂未使用)
+├── components                             // 前端组件文件夹
+│   ├── news                         	   // 主页拍卖最新消息展示
+│   	├── auctionInfo.vue                // 主页左侧拍卖公告信息展示
+|       └── hotnews.vue                    // 主页右侧拍卖公告信息展示
+│   ├── user                               // 用户登录注册组件
+│   	├── login.vue                	   // 登录组件
+|       └── register.vue                   // 注册组件
+│   ├── dialog.vue                         // 弹出框组件
+│   ├── layout.vue                         // 全局页面框架
+│   ├── LoadingPage.vue                    // 全局loading组件
+│   ├── news.vue                           // 主页新闻组件
+│   ├── slideShow.vue                      // 幻灯片组件
+│   └── test.vue                           // 测试页面组件
+├── pages                                  // 页面组件
+│   ├── detailpage                         // 子页面组件文件夹
+│   	├── addinfo.vue                    // 添加拍卖公告组件
+│   	├── addpreview.vue                 // 添加拍卖预告组件
+│   	├── infodetail.vue                 // 拍卖公告详细页组件
+│   	└── previewdetail.vue              // 拍卖预告详细页组件
+│   ├── home                               // 用户个人中心组件文件夹
+│   	├── changepwd.vue                  // 更改密码组件
+│   	├── comment.vue                    // 评论统计组件
+│   	├── newslist.vue                   // 拍卖公告发布统计组件
+│   	├── previewlist.vue                // 拍卖预告发布统计组件
+│   	└── userdetail.vue                 // 用户详细信息组件
+│   ├── list                               // 分项页面组件(分为左侧分项类名组件及右侧消息列表)
+│   ├── detail.vue                         // 分项页面
+│   ├── home.vue                           // 用户个人中心
+│   └── index.vue                          // 主页页面
+├── routes                                 // 路由文件夹
+│   ├── auctioninfo.js                     // 拍卖公告路由及api集合文件
+│   ├── index.js                           // 后端主页文件
+│   ├── info.js                            // 拍卖消息路由及api集合文件
+│   ├── previews.js                        // 拍卖预告路由及api集合文件
+│   └── users.js                           // 用户路由及api集合文件
+└── main.js                           	   // vue入口文件,控制路由及资源控制
 
-## 项目状态：正在制作
-## 描述
-- 使用vuejs+node+mongodb+es6搭建的拍卖信息网站系统
- -------------------
-- **作者**   risatoar
-- **email** risatoar@163.com
-- **GitHub** https://github.com/xuxiang9608
-- **开始日期**  2017/10/1
- -------------------
-
-## 功能实现
-- [x] 游客普通注册+管理员登录
-- [x] 首页信息展示
-- [x] 根据对应的navi展示相应分类信息列表
-- [x] 用户个人中心
-- [ ] 用户进行增删改查
-- [x] 评价系统
-- [ ] 拍卖预告系统
-- [ ] 后台管理系统
-
-
-## 前端开发
-- **框架**： vue-v2.9.1全家桶+bootstrap-v3.37+jQuery-v1.8.0
-- **css处理**： less
-- **ui框架**：  iview
-- **less编译工具**： koala
-- **端口监听**： 8080
-- **编辑器**：  sublime text3
-- **包管理工具**：  npm
-- **touch样式管理**：  vue-touch-ripple
-- **组件按需加载管理**：  babel-plugin-import
-- **列表页组件加载渲染**：  vue-content-placeholders
-- **富文本编辑器**：  vue2-editor
-- **图片懒加载**：  vue-lazyload
- -------------------
-
-## 后端开发
-- **框架**： express
-- **服务器端**：  nodeJs
-- **node进程管理器**：  pm2
-- **数据库**：  mongodb
-- **数据库框架**： mongoose
-- **版本依赖管理**：  npm
- -------------------
-
-## Vue.js学习资源
-- **官网**：  https://cn.vuejs.org/
-- **vuejs源码**：  https://github.com/vuejs/vue
-- **vuejs官方工具**：  https://github.com/vuejs
-- **官方论坛**：  https://forum.vuejs.org/
-- **vue组件库**：  https://github.com/vuejs/awesome-vue
-
-## sublime 插件
-- **emment**
-- **csscomb**： css样式排序 使用方法：菜单Tools->Run CSScomb或在CSS文件中按快捷键Ctrl+Shift+C
-- **trailingspaces**： 能高亮显示多余的空格和Tab
-- **JsFormat**： 可在JS文件中通过鼠标右键->JsFormat或键盘快捷键Ctrl+Alt+F对JS进行格式化
-
-## MIT
-- **注意**： 本项目不遵从mit协议,请勿用于商业用途,分享转载请发信至作者邮箱，所有解释权归copyright所有。
-
+./static                                   // 系统文件
+├── css
+│   ├── addinfo.css                        // 添加拍卖公告样式文件
+│   ├── addlist.css                        // 添加拍卖预告样式文件
+│   ├── auctioninfo.css                    // 拍卖公告详细信息页样式文件
+│   ├── base.css                           // 暂未编写
+│   ├── detial.css                         // 分项页样式文件
+│   ├── detailpage.css                     // 拍卖信息及预告等详细信息样式文件
+│   ├── home.css                           // 个人中心样式文件
+│   ├── hotnews.css                        // 热门信息样式文件
+│   ├── layout.css                         // 主页面框架样式文件
+│   ├── list.css                           // 分项页详细样式文件
+│   ├── listnav.css                        // 分项页导航样式文件
+│   └── news.css                           // 主页页面
+├── img	                                   // 网站图片文件夹
+│   └── uploads                            // 上传文件保存文件夹
+├── less                                   // less文件通过编译生成css文件夹中的css文件
+└── loading-svg	                           // 存放加载svg动画
