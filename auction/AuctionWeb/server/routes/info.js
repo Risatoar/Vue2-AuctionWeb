@@ -67,6 +67,33 @@ router.get("/information", function (req,res,next) {
   })
 });
 
+router.post("/userinfo", function (req,res,next) {
+  let _user = req.body
+  req.user=req.cookies.user;
+  let page = parseInt(1);
+  let pageSize = parseInt(6);
+  let skip = (page-1)*pageSize;
+  let infosModel = Infos.find({author:req.user}).skip(skip).limit(pageSize);
+  infosModel.sort({'date':-1});
+  infosModel.exec(function (err,doc) {
+      if(err){
+          res.json({
+            status:'10002',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'10001',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+  })
+});
+
 router.post("/addinfo",(req,res,next)=>{
   let infoma = {
     author: req.body.author,

@@ -47,6 +47,33 @@ router.get("/allpreviews", function (req,res,next) {
   })
 });
 
+router.post("/userpreview", function (req,res,next) {
+  let _user = req.body
+  req.user=req.cookies.user;
+  let page = parseInt(1);
+  let pageSize = parseInt(6);
+  let skip = (page-1)*pageSize;
+  let PreviewsModel = Previews.find({author:req.user}).skip(skip).limit(pageSize);
+  PreviewsModel.sort({'date':-1});
+  PreviewsModel.exec(function (err,doc) {
+      if(err){
+          res.json({
+            status:'10002',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'10001',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+  })
+});
+
 router.post("/addpreview",(req,res,next)=>{
   let previewma = {
     author: req.body.author,

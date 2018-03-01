@@ -11,9 +11,6 @@ date：2017/12/26
 			<!-- 发出过的拍卖信息功能界面头部背景层 -->
 			<div class="hpreviewlist-top-wrap">
 				<h3>您发出过的拍卖信息都在这里</h3>
-				<button @click="toAddPreview" class="btn btn-info previewadd">
-					发布一个呗~
-				</button>
 			</div>
 		</div>
 		<!-- 发出过的拍卖信息功能界面消息列表 -->
@@ -21,7 +18,7 @@ date：2017/12/26
 			<div class="hpreviewlist-body-list" v-for="item in mypreviewlist">
 				<div class="hpreviewlist-block">
 					<div class="hpreviewlist-block-left">
-						<img src="../../../static/img/mi6.jpg">
+						<img v-lazy="'/static/img/uploads/' + item.covermap">
 					</div>
 					<div class="hpreviewlist-block-right">
 						<li>
@@ -42,51 +39,35 @@ date：2017/12/26
 </template>
 
 <script>
+import axios from 'axios'
 export default {
 	data() {
 		return {
-			mypreviewlist: [
-			{
-				"date" : "2017/11/30",
-			    "author" : "risatoar",
-			    "title" : "国内高校首个吉他专业工作室在上大音乐学院成立",
-			    "description" : "中国核桃之乡”云南大理漾濞22棵百年核桃树两年的果实采摘权拍卖在上海国际商品拍卖有限公司圆满落槌"
-			},
-			{
-				"date" : "2017/11/30",
-			    "author" : "risatoar",
-			    "title" : "国内高校首个吉他专业工作室在上大音乐学院成立",
-			    "description" : "中国核桃之乡”云南大理漾濞22棵百年核桃树两年的果实采摘权拍卖在上海国际商品拍卖有限公司圆满落槌"
-			},{
-				"date" : "2017/11/30",
-			    "author" : "risatoar",
-			    "title" : "国内高校首个吉他专业工作室在上大音乐学院成立",
-			    "description" : "中国核桃之乡”云南大理漾濞22棵百年核桃树两年的果实采摘权拍卖在上海国际商品拍卖有限公司圆满落槌"
-			},
-			{
-				"date" : "2017/11/30",
-			    "author" : "risatoar",
-			    "title" : "国内高校首个吉他专业工作室在上大音乐学院成立",
-			    "description" : "中国核桃之乡”云南大理漾濞22棵百年核桃树两年的果实采摘权拍卖在上海国际商品拍卖有限公司圆满落槌"
-			},
-			{
-				"date" : "2017/11/30",
-			    "author" : "risatoar",
-			    "title" : "国内高校首个吉他专业工作室在上大音乐学院成立",
-			    "description" : "中国核桃之乡”云南大理漾濞22棵百年核桃树两年的果实采摘权拍卖在上海国际商品拍卖有限公司圆满落槌"
-			},
-			{
-				"date" : "2017/11/30",
-			    "author" : "risatoar",
-			    "title" : "国内高校首个吉他专业工作室在上大音乐学院成立",
-			    "description" : "中国核桃之乡”云南大理漾濞22棵百年核桃树两年的果实采摘权拍卖在上海国际商品拍卖有限公司圆满落槌"
-			}
-			]
+			mypreviewlist: []
+		}
+	},
+	mounted() {
+		this.getUserPre();
+	},
+	computed: {
+		username() {
+			return this.$store.state.username
 		}
 	},
 	methods: {
-		toAddPreview() {
-			this.$router.push({path:'/previewadd'})
+		getUserPre() {
+			axios.post("/userpreview",this.usernmae).then((res)=> {
+			    if(res.data.status == 10001){
+			    	this.mypreviewlist = res.data.result.list;
+			        this.success('修改成功')
+			    }else if(res.data.status == 1002){
+			        this.error('修改失败,密码错误')
+			    }else if(res.data.status == 1003){
+			    	this.warning('数据没有修改过')
+			    }
+			}).catch((error)=> {
+			  console.log(error);
+			});
 		}
 	}
 }
