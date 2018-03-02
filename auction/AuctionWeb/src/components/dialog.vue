@@ -43,16 +43,24 @@ export default {
 
 <style scoped>
 .pass-enter-active {
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
   transition: all .5s ease;
 }
 .pass-leave-active {
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
   transition: all .5s ease;
 }
 .pass-enter {
-  transform: translateX(-500px);
+  -webkit-transform: translateX(-500px);
+      -ms-transform: translateX(-500px);
+          transform: translateX(-500px);
 }
 .pass-leave-active {
-  transform: translateY(-500px);
+  -webkit-transform: translateY(-500px);
+      -ms-transform: translateY(-500px);
+          transform: translateY(-500px);
 }
 
 .dialog {
@@ -60,6 +68,7 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
+  z-index: 9999;
 }
 .dialog-cover {
   background: #000;

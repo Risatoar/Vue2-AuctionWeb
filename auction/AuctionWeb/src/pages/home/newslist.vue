@@ -33,7 +33,7 @@ date：2017/12/26
 						    </li>
 						</ul>
 					    </router-link>
-						<Button class="un-edit" type="info">修改</Button>
+						<Button class="un-edit" type="info" @click.native="showInfoModify(index)">修改</Button>
 						<Button class="un-del" type="warning" @click="postInfoDel(item._id)">删除</Button>
 					</div>
 				</div>
@@ -43,15 +43,28 @@ date：2017/12/26
 		<div class="page">
 			<Page :total="100"></Page>
 		</div>
+		<infomodifydialog
+					:is-show="isInfoMoDialog"
+					:modifydata="selectModify"
+		      		@on-close="closeDialog('isInfoMoDialog')">
+  		</infomodifydialog>
 	</div>
 </template>
 
 <script>
 import axios from 'axios'
+import infomodifydialog from '../../components/modifydialog/infomodify.vue'
+import dialogBox from '../../components/dialog.vue'
 export default {
+	components: {
+		infomodifydialog,
+		dialogBox
+	},
 	data() {
 		return {
-			mynewslist: []
+			mynewslist: [],
+			isInfoMoDialog: false,
+			selectModify: {}
 		}
 	},
 	mounted() {
@@ -63,6 +76,18 @@ export default {
 		}
 	},
 	methods: {
+		// 显示修改弹出层
+		showInfoModify(number) {
+			this.selectModify = this.mynewslist[number]
+			console.log(this.selectModify)
+			this.isInfoMoDialog = true;
+
+		},
+		// 关闭弹出层
+		closeDialog(attr) {
+	      console.log(attr)
+          this.isInfoMoDialog = false
+        },
 		getUserInfo() {
 			axios.post("/userinfo",this.usernmae).then((res)=> {
 			    if(res.data.status == 10001){
@@ -123,9 +148,15 @@ export default {
 	padding:20px 5px;
 	background-color: #fff;
 	vertical-align:middle;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
 }
 h3{
 	padding:0 5px;
@@ -142,9 +173,15 @@ h3{
 	height: 90px;
 	width: 100%;
 	text-align: left;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
 	border-bottom: 1px solid #d7dde4;
 }
 .hnewslist-block img{
@@ -155,13 +192,15 @@ h3{
 .hnewslist-block-right{
 	width: 320px;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
 }
 .ecl{
 	overflow: hidden;
     width: 240px;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
 }
 .hnewslist-block-right li{
 	padding:10px 0;

@@ -84,9 +84,15 @@ export default {
 	background-color: #fff;
 	vertical-align:middle;
 	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-pack: distribute;
+	    justify-content: space-around;
 }
 h3{
 	padding: 0 5px;
@@ -121,7 +127,8 @@ h3{
 	margin: .5em 0 1em;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
 }
 .hpreviewlist-block-right li{
 	padding:10px 0;

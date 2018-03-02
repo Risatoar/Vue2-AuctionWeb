@@ -23,6 +23,7 @@ import InfoDetailPage from './pages/detailpage/infodetail.vue'
 import PreviewDetailPage from './pages/detailpage/previewdetail.vue'
 import AddInfoPage from './pages/detailpage/addinfo.vue'
 import AddPreviewPage from './pages/detailpage/addpreview.vue'
+import ModifyInfo from './components/modifydialog/infomodify.vue'
 
 // 外部插件导入
 import iView from 'iview';
@@ -158,6 +159,10 @@ let router = new VueRouter({
 	{
 		path: '/predetail/:id',
 		component: PreviewDetailPage
+	},
+	{
+		path: '/modify',
+		component: ModifyInfo
 	}
 	]
 })

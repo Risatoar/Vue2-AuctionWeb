@@ -84,14 +84,22 @@ export default {
 
 <style scoped>
 .slide-trans-enter-active {
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
   transition: all .5s;
 }
 .slide-trans-enter {
-  transform: translateX(900px);
+  -webkit-transform: translateX(900px);
+      -ms-transform: translateX(900px);
+          transform: translateX(900px);
 }
 .slide-trans-old-leave-active {
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
   transition: all .5s;
-  transform: translateX(-900px);
+  -webkit-transform: translateX(-900px);
+      -ms-transform: translateX(-900px);
+          transform: translateX(-900px);
 }
 .slide-show {
   position: relative;

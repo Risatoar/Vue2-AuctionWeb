@@ -137,6 +137,27 @@ router.post("/infodetail",function(req,res,next){
   })
 })
 
+router.post("/infomodify",function(req,res,next){
+  let _info = req.body
+  let infoid = ObjectID(_info._id)
+  Infos.update({_id:infoid},
+    {$set:{title:req.body.title,
+           covermap:req.body.covermap,
+           description:req.body.description,
+           maintext:req.body.maintext}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+      });
+    }
+  })
+})
+
 router.post("/infodel",function(req,res,next){
   let _info = req.body
   let delid = ObjectID(_info.delid)

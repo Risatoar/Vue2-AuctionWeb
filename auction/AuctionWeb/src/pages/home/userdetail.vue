@@ -373,7 +373,8 @@ input{
     overflow: hidden;
     background: #fff;
     position: relative;
-    box-shadow: 0 1px 1px rgba(0,0,0,.2);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.2);
+            box-shadow: 0 1px 1px rgba(0,0,0,.2);
     margin-right: 4px;
 }
 .demo-upload-list img{
