@@ -108,7 +108,7 @@ export default {
     },
     // 通过axios封装的ajax操作来与后台进行异步post操作,修改拍卖公告
 	modifyinfo() {
-		axios.post("/addinfo",this.modifydata).then((res)=> {
+		axios.post("/infomodify",this.modifydata).then((res)=> {
 			console.log(res);
 			if(res.status == '200'){
 				this.success()

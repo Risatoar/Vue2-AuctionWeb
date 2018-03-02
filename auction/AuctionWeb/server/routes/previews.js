@@ -128,6 +128,59 @@ router.post("/previewdetail",function(req,res,next){
   })
 })
 
+router.post("/previewdetail/modify",function(req,res,next){
+  let _pre = req.body
+  let preid = ObjectID(_pre._id)
+  Previews.update({_id:preid},
+    {$set:{title:req.body.title,
+           covermap:req.body.covermap,
+           description:req.body.description,
+           maintext:req.body.maintext,
+           saleprice:req.body.saleprice,
+           startdate: req.body.setdate[0],
+           finaldate: req.body.setdate[1],
+           finaltime: req.body.setdate[2],}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+      });
+    }
+  })
+})
+
+router.post("/previewdetail/del",function(req,res,next){
+  let _pre = req.body
+  let delid = ObjectID(_pre.delid)
+  Previews.findOne({_id:delid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      if(doc.author == _pre.username) {
+        Previews.remove({_id:delid},(err,rescult)=>{
+          if(err){
+            console.log(err)
+          }else {
+            res.json({
+              status: '222'
+            })
+          }
+        })
+      }else {
+        res.json({
+          status: '3333'
+        })
+      }
+    }
+  })
+})
 
 
 module.exports=router

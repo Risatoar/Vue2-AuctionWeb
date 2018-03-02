@@ -232,11 +232,11 @@ export default{
         quit() {
         	this.setCookie("user", "", -1);
         	this.setCookie("admin", "", -1);
+        	this.$router.replace("/")
         	this.username = ''
         	this.isAdmin = false
         	this.icon = ''
         	this.quitsuccess(true)
-        	this.$router.go(0)
         },
         // 退出成功全局提示
         quitsuccess (nodesc) {

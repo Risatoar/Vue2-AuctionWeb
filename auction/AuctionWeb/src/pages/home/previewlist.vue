@@ -15,18 +15,26 @@ date：2017/12/26
 		</div>
 		<!-- 发出过的拍卖信息功能界面消息列表 -->
 		<div class="hpreviewlist-body">
-			<div class="hpreviewlist-body-list" v-for="item in mypreviewlist">
-				<div class="hpreviewlist-block">
+			<div class="hpreviewlist-body-list" v-for="(item,index) in mypreviewlist">
+				<div class="hpreviewlist-block" :id="item._id">
+					<router-link :to="{path: '/detail/info/' + item._id}">
 					<div class="hpreviewlist-block-left">
 						<img v-lazy="'/static/img/uploads/' + item.covermap">
 					</div>
+					</router-link>
 					<div class="hpreviewlist-block-right">
-						<li>
-							<a class="hpreviewlist-block-right-title">{{ item.title }}</a>
-						</li>
-						<li>
-						  <a class="hpreviewlist-block-right-date">{{ item.date }}</a>
-					    </li>
+						<router-link :to="{path: '/detail/info/' + item._id}">
+						<ul>
+							<li class="un-title ecl">
+								{{ item.title }}
+							</li>
+							<li class="un-date ecl">
+							  {{ item.date }}
+						    </li>
+						</ul>
+					    </router-link>
+						<Button class="un-edit" type="info" @click.native="showPreviewModify(index)">修改</Button>
+						<Button class="un-del" type="warning" @click="postPreviewDel(item._id)">删除</Button>
 					</div>
 				</div>
 			</div>
@@ -35,19 +43,32 @@ date：2017/12/26
 		<div class="page">
 			<Page :total="100"></Page>
 		</div>
+		<previewmodifydialog
+					:is-show="isPreviewMoDialog"
+					:modifydata="selectModify"
+		      		@on-close="closeDialog('isPreviewMoDialog')">
+  		</previewmodifydialog>
 	</div>
 </template>
 
 <script>
 import axios from 'axios'
+import previewmodifydialog from '../../components/modifydialog/previewmodify.vue'
+import dialogBox from '../../components/dialog.vue'
 export default {
+	components: {
+		previewmodifydialog,
+		dialogBox
+	},
 	data() {
 		return {
-			mypreviewlist: []
+			mypreviewlist: [],
+			isPreviewMoDialog: false,
+			selectModify: {}
 		}
 	},
 	mounted() {
-		this.getUserPre();
+		this.getUserPreview();
 	},
 	computed: {
 		username() {
@@ -55,11 +76,51 @@ export default {
 		}
 	},
 	methods: {
-		getUserPre() {
-			axios.post("/userpreview",this.usernmae).then((res)=> {
+		// 显示修改弹出层
+		showPreviewModify(number) {
+			this.selectModify = this.mypreviewlist[number]
+			this.isPreviewMoDialog = true;
+
+		},
+		// 关闭弹出层
+		closeDialog(attr) {
+          this.isPreviewMoDialog = false
+        },
+		getUserPreview() {
+			axios.post("/userpreview",this.username).then((res)=> {
 			    if(res.data.status == 10001){
 			    	this.mypreviewlist = res.data.result.list;
 			        this.success('修改成功')
+			    }else if(res.data.status == 1002){
+			        this.error('修改失败,密码错误')
+			    }else if(res.data.status == 1003){
+			    	this.warning('数据没有修改过')
+			    }
+			}).catch((error)=> {
+			  console.log(error);
+			});
+		},
+		postPreviewDel(str) {
+			let username = this.username;
+			let delid = str;
+			axios.post("/previewdetail/del",{
+				username,
+				delid
+			}).then((res)=> {
+			    if(res.data.status == 222){
+			        for(let ls=0;ls<this.mypreviewlist.length;ls++){
+			        	if(this.mypreviewlist[ls]._id == delid) {
+			        		this.mypreviewlist.splice(ls,1)
+			        		if (this.mypreviewlist.length<6) {
+			        			this.getUserPreview()
+			        		}
+			        	}
+			        	console.log(this,mypreviewlist)
+			        	if (this.mypreviewlist.length<6) {
+			        		this.getUserPreview()
+			        	}
+			        	console.log(this,mypreviewlist)
+			        }
 			    }else if(res.data.status == 1002){
 			        this.error('修改失败,密码错误')
 			    }else if(res.data.status == 1003){
@@ -77,13 +138,14 @@ export default {
 .hpreviewlist-top{
 	height: 80px;
 	width: 598px;
+	text-align: left;
 }
 .hpreviewlist-top-wrap{
+	position: relative;
 	width: 598px;
 	padding:20px 5px;
 	background-color: #fff;
 	vertical-align:middle;
-	position: relative;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -95,38 +157,46 @@ export default {
 	    justify-content: space-around;
 }
 h3{
-	padding: 0 5px;
+	padding:0 5px;
 	font-family: Helvetica;
 }
 .hpreviewlist-body{
+	display: block;
 	padding:20px 5px;
 	height: 630px;
 	width: 598px;
 }
 .hpreviewlist-block{
+	position: relative;
 	height: 90px;
-	-webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    min-width: 0;
-    text-align: left;
+	width: 100%;
+	text-align: left;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
+	border-bottom: 1px solid #d7dde4;
 }
 .hpreviewlist-block img{
-	float: left;
 	width: 108px;
 	height: 90px;
+	margin: 0 20px;
 }
 .hpreviewlist-block-right{
-	margin: .5em 0 1em;
+	width: 320px;
     white-space: nowrap;
-    overflow: hidden;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
+}
+.ecl{
+	overflow: hidden;
+    width: 240px;
+    white-space: nowrap;
     -o-text-overflow: ellipsis;
        text-overflow: ellipsis;
 }
@@ -139,5 +209,17 @@ h3{
     font-weight: 600;
     line-height: 1.2;
     color: #2e3135;
+}
+.un-edit {
+	float: right;
+	right: 10px;
+	top: 10px;
+	position: absolute;
+}
+.un-del {
+	float: right;
+	right: 10px;
+	bottom: 10px;
+	position: absolute;
 }
 </style>

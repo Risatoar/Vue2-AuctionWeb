@@ -7,11 +7,11 @@ date：2017/12/26
     <!-- 修改密码页面 -->
 	<div class="home-changepwd">
 	    <label>老密码</label>
-        <input type="password" class="form-control cpwd1" id="reg-pwd" placeholder="老密码" v-model="oldPwd">
+        <input type="password" class="form-control cpwd1" placeholder="老密码" v-model="oldPwd">
         <label>新密码</label>
-        <input type="password" class="form-control cpwd2" id="reg-pwd" placeholder="老密码" v-model="newPwd1">
+        <input type="password" class="form-control cpwd2" placeholder="老密码" v-model="newPwd1">
         <label>再输入一次新密码</label>
-        <input type="password" class="form-control cpwd3" id="reg-pwd" placeholder="老密码" v-model="newPwd2">
+        <input type="password" class="form-control cpwd3" placeholder="老密码" v-model="newPwd2">
         <Button type="primary" @click="postPwd">修改密码</Button>
 	</div>
 </template>
