@@ -11,29 +11,32 @@ date：2017/12/26
 			<!-- 发出过的拍卖信息功能界面头部背景层 -->
 			<div class="hnewslist-top-wrap">
 				<h3>您发出过的拍卖信息都在这里</h3>
-				<button @click="toAddInfo" class="btn btn-info infoadd">
-					发布一个呗~
-				</button>
 			</div>
 		</div>
 		<!-- 发出过的拍卖信息功能界面消息列表 -->
 		<div class="hnewslist-body">
-			<div class="hnewslist-body-list" v-for="item in mynewslist">
-				<router-link :to="{path: '/detail/info/' + item._id}">
-					<div class="hnewslist-block">
-						<div class="hnewslist-block-left">
-							<img v-lazy="'/static/img/uploads/' + item.covermap">
-						</div>
-						<div class="hnewslist-block-right">
+			<div class="hnewslist-body-list" v-for="(item,index) in mynewslist">
+				<div class="hnewslist-block" :id="item._id">
+					<router-link :to="{path: '/detail/info/' + item._id}">
+					<div class="hnewslist-block-left">
+						<img v-lazy="'/static/img/uploads/' + item.covermap">
+					</div>
+					</router-link>
+					<div class="hnewslist-block-right">
+						<router-link :to="{path: '/detail/info/' + item._id}">
+						<ul>
 							<li class="un-title ecl">
 								{{ item.title }}
 							</li>
 							<li class="un-date ecl">
 							  {{ item.date }}
 						    </li>
-						</div>
+						</ul>
+					    </router-link>
+						<Button class="un-edit" type="info">修改</Button>
+						<Button class="un-del" type="warning" @click="postInfoDel(item._id)">删除</Button>
 					</div>
-				</router-link>
+				</div>
 			</div>
 		</div>
 		<!-- 分页功能 -->
@@ -60,14 +63,41 @@ export default {
 		}
 	},
 	methods: {
-		toAddInfo() {
-			this.$router.push({path:'/infoadd'})
-		},
 		getUserInfo() {
 			axios.post("/userinfo",this.usernmae).then((res)=> {
 			    if(res.data.status == 10001){
 			    	this.mynewslist = res.data.result.list;
 			        this.success('修改成功')
+			    }else if(res.data.status == 1002){
+			        this.error('修改失败,密码错误')
+			    }else if(res.data.status == 1003){
+			    	this.warning('数据没有修改过')
+			    }
+			}).catch((error)=> {
+			  console.log(error);
+			});
+		},
+		postInfoDel(str) {
+			let username = this.username;
+			let delid = str;
+			axios.post("/infodel",{
+				username,
+				delid
+			}).then((res)=> {
+			    if(res.data.status == 222){
+			        for(let ls=0;ls<this.mynewslist.length;ls++){
+			        	if(this.mynewslist[ls]._id == delid) {
+			        		this.mynewslist.splice(ls,1)
+			        		if (this.mynewslist.length<6) {
+			        			this.getUserInfo()
+			        		}
+			        	}
+			        	console.log(this,mynewslist)
+			        	if (this.mynewslist.length<6) {
+			        		this.getUserInfo()
+			        	}
+			        	console.log(this,mynewslist)
+			        }
 			    }else if(res.data.status == 1002){
 			        this.error('修改失败,密码错误')
 			    }else if(res.data.status == 1003){
@@ -108,6 +138,7 @@ h3{
 	width: 598px;
 }
 .hnewslist-block{
+	position: relative;
 	height: 90px;
 	width: 100%;
 	text-align: left;
@@ -141,5 +172,17 @@ h3{
     font-weight: 600;
     line-height: 1.2;
     color: #2e3135;
+}
+.un-edit {
+	float: right;
+	right: 10px;
+	top: 10px;
+	position: absolute;
+}
+.un-del {
+	float: right;
+	right: 10px;
+	bottom: 10px;
+	position: absolute;
 }
 </style>

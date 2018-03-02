@@ -27,7 +27,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: process.env.PORT || 80,
+    port: process.env.PORT || 81,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -81,6 +81,9 @@ module.exports = {
             target : 'http://localhost:4000'
         },
         '/userpreview': {
+            target : 'http://localhost:4000'
+        },
+        '/infodel': {
             target : 'http://localhost:4000'
         }
     },

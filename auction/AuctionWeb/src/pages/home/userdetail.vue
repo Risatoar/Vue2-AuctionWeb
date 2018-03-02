@@ -267,7 +267,7 @@ export default {
         },
         // 上传图片路径成功回调
         handleSuccess (res, file) {
-            file.url = 'http://localhost:8080/static/img/uploads/' + res.filename;
+            file.url = 'http://localhost:81/static/img/uploads/' + res.filename;
             file.name = res.filename;
             this.imgName = res.filename;
             this.userd.icon = res.filename;

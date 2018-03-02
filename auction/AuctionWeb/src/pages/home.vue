@@ -151,7 +151,9 @@ export default {
         // 获取当前用户详细信息
         getUserDetail() {
           axios.post('/userdetails',this.user).then((res)=>{
-            this.userdetails = res.data.result.list;
+            let _detail = res.data.result.list;
+            this.userdetails = _detail;
+            this.userdetails.icon = _detail.icon == 'no'?'16.jpg':_detail.icon;
             this.refreshcircle()
           })
         },

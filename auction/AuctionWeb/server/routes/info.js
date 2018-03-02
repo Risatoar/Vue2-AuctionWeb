@@ -137,6 +137,35 @@ router.post("/infodetail",function(req,res,next){
   })
 })
 
+router.post("/infodel",function(req,res,next){
+  let _info = req.body
+  let delid = ObjectID(_info.delid)
+  Infos.findOne({_id:delid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      if(doc.author == _info.username) {
+        Infos.remove({_id:delid},(err,rescult)=>{
+          if(err){
+            console.log(err)
+          }else {
+            res.json({
+              status: '222'
+            })
+          }
+        })
+      }else {
+        res.json({
+          status: '3333'
+        })
+      }
+    }
+  })
+})
+
 
 module.exports=router
 
