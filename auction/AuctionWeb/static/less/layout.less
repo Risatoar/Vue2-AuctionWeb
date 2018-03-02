@@ -53,6 +53,15 @@ body {
     box-shadow: 2px 2px 5px #333;
 }
 
+.head::after {
+   content: ".";
+   clear: both;
+   display: block;
+   overflow: hidden;
+   font-size: 0;
+   height: 0;
+}
+
 .head-inner {
     display: -webkit-box;
     display: -ms-flexbox;

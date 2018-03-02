@@ -14,41 +14,49 @@
         <!-- 设置红色星号用来区分必填项目 -->
         <label>用户名</label><Icon type="star" style="color:#ed3f14"></Icon>
         <!-- 注册用户名输入 -->
-        <input type="text" class="form-control" id="reg-username" placeholder="请输入用户名" v-model="reguser.username">
+        <Input type="text" clearable style="width: 200px" placeholder="请输入用户名" v-model="reguser.username"></Input>
         <!-- 错误信息提示 -->
       <span class="regerror">{{ userErrors.errorText }}</span>
         </div>
         <div class="form-group">
           <label>密码</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <input type="password" class="form-control" id="reg-pwd" placeholder="Password" v-model="reguser.pwd">
+          <Input type="password" id="reg-pwd" style="width: 200px" placeholder="Password" v-model="reguser.pwd"></Input>
           <span class="regerror">{{ passwordErrors.errorText }}</span>
         </div>
         <div class="form-group">
           <label>昵称</label>
-          <input type="text" class="form-control" id="reg-nickname" placeholder="请输入昵称" v-model="reguser.nickname">
+          <Input type="text" id="reg-nickname" style="width: 200px" placeholder="请输入昵称" v-model="reguser.nickname"></Input>
         </div>
         <div class="form-group">
           <label>年龄</label>
-          <input type="text" class="form-control" id="reg-age" placeholder="请输入年龄" v-model="reguser.age">
+          <Input type="text" id="reg-age" style="width: 200px" placeholder="请输入年龄" v-model="reguser.age"></Input>
         </div>
         <div class="form-group">
           <label>真实姓名</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <input type="text" class="form-control" id="reg-truename" placeholder="请输入真实姓名" v-model="reguser.truename">
+          <Input type="text" id="reg-truename" style="width: 200px" placeholder="请输入真实姓名" v-model="reguser.truename"></Input>
           <span class="regerror">{{ truenameErrors.errorText }}</span>
         </div>
         <div class="form-group">
           <label>公司名称</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <input type="text" class="form-control" id="reg-company" placeholder="请输入公司名" v-model="reguser.company">
+          <Input type="text" id="reg-company" style="width: 200px" placeholder="请输入公司名" v-model="reguser.company"></Input>
           <span class="regerror">{{ companyErrors.errorText }}</span>
         </div>
         <div class="form-group">
           <label>电话</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <input type="telephone" class="form-control" id="reg-telephone" placeholder="请输入电话/手机" v-model="reguser.telephone">
+          <Input type="telephone" id="reg-telephone" style="width: 200px" placeholder="请输入电话/手机" v-model="reguser.telephone"></Input>
           <span class="regerror">{{ telephoneErrors.errorText }}</span>
         </div>
         <div class="form-group">
           <label>邮箱</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail">
+          <!-- <Input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail"> -->
+          <AutoComplete
+              v-model="reguser.mail"
+              @on-search="handleSearch2"
+              placeholder="请输入邮箱"
+              style="width:200px"
+              >
+              <Option v-for="item in data2" :value="item" :key="item">{{ item }}</Option>
+          </AutoComplete>
           <span class="regerror">{{ mailErrors.errorText }}</span>
         </div>
         <button type="button" class="btn btn-success" @click="addUser" style="width:200px;">注册</button>
@@ -83,7 +91,9 @@ export default {
         telephone: '',
         mail: '',
       },
-      errortext: ''
+      errortext: '',
+      value2: '',
+      data2: []
     }
   },
   computed: {
@@ -202,6 +212,13 @@ export default {
   //     this.getUser()
   // },
   methods: {
+    handleSearch2 (value) {
+        this.data2 = !value || value.indexOf('@') >= 0 ? [] : [
+            value + '@qq.com',
+            value + '@sina.com',
+            value + '@163.com'
+        ];
+    },
     close () {
       this.$emit('on-close')
     },
@@ -297,6 +314,9 @@ export default {
   padding: 2%;
   line-height: 1.6;
 }
+/*Input {
+  outline: dashed;
+}*/
 @media screen and (max-width: 575px){
  .dialog-content {
   border: 1px solid #dddee1;
@@ -389,7 +409,7 @@ export default {
   text-align: center;
   cursor: pointer;
 }
-input{
+Input{
   text-align: center;
 }
 .regerror{
