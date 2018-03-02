@@ -104,6 +104,7 @@ export default {
   },
   data() {
   	return {
+      timess: '',
   		username: '',
   		visible: false,
   	}
@@ -121,13 +122,17 @@ export default {
 	success () {
     	this.$Message.success('发送成功');
     },
-    // 图片上传成功回调
-    handleSuccess (res, file) {
-    	console.log(res)
-        this.modifydata.covermap = res.originalname;
-    },
-    // 通过axios封装的ajax操作来与后台进行异步post操作,修改拍卖公告
+  // 图片上传成功回调
+  handleSuccess (res, file) {
+  	console.log(res)
+      this.modifydata.covermap = res.originalname;
+  },
+  pushTime() {
+    this.modifydata.setdate.push(this.timess)
+  },
+  // 通过axios封装的ajax操作来与后台进行异步post操作,修改拍卖公告
 	modifypreview() {
+    this.pushTime()
 		axios.post("/previewdetail/modify",this.modifydata).then((res)=> {
 			console.log(res);
 			if(res.status == '200'){

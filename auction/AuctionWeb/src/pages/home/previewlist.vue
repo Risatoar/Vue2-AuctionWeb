@@ -115,11 +115,9 @@ export default {
 			        			this.getUserPreview()
 			        		}
 			        	}
-			        	console.log(this,mypreviewlist)
 			        	if (this.mypreviewlist.length<6) {
 			        		this.getUserPreview()
 			        	}
-			        	console.log(this,mypreviewlist)
 			        }
 			    }else if(res.data.status == 1002){
 			        this.error('修改失败,密码错误')
