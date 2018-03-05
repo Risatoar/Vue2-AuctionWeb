@@ -300,10 +300,9 @@ export default{
         	},500)
         },
         SearchSomething(val) {
-    		let parmas = {
-    			keywords: val
-    		};
-    		axios.get("/searchfor/all",{params:parmas}).then((res)=> {
+    		axios.get("/searchfor/all",{params:{
+    			keywords:val
+    		}}).then((res)=> {
     			this.data4[0].children = res.data.result.list1.list;
     			this.data4[1].children = res.data.result.list2.list;
     		}).catch((error)=>{

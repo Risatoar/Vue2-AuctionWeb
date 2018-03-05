@@ -5,6 +5,7 @@ var Infos=require("../models/info.js")
 var Previews=require("../models/previews.js")
 var sd = require("silly-datetime");
 var ObjectID = require('mongodb').ObjectID;
+var iconv = require('iconv-lite');
 
 mongoose.connect('mongodb://127.0.0.1:27017/auction')
 
@@ -28,19 +29,20 @@ router.get("/searchfor/all", function (req,res,next) {
   let pageSize = parseInt(2);
   let skip = (page-1)*pageSize;
   let queryKeyword = req.query.keywords;
-  let infosModel = Infos.find({author:{$regex:queryKeyword}}).skip(skip).limit(pageSize);
-  let PreviewsModel = Previews.find({author:{$regex:queryKeyword}}).skip(skip).limit(pageSize);
+  let infosModel = Infos.find({title:{$regex:queryKeyword}}).skip(skip).limit(pageSize);
+  let PreviewsModel = Previews.find({title:{$regex:queryKeyword}})
+  .skip(skip).limit(pageSize);
   infosModel.sort({'date':-1});
   PreviewsModel.sort({'date':-1});
-  PreviewsModel.exec(function (err,doc) {
-      if(err){
+  PreviewsModel.exec(function (err1,doc) {
+      if(err1){
           res.json({
             status:'10002',
             msg:err.message
           });
       }else{
-      	infosModel.exec(function (err,docu) {
-      	    if(err){
+      	infosModel.exec(function (err2,docu) {
+      	    if(err2){
       	        res.json({
       	          status:'1',
       	          msg:err.message
