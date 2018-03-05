@@ -125,7 +125,6 @@ date：null
 			<p>公司电话：1111111111111</p>
 			<p>法人：risatoar</p>
 		</dialog-box>
-		<loading></loading>
 		<Back-top :height="100" :bottom="100">
         <div class="top">返回顶端</div>
         </Back-top>
