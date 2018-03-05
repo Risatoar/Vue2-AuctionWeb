@@ -23,12 +23,21 @@
 	position: relative;
 	padding: 60px 0;
 
+	h2{
+		font-weight: 500;
+  		line-height: 1.1;
+  		font-size: 20px;
+		z-index: 1000;
+		margin-bottom: 10px;
+		text-align: center;
+	}
 	a {
 		font-size: @head-font;
 		letter-spacing: 4px;
 	}
 
 	p {
+		margin-top: 10px;
 		font-size: @small-font;
 		opacity: .5;
 	}
@@ -183,19 +192,10 @@
 		}
 
 		.mainmsg {
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: -ms-flexbox;
+			width: 100%;
 			display: flex;
 			flex-direction: column;
 			padding: 1em;
-			-webkit-box-orient: vertical;
-			-webkit-box-direction: normal;
-			-webkit-flex-direction: column;
-			-ms-flex-direction: column;
-			-webkit-box-flex: 1;
-			-webkit-flex: 1 0 auto;
-			-ms-flex: 1 0 auto;
 			flex: 1 0 auto;
 
 			.auctionname {
@@ -220,7 +220,7 @@
 			}
 
 			.detailbtn {
-				width: 120px;
+				width: 100%;
 				margin-top: .3em;
 				border-radius: .5em;
 			}
@@ -245,6 +245,8 @@
 
 	.message-inner-foot-title {
 		font-weight: 600;
+  		line-height: 1.1;
+  		font-size: 30px;
 		z-index: 1000;
 		margin-bottom: 1.5em;
 		text-align: center;
@@ -255,11 +257,15 @@
 
 		li {
 			font-weight: 600;
+			font-size: 22px;
 			position: relative;
 			z-index: 1000;
 			display: inline-block;
+			width: 33.33%;
+			min-height: 1px;
+			padding-right: 15px;
+			padding-left: 15px;
 			float: left;
-			margin-bottom: 1.5em;
 			-webkit-transition-duration: .5s;
 			transition-duration: .5s;
 			-webkit-transform: perspective(1px) translateZ(0);
@@ -293,17 +299,48 @@
 			display: block;
 			color: #727272;
 			-webkit-margin-before: 1em;
-			-webkit-margin-after: 1em;
 			-webkit-margin-start: 0;
 			-webkit-margin-end: 0;
 		}
 
 		.auction-knowledge {
-			font-size: 1.3em;
+			color: #fff;
+			display: inline-block;
+			padding: 6px 12px;
+			margin-bottom: 0;
+			font-size: 24px;
+			font-weight: normal;
+			line-height: 1.42857143;
+			text-align: center;
+			white-space: nowrap;
+			vertical-align: middle;
+			-ms-touch-action: manipulation;
+			    touch-action: manipulation;
+			cursor: pointer;
+			-webkit-user-select: none;
+			   -moz-user-select: none;
+			    -ms-user-select: none;
+			        user-select: none;
+			background-image: none;
+			border: 1px solid transparent;
+			border-radius: 4px;
+			background-color: #f0ad4e;
+			border-color: #eea236;
 			font-weight: 600;
 			z-index: 1000;
-			width: 140px;
 			margin-top: 3em;
+		}
+
+		.auction-knowledge:focus,
+		.auction-knowledge.focus {
+		  color: #fff;
+		  background-color: #ec971f;
+		  border-color: #985f0d;
+		}
+		.auction-knowledge:hover {
+		  color: #fff;
+		  background-color: #ec971f;
+		  border-color: #d58512;
 		}
 
 	}

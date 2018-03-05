@@ -65,14 +65,16 @@ body {
       -ms-flex-direction: row;
           flex-direction: row;
   width: 1200px;
+  height: 80px;
+  overflow: hidden;
   margin: 0 auto;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   -ms-flex-pack: distribute;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
 }
 .head-inner-company {
   font-size: 24px;
@@ -108,7 +110,6 @@ body {
   cursor: pointer;
 }
 .search {
-  width: 320px;
   line-height: 80px;
 }
 .nav-pile {

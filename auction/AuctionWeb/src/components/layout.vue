@@ -35,7 +35,7 @@ date：null
 						        v-model="value4"
 						        icon="ios-search"
 						        placeholder="请输入文章名称/作者 进行查询"
-						        style="width:300px"
+						        style="width:260px"
 						        @on-search="SearchSomething">
 						        <div class="search-auto-complete-item" v-for="item in data4">
 						            <div class="search-auto-complete-group">
@@ -92,8 +92,6 @@ date：null
 							<li v-if="username === ''" @click="regClick">注册</li>
 							<li class="nav-pile" >|</li>
 							<li @click="aboutClick">关于我们</li>
-							<li class="nav-pile" v-if="isAdmin === 'true'">|</li>
-							<li v-if="isAdmin === 'true'" >管理员界面</li>
 						</div>
 					</div>
 			</div>
@@ -158,6 +156,7 @@ export default{
 			isRegDialog: false,
 			isShowAboutDialog: false,
 			transitionName: 'slide-left',
+			searchFail: '并未搜索到',
 			company: '台州始丰拍卖有限公司',
 			navLists: [
 			{
@@ -305,9 +304,8 @@ export default{
     			keywords: val
     		};
     		axios.get("/searchfor/all",{params:parmas}).then((res)=> {
-    			console.log(res.data.result.list1.list)
-    			this.data4[0].children = res.data.result.list1.list
-    			this.data4[1].children = res.data.result.list2.list
+    			this.data4[0].children = res.data.result.list1.list;
+    			this.data4[1].children = res.data.result.list2.list;
     		}).catch((error)=>{
     			console.log(error);
     		})

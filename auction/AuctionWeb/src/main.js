@@ -40,6 +40,7 @@ import infiniteScroll from 'vue-infinite-scroll'
 // 外部样式导入
 require('vue-touch-ripple/component.css')
 import 'iview/dist/styles/iview.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'effect-input/dist/index.css'
 
 Vue.config.productionTip = false

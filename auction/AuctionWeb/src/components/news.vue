@@ -8,7 +8,7 @@ date：null
 		<div class="message-inner">
 			<!-- 消息页面主标题 -->
 			<div class="message-inner-head">
-				<h3>信 息 中 心</h3>
+				<h2>信 息 中 心</h2>
 				<div class="line"></div>
 				<p>足不出户 即刻网罗天下资讯</p>
 			</div>
@@ -54,7 +54,8 @@ date：null
 											<div class="mainmsg">
 												<div class="auctionname">{{ item.title }}</div>
 												<div class="auctiondate">{{ item.startdate }}-{{ item.finaldate }}</div>
-												  <router-link class="btn btn-info detailbtn" :to="{path: '/predetail/' + item._id}" v-touch-ripple>查看详情页</router-link>
+												  <router-link class="detailbtn" :to="{path: '/predetail/' + item._id}" v-touch-ripple>
+												  	<Button type="primary">查看详情页</Button></router-link>
 											</div>
 										</div>
 									</Poptip>

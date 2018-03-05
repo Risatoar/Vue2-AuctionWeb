@@ -3,11 +3,9 @@
   text-align: center;
   background-color: #fff;
 }
-
 .message-inner {
   z-index: 999;
 }
-
 .line {
   line-height: 24px;
   width: 20%;
@@ -15,26 +13,30 @@
   margin: 0 auto;
   background-color: #000;
 }
-
 .message-inner-head {
   position: relative;
   padding: 60px 0;
 }
-
+.message-inner-head h2 {
+  font-weight: 500;
+  line-height: 1.1;
+  font-size: 20px;
+  z-index: 1000;
+  margin-bottom: 10px;
+  text-align: center;
+}
 .message-inner-head a {
   font-size: 24px;
   letter-spacing: 4px;
 }
-
 .message-inner-head p {
+  margin-top: 10px;
   font-size: 14px;
   opacity: .5;
 }
-
 .message-inner-top {
   background-color: #e8edf1;
 }
-
 .message-inner-top .message-inner-top-background {
   position: relative;
   width: 1200px;
@@ -42,32 +44,27 @@
   margin: 0 auto;
   padding: 20px 0;
 }
-
 .message-inner-top .message-inner-top-background .message-inner-top-left {
   position: relative;
   float: left;
   width: 69%;
 }
-
 .message-inner-top .message-inner-top-background .message-inner-top-right {
   position: relative;
   float: right;
   width: 30%;
 }
-
 .message-inner-middle {
   position: relative;
   width: 100%;
   margin: 0 auto;
   padding: 3em 0;
 }
-
 .message-inner-middle .message-inner-middle-title {
   font-size: 1.2em;
   width: 1200px;
   margin: 0 auto;
 }
-
 .message-inner-middle .message-inner-middle-body {
   display: -webkit-box;
   display: -webkit-flex;
@@ -79,7 +76,7 @@
   margin: 0 auto;
   margin-top: 1.5em;
   -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -88,7 +85,6 @@
   -ms-flex-pack: start;
   justify-content: space-between;
 }
-
 .message-inner-middle .message-inner-middle-body li {
   float: left;
   width: 240px;
@@ -96,7 +92,6 @@
   padding-right: .625em;
   padding-left: .625em;
 }
-
 .message-inner-middle .message-inner-middle-body .message-preview-list-listcard {
   display: inline-block;
   overflow: hidden;
@@ -113,7 +108,6 @@
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(34, 34, 34, 0.38);
 }
-
 .message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic {
   position: relative;
   display: block;
@@ -124,14 +118,12 @@
   -webkit-transition-duration: .3s;
   transition-duration: .3s;
 }
-
 .message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .card-img {
   position: absolute;
   right: 50%;
   width: 50%;
   height: 100%;
 }
-
 .message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .detailwrap {
   position: absolute;
   left: 50%;
@@ -142,7 +134,6 @@
   color: #fff;
   background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514723571464&di=27736017d381466db98fb2275a86fb2e&imgtype=0&src=http%3A%2F%2Fwww.51pptmoban.com%2Fd%2Ffile%2F2014%2F06%2F08%2F28b48a6780b2b7573bd28e71e83b81f5.jpg) repeat;
 }
-
 .message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .detailwrap ul {
   display: -webkit-box;
   display: -webkit-flex;
@@ -152,66 +143,60 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 220px;
   height: 100%;
   padding: 10px 5px;
   -webkit-box-align: stretch;
   -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
-
 .message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic .detailwrap ul li {
   width: 220px;
   text-align: left;
 }
-
 .message-inner-middle .message-inner-middle-body .message-preview-list-listcard .pic:hover {
   -webkit-transform: translateX(-220px);
   -ms-transform: translateX(-220px);
-  transform: translateX(-220px)
-
+      transform: translateX(-220px)
   /* move the element up by 5px */
 }
-
-.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:hover, .message-inner-middle .message-inner-middle-body .message-preview-list-listcard:focus, .message-inner-middle .message-inner-middle-body .message-preview-list-listcard:active {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:hover,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:focus,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:active {
   -webkit-transform: translateY(-5px);
   -ms-transform: translateY(-5px);
-  transform: translateY(-5px)
-
+      transform: translateY(-5px)
   /* move the element up by 5px */
 }
-
-.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:hover:before, .message-inner-middle .message-inner-middle-body .message-preview-list-listcard:focus:before, .message-inner-middle .message-inner-middle-body .message-preview-list-listcard:active:before {
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:hover:before,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:focus:before,
+.message-inner-middle .message-inner-middle-body .message-preview-list-listcard:active:before {
   -webkit-transform: translateY(5px);
   -ms-transform: translateY(5px);
-  transform: translateY(5px);
+      transform: translateY(5px);
   opacity: 1
-
   /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
-
 .message-inner-middle .message-inner-middle-body .mainmsg {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  padding: 1em;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
-  -ms-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1em;
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
-
 .message-inner-middle .message-inner-middle-body .mainmsg .auctionname {
   font-size: 1.5em;
   font-weight: 600;
@@ -225,24 +210,20 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .message-inner-middle .message-inner-middle-body .mainmsg .auctiondate {
   font-size: 1em;
   margin-top: .3em;
   text-align: left;
   color: #727272;
 }
-
 .message-inner-middle .message-inner-middle-body .mainmsg .detailbtn {
-  width: 120px;
+  width: 100%;
   margin-top: .3em;
   border-radius: .5em;
 }
-
 .message-inner-foot {
   background-color: #e8edf1;
 }
-
 .message-inner-foot .message-inner-foot-background {
   clear: both;
   overflow: hidden;
@@ -251,25 +232,28 @@
   margin-top: 3em;
   padding: 3em 0;
 }
-
 .message-inner-foot .message-inner-foot-title {
   font-weight: 600;
+  line-height: 1.1;
+  font-size: 30px;
   z-index: 1000;
   margin-bottom: 1.5em;
   text-align: center;
 }
-
 .message-inner-foot .message-inner-foot-body {
   z-index: 1000;
 }
-
 .message-inner-foot .message-inner-foot-body li {
   font-weight: 600;
+  font-size: 22px;
   position: relative;
   z-index: 1000;
   display: inline-block;
+  width: 33.33%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
   float: left;
-  margin-bottom: 1.5em;
   -webkit-transition-duration: .5s;
   transition-duration: .5s;
   -webkit-transform: perspective(1px) translateZ(0);
@@ -277,45 +261,71 @@
   vertical-align: middle;
   box-shadow: 0 0 1px transparent;
 }
-
-.message-inner-foot .message-inner-foot-body li:hover, .message-inner-foot .message-inner-foot-body li:focus, .message-inner-foot .message-inner-foot-body li:active {
+.message-inner-foot .message-inner-foot-body li:hover,
+.message-inner-foot .message-inner-foot-body li:focus,
+.message-inner-foot .message-inner-foot-body li:active {
   -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
   transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
-  transform: scale(1.2);
+      transform: scale(1.2);
 }
-
 .message-inner-foot .message-inner-foot-body .mifb-img {
   z-index: 1000;
   width: 100%;
   margin-bottom: 2em;
 }
-
 .message-inner-foot .message-inner-foot-body .mifb-img .showimg {
   z-index: 1000;
   width: 60%;
   height: 20em;
 }
-
 .message-inner-foot .message-inner-foot-body p {
   z-index: 1000;
   display: block;
   color: #727272;
   -webkit-margin-before: 1em;
-  -webkit-margin-after: 1em;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
 }
-
 .message-inner-foot .message-inner-foot-body .auction-knowledge {
-  font-size: 1.3em;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #f0ad4e;
+  border-color: #eea236;
   font-weight: 600;
   z-index: 1000;
-  width: 140px;
   margin-top: 3em;
 }
-
+.message-inner-foot .message-inner-foot-body .auction-knowledge:focus,
+.message-inner-foot .message-inner-foot-body .auction-knowledge.focus {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #985f0d;
+}
+.message-inner-foot .message-inner-foot-body .auction-knowledge:hover {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
 .hideadmin {
   display: none;
 }
