@@ -6,7 +6,7 @@ date：null
 <template>
 	<div>
 		<!-- layout头部,用来展示导航栏信息 -->
-		<div class="head">
+		<header class="head">
 			<div class="head-wrap">
 					<div class="head-inner">
 						<!-- 公司标志 -->
@@ -95,7 +95,7 @@ date：null
 						</div>
 					</div>
 			</div>
-		</div>
+		</header>
 		<!-- layout内容详情区块 -->
 		<div class="content" @click="handleClose">
 		  <keep-alive>
@@ -105,11 +105,11 @@ date：null
 		  </keep-alive>
 		</div>
 		<!-- layout脚注区块 -->
-		<div class="foot">
+		<footer class="foot">
 			<p>
 				Proudly By XuXiang Copyright © 2017. All rights reserved.
 			</p>
-		</div>
+		</footer>
 		<login :is-show="isLoginDialog"
 		       @on-close="closeDialog('isLoginDialog')"
 		       @has-log="onSuccessLog"

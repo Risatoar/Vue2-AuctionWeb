@@ -48,11 +48,9 @@ date：2017/12/13
 								<img class="left-img" v-lazy="'/static/img/uploads/' + item.covermap" style="background-color:#fff;">
 							</div>
 							<div class="list-block-right">
-								<h3>
-									<a class="block-right-title">
-										{{ item.title }}
-									</a>
-								</h3>
+								<a class="block-right-title">
+									{{ item.title }}
+								</a>
 								<p class="block-right-description" v-html="item.description">
 								</p>
 								<div class="block-right-foot">
