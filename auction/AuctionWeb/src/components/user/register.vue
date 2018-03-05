@@ -10,55 +10,57 @@
         <p class="dialog-close" @click="close">x</p>
         <h3 style="padding:15px 0;">还没有账号吗？快来注册一个吧！</h3>
         <p>带红色星号的都是必填项目</p>
-        <div class="form-group">
-        <!-- 设置红色星号用来区分必填项目 -->
-        <label>用户名</label><Icon type="star" style="color:#ed3f14"></Icon>
-        <!-- 注册用户名输入 -->
-        <Input type="text" clearable style="width: 200px" placeholder="请输入用户名" v-model="reguser.username"></Input>
-        <!-- 错误信息提示 -->
-      <span class="regerror">{{ userErrors.errorText }}</span>
-        </div>
-        <div class="form-group">
-          <label>密码</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <Input type="password" id="reg-pwd" style="width: 200px" placeholder="Password" v-model="reguser.pwd"></Input>
-          <span class="regerror">{{ passwordErrors.errorText }}</span>
-        </div>
-        <div class="form-group">
-          <label>昵称</label>
-          <Input type="text" id="reg-nickname" style="width: 200px" placeholder="请输入昵称" v-model="reguser.nickname"></Input>
-        </div>
-        <div class="form-group">
-          <label>年龄</label>
-          <Input type="text" id="reg-age" style="width: 200px" placeholder="请输入年龄" v-model="reguser.age"></Input>
-        </div>
-        <div class="form-group">
-          <label>真实姓名</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <Input type="text" id="reg-truename" style="width: 200px" placeholder="请输入真实姓名" v-model="reguser.truename"></Input>
-          <span class="regerror">{{ truenameErrors.errorText }}</span>
-        </div>
-        <div class="form-group">
-          <label>公司名称</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <Input type="text" id="reg-company" style="width: 200px" placeholder="请输入公司名" v-model="reguser.company"></Input>
-          <span class="regerror">{{ companyErrors.errorText }}</span>
-        </div>
-        <div class="form-group">
-          <label>电话</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <Input type="telephone" id="reg-telephone" style="width: 200px" placeholder="请输入电话/手机" v-model="reguser.telephone"></Input>
-          <span class="regerror">{{ telephoneErrors.errorText }}</span>
-        </div>
-        <div class="form-group">
-          <label>邮箱</label><Icon type="star" style="color:#ed3f14"></Icon>
-          <!-- <Input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail"> -->
-          <AutoComplete
-              v-model="reguser.mail"
-              @on-search="handleSearch2"
-              placeholder="请输入邮箱"
-              style="width:200px"
-              >
-              <Option v-for="item in data2" :value="item" :key="item">{{ item }}</Option>
-          </AutoComplete>
-          <span class="regerror">{{ mailErrors.errorText }}</span>
-        </div>
+          <div class="form-content">
+            <div class="form-group">
+              <!-- 设置红色星号用来区分必填项目 -->
+              <label>用户名</label><Icon type="star" style="color:#ed3f14"></Icon>
+              <!-- 注册用户名输入 -->
+              <Input type="text" clearable style="width: 200px" placeholder="请输入用户名" v-model="reguser.username"></Input>
+              <!-- 错误信息提示 -->
+              <span class="regerror">{{ userErrors.errorText }}</span>
+            </div>
+            <div class="form-group">
+              <label>密码</label><Icon type="star" style="color:#ed3f14"></Icon>
+              <Input type="password" id="reg-pwd" style="width: 200px" placeholder="Password" v-model="reguser.pwd"></Input>
+              <span class="regerror">{{ passwordErrors.errorText }}</span>
+            </div>
+            <div class="form-group">
+              <label>昵称</label>
+              <Input type="text" id="reg-nickname" style="width: 200px" placeholder="请输入昵称" v-model="reguser.nickname"></Input>
+            </div>
+            <div class="form-group">
+              <label>年龄</label>
+              <Input type="text" id="reg-age" style="width: 200px" placeholder="请输入年龄" v-model="reguser.age"></Input>
+            </div>
+            <div class="form-group">
+              <label>真实姓名</label><Icon type="star" style="color:#ed3f14"></Icon>
+              <Input type="text" id="reg-truename" style="width: 200px" placeholder="请输入真实姓名" v-model="reguser.truename"></Input>
+              <span class="regerror">{{ truenameErrors.errorText }}</span>
+            </div>
+            <div class="form-group">
+              <label>公司名称</label><Icon type="star" style="color:#ed3f14"></Icon>
+              <Input type="text" id="reg-company" style="width: 200px" placeholder="请输入公司名" v-model="reguser.company"></Input>
+              <span class="regerror">{{ companyErrors.errorText }}</span>
+            </div>
+            <div class="form-group">
+              <label>电话</label><Icon type="star" style="color:#ed3f14"></Icon>
+              <Input type="telephone" id="reg-telephone" style="width: 200px" placeholder="请输入电话/手机" v-model="reguser.telephone"></Input>
+              <span class="regerror">{{ telephoneErrors.errorText }}</span>
+            </div>
+            <div class="form-group">
+              <label>邮箱</label><Icon type="star" style="color:#ed3f14"></Icon>
+              <!-- <Input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail"> -->
+              <AutoComplete
+                  v-model="reguser.mail"
+                  @on-search="handleSearch2"
+                  placeholder="请输入邮箱"
+                  style="width:200px"
+                  >
+                  <Option v-for="item in data2" :value="item" :key="item">{{ item }}</Option>
+              </AutoComplete>
+              <span class="regerror">{{ mailErrors.errorText }}</span>
+            </div>
+          </div>
         <button type="button" class="btn btn-success" @click="addUser" style="width:200px;">注册</button>
         <br><span>{{ errortext }}</span>
         <slot></slot>
@@ -314,6 +316,14 @@ export default {
   padding: 2%;
   line-height: 1.6;
 }
+.form-content {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+
+}
 /*Input {
   outline: dashed;
 }*/
@@ -387,14 +397,14 @@ export default {
  .dialog-content {
   border: 1px solid #dddee1;
   border-radius: 16px;
-  width: 40%;
+  width: 30%;
   position: fixed;
   max-height: 80%;
   overflow: auto;
   background: #fff;
   top: 15%;
   left: 50%;
-  margin-left: -20%;
+  margin-left: -15%;
   z-index: 10;
   padding: 2%;
   line-height: 1.6;
@@ -408,9 +418,6 @@ export default {
   height: 20px;
   text-align: center;
   cursor: pointer;
-}
-Input{
-  text-align: center;
 }
 .regerror{
   color: red;

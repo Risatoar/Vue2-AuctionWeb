@@ -29,6 +29,24 @@ date：null
 								</router-link>
 							</ul>
 						</nav>
+						<div class="search">
+							<AutoComplete
+						        v-model="value4"
+						        icon="ios-search"
+						        placeholder="搜索..."
+						        style="width:300px">
+						        <div class="demo-auto-complete-item" v-for="item in data4">
+						            <div class="demo-auto-complete-group">
+						                <span>{{ item.title }}</span>
+						                <a>更多</a>
+						            </div>
+						            <Option v-for="option in item.children" :value="option.title" :key="option.title">
+						                <span class="demo-auto-complete-title">{{ option.title }}</span>
+						            </Option>
+						        </div>
+						        <a class="demo-auto-complete-more">查看所有结果</a>
+						    </AutoComplete>
+						</div>
 						<!-- 登录注册模块 -->
 						<div class="head-inner-login">
 							<!-- <router-link :to="{ path : '/user/'+username}" tag="li" v-if="username !== ''"> <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" /></router-link> -->
@@ -149,7 +167,26 @@ export default{
 			{
 				name: '拍卖预告'
 			}
-			]
+			],
+			value4: '',
+            data4: [
+                {
+                    title: '拍卖公告',
+                    children: []
+                },
+                {
+                    title: '拍卖法规',
+                    children: []
+                },
+                {
+                    title: '拍卖知识',
+                    children: []
+                },
+                {
+                    title: '拍卖预告',
+                    children: []
+                }
+            ]
 		}
 	},
 	mounted() {
