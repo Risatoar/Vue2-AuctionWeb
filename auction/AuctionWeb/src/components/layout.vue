@@ -33,18 +33,19 @@ date：null
 							<AutoComplete
 						        v-model="value4"
 						        icon="ios-search"
-						        placeholder="搜索..."
-						        style="width:300px">
-						        <div class="demo-auto-complete-item" v-for="item in data4">
-						            <div class="demo-auto-complete-group">
+						        placeholder="请输入文章名称/作者 进行查询"
+						        style="width:300px"
+						        @on-search="SearchSomething">
+						        <div class="search-auto-complete-item" v-for="item in data4">
+						            <div class="search-auto-complete-group">
 						                <span>{{ item.title }}</span>
 						                <a>更多</a>
 						            </div>
 						            <Option v-for="option in item.children" :value="option.title" :key="option.title">
-						                <span class="demo-auto-complete-title">{{ option.title }}</span>
+						                <span class="search-auto-complete-title">{{ option.title }}</span>
+						                <span class="search-auto-complete-author">作者: {{ option.author}}</span>
 						            </Option>
 						        </div>
-						        <a class="demo-auto-complete-more">查看所有结果</a>
 						    </AutoComplete>
 						</div>
 						<!-- 登录注册模块 -->
@@ -168,24 +169,42 @@ export default{
 				name: '拍卖预告'
 			}
 			],
+			postUrl: [
+			{
+				title: '拍卖公告',
+				url: '/infosearch'
+			},
+			{
+				title: '法律法规',
+				url: '/infosearch'
+			},
+			{
+				title: '拍卖知识',
+				url: '/infosearch'
+			},
+			{
+				title: '拍卖预告',
+				url: '/previewsearch'
+			}
+			],
 			value4: '',
             data4: [
-                {
-                    title: '拍卖公告',
-                    children: []
-                },
-                {
-                    title: '拍卖法规',
-                    children: []
-                },
-                {
-                    title: '拍卖知识',
-                    children: []
-                },
-                {
-                    title: '拍卖预告',
-                    children: []
-                }
+            {
+                title: '拍卖公告',
+                children: []
+            },
+            {
+                title: '拍卖法规',
+                children: []
+            },
+            {
+                title: '拍卖知识',
+                children: []
+            },
+            {
+                title: '拍卖预告',
+                children: []
+            }
             ]
 		}
 	},
@@ -296,6 +315,18 @@ export default{
         		_this.isRegDialog = true;
         		_this.isLoginDialog = false;
         	},500)
+        },
+        SearchSomething(val) {
+    		let parmas = {
+    			keywords: val
+    		};
+    		axios.get("/searchfor/all",parmas).then((res)=> {
+    			console.log(res.data.result.list1.list)
+    			this.data4[0].children = res.data.result.list1.list
+    			this.data4[3].children = res.data.result.list2.list
+    		}).catch((error)=>{
+    			console.log(error);
+    		})
         },
         // 头像处下拉框显示
         handleOpen () {
