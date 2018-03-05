@@ -203,7 +203,8 @@ body {
   float: right;
 }
 .search-auto-complete-title {
-  width: 250px;
+  width: 200px;
+  overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   float: left;

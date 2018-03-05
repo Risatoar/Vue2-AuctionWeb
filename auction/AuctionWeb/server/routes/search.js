@@ -26,27 +26,31 @@ mongoose.connection.on('disconnected',function(){
 
 router.get("/searchfor/all", function (req,res,next) {
   let page = parseInt(1);
-  let pageSize = parseInt(2);
+  let pageSize = parseInt(5);
   let skip = (page-1)*pageSize;
   let queryKeyword = req.query.keywords;
   let infosModel = Infos.find({$or : [ //多条件，数组
 			{title : {$regex : queryKeyword}},
-			{author : {$regex : queryKeyword}}
+			{author : {$regex : queryKeyword}},
+			{description : {$regex : queryKeyword}},
+			{maintext : {$regex : queryKeyword}}
 		]}).skip(skip).limit(pageSize);
   let PreviewsModel = Previews.find({$or : [ //多条件，数组
 			{title : {$regex : queryKeyword}},
-			{author : {$regex : queryKeyword}}
+			{author : {$regex : queryKeyword}},
+			{description : {$regex : queryKeyword}},
+			{maintext : {$regex : queryKeyword}}
 		]}).skip(skip).limit(pageSize);
   infosModel.sort({'date':-1});
   PreviewsModel.sort({'date':-1});
-  PreviewsModel.exec(function (err1,doc) {
+  PreviewsModel.exec(function (err1,doc1) {
       if(err1){
           res.json({
             status:'10002',
             msg:err.message
           });
       }else{
-      	infosModel.exec(function (err2,docu) {
+      	infosModel.exec(function (err2,doc2) {
       	    if(err2){
       	        res.json({
       	          status:'1',
@@ -58,14 +62,14 @@ router.get("/searchfor/all", function (req,res,next) {
       	            msg:'',
       	            result:{
   	            	  list1:{
-  	                    count: docu.length,
+  	                    count: doc2.length,
   	                    url: '/detail/info',
-  	                    list: docu
+  	                    list: doc2
       	              },
   	                  list2:{
-  	                    count: doc.length,
+  	                    count: doc1.length,
   	                    url: '/predetail/',
-  	                    list: doc
+  	                    list: doc1
   	                  }
       	            }
       	        });

@@ -17,13 +17,13 @@ date：2017/12/26
 		<div class="hpreviewlist-body">
 			<div class="hpreviewlist-body-list" v-for="(item,index) in mypreviewlist">
 				<div class="hpreviewlist-block" :id="item._id">
-					<router-link :to="{path: '/detail/info/' + item._id}">
+					<router-link :to="{path: '/predetail/' + item._id}">
 					<div class="hpreviewlist-block-left">
 						<img v-lazy="'/static/img/uploads/' + item.covermap">
 					</div>
 					</router-link>
 					<div class="hpreviewlist-block-right">
-						<router-link :to="{path: '/detail/info/' + item._id}">
+						<router-link :to="{path: '/predetail/' + item._id}">
 						<ul>
 							<li class="un-title ecl">
 								{{ item.title }}

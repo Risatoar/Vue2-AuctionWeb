@@ -92,11 +92,8 @@ export default {
 			axios.post("/userinfo",this.usernmae).then((res)=> {
 			    if(res.data.status == 10001){
 			    	this.mynewslist = res.data.result.list;
-			        this.success('修改成功')
-			    }else if(res.data.status == 1002){
-			        this.error('修改失败,密码错误')
-			    }else if(res.data.status == 1003){
-			    	this.warning('数据没有修改过')
+			    	let countNum = res.data.result.count;
+			    	this.$emit('get-user-info-count',countNum)
 			    }
 			}).catch((error)=> {
 			  console.log(error);
@@ -197,7 +194,7 @@ h3{
 }
 .ecl{
 	overflow: hidden;
-    width: 240px;
+    width: 340px;
     white-space: nowrap;
     -o-text-overflow: ellipsis;
        text-overflow: ellipsis;

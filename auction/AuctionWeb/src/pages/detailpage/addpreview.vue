@@ -32,10 +32,10 @@ date：2017/12/27
 				<!-- 拍卖预告信息添加界面价格添加 -->
 				<div class="addpreview-content-addsaleprice">
 					<label>请输入价格</label>
-					<input type="text" class="form-control input-saleprice" label="请输入价格" v-model="add.saleprice"></input>
+					<InputNumber :min="1" class="form-control input-saleprice" label="请输入价格" v-model="add.saleprice">请输入价格</InputNumber>
 				</div>
 				<!-- 图片上传 -->
-				<div style="padding: 20px 10px;width:300px;">
+				<div style="padding: 20px 10px;width:300px;float:left;">
 					<Upload
 					    multiple
 					    type="drag"
@@ -93,7 +93,7 @@ export default {
 				title: '',
 				description: '',
 				maintext: '',
-				saleprice: '',
+				saleprice: 1000,
 				setdate: '',
 				covermap: ''
 			}

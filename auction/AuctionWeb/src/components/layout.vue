@@ -34,7 +34,7 @@ date：null
 								clearable
 						        v-model="value4"
 						        icon="ios-search"
-						        placeholder="请输入文章名称/作者 进行查询"
+						        placeholder="请输入单条搜索内容进行查询"
 						        style="width:260px"
 						        @on-search="SearchSomething">
 						        <div class="search-auto-complete-item" v-for="item in data4">

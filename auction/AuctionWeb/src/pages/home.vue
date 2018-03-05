@@ -50,7 +50,7 @@
         </div>
         <!-- 个人主页中间部分,根据导航的不同展示不同区块的信息区域 -->
         <div class="home-middle">
-          <newslist v-if="showNewsList"></newslist>
+          <newslist v-if="showNewsList" @get-user-info-count="checkCount"></newslist>
           <comment v-if="showComment"></comment>
           <previewlist v-if="showPreviewList"></previewlist>
           <userdetail v-if="showUserDetail" :userd="userdetails"></userdetail>
@@ -69,7 +69,7 @@
           <div class="home-userdetail">
             <Card style="width:350px;">
                 <p slot="title">至今为止</p>
-                <p>您已经在本网站发布过0条拍卖信息</p>
+                <p>您已经在本网站发布过{{ userinfocount }}条拍卖信息</p>
             </Card>
           </div>
           <div class="home-circle">
@@ -112,6 +112,7 @@ export default {
          user: {
           username: ''
          },
+         userinfocount: 0,
          userdetails: [],
          totle: 6,
          showComment: false,
@@ -130,6 +131,7 @@ export default {
     mounted() {
       this.getUsername()
       this.showNews()
+      this.checkCount()
     },
     methods: {
       // 设置获取cookie代理方法
@@ -169,6 +171,9 @@ export default {
             this.percent = 100
           }
           this.success()
+        },
+        checkCount(countNum) {
+          this.userinfocount = countNum;
         },
         success () {
           this.$Message.success('刷新成功');
