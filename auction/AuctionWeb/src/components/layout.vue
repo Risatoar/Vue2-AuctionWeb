@@ -135,7 +135,6 @@ date：null
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
-import loading from './LoadingPage.vue'
 import dialogBox from './dialog.vue'
 import login from './user/login.vue'
 import register from './user/register.vue'
@@ -143,7 +142,6 @@ import VueTouchRipple from 'vue-touch-ripple'
 export default{
 	name: 'layout',
 	components: {
-		loading,
 		dialogBox,
 		login,
 		register
