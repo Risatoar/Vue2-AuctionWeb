@@ -29,9 +29,14 @@ router.get("/searchfor/all", function (req,res,next) {
   let pageSize = parseInt(2);
   let skip = (page-1)*pageSize;
   let queryKeyword = req.query.keywords;
-  let infosModel = Infos.find({title:{$regex:queryKeyword}}).skip(skip).limit(pageSize);
-  let PreviewsModel = Previews.find({title:{$regex:queryKeyword}})
-  .skip(skip).limit(pageSize);
+  let infosModel = Infos.find({$or : [ //多条件，数组
+			{title : {$regex : queryKeyword}},
+			{author : {$regex : queryKeyword}}
+		]}).skip(skip).limit(pageSize);
+  let PreviewsModel = Previews.find({$or : [ //多条件，数组
+			{title : {$regex : queryKeyword}},
+			{author : {$regex : queryKeyword}}
+		]}).skip(skip).limit(pageSize);
   infosModel.sort({'date':-1});
   PreviewsModel.sort({'date':-1});
   PreviewsModel.exec(function (err1,doc) {
