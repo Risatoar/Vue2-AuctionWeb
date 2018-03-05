@@ -31,6 +31,7 @@ date：null
 						</nav>
 						<div class="search">
 							<AutoComplete
+								clearable
 						        v-model="value4"
 						        icon="ios-search"
 						        placeholder="请输入文章名称/作者 进行查询"
@@ -42,8 +43,11 @@ date：null
 						                <a>更多</a>
 						            </div>
 						            <Option v-for="option in item.children" :value="option.title" :key="option.title">
+						            	<router-link
+						            	:to="{path: item.url + option._id}">
 						                <span class="search-auto-complete-title">{{ option.title }}</span>
-						                <span class="search-auto-complete-author">作者: {{ option.author}}</span>
+						                <span class="search-auto-complete-detail">作者: {{ option.author}}    发布时间: {{option.date}}</span>
+						            </router-link>
 						            </Option>
 						        </div>
 						    </AutoComplete>
@@ -160,26 +164,12 @@ export default{
 				name: '拍卖公告'
 			},
 			{
-				name: '法律法规'
-			},
-			{
-				name: '拍卖知识'
-			},
-			{
 				name: '拍卖预告'
 			}
 			],
 			postUrl: [
 			{
 				title: '拍卖公告',
-				url: '/infosearch'
-			},
-			{
-				title: '法律法规',
-				url: '/infosearch'
-			},
-			{
-				title: '拍卖知识',
 				url: '/infosearch'
 			},
 			{
@@ -191,18 +181,12 @@ export default{
             data4: [
             {
                 title: '拍卖公告',
-                children: []
-            },
-            {
-                title: '拍卖法规',
-                children: []
-            },
-            {
-                title: '拍卖知识',
+                url: '/detail/info/',
                 children: []
             },
             {
                 title: '拍卖预告',
+                url: '/predetail/',
                 children: []
             }
             ]
@@ -320,10 +304,10 @@ export default{
     		let parmas = {
     			keywords: val
     		};
-    		axios.get("/searchfor/all",parmas).then((res)=> {
+    		axios.get("/searchfor/all",{params:parmas}).then((res)=> {
     			console.log(res.data.result.list1.list)
     			this.data4[0].children = res.data.result.list1.list
-    			this.data4[3].children = res.data.result.list2.list
+    			this.data4[1].children = res.data.result.list2.list
     		}).catch((error)=>{
     			console.log(error);
     		})

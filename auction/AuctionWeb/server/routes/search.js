@@ -27,8 +27,9 @@ router.get("/searchfor/all", function (req,res,next) {
   let page = parseInt(1);
   let pageSize = parseInt(2);
   let skip = (page-1)*pageSize;
-  let infosModel = Infos.find({author:'risatoar'}).skip(skip).limit(pageSize);
-  let PreviewsModel = Previews.find({}).skip(skip).limit(pageSize);
+  let queryKeyword = req.query.keywords;
+  let infosModel = Infos.find({author:{$regex:queryKeyword}}).skip(skip).limit(pageSize);
+  let PreviewsModel = Previews.find({author:{$regex:queryKeyword}}).skip(skip).limit(pageSize);
   infosModel.sort({'date':-1});
   PreviewsModel.sort({'date':-1});
   PreviewsModel.exec(function (err,doc) {
@@ -51,10 +52,12 @@ router.get("/searchfor/all", function (req,res,next) {
       	            result:{
   	            	  list1:{
   	                    count: docu.length,
+  	                    url: '/detail/info',
   	                    list: docu
       	              },
   	                  list2:{
   	                    count: doc.length,
+  	                    url: '/predetail/',
   	                    list: doc
   	                  }
       	            }
