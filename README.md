@@ -44,11 +44,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 ## 前端开发
-- **框架**： vue-v2.9.1全家桶+bootstrap-v3.37+jQuery-v1.8.0
+- **框架**： vue-v2.5.2全家桶+bootstrap-v3.37+jQuery-v1.8.0
 - **css处理**： less
 - **ui框架**：  iview
 - **less编译工具**： koala
-- **端口监听**： 8080
+- **端口监听**： 81
 - **编辑器**：  sublime text3
 - **包管理工具**：  npm
 - **touch样式管理**：  vue-touch-ripple
