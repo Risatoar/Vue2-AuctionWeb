@@ -70,7 +70,8 @@ router.get("/information", function (req,res,next) {
 router.post("/userinfo", function (req,res,next) {
   let _user = req.body
   req.user=req.cookies.user;
-  let page = parseInt(1);
+  let pagecount = _user.pagecount;
+  let page = parseInt(pagecount);
   let pageSize = parseInt(6);
   let skip = (page-1)*pageSize;
   let infosModel = Infos.find({author:req.user}).skip(skip).limit(pageSize);

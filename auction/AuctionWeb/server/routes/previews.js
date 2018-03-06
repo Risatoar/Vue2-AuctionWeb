@@ -49,11 +49,12 @@ router.get("/allpreviews", function (req,res,next) {
 
 router.post("/userpreview", function (req,res,next) {
   let _user = req.body
-  req.user=req.cookies.user;
-  let page = parseInt(1);
+  let username=_user.username;
+  let pagecount = _user.pagecount;
+  let page = parseInt(pagecount);
   let pageSize = parseInt(6);
   let skip = (page-1)*pageSize;
-  let PreviewsModel = Previews.find({author:req.user}).skip(skip).limit(pageSize);
+  let PreviewsModel = Previews.find({author:username}).skip(skip).limit(pageSize);
   PreviewsModel.sort({'date':-1});
   PreviewsModel.exec(function (err,doc) {
       if(err){

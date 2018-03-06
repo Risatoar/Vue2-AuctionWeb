@@ -40,7 +40,6 @@ date：null
 						        <div class="search-auto-complete-item" v-for="item in data4">
 						            <div class="search-auto-complete-group">
 						                <span>{{ item.title }}</span>
-						                <a>更多</a>
 						            </div>
 						            <Option v-for="option in item.children" :value="option.title" :key="option.title">
 						            	<router-link

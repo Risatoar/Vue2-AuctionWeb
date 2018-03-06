@@ -41,7 +41,12 @@ date：2017/12/26
 		</div>
 		<!-- 分页功能 -->
 		<div class="page">
-			<Page :total="100"></Page>
+			<Page
+			 :total="60"
+			 :page-size="6"
+			 simple
+			 :current.sync="pageCount"
+			 @on-change="showPageCount"></Page>
 		</div>
 		<infomodifydialog
 					:is-show="isInfoMoDialog"
@@ -63,6 +68,7 @@ export default {
 	data() {
 		return {
 			mynewslist: [],
+			pageCount: 1,
 			isInfoMoDialog: false,
 			selectModify: {}
 		}
@@ -89,15 +95,23 @@ export default {
           this.isInfoMoDialog = false
         },
 		getUserInfo() {
-			axios.post("/userinfo",this.usernmae).then((res)=> {
+			let userInfoPost = {
+				username: this.username,
+				pagecount: this.pageCount
+			}
+			axios.post("/userinfo",userInfoPost).then((res)=> {
 			    if(res.data.status == 10001){
 			    	this.mynewslist = res.data.result.list;
 			    	let countNum = res.data.result.count;
+			    	this.totleCount = countNum;
 			    	this.$emit('get-user-info-count',countNum)
 			    }
 			}).catch((error)=> {
 			  console.log(error);
 			});
+		},
+		showPageCount() {
+			this.getUserInfo();
 		},
 		postInfoDel(str) {
 			let username = this.username;
@@ -184,7 +198,7 @@ h3{
 .hnewslist-block img{
 	width: 108px;
 	height: 90px;
-	margin: 0 20px;
+	margin-right: 20px;
 }
 .hnewslist-block-right{
 	width: 320px;

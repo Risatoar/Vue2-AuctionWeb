@@ -41,7 +41,13 @@ date：2017/12/26
 		</div>
 		<!-- 分页功能 -->
 		<div class="page">
-			<Page :total="100"></Page>
+			<Page
+			:total="60"
+			:page-size="6"
+			simple
+			:current.sync="pagecount"
+			@on-change="showPageCount"
+			></Page>
 		</div>
 		<previewmodifydialog
 					:is-show="isPreviewMoDialog"
@@ -63,6 +69,7 @@ export default {
 	data() {
 		return {
 			mypreviewlist: [],
+			pagecount: 1,
 			isPreviewMoDialog: false,
 			selectModify: {}
 		}
@@ -82,12 +89,21 @@ export default {
 			this.isPreviewMoDialog = true;
 
 		},
+		// 页码切换回调
+		showPageCount() {
+			this.getUserPreview();
+		},
 		// 关闭弹出层
 		closeDialog(attr) {
           this.isPreviewMoDialog = false
         },
+        // 获取预告
 		getUserPreview() {
-			axios.post("/userpreview",this.username).then((res)=> {
+			let userPrePost = {
+				username: this.username,
+				pagecount: this.pagecount
+			}
+			axios.post("/userpreview",userPrePost).then((res)=> {
 			    if(res.data.status == 10001){
 			    	this.mypreviewlist = res.data.result.list;
 			        this.success('修改成功')
@@ -100,6 +116,7 @@ export default {
 			  console.log(error);
 			});
 		},
+		// 删除预告
 		postPreviewDel(str) {
 			let username = this.username;
 			let delid = str;
@@ -183,7 +200,7 @@ h3{
 .hpreviewlist-block img{
 	width: 108px;
 	height: 90px;
-	margin: 0 20px;
+	margin-right: 20px;
 }
 .hpreviewlist-block-right{
 	width: 320px;
