@@ -40,9 +40,9 @@ date：2017/12/13
 					</content-placeholders>
 				</div>
 				<!-- 法律法规信息列表展示 -->
-				<div class="law-body-list-block" v-for="item in infolist">
+				<div class="law-body-list-block" v-for="item in lawlist">
 					<div class="list-block-left">
-						<img class="left-img" src="../../../static/img/mi6.jpg" >
+						<img class="left-img" v-lazy="'/static/img/uploads/' + item.covermap" style="background-color:#fff;">
 					</div>
 					<div class="list-block-right">
 						<h3><a class="block-right-title">{{ item.title }}</a></h3>
@@ -68,7 +68,7 @@ export default {
 	},
 	data() {
 		return {
-			infolist: [],
+			lawlist: [],
 			loading: true
 		}
 	},
@@ -82,10 +82,10 @@ export default {
 		},
 		// 获取法律法规消息列表
 		getinfo() {
-			axios.get("/information").then((result)=>{
+			axios.get("/law").then((result)=>{
 				let res = result.data;
 				this.loading = false
-				this.infolist = res.result.list;
+				this.lawlist = res.result.list;
 			});
 		}
 	}

@@ -62,8 +62,6 @@
     display: block;
     display: inline-block;
     overflow: hidden;
-    overflow: hidden;
-    overflow: hidden;
     width: 800px;
     height: 40px;
     white-space: nowrap;
@@ -107,7 +105,7 @@
     position: relative;
     overflow: hidden;
     padding: 12px 20px;
-    background-color: #7cb342;
+    background-color: rgb(124, 179, 66);
 }
 
 .law-body-top-content {
@@ -136,52 +134,12 @@
 }
 
 .list-block-right {
+    display: flex;
+    flex-direction: column;
     margin-left: 230px;
-}
-
-.block-right-title {
-    font-weight: normal;
-    line-height: 28px;
-    float: left;
-    color: #333;
-}
-
-.block-right-description {
-    font-size: 14px;
-    line-height: 25px;
-    position: relative;
-    display: block;
-    float: left;
-    overflow: hidden;
-    overflow: hidden;
-    height: 40px;
-    color: #999;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-}
-
-.block-right-foot {
-    font-size: 14px;
-    position: relative;
-    display: block;
-    float: left;
-    width: 100%;
-
-    p {
-        line-height: 25px;
-        position: relative;
-        overflow: hidden;
-        color: #999;
-    }
-
-    span {
-        float: left;
-    }
-
-    i {
-        float: left;
-    }
-
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
 }
 
 // 拍卖知识样式
@@ -246,30 +204,6 @@
     -webkit-margin-after: 1em;
 }
 
-.block-right-foot {
-    font-size: 14px;
-    position: relative;
-    display: block;
-    float: left;
-    width: 100%;
-
-    p {
-        line-height: 25px;
-        position: relative;
-        overflow: hidden;
-        color: #999;
-    }
-
-    span {
-        float: left;
-    }
-
-    i {
-        float: left;
-    }
-
-}
-
 // 拍卖预告页面样式
 .preview-body {
     display: block;
@@ -330,7 +264,6 @@
 
     .preview-card-name {
         font-size: 24px;
-       
     }
 
     li {

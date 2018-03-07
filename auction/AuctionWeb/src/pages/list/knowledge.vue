@@ -40,9 +40,9 @@ date：2017/12/13
 					</content-placeholders>
 				</div>
 				<!-- 拍卖知识信息列表展示 -->
-				<div class="knowledge-body-list-block" v-for="item in infolist" v-touch-ripple>
+				<div class="knowledge-body-list-block" v-for="item in knowledgelist" v-touch-ripple>
 					<div class="list-block-left">
-						<img class="left-img" src="../../../static/img/mi6.jpg" >
+						<img class="left-img" v-lazy="'/static/img/uploads/' + item.covermap" style="background-color:#fff;">
 					</div>
 					<div class="list-block-right">
 						<h3><a class="block-right-title">{{ item.title }}</a></h3>
@@ -70,7 +70,7 @@ export default {
 	},
 	data() {
 		return {
-			infolist: [],
+			knowledgelist: [],
 			loading: true
 		}
 	},
@@ -84,10 +84,10 @@ export default {
 		},
 		// 获取拍卖知识消息列表
 		getinfo() {
-			axios.get("/information").then((result)=>{
+			axios.get("/knowledge").then((result)=>{
 				this.loading = false;
 				let res = result.data;
-				this.infolist = res.result.list;
+				this.knowledgelist = res.result.list;
 			});
 		}
 	}

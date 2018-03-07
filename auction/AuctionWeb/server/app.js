@@ -13,8 +13,10 @@ var users = require('./routes/users');
 var auction = require('./routes/auctioninfo.js');
 var info = require('./routes/info.js');
 let preview = require('./routes/previews.js');
+let law = require('./routes/law.js');
+let knowledge = require('./routes/knowledge.js')
 let search = require('./routes/search.js');
-let pv = require('./routes/pv.js')
+let pv = require('./routes/pv.js');
 var app = express();
 
 // view engine setup
@@ -37,6 +39,8 @@ app.use(users);
 app.use(auction);
 app.use(info);
 app.use(preview);
+app.use(law);
+app.use(knowledge);
 app.use(search);
 app.use(pv);
 

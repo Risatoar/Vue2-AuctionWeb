@@ -94,6 +94,12 @@ module.exports = {
         },
         '/pv': {
             target : 'http://localhost:4000'
+        },
+        '/knowledge': {
+            target : 'http://localhost:4000'
+        },
+        '/law': {
+            target : 'http://localhost:4000'
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
