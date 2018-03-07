@@ -20,6 +20,8 @@ import PreNav from './pages/list/previewnav.vue'
 import HomePage from './pages/home.vue'
 import Test from './components/test.vue'
 import InfoDetailPage from './pages/detailpage/infodetail.vue'
+import LawDetailPage from './pages/detailpage/lawdetail.vue'
+import KnowledgeDetailPage from './pages/detailpage/knowledgedetail.vue'
 import PreviewDetailPage from './pages/detailpage/previewdetail.vue'
 import AddInfoPage from './pages/detailpage/addinfo.vue'
 import AddPreviewPage from './pages/detailpage/addpreview.vue'
@@ -156,6 +158,26 @@ let router = new VueRouter({
 					keepAlive: true
 				}
 			},
+			{
+				path: 'law/:id',
+				components: {
+					left: LawNav,
+					right: LawDetailPage
+				},
+				meta: {
+					keepAlive: true
+				}
+			},
+			{
+				path: 'knowledge/:id',
+				components: {
+					left: KnowNav,
+					right: KnowledgeDetailPage
+				},
+				meta: {
+					keepAlive: true
+				}
+			}
 		]
 	},
 	{

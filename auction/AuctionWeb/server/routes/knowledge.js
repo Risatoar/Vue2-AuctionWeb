@@ -47,5 +47,27 @@ router.get("/knowledge", function (req,res,next) {
   })
 });
 
+router.post("/knowledge/detail",function(req,res,next){
+  let _knowledge = req.body
+  let knowledgeid = ObjectID(_knowledge.knowledgeid)
+  knowledge.findOne({_id:knowledgeid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+})
+
 module.exports=router
 

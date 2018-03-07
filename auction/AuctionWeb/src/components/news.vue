@@ -86,8 +86,8 @@ date：null
 									<p>为您推送每日消息</p>
 								</li>
 								<li class="col-md-4">
-									<h3>交易付款安全可靠</h3>
-									<p>选择您的付款方式提交您的支付款项。</p>
+									<h3>线下交易安全可靠</h3>
+									<p>提供双方交易信息</p>
 								</li>
 							</ul>
 							<router-link class="btn btn-warning auction-knowledge" :to="{path:'/detail/knowledge'}">
@@ -113,7 +113,7 @@ export default {
 	},
 	data() {
 		return {
-			showimg: require('../../static/img/1a.jpg'),
+			showimg: require('../../static/img/homepage_img2.jpg'),
 			blocklist: []
 		}
 	},

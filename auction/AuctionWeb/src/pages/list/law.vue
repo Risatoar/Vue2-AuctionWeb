@@ -40,21 +40,31 @@ date：2017/12/13
 					</content-placeholders>
 				</div>
 				<!-- 法律法规信息列表展示 -->
-				<div class="law-body-list-block" v-for="item in lawlist">
-					<div class="list-block-left">
-						<img class="left-img" v-lazy="'/static/img/uploads/' + item.covermap" style="background-color:#fff;">
-					</div>
-					<div class="list-block-right">
-						<h3><a class="block-right-title">{{ item.title }}</a></h3>
-						<p class="block-right-description">{{ item.description }}</p>
-						<div class="block-right-foot">
-							<p>
-								<span class="block-right-author">{{ item.author }}</span>
-								<i>.</i>
-								<span class="block-right-date">{{ item.date }}</span>
-							</p>
+				<div v-for="item in lawlist">
+					<router-link :to="{path: 'law/' + item._id}">
+						<div class="law-body-list-block" v-touch-ripple>
+							<div class="list-block-left">
+								<img class="left-img" v-lazy="'/static/img/uploads/' + item.covermap" style="background-color:#fff;">
+							</div>
+							<div class="list-block-right">
+								<a class="block-right-title">
+									{{ item.title }}
+								</a>
+								<p class="block-right-description" v-html="item.description">
+								</p>
+								<div class="block-right-foot">
+									<p>
+										<span class="block-right-author">
+											作者：{{ item.author }}
+										</span>
+										<span class="block-right-date">
+											发布时间：{{ item.date }}
+										</span>
+									</p>
+								</div>
+							</div>
 						</div>
-					</div>
+					</router-link>
 				</div>
 			</div>
 		</div>

@@ -3,6 +3,8 @@ var router=express.Router()
 var mongoose=require("mongoose")
 var Infos=require("../models/info.js")
 var Previews=require("../models/previews.js")
+var knowledge=require("../models/knowledge.js")
+var law=require("../models/law.js")
 var sd = require("silly-datetime");
 var ObjectID = require('mongodb').ObjectID;
 
@@ -47,6 +49,48 @@ router.post("/pv/info/add",(req,res,next)=>{
 router.post("/pv/preview/add",(req,res,next)=>{
   let previewid = ObjectID(req.body.preview_id)
   Previews.update({_id:previewid},
+    {$push:{watch:{
+      watcher:req.body.pvid,
+      watchdate:sd.format(new Date(), 'YYYY-MM-DD HH:mm')
+    }}},(err,doc1)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+        list: doc1
+      });
+    }
+  })
+})
+
+router.post("/pv/law/add",(req,res,next)=>{
+  let lawid = ObjectID(req.body.law_id)
+  law.update({_id:lawid},
+    {$push:{watch:{
+      watcher:req.body.pvid,
+      watchdate:sd.format(new Date(), 'YYYY-MM-DD HH:mm')
+    }}},(err,doc1)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+        list: doc1
+      });
+    }
+  })
+})
+
+router.post("/pv/knowledge/add",(req,res,next)=>{
+  let knowledgeid = ObjectID(req.body.knowledge_id)
+  knowledge.update({_id:knowledgeid},
     {$push:{watch:{
       watcher:req.body.pvid,
       watchdate:sd.format(new Date(), 'YYYY-MM-DD HH:mm')

@@ -47,5 +47,27 @@ router.get("/law", function (req,res,next) {
   })
 });
 
+router.post("/law/detail",function(req,res,next){
+  let _law = req.body
+  let lawid = ObjectID(_law.lawid)
+  law.findOne({_id:lawid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+          list:doc
+        }
+      });
+    }
+  })
+})
+
 module.exports=router
 
