@@ -28,9 +28,9 @@ date：2017/12/20
 								</div>
 								<div class="pre-startdate"><Icon type="ios-time"></Icon><span>拍卖开始</span>{{ PreList.startdate }}</div>
 								<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>拍卖结束</span>{{ PreList.finaldate }}  {{ PreList.finaltime }}</div>
-								<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ PreList.watchcount }}</div>
+								<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ watchcount + 1 }}</div>
 								<div class="timeToEnd">
-									<span><h2>距离结束还有</h2></span>
+									<span><h2>{{ ShowWords }}</h2></span>
 									<!-- 动态计算剩余时间,通过css3动画展示跳动效果,当剩余时间小于一天时展示红色,超时则展示已经结束 -->
 									<div class="timeShow" :class="[lday>=1?'timeorange':'timered']" v-if="NotDead">
 										<div>{{ lday }}</div><strong>天</strong>
@@ -38,7 +38,7 @@ date：2017/12/20
 										<div>{{lminutes}}</div><strong>分钟</strong>
 										<div>{{lseconds}}</div><strong>秒</strong>
 									</div>
-									<div v-if="!NotDead" class="timeShow timered"><del>已经结束</del></div>
+									<div v-if="Dead" class="timeShow timered"><del>已经结束</del></div>
 								</div>
 							</div>
 							<div class="pre-info-right-warning">
@@ -79,37 +79,48 @@ export default {
 			DateArray: [],
 			TimeArray: [],
 			NotDead: true,
+			Dead: false,
 			pre: {
 				previewid:''
 			},
-			PreList: {}
+			ShowWords: '距离结束还有',
+			PreList: {},
+			watchcount: ''
 		}
 	},
 	mounted() {
 		this.getUrl()
-		this.gotop()
 	},
 	// 利用vue的watch来监控路由变化,执行getUrl函数
 	watch: {
 	  '$route': 'getUrl'
 	},
 	methods: {
-		gotop() {
-			window.scrollTo(0,0)
-		},
 		// 获取当前url的params所带的id属性,赋值给pre对象的previewid属性
 		getUrl() {
 			this.pre.previewid = this.$route.params.id;
 			console.log(this.pre.previewid)
 			if(this.pre.previewid){
 				this.getPreview()
+				this.postPv()
 			}
 		},
 		// 通过infoid查询对应的详情信息,查询成功后调用getTime1函数
 		getPreview() {
 			axios.post("/previewdetail",this.pre).then((res)=> {
 				this.PreList = res.data.result.list;
+				this.watchcount = res.data.result.list.watch.length
 				this.getTime1();
+	        }).catch((error)=> {
+	          console.log(error);
+	        });
+		},
+		// 记录当前页面被访问的pv
+		postPv() {
+			axios.post("/pv/preview/add",{
+				preview_id: this.$route.params.id,
+				pvid: returnCitySN["cip"]
+			}).then((res)=> {
 	        }).catch((error)=> {
 	          console.log(error);
 	        });
@@ -132,7 +143,8 @@ export default {
 		leftTimer(year,month,day,hour,minute,second){
 		  var leftTime = (new Date(year,month-1,day,hour,minute,second)) - (new Date()); //计算剩余的毫秒数
 		  if(new Date()>new Date(year,month-1,day,hour,minute,second)){
-		  	this.NotDead=false
+		  	this.NotDead=false;this.Dead=true;
+		  }else if(new Date()>new Date(year,month-1,day,hour,minute,second)){
 		  }
 		  console.log(leftTime)
 		  var days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数

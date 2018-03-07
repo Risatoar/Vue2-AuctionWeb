@@ -91,6 +91,9 @@ module.exports = {
         },
         '/searchfor': {
             target : 'http://localhost:4000'
+        },
+        '/pv': {
+            target : 'http://localhost:4000'
         }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

@@ -46,7 +46,7 @@ date：null
 												<div class="detailwrap">
 													<ul>
 														<li>发布人:{{ item.author }}</li>
-														<li>浏览:{{ item.watchcount }}次</li>
+														<li>浏览:{{ item.watch.length }}次</li>
 														<li>描述:{{ item.description }}</li>
 													</ul>
 												</div>
@@ -108,7 +108,8 @@ import auctioninfo from './news/auctionInfo.vue'
 export default {
 	components: {
 		hotnews,
-		auctioninfo
+		auctioninfo,
+		watchcount: ''
 	},
 	data() {
 		return {

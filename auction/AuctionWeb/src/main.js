@@ -91,6 +91,7 @@ const store = new Vuex.Store({
 // 路由配置管理
 let router = new VueRouter({
 	mode: 'history',
+	scrollBehavior: () => ({ y: 0 }),
 	routes: [
 	{
 		path: '/',

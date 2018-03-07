@@ -79,28 +79,35 @@ export default {
 	},
 	mounted() {
 		this.getUrl()
-		this.gotop()
 	},
 	// 利用vue的watch来监控路由变化,执行getUrl函数
 	watch: {
 	  '$route': 'getUrl'
 	},
 	methods: {
-		gotop() {
-			window.scrollTo(0,0)
-		},
 		// 获取当前url的params所带的id属性,赋值给info对象的infoid属性
 		getUrl() {
 			this.info.infoid = this.$route.params.id;
 			if(this.info.infoid){
-				this.getinfo()
+				this.getInfo()
+				this.postPv()
 			}
 		},
 		// 通过infoid查询对应的详情信息
-		getinfo() {
+		getInfo() {
 			axios.post("/infodetail",this.info).then((res)=> {
 				this.loading = false;
 				this.infodetaillist = res.data.result.list;
+	        }).catch((error)=> {
+	          console.log(error);
+	        });
+		},
+		// 记录当前页面被访问的pv
+		postPv() {
+			axios.post("/pv/info/add",{
+				info_id: this.$route.params.id,
+				pvid: returnCitySN["cip"]
+			}).then((res)=> {
 	        }).catch((error)=> {
 	          console.log(error);
 	        });
