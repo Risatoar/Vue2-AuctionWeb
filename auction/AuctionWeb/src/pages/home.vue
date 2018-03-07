@@ -53,7 +53,7 @@
           <newslist v-if="showNewsList" @get-user-info-count="checkCount"></newslist>
           <comment v-if="showComment"></comment>
           <previewlist v-if="showPreviewList"></previewlist>
-          <userdetail v-if="showUserDetail" :userd="userdetails"></userdetail>
+          <userdetail v-if="showUserDetail" :userd="userdetails" @on-change="reFresh"></userdetail>
           <changepwd v-if="showChangePwd"></changepwd>
         </div>
         <!-- 个人主页右侧,展示个人头像、昵称、发布过的信息数、个人信息完整度、消息列表 -->
@@ -171,6 +171,9 @@ export default {
             this.percent = 100
           }
           this.success()
+        },
+        reFresh() {
+          this.refreshcircle()
         },
         checkCount(countNum) {
           this.userinfocount = countNum;

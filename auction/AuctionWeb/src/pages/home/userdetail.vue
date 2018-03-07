@@ -211,6 +211,7 @@ export default {
 			    }else if(res.data.status == 1003){
 			    	this.warning('数据没有修改过')
 			    }
+			    this.$emit('on-change')
 			}).catch((error)=> {
 			  console.log(error);
 			});
