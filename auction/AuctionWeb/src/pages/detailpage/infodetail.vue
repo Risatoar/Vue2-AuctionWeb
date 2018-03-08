@@ -21,7 +21,7 @@ date：2017/12/20
 				       <i-col span="12" class="demo-tabs-style1" style="background: #e3e8ee;padding:16px;width:100%;height:100%;">
 				       	<!-- tab分为两个区块：消息简介/详情页面 -->
 				           <Tabs type="card">
-				               <Tab-pane label="消息简介">
+				               <Tab-pane label="公告详情">
 				               	<div style="text-align:center;">
 				               		<p style="padding-top:5px;padding-bottom:5px;font-size:24px;color:#464c5b;font-family:Main Head;font-weight: bold;">
 				               		  {{ infodetaillist.title }}
@@ -40,12 +40,14 @@ date：2017/12/20
 		               		                <p>{{ infodetaillist.description }}</p>
 		               		            </Card>
 				               		</div>
+				               		<p style="padding:0 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text;line-height:2;text-align:left;" v-html="infodetaillist.maintext">
+				               		</p>
 				               	</div>
 				               </Tab-pane>
 				               <!-- 详情页面tab展示 -->
-				               <Tab-pane label="详情页面">
+				               <!-- <Tab-pane label="详情页面">
 				               	<p style="padding:20px 20px;font-size:16px;float:left;text-indent:25px;color:#657180;font-family:Text;line-height:2;" v-html="infodetaillist.maintext"></p>
-				               </Tab-pane>
+				               </Tab-pane> -->
 				           </Tabs>
 				       </i-col>
 				</Row>
@@ -95,6 +97,7 @@ export default {
 		},
 		// 通过infoid查询对应的详情信息
 		getInfo() {
+			console.log(this.$route)
 			axios.post("/infodetail",this.info).then((res)=> {
 				this.loading = false;
 				this.infodetaillist = res.data.result.list;
