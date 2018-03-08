@@ -10,7 +10,6 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var auction = require('./routes/auctioninfo.js');
 var info = require('./routes/info.js');
 let preview = require('./routes/previews.js');
 let law = require('./routes/law.js');
@@ -36,7 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use(users);
-app.use(auction);
 app.use(info);
 app.use(preview);
 app.use(law);
