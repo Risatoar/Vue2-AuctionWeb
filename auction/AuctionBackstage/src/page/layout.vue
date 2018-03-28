@@ -94,20 +94,20 @@ date：null
                 <Content :style="{padding: '24px 0', minHeight: '280px', background: '#fff'}">
                     <Layout>
                         <Sider hide-trigger :style="{background: '#fff'}">
-                            <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
+                            <Menu :active-name="active" theme="light" width="auto" :open-names="open">
                                 <Submenu name="1">
                                     <template slot="title">
                                         <Icon type="ios-navigate"></Icon>
                                         首页
                                     </template>
                                     <router-link to="/">
-                                    <MenuItem name="1-1">网站数据</MenuItem>
+                                    <MenuItem name="1-1" @click.native="Open('1-1','1')">网站数据</MenuItem>
                                     </router-link>
                                     <router-link to="/my">
-                                    <MenuItem name="1-2">我的账号</MenuItem>
+                                    <MenuItem name="1-2" @click.native="Open('1-2','1')">我的账号</MenuItem>
                                     </router-link>
                                     <router-link to="/setting">
-                                    <MenuItem name="1-3">基础设置</MenuItem>
+                                    <MenuItem name="1-3" @click.native="Open('1-3','1')">基础设置</MenuItem>
                                     </router-link>
                                 </Submenu>
                                 <Submenu name="2">
@@ -116,7 +116,7 @@ date：null
                                         访问管理
                                     </template>
                                     <router-link to="/visit">
-                                    <MenuItem name="2-1">访问信息</MenuItem>
+                                    <MenuItem name="2-1" @click.native="Open('2-1','2')">访问信息</MenuItem>
                                     </router-link>
                                 </Submenu>
                                 <Submenu name="3">
@@ -125,10 +125,10 @@ date：null
                                         拍卖公告
                                     </template>
                                     <router-link to="/addinfo">
-                                    <MenuItem name="3-1">添加公告</MenuItem>
+                                    <MenuItem name="3-1" @click.native="Open('3-1','3')">添加公告</MenuItem>
                                     </router-link>
                                     <router-link to="/manageinfo">
-                                    <MenuItem name="3-2">管理公告</MenuItem>
+                                    <MenuItem name="3-2" @click.native="Open('3-2','2')">管理公告</MenuItem>
                                     </router-link>
                                 </Submenu>
                                 <Submenu name="4">
@@ -137,10 +137,10 @@ date：null
                                         拍卖知识
                                     </template>
                                     <router-link to="/addknowledge">
-                                    <MenuItem name="4-1">添加知识</MenuItem>
+                                    <MenuItem name="4-1" @click.native="Open('4-1','4')">添加知识</MenuItem>
                                     </router-link>
                                     <router-link to="/manageknowledge">
-                                    <MenuItem name="4-2">管理知识</MenuItem>
+                                    <MenuItem name="4-2" @click.native="Open('4-2','4')">管理知识</MenuItem>
                                     </router-link>
                                 </Submenu>
                                  <Submenu name="5">
@@ -149,10 +149,10 @@ date：null
                                         法律法规
                                     </template>
                                     <router-link to="/addlaws">
-                                    <MenuItem name="5-1">添加法规</MenuItem>
+                                    <MenuItem name="5-1" @click.native="Open('5-1','5')">添加法规</MenuItem>
                                     </router-link>
                                     <router-link to="/managelaws">
-                                    <MenuItem name="5-2">管理法规</MenuItem>
+                                    <MenuItem name="5-2" @click.native="Open('5-2','5')">管理法规</MenuItem>
                                     </router-link>
                                 </Submenu>
                                  <Submenu name="6">
@@ -194,11 +194,30 @@ date：null
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default{
 	name: 'layout',
+  data() {
+    return {
+    }
+  },
 	mounted() {
 	},
+  computed: {
+    // 利用mapState简化从vuex取值操作
+    ...mapState(['active','open'])
+    // username() {
+    //  return this.$store.state.username
+    // },
+    // isAdmin() {
+    //  return this.$store.state.isAdmin
+    // }
+  },
 	methods: {
+    Open(str1,str2) {
+      this.$store.commit("updateActive",str1)
+      this.$store.commit("updateOpen",str2)
+    }
 	}
 }
 </script>

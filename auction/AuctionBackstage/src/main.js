@@ -16,12 +16,28 @@ import 'iview/dist/styles/iview.css';
 Vue.use(Vuex)
 Vue.use(iView);
 
+const store = new Vuex.Store({
+	state: {
+		active: '',
+		open: []
+	},
+	mutations: {
+		updateActive(state,active){
+			state.active = active;
+		},
+		updateOpen(state,open){
+			state.open = open;
+		}
+	}
+});
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { layout },
   template: '<layout/>'
 })
