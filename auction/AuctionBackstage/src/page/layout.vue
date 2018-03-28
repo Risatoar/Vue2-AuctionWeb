@@ -100,56 +100,84 @@ date：null
                                         <Icon type="ios-navigate"></Icon>
                                         首页
                                     </template>
+                                    <router-link to="/">
                                     <MenuItem name="1-1">网站数据</MenuItem>
+                                    </router-link>
+                                    <router-link to="/my">
                                     <MenuItem name="1-2">我的账号</MenuItem>
+                                    </router-link>
+                                    <router-link to="/setting">
                                     <MenuItem name="1-3">基础设置</MenuItem>
+                                    </router-link>
                                 </Submenu>
                                 <Submenu name="2">
                                     <template slot="title">
                                         <Icon type="ios-keypad"></Icon>
                                         访问管理
                                     </template>
+                                    <router-link to="/visit">
                                     <MenuItem name="2-1">访问信息</MenuItem>
+                                    </router-link>
                                 </Submenu>
                                 <Submenu name="3">
                                     <template slot="title">
                                         <Icon type="ios-analytics"></Icon>
                                         拍卖公告
                                     </template>
+                                    <router-link to="/addinfo">
                                     <MenuItem name="3-1">添加公告</MenuItem>
+                                    </router-link>
+                                    <router-link to="/manageinfo">
                                     <MenuItem name="3-2">管理公告</MenuItem>
+                                    </router-link>
                                 </Submenu>
                                 <Submenu name="4">
                                     <template slot="title">
                                         <Icon type="ios-analytics"></Icon>
                                         拍卖知识
                                     </template>
+                                    <router-link to="/addknowledge">
                                     <MenuItem name="4-1">添加知识</MenuItem>
+                                    </router-link>
+                                    <router-link to="/manageknowledge">
                                     <MenuItem name="4-2">管理知识</MenuItem>
+                                    </router-link>
                                 </Submenu>
                                  <Submenu name="5">
                                     <template slot="title">
                                         <Icon type="ios-analytics"></Icon>
                                         法律法规
                                     </template>
+                                    <router-link to="/addlaws">
                                     <MenuItem name="5-1">添加法规</MenuItem>
+                                    </router-link>
+                                    <router-link to="/managelaws">
                                     <MenuItem name="5-2">管理法规</MenuItem>
+                                    </router-link>
                                 </Submenu>
                                  <Submenu name="6">
                                     <template slot="title">
                                         <Icon type="ios-analytics"></Icon>
                                         拍卖预告
                                     </template>
+                                    <router-link to="/addpreview">
                                     <MenuItem name="6-1">添加预告</MenuItem>
+                                    </router-link>
+                                    <router-link to="/managepreview">
                                     <MenuItem name="6-2">管理预告</MenuItem>
+                                    </router-link>
                                 </Submenu>
                                 <Submenu name="7">
                                     <template slot="title">
                                         <Icon type="ios-analytics"></Icon>
                                         用户管理
                                     </template>
+                                    <router-link to="/adduser">
                                     <MenuItem name="7-1">添加用户</MenuItem>
+                                    </router-link>
+                                    <router-link to="/manageusers">
                                     <MenuItem name="7-2">管理用户</MenuItem>
+                                    </router-link>
                                 </Submenu>
                             </Menu>
                         </Sider>

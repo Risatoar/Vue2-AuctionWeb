@@ -4,7 +4,7 @@
 			<div class="totle-visitor visitor-card">
 				<Card>
 	                <p slot="title">总访问数</p>
-	                <p>9999999人</p>
+	                <p>{{ vcount }}人</p>
 	                <a href="#" slot="extra">
                         <Icon type="person-stalker"></Icon>
                     </a>
@@ -13,7 +13,7 @@
 			<div class="new-visitor visitor-card">
 				<Card>
 	                <p slot="title">新访问数</p>
-	                <p>9999人</p>
+	                <p>{{ newvcount }}人</p>
 	                <a href="#" slot="extra">
                         <Icon type="person"></Icon>
                     </a>
@@ -21,8 +21,8 @@
 			</div>
 			<div class="totle-info visitor-card">
 				<Card>
-	                <p slot="title">总文章数</p>
-	                <p>9999999篇</p>
+	                <p slot="title">总新闻数</p>
+	                <p>{{ icount }}篇</p>
 	                <a href="#" slot="extra">
                         <Icon type="document-text"></Icon>
                     </a>
@@ -30,8 +30,8 @@
 			</div>
 			<div class="new-info visitor-card">
 				<Card>
-	                <p slot="title">新文章数</p>
-	                <p>99999篇</p>
+	                <p slot="title">新新闻数</p>
+	                <p>{{ newicount }}篇</p>
 	                <a href="#" slot="extra">
                         <Icon type="document"></Icon>
                     </a>
@@ -39,7 +39,12 @@
 			</div>
 		</div>
 		<div class="user">
-			<div class="user-icon"></div>
+			<div class="user-inner">
+				<div class="icon-detail">
+					<img src="../../static/user-icon/risatoar.jpg" height="60" width="60" alt="">
+					<div class="username">当前登录:{{ username }}</div>
+				</div>
+			</div>
 			<div class="user-detail"></div>
 		</div>
 	</section>
@@ -48,15 +53,20 @@
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+				username: 'risatoar',
+				vcount: 59,
+				newvcount: 30,
+				icount: 66,
+				newicount: 25
+			}
 		}
 	}
 </script>
 
-<style>
+<style scoped>
 	.index {
 		width: 100%;
-		min-height: 100vh;
 		position: relative;
 	}
 
@@ -74,14 +84,29 @@
 		margin: .5rem 0;
 		width: 35%;
 		height: 7rem;
-		background-color: red;
-
 	}
 
-	.user-icon {
+	.user-inner {
 		width: 100%;
 		height: 70%;
 		background-image: url("http://demo.cssmoban.com/cssthemes4/btzero_30_miminiummaster/asset/img/bg2.jpg");
 		background-size: cover;
+		padding: 2%;
+		position: relative;
+	}
+
+	.icon-detail {
+		left: 2%;
+		bottom: 2%;
+		position: absolute;
+	}
+
+	.icon-detail img {
+		border: 3px solid #fff;
+	}
+
+	.username {
+		font-size: 20px;
+		color: #fff;
 	}
 </style>
