@@ -2,11 +2,6 @@
 	<section id="manageinfo">
 		<div class="minfo-inner">
 			<div class="title"><span>管理拍卖公告</span></div>
-			<div class="addinfo">
-				<router-link to="/addinfo">
-				<Button type="info" :class="add">添加拍卖公告</Button>
-				</router-link>
-			</div>
 			<div class="info-list">
 				<div>
 			        <Table border :columns="columns7" :data="data6"></Table>

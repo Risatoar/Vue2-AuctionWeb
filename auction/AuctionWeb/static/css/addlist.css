@@ -94,16 +94,18 @@
   text-indent: 25px;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-addsaleprice {
-  padding: 15px 10px;
-}
-.addpreview .addpreview-wrap .addpreview-content .addpreview-content-addsaleprice label {
-  float: left;
-  line-height: 34px;
+  padding: 0 10px;
+  width: 50%;
+  height: 80px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column wrap;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-addsaleprice .input-saleprice {
-  width: 30%;
-  float: left;
-  text-align: center;
   text-indent: 25px;
 }
 .addpreview .addpreview-wrap .addpreview-content .timepicker {

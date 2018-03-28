@@ -124,11 +124,8 @@ date：null
                                         <Icon type="ios-analytics"></Icon>
                                         拍卖公告
                                     </template>
-                                    <router-link to="/addinfo">
-                                    <MenuItem name="3-1" @click.native="Open('3-1','3')">添加公告</MenuItem>
-                                    </router-link>
-                                    <router-link to="/manageinfo">
-                                    <MenuItem name="3-2" @click.native="Open('3-2','2')">管理公告</MenuItem>
+                                    <router-link :to="{path:'/manageinfo'}">
+                                    <MenuItem name="3-1" @click.native="Open('3-1','3')">管理公告</MenuItem>
                                     </router-link>
                                 </Submenu>
                                 <Submenu name="4">
@@ -160,11 +157,8 @@ date：null
                                         <Icon type="ios-analytics"></Icon>
                                         拍卖预告
                                     </template>
-                                    <router-link to="/addpreview">
-                                    <MenuItem name="6-1">添加预告</MenuItem>
-                                    </router-link>
                                     <router-link to="/managepreview">
-                                    <MenuItem name="6-2">管理预告</MenuItem>
+                                    <MenuItem name="6-1">管理预告</MenuItem>
                                     </router-link>
                                 </Submenu>
                                 <Submenu name="7">

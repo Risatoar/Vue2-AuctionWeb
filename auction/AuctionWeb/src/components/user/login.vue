@@ -19,31 +19,35 @@ date：null
         <!-- 输入提示 -->
         <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的用户名">
         <!-- 用户名输入 -->
-        <input type="text" class="form-control" id="login-username" placeholder="请输入用户名" v-model="userlogin.usernamelogin">
+        <input type="text" class="sign-input" placeholder="请输入用户名" v-model="userlogin.usernamelogin" v-on:input="showError('error1')">
         </Poptip>
         <br>
         <!-- 用户名错误信息提示 -->
-        <span class="loginerror">{{ userErrors.errorText }}</span>
+        <div class="error">
+         <span class="loginerror" v-if="error1">{{ userErrors.errorText }}</span>
+        </div>
         </div>
         <div class="form-group">
         <!-- 输入提示 -->
         <Poptip trigger="focus" title="温馨小提示" content="请输入6-10位的密码">
         <!-- 密码输入 -->
-        <input type="password" class="form-control" id="login-pwd" placeholder="请输入密码" v-model="userlogin.pwdlogin">
+        <input type="password" class="sign-input" placeholder="请输入密码" v-model="userlogin.pwdlogin" v-on:input="showError('error2')">
         </Poptip>
         <br>
         <!-- 密码错误信息提示 -->
-        <span class="loginerror">
-          <Poptip title="提示标题" content="提示内容">
-                  {{ passwordErrors.errorText }}
-          </Poptip>
-        </span>
+        <div class="error">
+          <span class="loginerror" v-if="error2">
+            <Poptip title="提示标题" content="提示内容">
+                    {{ passwordErrors.errorText }}
+            </Poptip>
+          </span>
+        </div>
         </div>
         <!-- 总体错误检查提示 -->
         <span>{{ errorText }}</span><br>
-        <button type="button" class="btn btn-info login" @click="login">LOGIN</button>
-        <div class="findpwd">找回密码</div>
-        <div class="toregister" @click="changeToReg">注册</div>
+        <button class="button-sign" @click="login">登录</button>
+        <!-- <div class="findpwd">找回密码</div> -->
+        <div>还没有账号吗？<span class="toregister" @click="changeToReg">注册</span></div>
         <slot></slot>
       </div>
     </transition>
@@ -68,7 +72,9 @@ export default {
         usernamelogin: '',
         pwdlogin: ''
       },
-      errorText: ''
+      errorText: '',
+      error1: false,
+      error2: false,
     }
   },
   computed: {
@@ -119,6 +125,12 @@ export default {
     // 关闭登录组件
     close () {
       this.$emit('on-close')
+    },
+    // 输入错误延迟显示，并在初期隐藏错误提示
+    showError(str) {
+      setTimeout(()=>{
+        this[str] = true
+      },1000)
     },
     // 利用post向后台传登录表单,验证登录信息
     login() {
@@ -186,93 +198,24 @@ export default {
   width: 100%;
   height: 100%;
 }
-@media screen and (max-width: 575px){
+
  .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 100%;
-  height: 290px;
+  border-radius: 4px;
+  width: 495px;
+  height: 490px;
   position: fixed;
   max-height: 40%;
-  background: #fff;
-  top: 20%;
-  z-index: 999;
-  padding: 10px;
-  display: inline-block;
-  overflow: auto;
-}
-}
-@media screen and (min-width: 576px) and (max-width: 767px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 460px;
-  height: 290px;
-  position: fixed;
-  max-height: 40%;
-  background: #fff;
+  background-color: rgba(255, 255, 255, .95);
   top: 20%;
   left: 35%;
-  margin-left: -20%;
+  font-size: 16px;
+  word-break: break-all;
   z-index: 999;
-  padding: 10px;
+  padding: 20px 40px;
   display: inline-block;
   overflow: auto;
 }
-}
-@media screen and (min-width: 768px) and (max-width: 991px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 495px;
-  height: 290px;
-  position: fixed;
-  max-height: 40%;
-  background: #fff;
-  top: 20%;
-  left: 40%;
-  margin-left: -20%;
-  z-index: 999;
-  padding: 10px;
-  display: inline-block;
-  overflow: auto;
-}
-}
-@media screen and (min-width: 992px) and (max-width: 1199px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 495px;
-  height: 290px;
-  position: fixed;
-  max-height: 40%;
-  background: #fff;
-  top: 20%;
-  left: 45%;
-  margin-left: -20%;
-  z-index: 999;
-  padding: 10px;
-  display: inline-block;
-  overflow: auto;
-}
-}
-@media screen and (min-width: 1200px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 495px;
-  height: 290px;
-  position: fixed;
-  max-height: 40%;
-  background: #fff;
-  top: 20%;
-  left: 35%;
-  z-index: 999;
-  padding: 10px;
-  display: inline-block;
-  overflow: auto;
-}
-}
+
 .dialog-close {
   position: absolute;
   right: 5px;
@@ -281,6 +224,9 @@ export default {
   height: 20px;
   text-align: center;
   cursor: pointer;
+}
+.error {
+  min-height: 20px;
 }
 .findpwd {
   color: #2d8cf0;
@@ -294,12 +240,6 @@ export default {
 }
 .toregister {
   color: #2d8cf0;
-  position: absolute;
-  right: 10px;
-  bottom: 15px;
-  width: 40px;
-  height: 20px;
-  text-align: center;
   cursor: pointer;
 }
 .loginerror{
@@ -307,7 +247,101 @@ export default {
 }
 .login{
   position: relative;
-  width: 100px;
+  width: 100%;
   cursor: pointer;
+}
+
+.sign-input {
+  cursor: pointer;
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #495060;
+  display: inline-block;
+  font-size: inherit;
+  height: 32px;
+  line-height: 1;
+  outline: 0;
+  padding: 4px 7px;
+  -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  -o-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  width: 415px;
+}
+
+.sign-input:focus, .sign-input:hover {
+  border-color: #0c328a;
+}
+
+.sign-input:active {
+  border-color: #0c328a;
+}
+
+.sign-input:active {
+  outline: 0
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.button-sign {
+  width: 100%;
+  height: 51px;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #fff;
+  font-size: 18px;
+  background-color: #0c328a;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.button-sign:hover {
+  color: #fff;
+  background-color: #35495e;
+}
+
+.button-sign:focus, .button-sign:hover {
+  background: rgba(12, 50, 138, .8);
+  border-color: rgba(12, 50, 138, .8);
+  color: #fff
+}
+
+.button-sign:active {
+  background: rgba(12, 50, 138, .8);
+  border-color: rgba(12, 50, 138, .8);
+  color: #fff
+}
+
+.button-reg:active {
+  outline: 0
 }
 </style>

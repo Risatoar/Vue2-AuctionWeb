@@ -9,59 +9,58 @@
         <!-- 设置关闭,点击触发登录框隐藏事件 -->
         <p class="dialog-close" @click="close">x</p>
         <h3 style="padding:15px 0;">还没有账号吗？快来注册一个吧！</h3>
-        <p>带红色星号的都是必填项目</p>
           <div class="form-content">
             <div class="form-group">
-              <!-- 设置红色星号用来区分必填项目 -->
-              <label>用户名</label><Icon type="star" style="color:#ed3f14"></Icon>
               <!-- 注册用户名输入 -->
-              <Input type="text" clearable style="width: 200px" placeholder="请输入用户名" v-model="reguser.username"></Input>
+              <input type="text" placeholder="请输入用户名" class="register-input" v-model="reguser.username" v-on:input="showError('error1')">
               <!-- 错误信息提示 -->
-              <span class="regerror">{{ userErrors.errorText }}</span>
+              <div class="error">
+                <span class="regerror" v-if="error1">{{ userErrors.errorText }}</span>
+              </div>
             </div>
             <div class="form-group">
-              <label>密码</label><Icon type="star" style="color:#ed3f14"></Icon>
-              <Input type="password" id="reg-pwd" style="width: 200px" placeholder="Password" v-model="reguser.pwd"></Input>
-              <span class="regerror">{{ passwordErrors.errorText }}</span>
+              <input type="password" placeholder="请输入密码" class="register-input" v-model="reguser.pwd" v-on:input="showError('error2')">
+              <div class="error">
+                <span class="regerror" v-if="error2">{{ passwordErrors.errorText }}</span>
+              </div>
             </div>
-            <div class="form-group">
-              <label>昵称</label>
+           <!--  <div class="form-group">
               <Input type="text" id="reg-nickname" style="width: 200px" placeholder="请输入昵称" v-model="reguser.nickname"></Input>
             </div>
             <div class="form-group">
-              <label>年龄</label>
               <Input type="text" id="reg-age" style="width: 200px" placeholder="请输入年龄" v-model="reguser.age"></Input>
             </div>
             <div class="form-group">
-              <label>真实姓名</label><Icon type="star" style="color:#ed3f14"></Icon>
               <Input type="text" id="reg-truename" style="width: 200px" placeholder="请输入真实姓名" v-model="reguser.truename"></Input>
               <span class="regerror">{{ truenameErrors.errorText }}</span>
+            </div> -->
+            <div class="form-group">
+              <input type="text" placeholder="请输入公司名" class="register-input" v-model="reguser.company" v-on:input="showError('error3')">
+              <div class="error">
+               <span class="regerror" v-if="error3">{{ companyErrors.errorText }}</span>
+              </div>
             </div>
             <div class="form-group">
-              <label>公司名称</label><Icon type="star" style="color:#ed3f14"></Icon>
-              <Input type="text" id="reg-company" style="width: 200px" placeholder="请输入公司名" v-model="reguser.company"></Input>
-              <span class="regerror">{{ companyErrors.errorText }}</span>
+              <input type="text" placeholder="请输入电话号码" class="register-input" v-model="reguser.telephone" v-on:input="showError('error4')">
+              <div class="error">
+                <span class="regerror" v-if="error4">{{ telephoneErrors.errorText }}</span>
+              </div>
             </div>
             <div class="form-group">
-              <label>电话</label><Icon type="star" style="color:#ed3f14"></Icon>
-              <Input type="telephone" id="reg-telephone" style="width: 200px" placeholder="请输入电话/手机" v-model="reguser.telephone"></Input>
-              <span class="regerror">{{ telephoneErrors.errorText }}</span>
-            </div>
-            <div class="form-group">
-              <label>邮箱</label><Icon type="star" style="color:#ed3f14"></Icon>
               <!-- <Input type="text" class="form-control" id="reg-mail" placeholder="请输入邮箱" v-model="reguser.mail"> -->
               <AutoComplete
                   v-model="reguser.mail"
                   @on-search="handleSearch2"
                   placeholder="请输入邮箱"
-                  style="width:200px"
                   >
                   <Option v-for="item in data2" :value="item" :key="item">{{ item }}</Option>
               </AutoComplete>
-              <span class="regerror">{{ mailErrors.errorText }}</span>
+              <div class="error">
+               <span class="regerror" v-if="error5">{{ mailErrors.errorText }}</span>
+              </div>
             </div>
           </div>
-        <button type="button" class="btn btn-success" @click="addUser" style="width:200px;">注册</button>
+        <button class="button-reg" @click="addUser">注册</button>
         <br><span>{{ errortext }}</span>
         <slot></slot>
       </div>
@@ -95,7 +94,13 @@ export default {
       },
       errortext: '',
       value2: '',
-      data2: []
+      data2: [],
+      // 通过error控制错误提示框内部文字显示
+      error1: false,
+      error2: false,
+      error3: false,
+      error4: false,
+      error5: false,
     }
   },
   computed: {
@@ -229,8 +234,12 @@ export default {
     //       let res = result.data;
     //     });
     // },
-
-
+    // 输入错误延迟显示，并在初期隐藏错误提示
+    showError(str) {
+      setTimeout(()=>{
+        this[str] = true
+      },1000)
+    },
     // 注册成功全局提示
     regsuccess (nodesc) {
        this.$Notice.success({
@@ -286,7 +295,7 @@ export default {
 }
 
 .dialog {
-  text-align: center;
+  text-align: left;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -316,99 +325,24 @@ export default {
   padding: 2%;
   line-height: 1.6;
 }
-.form-content {
-  width: 80%;
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
 
-}
-/*Input {
-  outline: dashed;
-}*/
-@media screen and (max-width: 575px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
+.form-group {
   width: 100%;
-  position: fixed;
-  max-height: 80%;
-  overflow: auto;
-  background: #fff;
-  top: 10%;
-  z-index: 10;
-  padding: 2%;
-  line-height: 1.6;
 }
-}
-@media screen and (min-width: 576px) and (max-width: 767px){
  .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 80%;
+  border-radius: 4px;
+  width: 500px;
+  height: 600px;
   position: fixed;
-  max-height: 80%;
-  overflow: auto;
-  background: #fff;
-  top: 10%;
-  left: 25%;
-  margin-left: -20%;
-  z-index: 10;
-  padding: 2%;
-  line-height: 1.6;
-}
-}
-@media screen and (min-width: 768px) and (max-width: 991px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 60%;
-  position: fixed;
-  max-height: 80%;
-  overflow: auto;
-  background: #fff;
-  top: 10%;
-  left: 45%;
-  margin-left: -20%;
-  z-index: 10;
-  padding: 2%;
-  line-height: 1.6;
-}
-}
-@media screen and (min-width: 992px) and (max-width: 1199px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 50%;
-  position: fixed;
-  max-height: 80%;
-  overflow: auto;
-  background: #fff;
-  top: 15%;
+  background-color: rgba(255, 255, 255, .95);
+  top: 20%;
   left: 55%;
-  margin-left: -20%;
-  z-index: 10;
-  padding: 2%;
-  line-height: 1.6;
-}
-}
-@media screen and (min-width: 1200px){
- .dialog-content {
-  border: 1px solid #dddee1;
-  border-radius: 16px;
-  width: 30%;
-  position: fixed;
-  max-height: 80%;
+  font-size: 16px;
+  word-break: break-all;
+  z-index: 999;
+  padding: 20px 40px;
+  display: inline-block;
   overflow: auto;
-  background: #fff;
-  top: 15%;
-  left: 50%;
-  margin-left: -15%;
-  z-index: 10;
-  padding: 2%;
-  line-height: 1.6;
-}
 }
 .dialog-close {
   position: absolute;
@@ -419,7 +353,103 @@ export default {
   text-align: center;
   cursor: pointer;
 }
+.error {
+  min-height: 20px;
+}
 .regerror{
   color: red;
 }
+
+.register-input {
+  cursor: pointer;
+  -webkit-appearance: none;
+  background-color: #fff;
+  background-image: none;
+  border-radius: 4px;
+  border: 1px solid #d0d0d0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #495060;
+  display: inline-block;
+  font-size: inherit;
+  height: 32px;
+  line-height: 1;
+  outline: 0;
+  padding: 4px 7px;
+  -webkit-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  -o-transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+  width: 100%;
+}
+
+.register-input:focus, .register-input:hover {
+  border-color: #57a3f3;
+}
+
+.register-input:active {
+  border-color: #57a3f3;
+}
+
+.register-input:active {
+  outline: 0
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #c3c7d2;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.button-reg {
+  width: 100%;
+  height: 51px;
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #fff;
+  font-size: 18px;
+  background-color: #0c328a;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+.button-reg:hover {
+  color: #fff;
+  background-color: #35495e;
+}
+
+.button-reg:focus, .button-reg:hover {
+  background: rgba(12, 50, 138, .8);
+  border-color: rgba(12, 50, 138, .8);
+  color: #fff
+}
+
+.button-reg:active {
+  background: rgba(12, 50, 138, .8);
+  border-color: rgba(12, 50, 138, .8);
+  color: #fff
+}
+
+.button-reg:active {
+  outline: 0
+}
+
 </style>

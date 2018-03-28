@@ -26,7 +26,7 @@ const store = new Vuex.Store({
 			state.active = active;
 		},
 		updateOpen(state,open){
-			state.open = open;
+			state.open[0] = open;
 		}
 	}
 });

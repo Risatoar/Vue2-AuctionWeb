@@ -2,11 +2,6 @@
 	<section id="mangepreview">
 		<div class="mpreview-inner">
 			<div class="title"><span>管理拍卖预告</span></div>
-			<div class="addpreview">
-				<router-link to="/addpreview">
-				<Button type="info">添加拍卖公告</Button>
-				</router-link>
-			</div>
 			<div class="preview-list">
 				<div>
 			        <Table border :columns="columns" :data="data2"></Table>

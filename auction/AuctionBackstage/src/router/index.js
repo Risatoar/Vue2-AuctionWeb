@@ -4,13 +4,11 @@ import IndexPage from '../page/index.vue'
 import MyPage from '../page/my.vue'
 import SettingPage from '../page/setting.vue'
 import VisitPage from '../page/visit.vue'
-import AddInfoPage from '../page/info/addinfo.vue'
 import MangeInfoPage from '../page/info/manageinfo.vue'
 import AddKnowledgePage from '../page/knowledge/addknowledge.vue'
 import MangeKnowledgePage from '../page/knowledge/mangeknowledge.vue'
 import AddLawPage from '../page/law/addlaw.vue'
 import MangeLawPage from '../page/law/mangelaw.vue'
-import AddPreviewPage from '../page/preview/addpreview.vue'
 import MangePreviewPage from '../page/preview/mangepreview.vue'
 import AddUserPage from '../page/user/adduser.vue'
 import MangeUserPage from '../page/user/mangeuser.vue'
@@ -39,10 +37,6 @@ export default new Router({
       component: VisitPage
     },
     {
-      path: '/addinfo',
-      component: AddInfoPage
-    },
-    {
       path: '/manageinfo',
       component: MangeInfoPage
     },
@@ -61,10 +55,6 @@ export default new Router({
     {
       path: '/managelaws',
       component: MangeLawPage
-    },
-    {
-      path: '/addpreview',
-      component: AddPreviewPage
     },
     {
       path: '/managepreview',
