@@ -81,9 +81,9 @@
 	}
 
 	.user {
-		margin: .5rem 0;
-		width: 35%;
-		height: 7rem;
+		margin: 30px 0;
+		width: 30%;
+		height: 420px;
 	}
 
 	.user-inner {

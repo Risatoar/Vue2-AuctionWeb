@@ -181,7 +181,7 @@ date：null
                                 </Submenu>
                             </Menu>
                         </Sider>
-                        <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+                        <Content :style="{padding: '24px', minHeight: '80vh', background: '#fff'}">
                         	<router-view/>
                         </Content>
                     </Layout>
@@ -197,14 +197,8 @@ date：null
 export default{
 	name: 'layout',
 	mounted() {
-	  this.setRem()
 	},
 	methods: {
-	  // 设置全局font-size，以便rem单位使用
-	  setRem() {
-	    let offWidth = window.screen.width / 30;
-	    document.getElementsByTagName("html")[0].style.fontSize = offWidth + 'px';
-	  }
 	}
 }
 </script>
