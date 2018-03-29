@@ -3,6 +3,7 @@ var router=express.Router()
 var mongoose=require("mongoose")
 var Users=require("../models/users.js")
 var sd = require("silly-datetime");
+var ObjectID = require('mongodb').ObjectID;
 var fs = require("fs");//操作文件
 var multer = require('multer');//接收图片
 
@@ -376,6 +377,28 @@ router.post('/uploads', upload.single('file'), function(req, res, next) {
         "Access-Control-Allow-Origin": "*"
     });
     res.end(JSON.stringify(req.file));
+})
+
+router.post("/users/del",function(req,res,next){
+  let delid = ObjectID(req.body.delid)
+  Users.findOne({_id:delid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      Users.remove({_id:delid},(err,rescult)=>{
+        if(err){
+          console.log(err)
+        }else {
+          res.json({
+            status: '222'
+          })
+        }
+      })
+    }
+  })
 })
 
 module.exports=router

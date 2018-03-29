@@ -47,6 +47,50 @@ router.get("/knowledge", function (req,res,next) {
   })
 });
 
+router.post("/knowledge/list", function (req,res,next) {
+  let page = parseInt(req.body.pagecount);
+  let pageSize = parseInt(16);
+  let skip = (page-1)*pageSize;
+  let knowledgeModel = knowledge.find({}).skip(skip).limit(pageSize);
+  knowledgeModel.sort({'date':-1});
+  knowledgeModel.exec(function (err,doc) {
+      if(err){
+          res.json({
+            status:'1',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'0',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+  })
+});
+
+router.get("/knowledge/Count",function(req,res,next){
+  knowledge.find({}, function (err,doc){
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+        }
+      });
+    }
+  })
+})
+
 router.post("/knowledge/detail",function(req,res,next){
   let _knowledge = req.body
   let knowledgeid = ObjectID(_knowledge.knowledgeid)
@@ -65,6 +109,28 @@ router.post("/knowledge/detail",function(req,res,next){
           list:doc
         }
       });
+    }
+  })
+})
+
+router.post("/knowledge/del",function(req,res,next){
+  let delid = ObjectID(req.body.delid)
+  knowledge.findOne({_id:delid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      knowledge.remove({_id:delid},(err,rescult)=>{
+        if(err){
+          console.log(err)
+        }else {
+          res.json({
+            status: '222'
+          })
+        }
+      })
     }
   })
 })

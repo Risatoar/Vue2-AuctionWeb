@@ -95,7 +95,7 @@
 }
 .addpreview .addpreview-wrap .addpreview-content .addpreview-content-addsaleprice {
   padding: 0 10px;
-  width: 50%;
+  width: 100px;
   height: 80px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -104,9 +104,6 @@
   -webkit-flex-flow: column wrap;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-}
-.addpreview .addpreview-wrap .addpreview-content .addpreview-content-addsaleprice .input-saleprice {
-  text-indent: 25px;
 }
 .addpreview .addpreview-wrap .addpreview-content .timepicker {
   display: -webkit-inline-box;

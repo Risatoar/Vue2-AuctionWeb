@@ -42,7 +42,93 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
-    }
+    },
+    proxy: {
+        '/auction': {
+            target : 'http://localhost:4000'
+        },
+        '/information': {
+            target : 'http://localhost:4000'
+        },
+        '/users': {
+            target : 'http://localhost:4000'
+        },
+        '/register': {
+            target : 'http://localhost:4000'
+        },
+        '/login': {
+            target : 'http://localhost:4000'
+        },
+        '/logout': {
+            target : 'http://localhost:4000'
+        },
+        '/info': {
+            target : 'http://localhost:4000'
+        },
+        '/law': {
+            target : 'http://localhost:4000'
+        },
+        '/preview': {
+            target : 'http://localhost:4000'
+        },
+        '/knowledge': {
+            target : 'http://localhost:4000'
+        },
+        '/infodetail': {
+            target : 'http://localhost:4000'
+        },
+        '/userdetails': {
+            target : 'http://localhost:4000'
+        },
+        '/addinfo': {
+            target : 'http://localhost:4000'
+        },
+        '/addpreview': {
+            target : 'http://localhost:4000'
+        },
+        '/previewlist': {
+            target : 'http://localhost:4000'
+        },
+        '/previewdetail': {
+            target : 'http://localhost:4000'
+        },
+        '/previewCount': {
+            target : 'http://localhost:4000'
+        },
+        '/ChangePwd': {
+            target : 'http://localhost:4000'
+        },
+        '/edit': {
+            target : 'http://localhost:4000'
+        },
+        '/uploads': {
+            target : 'http://localhost:4000'
+        },
+        '/userinfo': {
+            target : 'http://localhost:4000'
+        },
+        '/userpreview': {
+            target : 'http://localhost:4000'
+        },
+        '/infodel': {
+            target : 'http://localhost:4000'
+        },
+        '/infomodify': {
+            target : 'http://localhost:4000'
+        },
+        '/searchfor': {
+            target : 'http://localhost:4000'
+        },
+        '/pv': {
+            target : 'http://localhost:4000'
+        },
+        '/knowledge': {
+            target : 'http://localhost:4000'
+        },
+        '/law': {
+            target : 'http://localhost:4000'
+        }
+    },
   },
   plugins: [
     new webpack.DefinePlugin({

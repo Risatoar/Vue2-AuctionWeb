@@ -42,6 +42,50 @@ mongoose.connection.on('disconnected',function(){
 //   })
 // })
 
+router.post("/info/list", function (req,res,next) {
+  let page = parseInt(req.body.pagecount);
+  let pageSize = parseInt(16);
+  let skip = (page-1)*pageSize;
+  let infosModel = Infos.find({}).skip(skip).limit(pageSize);
+  infosModel.sort({'date':-1});
+  infosModel.exec(function (err,doc) {
+      if(err){
+          res.json({
+            status:'1',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'0',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+  })
+});
+
+router.get("/info/Count",function(req,res,next){
+  Infos.find({}, function (err,doc){
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+        }
+      });
+    }
+  })
+})
+
 router.get("/information", function (req,res,next) {
   let page = parseInt(1);
   let pageSize = parseInt(16);
@@ -184,6 +228,28 @@ router.post("/infodel",function(req,res,next){
           status: '3333'
         })
       }
+    }
+  })
+})
+
+router.post("/info/del",function(req,res,next){
+  let delid = ObjectID(req.body.delid)
+  Infos.findOne({_id:delid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      Infos.remove({_id:delid},(err,rescult)=>{
+        if(err){
+          console.log(err)
+        }else {
+          res.json({
+            status: '222'
+          })
+        }
+      })
     }
   })
 })

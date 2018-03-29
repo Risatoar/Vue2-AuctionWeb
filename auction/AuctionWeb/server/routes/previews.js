@@ -47,6 +47,50 @@ router.get("/allpreviews", function (req,res,next) {
   })
 });
 
+router.post("/preview/list", function (req,res,next) {
+  let page = parseInt(req.body.pagecount);
+  let pageSize = parseInt(16);
+  let skip = (page-1)*pageSize;
+  let PreviewsModel = Previews.find({}).skip(skip).limit(pageSize);
+  PreviewsModel.sort({'date':-1});
+  PreviewsModel.exec(function (err,doc) {
+      if(err){
+          res.json({
+            status:'1',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'0',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+  })
+});
+
+router.get("/preview/Count",function(req,res,next){
+  Previews.find({}, function (err,doc){
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+        }
+      });
+    }
+  })
+})
+
 router.post("/userpreview", function (req,res,next) {
   let _user = req.body
   let username=_user.username;
@@ -179,6 +223,28 @@ router.post("/previewdetail/del",function(req,res,next){
           status: '3333'
         })
       }
+    }
+  })
+})
+
+router.post("/preview/del",function(req,res,next){
+  let delid = ObjectID(req.body.delid)
+  Previews.findOne({_id:delid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      Previews.remove({_id:delid},(err,rescult)=>{
+        if(err){
+          console.log(err)
+        }else {
+          res.json({
+            status: '222'
+          })
+        }
+      })
     }
   })
 })

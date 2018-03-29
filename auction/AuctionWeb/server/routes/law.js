@@ -47,6 +47,50 @@ router.get("/law", function (req,res,next) {
   })
 });
 
+router.post("/law/list", function (req,res,next) {
+  let page = parseInt(req.body.pagecount);
+  let pageSize = parseInt(16);
+  let skip = (page-1)*pageSize;
+  let lawModel = law.find({}).skip(skip).limit(pageSize);
+  lawModel.sort({'date':-1});
+  lawModel.exec(function (err,doc) {
+      if(err){
+          res.json({
+            status:'1',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'0',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+  })
+});
+
+router.get("/law/Count",function(req,res,next){
+  law.find({}, function (err,doc){
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '0',
+        msg: '',
+        result: {
+          count:doc.length,
+        }
+      });
+    }
+  })
+})
+
 router.post("/law/detail",function(req,res,next){
   let _law = req.body
   let lawid = ObjectID(_law.lawid)
@@ -65,6 +109,28 @@ router.post("/law/detail",function(req,res,next){
           list:doc
         }
       });
+    }
+  })
+})
+
+router.post("/law/del",function(req,res,next){
+  let delid = ObjectID(req.body.delid)
+  law.findOne({_id:delid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      law.remove({_id:delid},(err,rescult)=>{
+        if(err){
+          console.log(err)
+        }else {
+          res.json({
+            status: '222'
+          })
+        }
+      })
     }
   })
 })

@@ -5,17 +5,26 @@
 			<div class="info-list">
 				<div>
 			        <Table border :columns="columns7" :data="data6"></Table>
-			        <Page :current="2" :total="50" simple></Page>
+			        <Page
+                    :total="total"
+                    :page-size="16"
+                    simple
+                    :current.sync="pagecount"
+                    @on-change="showPageCount"
+                    ></Page>
 			    </div>
 			</div>
 		</div>
 	</section>
 </template>
 
-// <script>
+<script>
+    import axios from 'axios'
     export default {
         data () {
             return {
+                total: 1,
+                pagecount: 1,
                 columns7: [
                     {
                         title: '作者',
@@ -59,7 +68,7 @@
                                             this.show(params.index)
                                         }
                                     }
-                                }, 'View'),
+                                }, '查看'),
                                 h('Button', {
                                     props: {
                                         type: 'error',
@@ -70,34 +79,16 @@
                                             this.remove(params.index)
                                         }
                                     }
-                                }, 'Delete')
+                                }, '删除')
                             ]);
                         }
                     }
                 ],
-                data6: [
-                    {
-                        author: 'John Brown',
-                        title: 18,
-                        date: 'New York No. 1 Lake Park'
-                    },
-                    {
-                        author: 'Jim Green',
-                        title: 24,
-                        date: 'London No. 1 Lake Park'
-                    },
-                    {
-                        author: 'Joe Black',
-                        title: 30,
-                        date: 'Sydney No. 1 Lake Park'
-                    },
-                    {
-                        author: 'Jon Snow',
-                        title: 26,
-                        date: 'Ottawa No. 2 Lake Park'
-                    }
-                ]
+                data6: []
             }
+        },
+        mounted() {
+            this.getList()
         },
         methods: {
             show (index) {
@@ -107,8 +98,40 @@
                 })
             },
             remove (index) {
-                this.data6.splice(index, 1);
-            }
+                let del = {
+                    delid: this.data6[index]._id
+                }
+                axios.post("/info/del",del)
+                .then(res=> {
+                    this.data6.splice(index, 1);
+                })
+                .catch(err =>{
+                })
+            },
+             // 获取拍卖预告总条数
+            getPageCount() {
+                axios.get("/info/Count")
+                .then(res=> {
+                    this.total = res.data.result.count
+                })
+                .catch(err=> {
+                    console.log(err)
+                })
+            },
+            // 页码切换回调
+            showPageCount() {
+                this.getList();
+            },
+            getList() {
+                this.getPageCount()
+                let Post = {
+                    pagecount: this.pagecount
+                }
+                axios.post("/info/list",Post)
+                .then(res=> {
+                    this.data6 = res.data.result.list
+                })
+            },
         }
     }
 </script>

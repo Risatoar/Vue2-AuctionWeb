@@ -18,6 +18,7 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         data () {
             return {
@@ -38,7 +39,7 @@
                     },
                     {
                         title: '创建日期',
-                        key: 'date'
+                        key: 'usercreatedate'
                     },
                     {
                         title: '操作',
@@ -90,35 +91,38 @@
                         }
                     }
                 ],
-                data2: [
-                    {
-                        username: 'John Brown',
-                        date: 'New York No. 1 Lake Park'
-                    },
-                    {
-                        username: 'Jim Green',
-                        date: 'London No. 1 Lake Park'
-                    },
-                    {
-                        username: 'Joe Black',
-                        date: 'Sydney No. 1 Lake Park'
-                    },
-                    {
-                        username: 'Jon Snow',
-                        date: 'Ottawa No. 2 Lake Park'
-                    }
-                ]
+                data2: []
             }
+        },
+        mounted() {
+            this.getUserList()
         },
         methods: {
             show (index) {
                 this.$Modal.info({
                     title: '公告信息',
-                    content: `用户名：${this.data2[index].username}<br>创建日期${this.data2[index].date}`
+                    content: `用户名：${this.data2[index].username}<br>创建日期${this.data2[index].usercreatedate}`
                 })
             },
             remove (index) {
-                this.data2.splice(index, 1);
+                let del = {
+                    delid: this.data2[index]._id
+                }
+                axios.post("/users/del",del)
+                .then(res=> {
+                    this.data2.splice(index, 1);
+                })
+                .catch(err =>{
+                })
+            },
+            getUserList() {
+                axios.get("/users")
+                .then(res=> {
+                    this.data2 = res.data.result.list
+                })
+                .catch(err=> {
+                    console.log(err)
+                })
             }
         }
     }

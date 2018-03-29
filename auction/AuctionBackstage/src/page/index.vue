@@ -31,7 +31,7 @@
 			<div class="new-info visitor-card">
 				<Card>
 	                <p slot="title">新新闻数</p>
-	                <p>{{ newicount }}篇</p>
+	                <p>{{ pcount }}篇</p>
 	                <a href="#" slot="extra">
                         <Icon type="document"></Icon>
                     </a>
@@ -51,6 +51,7 @@
 </template>
 
 <script>
+	import axios from 'axios'
 	export default {
 		data() {
 			return {
@@ -58,8 +59,32 @@
 				vcount: 59,
 				newvcount: 30,
 				icount: 66,
-				newicount: 25
+				pcount: 25
 			}
+		},
+		mounted() {
+			this.getInfoCount(),
+			this.getPreviewCount()
+		},
+		methods: {
+			getInfoCount() {
+                axios.get("/info/Count")
+                .then(res=> {
+                    this.icount = res.data.result.count
+                })
+                .catch(err=> {
+                    console.log(err)
+                })
+            },
+            getPreviewCount() {
+                axios.get("/preview/Count")
+                .then(res=> {
+                    this.pcount = res.data.result.count
+                })
+                .catch(err=> {
+                    console.log(err)
+                })
+            },
 		}
 	}
 </script>
