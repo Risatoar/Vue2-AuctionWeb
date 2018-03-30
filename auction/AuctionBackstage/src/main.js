@@ -7,6 +7,7 @@ import layout from './page/layout.vue'
 
 // 外部插件导入
 import iView from 'iview';
+import SMEditor from 'smeditor'
 
 import Vuex from 'vuex'
 
@@ -14,7 +15,8 @@ import Vuex from 'vuex'
 import 'iview/dist/styles/iview.css';
 
 Vue.use(Vuex)
-Vue.use(iView);
+Vue.use(iView)
+Vue.use(SMEditor)
 
 const store = new Vuex.Store({
 	state: {
@@ -30,6 +32,8 @@ const store = new Vuex.Store({
 		}
 	}
 });
+
+
 
 Vue.config.productionTip = false
 

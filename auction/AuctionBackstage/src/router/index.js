@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import IndexPage from '../page/index.vue'
+import LoginPage from '../page/login.vue'
 import MyPage from '../page/my.vue'
 import SettingPage from '../page/setting.vue'
 import VisitPage from '../page/visit.vue'
@@ -22,6 +23,10 @@ export default new Router({
     {
       path: '/',
       component: IndexPage
+    },
+    {
+      path: '/sign',
+      component: LoginPage
     },
     {
       path: '/my',

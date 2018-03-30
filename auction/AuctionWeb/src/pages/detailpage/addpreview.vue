@@ -94,7 +94,7 @@ export default {
 				description: '',
 				maintext: '',
 				saleprice: 1000,
-				setdate: '',
+				setdate: [],
 				covermap: ''
 			}
 		}
@@ -133,18 +133,40 @@ export default {
         pushTime() {
         	this.add.setdate.push(this.timess)
         },
+        // 检查时间区间是否完全选择
+        checkTime() {
+        	let result
+        	let count = 0
+			for(let i= 0;i<this.add.setdate.length;i++) {
+				count = this.add.setdate[i] == ""?count:count+1
+				result = count >= 3?true:false
+			}
+			return result
+        },
         // 通过axios封装的ajax操作来与后台进行异步post操作,添加拍卖预告
 		addpreview() {
 			this.setAuthor()
 			this.pushTime()
-			axios.post("/addpreview",this.add).then((res)=> {
-				console.log(res);
-				if(res.status == '200'){
-					this.success()
-				}
-			}).catch((error)=> {
-				console.log(error);
-			});
+			if(this.add.covermap == '') {
+				this.$Message.error('请添加图片');
+			}else if(this.add.title == '') {
+				this.$Message.error('请添加标题');
+			}else if(this.add.maintext == '') {
+				this.$Message.error('请添加主要信息');
+			}else if(this.checkTime() == false) {
+				this.$Message.error('请添加完整的时间区间');
+			}else if(this.add.maintext == '') {
+				this.$Message.error('请添加主要信息');
+			}else {
+				axios.post("/addpreview",this.add).then((res)=> {
+					console.log(res);
+					if(res.status == '200'){
+						this.success()
+					}
+				}).catch((error)=> {
+					console.log(error);
+				});
+			}
 		}
 	}
 }

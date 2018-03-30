@@ -91,16 +91,47 @@ router.post("/login",(req,res)=>{
         list: '该用户未被注册'
       })
     }
-    if(_user.pwdlogin == user.pwd){
+    else if(_user.pwdlogin == user.pwd){
       res.cookie("user", _user.usernamelogin, {maxAge : 3000000});
       res.cookie("admin", user.admin, {maxAge : 3000000});
       res.cookie("icon", user.icon, {maxAge : 3000000});
+      let data = {
+        "username": String,
+        "nickname": "",
+        "icon": "",
+        "age": "",
+        "truename": "",
+        "company": "",
+        "telephone": "",
+        "mail": "",
+        "usercreatedate": "",
+        "admin": false,
+        "auctionnews": [],
+        "previews": []
+      }
+      let a = () => {
+        // 为什么在这用遍历key 然后delete pwd的值删不掉
+        data["username"] = user["username"]
+        data["nickname"] = user["nickname"]
+        data["icon"] = user["icon"]
+        data["age"] = user["age"]
+        data["truename"] = user["truename"]
+        data["company"] = user["company"]
+        data["telephone"] = user["telephone"]
+        data["mail"] = user["mail"]
+        data["usercreatedate"] = user["usercreatedate"]
+        data["admin"] = user["admin"]
+        data["auctionnews"] = user["auctionnews"]
+        data["previews"] = user["previews"]
+        data["_id"] = user["_id"]
+        return data
+      }
       return res.json({
         list: 'success',
-        user: user
+        user:a()
       })
     }
-    if(_user.pwdlogin != user.pwd){
+    else if(_user.pwdlogin != user.pwd){
       return res.json({
         list: 'fail'
       })

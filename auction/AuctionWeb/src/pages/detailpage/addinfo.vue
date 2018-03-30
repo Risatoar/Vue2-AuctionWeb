@@ -112,14 +112,22 @@ export default {
         // 通过axios封装的ajax操作来与后台进行异步post操作,添加拍卖公告
 		addInfo() {
 			this.setAuthor()
-			axios.post("/addinfo",this.add).then((res)=> {
-				console.log(res);
-				if(res.status == '200'){
-					this.success()
-				}
-			}).catch((error)=> {
-				console.log(error);
-			});
+			if(this.add.covermap == '') {
+				this.$Message.error('请添加图片');
+			}else if(this.add.title == '') {
+				this.$Message.error('请添加标题');
+			}else if(this.add.maintext == '') {
+				this.$Message.error('请添加主要信息');
+			}else {
+				axios.post("/addinfo",this.add).then((res)=> {
+					console.log(res);
+					if(res.status == '200'){
+						this.success()
+					}
+				}).catch((error)=> {
+					console.log(error);
+				});
+			}
 		}
 	}
 }
