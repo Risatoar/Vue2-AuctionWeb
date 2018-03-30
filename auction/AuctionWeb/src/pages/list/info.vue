@@ -67,6 +67,12 @@ date：2017/12/13
 						</div>
 					</router-link>
 				</div>
+				<div class="view-more-normal"
+				     v-infinite-scroll="loadMore"
+				     infinite-scroll-disabled="busy"
+				     infinite-scroll-distance="10">
+				  <img src="../../assets/loading-spinning-bubbles.svg" v-show="loadingMore">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -81,8 +87,12 @@ export default {
 	},
 	data() {
 		return {
+			busy: true,
 			infolist: [],
-			loading: true
+			data: [],
+			loading: false,
+			loadingMore: false,
+			page: 1
 		}
 	},
 	mounted() {
@@ -93,13 +103,33 @@ export default {
 		gotop() {
 			window.scrollTo(0,0);
 		},
+        loadMore(){
+            this.busy = true;
+            setTimeout(() => {
+              this.page++;
+              this.busy = false
+              this.getinfo(true);
+            }, 500);
+        },
 		// 获取拍卖公告消息列表
-		getinfo() {
+		getinfo(flag) {
 			this.gotop();
-			axios.get("/information").then((result)=>{
+			let infopost = {
+				pagecount: this.page
+			}
+			this.loadingMore = true;
+			axios.post("/infos/list",infopost).then((result)=>{
 				this.loading = false;
+				this.loadingMore = false;
 				let res = result.data;
-				this.infolist = res.result.list;
+				if(flag) {
+					this.infolist = this.infolist.concat(res.result.list);
+					if(res.result.count==0){
+                        this.busy = true;
+                    }else{
+                        this.busy = false;
+                    }
+				}else this.infolist = res.result.list;
 			});
 		}
 	}

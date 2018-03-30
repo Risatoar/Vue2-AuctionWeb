@@ -110,7 +110,7 @@
             },
              // 获取拍卖预告总条数
             getPageCount() {
-                axios.get("/info/Count")
+                axios.get("/infos/Count")
                 .then(res=> {
                     this.total = res.data.result.count
                 })
@@ -127,7 +127,7 @@
                 let Post = {
                     pagecount: this.pagecount
                 }
-                axios.post("/info/list",Post)
+                axios.post("/infos/list",Post)
                 .then(res=> {
                     this.data6 = res.data.result.list
                 })

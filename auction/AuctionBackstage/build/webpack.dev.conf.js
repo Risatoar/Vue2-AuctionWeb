@@ -62,16 +62,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         '/logout': {
             target : 'http://localhost:4000'
         },
-        '/info': {
+        '/infos': {
             target : 'http://localhost:4000'
         },
-        '/law': {
+        '/laws': {
             target : 'http://localhost:4000'
         },
-        '/preview': {
+        '/previews': {
             target : 'http://localhost:4000'
         },
-        '/knowledge': {
+        '/knowledges': {
             target : 'http://localhost:4000'
         },
         '/infodetail': {

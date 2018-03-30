@@ -42,7 +42,7 @@ mongoose.connection.on('disconnected',function(){
 //   })
 // })
 
-router.post("/info/list", function (req,res,next) {
+router.post("/infos/list", function (req,res,next) {
   let page = parseInt(req.body.pagecount);
   let pageSize = parseInt(16);
   let skip = (page-1)*pageSize;
@@ -67,7 +67,7 @@ router.post("/info/list", function (req,res,next) {
   })
 });
 
-router.get("/info/Count",function(req,res,next){
+router.get("/infos/Count",function(req,res,next){
   Infos.find({}, function (err,doc){
     if(err){
       res.json({
@@ -232,7 +232,7 @@ router.post("/infodel",function(req,res,next){
   })
 })
 
-router.post("/info/del",function(req,res,next){
+router.post("/infos/del",function(req,res,next){
   let delid = ObjectID(req.body.delid)
   Infos.findOne({_id:delid}, (err,doc)=>{
     if(err){

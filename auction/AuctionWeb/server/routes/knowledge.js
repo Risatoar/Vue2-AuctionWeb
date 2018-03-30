@@ -47,7 +47,7 @@ router.get("/knowledge", function (req,res,next) {
   })
 });
 
-router.post("/knowledge/list", function (req,res,next) {
+router.post("/knowledges/list", function (req,res,next) {
   let page = parseInt(req.body.pagecount);
   let pageSize = parseInt(16);
   let skip = (page-1)*pageSize;
@@ -72,7 +72,7 @@ router.post("/knowledge/list", function (req,res,next) {
   })
 });
 
-router.get("/knowledge/Count",function(req,res,next){
+router.get("/knowledges/Count",function(req,res,next){
   knowledge.find({}, function (err,doc){
     if(err){
       res.json({
@@ -113,7 +113,7 @@ router.post("/knowledge/detail",function(req,res,next){
   })
 })
 
-router.post("/knowledge/del",function(req,res,next){
+router.post("/knowledges/del",function(req,res,next){
   let delid = ObjectID(req.body.delid)
   knowledge.findOne({_id:delid}, (err,doc)=>{
     if(err){

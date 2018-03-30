@@ -47,7 +47,7 @@ router.get("/law", function (req,res,next) {
   })
 });
 
-router.post("/law/list", function (req,res,next) {
+router.post("/laws/list", function (req,res,next) {
   let page = parseInt(req.body.pagecount);
   let pageSize = parseInt(16);
   let skip = (page-1)*pageSize;
@@ -72,7 +72,7 @@ router.post("/law/list", function (req,res,next) {
   })
 });
 
-router.get("/law/Count",function(req,res,next){
+router.get("/laws/Count",function(req,res,next){
   law.find({}, function (err,doc){
     if(err){
       res.json({
@@ -113,7 +113,7 @@ router.post("/law/detail",function(req,res,next){
   })
 })
 
-router.post("/law/del",function(req,res,next){
+router.post("/laws/del",function(req,res,next){
   let delid = ObjectID(req.body.delid)
   law.findOne({_id:delid}, (err,doc)=>{
     if(err){

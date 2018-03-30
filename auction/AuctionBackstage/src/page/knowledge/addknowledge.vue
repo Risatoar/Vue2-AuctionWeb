@@ -1,5 +1,6 @@
 <template>
 	<section id="addknowledge">
+		div.
 		<smeditor></smeditor>
 	</section>
 </template>

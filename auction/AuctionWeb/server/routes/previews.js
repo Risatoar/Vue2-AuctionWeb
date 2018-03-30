@@ -47,7 +47,7 @@ router.get("/allpreviews", function (req,res,next) {
   })
 });
 
-router.post("/preview/list", function (req,res,next) {
+router.post("/previews/list", function (req,res,next) {
   let page = parseInt(req.body.pagecount);
   let pageSize = parseInt(16);
   let skip = (page-1)*pageSize;
@@ -72,7 +72,7 @@ router.post("/preview/list", function (req,res,next) {
   })
 });
 
-router.get("/preview/Count",function(req,res,next){
+router.get("/previews/Count",function(req,res,next){
   Previews.find({}, function (err,doc){
     if(err){
       res.json({
@@ -227,7 +227,7 @@ router.post("/previewdetail/del",function(req,res,next){
   })
 })
 
-router.post("/preview/del",function(req,res,next){
+router.post("/previews/del",function(req,res,next){
   let delid = ObjectID(req.body.delid)
   Previews.findOne({_id:delid}, (err,doc)=>{
     if(err){

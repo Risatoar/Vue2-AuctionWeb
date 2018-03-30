@@ -50,6 +50,18 @@ module.exports = {
         '/logout': {
             target : 'http://localhost:4000'
         },
+        '/infos': {
+            target : 'http://localhost:4000'
+        },
+        '/laws': {
+            target : 'http://localhost:4000'
+        },
+        '/previews': {
+            target : 'http://localhost:4000'
+        },
+        '/knowledges': {
+            target : 'http://localhost:4000'
+        },
         '/infodetail': {
             target : 'http://localhost:4000'
         },
@@ -65,7 +77,13 @@ module.exports = {
         '/allpreviews': {
             target : 'http://localhost:4000'
         },
+        '/previewlist': {
+            target : 'http://localhost:4000'
+        },
         '/previewdetail': {
+            target : 'http://localhost:4000'
+        },
+        '/previewCount': {
             target : 'http://localhost:4000'
         },
         '/ChangePwd': {

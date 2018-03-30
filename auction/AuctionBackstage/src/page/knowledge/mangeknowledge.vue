@@ -120,7 +120,7 @@
                 let del = {
                     delid: this.data2[index]._id
                 }
-                axios.post("/knowledge/del",del)
+                axios.post("/knowledges/del",del)
                 .then(res=> {
                     this.data2.splice(index, 1);
                 })
@@ -129,7 +129,7 @@
             },
              // 获取拍卖预告总条数
             getPageCount() {
-                axios.get("/knowledge/Count")
+                axios.get("/knowledges/Count")
                 .then(res=> {
                     this.total = res.data.result.count
                 })
@@ -146,7 +146,7 @@
                 let Post = {
                     pagecount: this.pagecount
                 }
-                axios.post("/knowledge/list",Post)
+                axios.post("/knowledges/list",Post)
                 .then(res=> {
                     this.data2 = res.data.result.list
                 })
