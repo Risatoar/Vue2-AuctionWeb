@@ -1,8 +1,15 @@
 .view-more-normal {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  margin: 0 auto 20px auto;
+  overflow: hidden;
   text-align: center;
+  font-size: 14px;
 }
 .info-body {
   display: block;
+  min-height: 130em;
 }
 .info-body-top {
   position: relative;
@@ -14,10 +21,12 @@
   font-size: 1.4em;
   line-height: 30px;
   float: right;
+  height: 100%;
   color: #fff;
 }
 .info-body-list {
   overflow: hidden;
+  height: 100%;
   padding: 10px 10px;
 }
 .info-body-list-block {

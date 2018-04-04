@@ -70,7 +70,8 @@ date：2017/12/13
 				<div class="view-more-normal"
 				     v-infinite-scroll="loadMore"
 				     infinite-scroll-disabled="busy"
-				     infinite-scroll-distance="10">
+				     infinite-scroll-distance="10"
+				     >
 				  <img src="../../assets/loading-spinning-bubbles.svg" v-show="loadingMore">
 				</div>
 			</div>
@@ -92,28 +93,40 @@ export default {
 			data: [],
 			loading: false,
 			loadingMore: false,
-			page: 1
+			page: 1,
+			pagecount: 0,
 		}
 	},
 	mounted() {
 		this.getinfo();
+		this.getInfoCount();
 	},
 	methods: {
 		// 返回顶部
 		gotop() {
 			window.scrollTo(0,0);
 		},
+		// 获取总页数
+		getInfoCount() {
+			axios.get("/infos/count")
+			.then((res)=> {
+				this.pagecount = res.data.result.count
+			})
+			.catch((err)=> {
+				console.log(err)
+			})
+		},
+		// 无限滚动回调
         loadMore(){
             this.busy = true;
             setTimeout(() => {
               this.page++;
               this.busy = false
-              this.getinfo(true);
-            }, 500);
+              if(this.pagecount+16>16*this.page) {this.getinfo(true);}
+            }, 1000);
         },
 		// 获取拍卖公告消息列表
 		getinfo(flag) {
-			this.gotop();
 			let infopost = {
 				pagecount: this.page
 			}
@@ -122,14 +135,11 @@ export default {
 				this.loading = false;
 				this.loadingMore = false;
 				let res = result.data;
+                this.busy = res.result.count== 0?true:false
 				if(flag) {
 					this.infolist = this.infolist.concat(res.result.list);
-					if(res.result.count==0){
-                        this.busy = true;
-                    }else{
-                        this.busy = false;
-                    }
 				}else this.infolist = res.result.list;
+				this.busy =false;
 			});
 		}
 	}
