@@ -122,7 +122,7 @@ export default {
             setTimeout(() => {
               this.page++;
               this.busy = false
-              if(this.pagecount+16>16*this.page) {this.getinfo(true);}
+              if(this.pagecount+16>16*this.page) this.getinfo(true)
             }, 1000);
         },
 		// 获取拍卖公告消息列表
