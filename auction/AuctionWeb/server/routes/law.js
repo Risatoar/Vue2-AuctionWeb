@@ -91,6 +91,48 @@ router.get("/laws/Count",function(req,res,next){
   })
 })
 
+router.post("/law/add",(req,res,next)=>{
+  let lowma = {
+    author: req.body.author,
+    title: req.body.title,
+    description: req.body.description,
+    maintext: req.body.maintext,
+    covermap: req.body.covermap,
+    date: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
+  };
+  new law(lowma).save((err,doc)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.json({
+          list: doc
+      })
+    }
+  })
+})
+
+router.post("/law/modify",function(req,res,next){
+  let _info = req.body
+  let infoid = ObjectID(_info._id)
+  law.update({_id:infoid},
+    {$set:{title:req.body.title,
+           covermap:req.body.covermap,
+           description:req.body.description,
+           maintext:req.body.maintext}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+      });
+    }
+  })
+})
+
 router.post("/law/detail",function(req,res,next){
   let _law = req.body
   let lawid = ObjectID(_law.lawid)

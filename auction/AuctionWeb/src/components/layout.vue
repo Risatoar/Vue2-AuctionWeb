@@ -75,6 +75,9 @@ date：null
 								    		<router-link :to="{ path : '/previewadd/'}" tag="a">
 								    			<Icon type="compose"></Icon> 发个预告
 								    		</router-link>
+								    		<a href="http://localhost:8080/sign" target="view_window">
+								    			<Icon type="compose"></Icon> 管理员UI
+								    		</a>
 								    		<a v-if="username !== ''" @click="quit">
 								    			<Icon type="log-out"></Icon> 退出登录
 								    		</a>
@@ -268,6 +271,7 @@ export default{
         	this.setCookie("user", "", -1);
         	this.setCookie("admin", "", -1);
         	this.$router.replace("/")
+        	this.$router.go(0)
         	this.username = ''
         	this.isAdmin = false
         	this.icon = ''

@@ -3,7 +3,7 @@
 		<div class="mlaw-inner">
 			<div class="title"><span>管理拍卖法规</span></div>
 			<div class="addlaw">
-				<router-link to="/addlaw">
+				<router-link to="/addlaws">
 				<Button type="info">添加拍卖公告</Button>
 				</router-link>
 			</div>
@@ -20,16 +20,27 @@
 			    </div>
 			</div>
 		</div>
+        <previewmodifydialog
+                    :is-show="isPreviewMoDialog"
+                    :modifydata="selectModify"
+                    @on-close="closeDialog('isPreviewMoDialog')">
+        </previewmodifydialog>
 	</section>
 </template>
 
 <script>
     import axios from 'axios'
+    import previewmodifydialog from '../../components/modifydialog/previewmodify.vue'
     export default {
+        components: {
+            previewmodifydialog,
+        },
         data () {
             return {
                 total: 1,
                 pagecount: 1,
+                isPreviewMoDialog: false,
+                selectModify: {},
                 columns: [
                     {
                         title: '作者',
@@ -84,7 +95,7 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.show(params.index)
+                                            this.getUserInfo(params.index)
                                         }
                                     }
                                 }, '修改'),
@@ -126,6 +137,26 @@
                 })
                 .catch(err =>{
                 })
+            },
+            showInfoModify() {
+                this.isPreviewMoDialog = true;
+            },
+            // 关闭弹出层
+            closeDialog(attr) {
+              console.log(attr)
+              this.isPreviewMoDialog = false
+            },
+            getUserInfo(number) {
+                let userInfoPost = {
+                    lawid: this.data2[number]._id
+                }
+                console.log(userInfoPost)
+                axios.post("/law/detail",userInfoPost).then((res)=> {
+                    this.selectModify = res.data.result.list;
+                }).catch((error)=> {
+                  console.log(error);
+                });
+                this.showInfoModify()
             },
              // 获取拍卖预告总条数
             getPageCount() {

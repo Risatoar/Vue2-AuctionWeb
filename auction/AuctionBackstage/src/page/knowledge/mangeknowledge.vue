@@ -20,16 +20,28 @@
 			    </div>
 			</div>
 		</div>
+        <infomodifydialog
+                    :is-show="isInfoMoDialog"
+                    :modifydata="selectModify"
+                    @on-close="closeDialog('isInfoMoDialog')">
+        </infomodifydialog>
 	</section>
 </template>
 
 <script>
     import axios from 'axios'
+    import infomodifydialog from '../../components/modifydialog/infomodify.vue'
     export default {
+        components: {
+            infomodifydialog,
+        },
         data () {
             return {
                 total: 1,
                 pagecount: 1,
+                isInfoMoDialog: false,
+                selectModify: {},
+                knowlist: [],
                 columns: [
                     {
                         title: '作者',
@@ -84,7 +96,7 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.show(params.index)
+                                            this.getUserInfo(params.index)
                                         }
                                     }
                                 }, '修改'),
@@ -115,6 +127,27 @@
                     title: '公告信息',
                     content: `作者：${this.data2[index].author}<br>标题：${this.data2[index].title}<br>发布日期：${this.data2[index].date}`
                 })
+            },
+            // 显示修改弹出层
+            showInfoModify() {
+                this.isInfoMoDialog = true;
+            },
+            // 关闭弹出层
+            closeDialog(attr) {
+              console.log(attr)
+              this.isInfoMoDialog = false
+            },
+            getUserInfo(number) {
+                let userInfoPost = {
+                    knowledgeid: this.data2[number]._id
+                }
+                console.log(userInfoPost)
+                axios.post("/knowledge/detail",userInfoPost).then((res)=> {
+                    this.selectModify = res.data.result.list;
+                }).catch((error)=> {
+                  console.log(error);
+                });
+                this.showInfoModify()
             },
             remove (index) {
                 let del = {

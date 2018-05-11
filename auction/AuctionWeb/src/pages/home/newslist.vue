@@ -42,7 +42,7 @@ date：2017/12/26
 		<!-- 分页功能 -->
 		<div class="page">
 			<Page
-			 :total="60"
+			 :total="36"
 			 :page-size="6"
 			 simple
 			 :current.sync="pageCount"

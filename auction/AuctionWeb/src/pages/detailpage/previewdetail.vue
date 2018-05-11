@@ -28,6 +28,9 @@ date：2017/12/20
 								</div>
 								<div class="pre-startdate"><Icon type="ios-time"></Icon><span>拍卖开始</span>{{ PreList.startdate }}</div>
 								<div class="finaldate"><Icon type="ios-stopwatch"></Icon><span>拍卖结束</span>{{ PreList.finaldate }}  {{ PreList.finaltime }}</div>
+								<div class="preCompany"><Icon type="happy-outline"></Icon><span>发布人信息</span>{{ this.userdetails.username }} {{this.userdetails.company}}</div>
+								<div class="preTel"><Icon type="iphone"></Icon><span>联系方式</span>{{ this.userdetails.telephone }}</div>
+								<div class="preMoney"><Icon type="pricetag"></Icon><span>出售价格</span>{{ PreList.saleprice }}</div>
 								<div class="watchcount"><Icon type="eye"></Icon><span>浏览次数</span>{{ watchcount + 1 }}</div>
 								<div class="timeToEnd">
 									<span><h2>{{ ShowWords }}</h2></span>
@@ -80,12 +83,16 @@ export default {
 			TimeArray: [],
 			NotDead: true,
 			Dead: false,
+			user: {
+			 username: ''
+			},
 			pre: {
 				previewid:''
 			},
 			ShowWords: '距离结束还有',
 			PreList: {},
-			watchcount: ''
+			watchcount: '',
+			userdetails: []
 		}
 	},
 	mounted() {
@@ -95,6 +102,11 @@ export default {
 	watch: {
 	  '$route': 'getUrl'
 	},
+	computed: {
+		username() {
+			return this.$store.state.username
+		},
+	},
 	methods: {
 		// 获取当前url的params所带的id属性,赋值给pre对象的previewid属性
 		getUrl() {
@@ -103,6 +115,7 @@ export default {
 			if(this.pre.previewid){
 				this.getPreview()
 				this.postPv()
+				this.getUserDetail()
 			}
 		},
 		// 通过infoid查询对应的详情信息,查询成功后调用getTime1函数
@@ -115,6 +128,15 @@ export default {
 	          console.log(error);
 	        });
 		},
+		// 获取发布人信息
+		// 获取当前用户详细信息
+        getUserDetail() {
+          this.user.username = this.username;
+          axios.post('/userdetails',this.user).then((res)=>{
+            let _detail = res.data.result.list;
+            this.userdetails = _detail;
+          })
+        },
 		// 记录当前页面被访问的pv
 		postPv() {
 			axios.post("/pv/preview/add",{

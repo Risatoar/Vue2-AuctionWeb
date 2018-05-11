@@ -91,6 +91,48 @@ router.get("/knowledges/Count",function(req,res,next){
   })
 })
 
+router.post("/knowledge/add",(req,res,next)=>{
+  let knowma = {
+    author: req.body.author,
+    title: req.body.title,
+    description: req.body.description,
+    maintext: req.body.maintext,
+    covermap: req.body.covermap,
+    date: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
+  };
+  new knowledge(knowma).save((err,doc)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      res.json({
+          list: doc
+      })
+    }
+  })
+})
+
+router.post("/knowledge/modify",function(req,res,next){
+  let _info = req.body
+  let infoid = ObjectID(_info._id)
+  knowledge.update({_id:infoid},
+    {$set:{title:req.body.title,
+           covermap:req.body.covermap,
+           description:req.body.description,
+           maintext:req.body.maintext}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+      });
+    }
+  })
+})
+
 router.post("/knowledge/detail",function(req,res,next){
   let _knowledge = req.body
   let knowledgeid = ObjectID(_knowledge.knowledgeid)
