@@ -37,6 +37,7 @@
 }
 
 .info-body-list-block {
+    position: relative;
     height: 118px;
     margin-bottom: 30px;
     padding: 0 30px 30px 10px;
@@ -59,6 +60,7 @@
 
 .list-block-right {
     display: flex;
+    position: relative;
     flex-direction: column;
     margin-left: 230px;
     -webkit-box-orient: vertical;
@@ -116,6 +118,31 @@
         float: left;
     }
 
+}
+
+.list-block-checked {
+    position: absolute;
+    right: 30px;
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder;
+    border-radius: 45px;
+    transform: rotate(-40deg);
+}
+
+.uncheck {
+    color: grey;
+    border-radius: 45px;
+    border: 1px solid grey;
+}
+
+.check {
+    color: green;
+    border-radius: 45px;
+    border: 1px solid green;
 }
 
 // 法律法规页面
@@ -282,6 +309,30 @@
 
     ul {
         text-align: center;
+    }
+
+    .list-card-checked {
+        position: absolute;
+        right: 30px;
+        width: 90px;
+        height: 90px;
+        line-height: 90px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bolder;
+        transform: rotate(-40deg);
+    }
+
+    .uncheck {
+        color: grey;
+        border-radius: 45px;
+        border: 1px solid grey;
+    }
+
+    .check {
+        color: green;
+        border-radius: 45px;
+        border: 1px solid green;
     }
 
     .preview-card-name {

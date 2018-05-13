@@ -69,13 +69,13 @@ date：null
 								    		<router-link :to="{ path : '/user/'+username}" tag="a">
 								    			<Icon type="person"></Icon> 个人中心
 								    		</router-link>
-								    		<router-link :to="{ path : '/infoadd/'}" tag="a">
+								    		<router-link :to="{ path : '/infoadd/'}" tag="a" v-if="userinfo.isBan == false">
 								    			<Icon type="edit"></Icon> 写个公告
 								    	    </router-link>
-								    		<router-link :to="{ path : '/previewadd/'}" tag="a">
+								    		<router-link :to="{ path : '/previewadd/'}" tag="a" v-if="userinfo.isBan == false && userinfo.isReal == true">
 								    			<Icon type="compose"></Icon> 发个预告
 								    		</router-link>
-								    		<a href="http://localhost:8080/sign" target="view_window">
+								    		<a v-if="userinfo.admin == true" href="http://localhost:8080/sign" target="view_window">
 								    			<Icon type="compose"></Icon> 管理员UI
 								    		</a>
 								    		<a v-if="username !== ''" @click="quit">
@@ -127,6 +127,11 @@ date：null
 			<p>公司电话：1111111111111</p>
 			<p>法人：risatoar</p>
 		</dialog-box>
+		<Modal
+	        v-model="modal1"
+	        title="温馨提示">
+	        <p style="font-size: 14px; color: red">您的账户涉嫌违规已被<strong>封禁</strong>,封禁期间你将无法发送任何拍卖信息,请尽快进入个人中心->用户信息页 或联系客服热线 8888888 进行解封！</p>
+	    </Modal>
 		<Back-top :height="100" :bottom="100">
         <div class="top">返回顶端</div>
         </Back-top>
@@ -149,6 +154,7 @@ export default{
 	},
 	data() {
 		return {
+			modal1: false,
 			visible: false,
 			ucookie: '',
 			isLoginDialog: false,
@@ -156,6 +162,7 @@ export default{
 			isShowAboutDialog: false,
 			transitionName: 'slide-left',
 			searchFail: '并未搜索到',
+			userinfo: {},
 			company: '台州始丰拍卖有限公司',
 			navLists: [
 			{
@@ -195,6 +202,7 @@ export default{
 		this.setAdmin()
 		this.setIcon()
 		this.gotop()
+		this.getUserInfo()
 	},
 	computed: {
 		// 利用mapState简化从vuex取值操作
@@ -242,12 +250,22 @@ export default{
         	let iconCookie = this.getCookie("icon")
         	this.$store.commit("updateIcon",iconCookie)
         },
+        getUserInfo() {
+        	let user = {}
+		    user.username = this.getCookie("user")
+        	axios.post('/userdetails',user).then((res)=>{
+        	  let _detail = res.data.result.list;
+        	  this.userinfo = _detail;
+        	  this.modal1 = this.userinfo.isBan == true ? true : false
+        	})
+        },
         // 登录成功事件
         onSuccessLog (data) {
 		  this.closeDialog ('isLoginDialog')
-		  this.setUsername(),
-		  this.setAdmin(),
+		  this.setUsername()
+		  this.setAdmin()
 		  this.setIcon()
+		  this.$router.go(0)
 		},
 		aboutClick() {
 		  this.isShowAboutDialog = true

@@ -16,12 +16,36 @@ var userSchema = new Schema({
 		type: String,
 		default: 'no'
 	},
-	"truename": String,
+	"truename": {
+		type: String,
+		default: ''
+	},
 	"company": String,
 	"telephone": String,
 	"mail": String,
 	"usercreatedate": String,
+	"reason" : String,
 	"admin": {
+		type: Boolean,
+		default: false
+	},
+	"idCard1": {
+		type: String,
+		default: ''
+	},
+	"idCard2": {
+		type: String,
+		default: ''
+	},
+	"isChecked": {
+		type: Boolean,
+		default: false
+	},
+	"isReal": {
+		type: Boolean,
+		default: false
+	},
+	"isBan": {
 		type: Boolean,
 		default: false
 	},

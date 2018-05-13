@@ -37,7 +37,7 @@ date：null
 					<div class="message-preview-list">
 						<ul>
 							<li v-for="(item,index) in blocklist">
-								<span v-if="index<=14">
+								<span v-if= " item.isChecked == true || parseInt((new Date() - new Date(item.date))) <= 2880000">
 									<!-- 采用iview的poptip为每个卡片提供消息提示样式 -->
 									<Poptip trigger="hover" title="点击“查看详情页”按钮能看更多消息">
 										<div class="message-preview-list-listcard">
@@ -83,11 +83,11 @@ date：null
 								</li>
 								<li class="col-md-4">
 									<h3>每日资讯一手送达</h3>
-									<p>为您推送每日消息</p>
+									<p>最新消息及时展示</p>
 								</li>
 								<li class="col-md-4">
-									<h3>线下交易安全可靠</h3>
-									<p>提供双方交易信息</p>
+									<h3>拍卖信息安全认证</h3>
+									<p>24小时内对新信息进行认证</p>
 								</li>
 							</ul>
 							<router-link class="btn btn-warning auction-knowledge" :to="{path:'/detail/knowledge'}">

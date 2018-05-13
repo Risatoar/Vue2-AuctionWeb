@@ -1,4 +1,4 @@
-var express=require("express")
+  var express=require("express")
 var router=express.Router()
 var mongoose=require("mongoose")
 var Infos=require("../models/info.js")
@@ -66,6 +66,34 @@ router.post("/infos/list", function (req,res,next) {
       }
   })
 });
+
+router.post("/infos/checklist", function (req,res,next) {
+  let page = parseInt(req.body.pagecount);
+  let pageSize = parseInt(16);
+  let skip = (page-1)*pageSize;
+  let infosModel = Infos.find({}).skip(skip).limit(pageSize);
+  infosModel.fliter(i=> {
+    return i.isChecked == true
+  })
+  infosModel.exec(function (err,doc) {
+      if(err){
+          res.json({
+            status:'1',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'0',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+  })
+});
+
 
 router.get("/infos/Count",function(req,res,next){
   Infos.find({}, function (err,doc){
@@ -146,6 +174,7 @@ router.post("/addinfo",(req,res,next)=>{
     description: req.body.description,
     maintext: req.body.maintext,
     covermap: req.body.covermap,
+    stars: 5.0,
     date: sd.format(new Date(), 'YYYY-MM-DD HH:mm')
   };
   new Infos(infoma).save((err,doc)=>{
@@ -228,6 +257,24 @@ router.post("/infodel",function(req,res,next){
           status: '3333'
         })
       }
+    }
+  })
+})
+
+router.post("/infos/check",function(req,res,next){
+  let _info = req.body
+  let infoid = ObjectID(_info._id)
+  Infos.update({_id:infoid},
+    {$set:{isChecked:true}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+      });
     }
   })
 })

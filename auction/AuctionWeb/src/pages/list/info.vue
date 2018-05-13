@@ -42,7 +42,7 @@ date：2017/12/13
 				</div>
 				<!-- 拍卖公告信息列表展示 -->
 				<div v-for="item in infolist">
-					<router-link :to="{path: 'info/' + item._id}">
+					<router-link :to="{path: 'info/' + item._id}" style="position: relative;" v-if= "item.isChecked == true || parseInt((new Date() - new Date(item.date))) <= 2880000" >
 						<div class="info-body-list-block" v-touch-ripple>
 							<div class="list-block-left">
 								<img class="left-img" v-lazy="'/static/img/uploads/' + item.covermap" style="background-color:#fff;">
@@ -59,10 +59,12 @@ date：2017/12/13
 											作者：{{ item.author }}
 										</span>
 										<span class="block-right-date">
-											发布时间：{{ item.date }}
+											发布时间：{{ item.date }}  {{ new Date() - new Date(item.date) }}
 										</span>
 									</p>
 								</div>
+								<div class="list-block-checked check" v-if="item.isChecked">已审核</div>
+								<div class="list-block-checked uncheck" v-if="!item.isChecked">{{ Checkword }}</div>
 							</div>
 						</div>
 					</router-link>
@@ -95,6 +97,9 @@ export default {
 			loadingMore: false,
 			page: 1,
 			pagecount: 0,
+			isChecked: false,
+			modal1: true,
+			Checkword: '未认证'
 		}
 	},
 	mounted() {

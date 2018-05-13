@@ -30,6 +30,7 @@
   padding: 10px 10px;
 }
 .info-body-list-block {
+  position: relative;
   height: 118px;
   margin-bottom: 30px;
   padding: 0 30px 30px 10px;
@@ -52,6 +53,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
@@ -104,6 +106,30 @@
 }
 .block-right-foot i {
   float: left;
+}
+.list-block-checked {
+  position: absolute;
+  right: 30px;
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bolder;
+  border-radius: 45px;
+  -webkit-transform: rotate(-40deg);
+      -ms-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+}
+.uncheck {
+  color: grey;
+  border-radius: 45px;
+  border: 1px solid grey;
+}
+.check {
+  color: green;
+  border-radius: 45px;
+  border: 1px solid green;
 }
 .law-body {
   display: block;
@@ -252,6 +278,29 @@
 }
 .preview-body-list-card ul {
   text-align: center;
+}
+.preview-body-list-card .list-card-checked {
+  position: absolute;
+  right: 30px;
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bolder;
+  -webkit-transform: rotate(-40deg);
+      -ms-transform: rotate(-40deg);
+          transform: rotate(-40deg);
+}
+.preview-body-list-card .uncheck {
+  color: grey;
+  border-radius: 45px;
+  border: 1px solid grey;
+}
+.preview-body-list-card .check {
+  color: green;
+  border-radius: 45px;
+  border: 1px solid green;
 }
 .preview-body-list-card .preview-card-name {
   font-size: 24px;

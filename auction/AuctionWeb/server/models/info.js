@@ -11,6 +11,10 @@ var infoSchema = new Schema({
 		type: Number,
 		default: 0.0
 	},
+	"isChecked": {
+		type: Boolean,
+		default: false
+	},
 	"watch": [
 		{
 			"watcher": String,
@@ -18,7 +22,7 @@ var infoSchema = new Schema({
 		}
 	],
 	"watchcount": String,
-	"date": String
+	"date": String,
 })
 
 module.exports = mongoose.model("infos", infoSchema)

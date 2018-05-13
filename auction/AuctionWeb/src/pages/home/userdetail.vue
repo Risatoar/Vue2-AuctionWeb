@@ -7,8 +7,25 @@ date：2017/12/26
 	<!-- 用户详情信息组件主体 -->
 	<div class="home-userdetail">
 		<!-- 用户详情信息组件背景层 -->
-		<div class="userdetail-wrap">
+		<div class="userdetail-wrap" style="position: relative">
 			<h3>用户信息</h3>
+			 <Button type="warning" v-if="userd.isBan == true" style="position: absolute; top: 45px; right:20px;" @click="showUnBan()">申请解封</Button>
+			 <Modal
+		         v-model="modal1">
+		         <p slot="header" style="color:#f60;text-align:center">
+                    <Icon type="information-circled"></Icon>
+                    <span>申请解封</span>
+                </p>
+                <div style="text-align:center;font-size:16px">
+                    解封理由: {{ userd.reason }}
+                     <p>
+					    <Button @click="handleRender">填写解封理由</Button>
+					</p>
+                </div>
+                <div slot="footer">
+                    <Button type="error" size="large" long :loading="modal_loading" @click="onSend">发送申请</Button>
+                </div>
+		     </Modal>
 			<!-- 用户详情信息组件内容层,利用table形式展示,每条数据配备修改按钮 -->
 			<table class="table table-striped">
 				<!-- 昵称展示及修改 -->
@@ -119,7 +136,6 @@ date：2017/12/26
 						    :on-format-error="handleFormatError"
 						    :on-exceeded-size="handleMaxSize"
 						    :before-upload="handleBeforeUpload"
-						    multiple
 						    type="drag"
 						    action="/uploads"
 						    style="display: inline-block;width:58px;">
@@ -178,7 +194,9 @@ export default {
 			save6 : false,
 			edit7 : true,
 			save7 : false,
+			modal1: false,
 			defaultList: [],
+			modal_loading: false,
 			imgName: '',
 			visible: false,
 			uploadList: [],
@@ -307,13 +325,43 @@ export default {
         },
         // 判断同时上传的图片是否大于1张
         handleBeforeUpload () {
-            const check = this.uploadList.length < 5;
+            const check = this.uploadList.length < 2;
             if (!check) {
                 this.$Notice.warning({
-                    title: 'Up to five pictures can be uploaded.'
+                    title: '只能同时上传一张图片'
                 });
             }
             return check;
+        },
+        showUnBan() {
+        	this.modal1 = true;
+        },
+        onSend() {
+           this.modal_loading = true;
+           setTimeout(() => {
+               this.modal_loading = false;
+               this.modal2 = false;
+               this.postChange("reason")
+               this.$Message.success('发送成功');
+           }, 2000);
+        },
+        handleRender () {
+            this.$Modal.confirm({
+                render: (h) => {
+                    return h('Input', {
+                        props: {
+                            value: this.userd.reason,
+                            autofocus: true,
+                            placeholder: '请输入解封理由...'
+                        },
+                        on: {
+                            input: (val) => {
+                                this.userd.reason = val;
+                            }
+                        }
+                    })
+                }
+            })
         }
     },
     mounted () {

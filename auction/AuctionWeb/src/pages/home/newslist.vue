@@ -65,6 +65,11 @@ export default {
 		infomodifydialog,
 		dialogBox
 	},
+	props: {
+	  userd: {
+	    type: Object
+	  }
+	},
 	data() {
 		return {
 			mynewslist: [],
@@ -84,10 +89,12 @@ export default {
 	methods: {
 		// 显示修改弹出层
 		showInfoModify(number) {
-			this.selectModify = this.mynewslist[number]
-			console.log(this.selectModify)
-			this.isInfoMoDialog = true;
-
+			if(this.userd.isBan == true) {
+				this.warning('您已被封禁，请先申请解封')
+			} else {
+				this.selectModify = this.mynewslist[number]
+				this.isInfoMoDialog = true;
+			}
 		},
 		// 关闭弹出层
 		closeDialog(attr) {
@@ -113,35 +120,48 @@ export default {
 		showPageCount() {
 			this.getUserInfo();
 		},
+		success (msg) {
+            this.$Message.success(msg);
+        },
+        warning (msg) {
+            this.$Message.warning(msg);
+        },
+        error (msg) {
+            this.$Message.error(msg);
+        },
 		postInfoDel(str) {
 			let username = this.username;
 			let delid = str;
-			axios.post("/infodel",{
-				username,
-				delid
-			}).then((res)=> {
-			    if(res.data.status == 222){
-			        for(let ls=0;ls<this.mynewslist.length;ls++){
-			        	if(this.mynewslist[ls]._id == delid) {
-			        		this.mynewslist.splice(ls,1)
-			        		if (this.mynewslist.length<6) {
-			        			this.getUserInfo()
-			        		}
-			        	}
-			        	console.log(this,mynewslist)
-			        	if (this.mynewslist.length<6) {
-			        		this.getUserInfo()
-			        	}
-			        	console.log(this,mynewslist)
-			        }
-			    }else if(res.data.status == 1002){
-			        this.error('修改失败,密码错误')
-			    }else if(res.data.status == 1003){
-			    	this.warning('数据没有修改过')
-			    }
-			}).catch((error)=> {
-			  console.log(error);
-			});
+			if(this.userd.isBan == true) {
+				this.warning('您已被封禁，请先申请解封')
+			} else {
+				axios.post("/infodel",{
+					username,
+					delid
+				}).then((res)=> {
+				    if(res.data.status == 222){
+				        for(let ls=0;ls<this.mynewslist.length;ls++){
+				        	if(this.mynewslist[ls]._id == delid) {
+				        		this.mynewslist.splice(ls,1)
+				        		if (this.mynewslist.length<6) {
+				        			this.getUserInfo()
+				        		}
+				        	}
+				        	console.log(this,mynewslist)
+				        	if (this.mynewslist.length<6) {
+				        		this.getUserInfo()
+				        	}
+				        	console.log(this,mynewslist)
+				        }
+				    }else if(res.data.status == 1002){
+				        this.error('修改失败,密码错误')
+				    }else if(res.data.status == 1003){
+				    	this.warning('数据没有修改过')
+				    }
+				}).catch((error)=> {
+				  console.log(error);
+				});
+			}
 		}
 	}
 }

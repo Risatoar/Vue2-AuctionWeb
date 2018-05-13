@@ -10,6 +10,13 @@ date：2017/12/20
 		<div class="infodetail-body">
 			<!-- 拍卖公告详情页面顶部标题,根据数据库查询结果异步更改标题 -->
 			<div class="infodetail-body-top">
+				<Modal
+			        v-model="modal1"
+			        title="温馨提示"
+			        @on-ok="ok"
+			        @on-cancel="cancel">
+			        <p>该消息为未审核消息,管理员将在48小时内对本消息进行审核,请不要相信文中涉及财产内容！</p>
+			    </Modal>
 				<span class="infodetail-body-top-content" v-touch-ripple>Title:{{ infodetaillist.title }}</span>
 			</div>
 			<!-- 拍卖公告详情页面顶部标题,根据数据库查询结果异步更改标题 -->
@@ -71,6 +78,7 @@ export default {
 			info: {
 				infoid:''
 			},
+			modal1: false,
 			stars: 3,
 			firstStars: null,
 			loading : true,
@@ -101,6 +109,8 @@ export default {
 			axios.post("/infodetail",this.info).then((res)=> {
 				this.loading = false;
 				this.infodetaillist = res.data.result.list;
+				console.log(this.infodetaillist.isChecked)
+				this.modal1 = this.infodetaillist.isChecked == false ? true : false;
 	        }).catch((error)=> {
 	          console.log(error);
 	        });

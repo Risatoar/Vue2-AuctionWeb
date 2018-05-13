@@ -8,6 +8,13 @@ date：2017/12/20
 	<div class="previewdetail-wrap">
 		<!-- 拍卖预告信息详情界面主体层 -->
 		<div class="previewdetail-body">
+			<Modal
+		        v-model="modal1"
+		        title="温馨提示"
+		        @on-ok="ok"
+		        @on-cancel="cancel">
+		        <p>该消息为未审核消息,管理员将在48小时内对本消息进行审核,请不要相信文中涉及财产内容！</p>
+		    </Modal>
 			<!-- 拍卖预告信息详情界面内容层 -->
 			<div class="previewdetail-information">
 				<!-- 拍卖预告信息详情界面内容层左侧,展示当前拍卖预告的展示图片 -->
@@ -50,8 +57,6 @@ date：2017/12/20
 								</div>
 								<!-- 拍卖须知区块 -->
 								<article>
-									<p>佛像，珊瑚，象牙，高额金银珠宝制品，燃气灶，热水器，音响，喇叭，刀具，打火机，电池，精密仪器，药品，高压气体，酒水，易燃易爆品，汽车摩托车配件，动植物等以及其他一切国家禁止入境的商品，无法运输，其中给您造成的损失洋觅网不予承担</p>
-									<p>如因您购买了重量或者体积超出邮局规定的商品而造成无法邮寄的损失，洋觅网概不承担，详情请参考邮局运输标准；</p>
 									<p>竞拍成功的商品一律不接受以任何形式的原因而造成的弃标，一旦发生弃标行为，洋觅网将扣除该商品金额的30%~50%+53元服务费作为弃标费。</p>
 									<p>商品名中出现“垃圾”、“出租”、商品详情不完整、卖家整体信誉过低的商品，不建议竞拍。具体详情请咨询小觅在线客服。</p>
 								</article>
@@ -92,6 +97,7 @@ export default {
 			ShowWords: '距离结束还有',
 			PreList: {},
 			watchcount: '',
+			modal1: false,
 			userdetails: []
 		}
 	},
@@ -124,6 +130,7 @@ export default {
 				this.PreList = res.data.result.list;
 				this.watchcount = res.data.result.list.watch.length
 				this.getTime1();
+				this.modal1 = this.PreList.isChecked == false ? true : false;
 	        }).catch((error)=> {
 	          console.log(error);
 	        });

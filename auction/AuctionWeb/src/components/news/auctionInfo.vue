@@ -19,7 +19,7 @@ date：null
           <!-- 消息及评分展示列  -->
           <ul>
               <li v-for="item in randomInfoList" style="width:320px;float:left;padding-bottom:14px;">
-	          <router-link  :to="{path: '/detail/info/' + item._id}">
+	          <router-link  :to="{path: '/detail/info/' + item._id}" v-if= "item.isChecked == true || parseInt((new Date() - new Date(item.date))) <= 2880000">
 	             <a style="float:left;text-align:left;" class="infotitle">{{ item.title }}</a>
 	          </router-link>
               <div style="float:right;">
@@ -82,7 +82,10 @@ export default {
             }
             return return_array;
         }
-        this.randomInfoList = getArrayItems(this.infoList, 9);
+        let inlist = this.infoList.filter(function(index) {
+          return index.isChecked == true || parseInt((new Date() - new Date(index.date))) <= 2880000;
+        });
+        this.randomInfoList = getArrayItems(inlist, 9);
       },
 			// morenews() {
 			// 	this.isShowAboutDialog = true;

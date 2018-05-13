@@ -11,7 +11,7 @@ date：null
 	    <div class="hotnews-block"
 			 v-for="(item,index) in information"
 			 :class="[{'hotnewsshow' : index - 3 > 0}]">
-		  <router-link :to="{path: '/detail/info/' + item._id}">
+		  <router-link :to="{path: '/detail/info/' + item._id}" v-if= "item.isChecked == true || parseInt((new Date() - new Date(item.date))) <= 2880000">
 		  <div class="hotnews-block-left"
 			   :class="['block' + index]">
 		    {{ item.date }}

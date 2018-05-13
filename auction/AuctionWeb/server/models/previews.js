@@ -11,6 +11,10 @@ var previewSchema = new Schema({
 	"finaldate": String,
 	"finaltime": String,
 	"covermap": String,
+	"isChecked": {
+		type: Boolean,
+		default: false
+	},
 	"watch": [
 		{
 			"watcher": String,

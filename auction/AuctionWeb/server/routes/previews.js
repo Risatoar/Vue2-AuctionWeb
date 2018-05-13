@@ -227,6 +227,24 @@ router.post("/previewdetail/del",function(req,res,next){
   })
 })
 
+router.post("/previews/check",function(req,res,next){
+  let _info = req.body
+  let infoid = ObjectID(_info._id)
+  Previews.update({_id:infoid},
+    {$set:{isChecked:true}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '456',
+      });
+    }
+  })
+})
+
 router.post("/previews/del",function(req,res,next){
   let delid = ObjectID(req.body.delid)
   Previews.findOne({_id:delid}, (err,doc)=>{

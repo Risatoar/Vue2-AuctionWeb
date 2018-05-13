@@ -66,6 +66,11 @@ export default {
 		previewmodifydialog,
 		dialogBox
 	},
+	props: {
+	  userd: {
+	    type: Object
+	  }
+	},
 	data() {
 		return {
 			mypreviewlist: [],
@@ -85,10 +90,22 @@ export default {
 	methods: {
 		// 显示修改弹出层
 		showPreviewModify(number) {
-			this.selectModify = this.mypreviewlist[number]
-			this.isPreviewMoDialog = true;
-
+			if(this.userd.isBan == true) {
+				this.warning('您已被封禁，请先申请解封')
+			} else {
+				this.selectModify = this.mypreviewlist[number]
+				this.isPreviewMoDialog = true;
+			}
 		},
+		success (msg) {
+            this.$Message.success(msg);
+        },
+        warning (msg) {
+            this.$Message.warning(msg);
+        },
+        error (msg) {
+            this.$Message.error(msg);
+        },
 		// 页码切换回调
 		showPageCount() {
 			this.getUserPreview();
@@ -106,7 +123,6 @@ export default {
 			axios.post("/userpreview",userPrePost).then((res)=> {
 			    if(res.data.status == 10001){
 			    	this.mypreviewlist = res.data.result.list;
-			        this.success('修改成功')
 			    }else if(res.data.status == 1002){
 			        this.error('修改失败,密码错误')
 			    }else if(res.data.status == 1003){
@@ -120,30 +136,34 @@ export default {
 		postPreviewDel(str) {
 			let username = this.username;
 			let delid = str;
-			axios.post("/previewdetail/del",{
-				username,
-				delid
-			}).then((res)=> {
-			    if(res.data.status == 222){
-			        for(let ls=0;ls<this.mypreviewlist.length;ls++){
-			        	if(this.mypreviewlist[ls]._id == delid) {
-			        		this.mypreviewlist.splice(ls,1)
-			        		if (this.mypreviewlist.length<6) {
-			        			this.getUserPreview()
-			        		}
-			        	}
-			        	if (this.mypreviewlist.length<6) {
-			        		this.getUserPreview()
-			        	}
-			        }
-			    }else if(res.data.status == 1002){
-			        this.error('修改失败,密码错误')
-			    }else if(res.data.status == 1003){
-			    	this.warning('数据没有修改过')
-			    }
-			}).catch((error)=> {
-			  console.log(error);
-			});
+			if(this.userd.isBan == true) {
+				this.warning('您已被封禁，请先申请解封')
+			} else {
+				axios.post("/previewdetail/del",{
+					username,
+					delid
+				}).then((res)=> {
+				    if(res.data.status == 222){
+				        for(let ls=0;ls<this.mypreviewlist.length;ls++){
+				        	if(this.mypreviewlist[ls]._id == delid) {
+				        		this.mypreviewlist.splice(ls,1)
+				        		if (this.mypreviewlist.length<6) {
+				        			this.getUserPreview()
+				        		}
+				        	}
+				        	if (this.mypreviewlist.length<6) {
+				        		this.getUserPreview()
+				        	}
+				        }
+				    }else if(res.data.status == 1002){
+				        this.error('修改失败,密码错误')
+				    }else if(res.data.status == 1003){
+				    	this.warning('数据没有修改过')
+				    }
+				}).catch((error)=> {
+				  console.log(error);
+				});
+			}
 		}
 	}
 }

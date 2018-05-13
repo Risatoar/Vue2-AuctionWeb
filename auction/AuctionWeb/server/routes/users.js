@@ -162,7 +162,10 @@ router.post("/register",(req,res,next)=>{
     pwd: req.body.pwd,
     nickname: req.body.nickname,
     age: req.body.age,
-    truename: req.body.truename,
+    truename: "",
+    idCard1: "",
+    idCard2: "",
+    reason: "...",
     company: req.body.company,
     telephone: req.body.telephone,
     mail: req.body.mail,
@@ -396,6 +399,64 @@ router.post("/edit/icon",function(req,res,next){
   })
 })
 
+router.post("/edit/reason",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else if(user.reason == req.body.reason){
+      return res.json({
+        status: '1003'
+      })
+    }else {
+      Users.update({username:req.body.username},{$set:{reason:req.body.reason}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/edit/idcard1",function(req,res,next){
+  let _info = req.body
+  let infoid = ObjectID(_info._id)
+  Users.update({_id:infoid},
+    {$set:{idCard1:req.body.idCard1}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '1001',
+      });
+    }
+  })
+})
+
+router.post("/edit/idcard2",function(req,res,next){
+  let _info = req.body
+  let infoid = ObjectID(_info._id)
+  Users.update({_id:infoid},
+    {$set:{idCard2:req.body.idCard2}},(err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      res.json({
+        status: '1001',
+      });
+    }
+  })
+})
+
 router.post('/uploads', upload.single('file'), function(req, res, next) {
     // req.file 是 前端表单name=="imageFile" 的文件信息（不是数组）
     fs.rename(req.file.path, "upload/" + req.file.originalname, function(err) {
@@ -425,6 +486,64 @@ router.post("/users/del",function(req,res,next){
         }else {
           res.json({
             status: '222'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/users/check",function(req,res,next){
+  let userid = ObjectID(req.body.userid)
+  Users.findOne({_id:userid}, (err,doc)=>{
+    if(err){
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    }else {
+      Users.update({_id:req.body.userid},{$set:{isReal:true}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/users/ban",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{isBan:true}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
+          })
+        }
+      })
+    }
+  })
+})
+
+router.post("/users/unban",function(req,res,next){
+  Users.findOne({username:req.body.username},(err,user)=>{
+    if(err){
+      console.log(err)
+    }else {
+      Users.update({username:req.body.username},{$set:{isBan:false}},(err,user)=>{
+        if(err){
+          console.log(err)
+        }else{
+          return res.json({
+          status: '1001'
           })
         }
       })
